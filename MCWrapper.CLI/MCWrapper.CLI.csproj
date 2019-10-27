@@ -14,6 +14,8 @@ MCWrapper.RPC and MCWrapper.CLI are the two projects.</PackageReleaseNotes>
     <Authors>Myndblock LLC, Ryan Goodwin</Authors>
     <Company>Myndblock LLC</Company>
     <Description>A simple .NET Core wrapper for the MultiChain Core blockchain library using Command Line Interface (CLI) commands.</Description>
+    <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
