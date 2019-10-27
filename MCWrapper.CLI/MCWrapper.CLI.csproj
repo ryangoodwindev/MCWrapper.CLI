@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <Copyright>2019</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageReleaseNotes>Previously, the Command Line Interface (CLI) logic contained in this project was packaged with the full MCWrapper package which became to unwieldy to maintain and has been broken into two seperate projects.
+
+MCWrapper.RPC and MCWrapper.CLI are the two projects.</PackageReleaseNotes>
+    <Authors>Myndblock LLC, Ryan Goodwin</Authors>
+    <Company>Myndblock LLC</Company>
+    <Description>A simple .NET Core wrapper for the MultiChain Core blockchain library using Command Line Interface (CLI) commands.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MCWrapper.Data.Models" Version="1.0.0" />
+    <PackageReference Include="MCWrapper.Ledger.Actions" Version="1.0.0" />
+    <PackageReference Include="MCWrapper.Ledger.Entities" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+</Project>
