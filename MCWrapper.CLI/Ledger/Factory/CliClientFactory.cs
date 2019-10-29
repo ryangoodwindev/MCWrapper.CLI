@@ -1,53 +1,51 @@
-﻿using MCWrapper.CLI.Ledger.Clients;
-using MCWrapper.CLI.Ledger.Forge;
-
-namespace MCWrapper.CLI.Ledger.Factory
+﻿namespace MCWrapper.CLI.Ledger.Clients
 {
     public class CliClientFactory
     {
-        private readonly BlockchainCliClient BlockchainClient;
-        private readonly ControlCliClient ControlClient;
-        private readonly GenerateCliClient GenerateClient;
-        private readonly MiningCliClient MiningClient;
-        private readonly NetworkCliClient NetworkClient;
-        private readonly OffChainCliClient OffChainClient;
-        private readonly RawCliClient RawClient;
-        private readonly UtilityCliClient UtilityClient;
-        private readonly WalletCliClient WalletClient;
-        private readonly ForgeClient ForgeClient;
-
-        public CliClientFactory(BlockchainCliClient blockchainClient,
-                                ControlCliClient controlClient,
-                                GenerateCliClient generateClient,
-                                MiningCliClient miningClient,
-                                NetworkCliClient networkClient,
-                                OffChainCliClient offChainClient,
-                                RawCliClient rawClient,
-                                UtilityCliClient utilityClient,
-                                WalletCliClient walletClient,
-                                ForgeClient forgeClient)
+        public CliClientFactory(BlockchainCliClient blockchainClient, GenerateCliClient generateClient, OffChainCliClient offChainClient,
+            ControlCliClient controlClient, NetworkCliClient networkClient, UtilityCliClient utilityClient, MiningCliClient miningClient,
+            WalletCliClient walletClient, RawCliClient rawClient, ForgeClient forge)
         {
             BlockchainClient = blockchainClient;
-            ControlClient = controlClient;
             GenerateClient = generateClient;
-            MiningClient = miningClient;
-            NetworkClient = networkClient;
             OffChainClient = offChainClient;
-            RawClient = rawClient;
+            ControlClient = controlClient;
+            NetworkClient = networkClient;
             UtilityClient = utilityClient;
+            MiningClient = miningClient;
             WalletClient = walletClient;
-            ForgeClient = forgeClient;
+            RawClient = rawClient;
+            Forge = forge;
         }
 
-        public BlockchainCliClient GetBlockchainClient() => BlockchainClient;
-        public ControlCliClient GetControlClient() => ControlClient;
-        public GenerateCliClient GetGenerateClient() => GenerateClient;
-        public MiningCliClient GetMiningClient() => MiningClient;
-        public NetworkCliClient GetNetworkClient() => NetworkClient;
-        public OffChainCliClient GetOffChainClient() => OffChainClient;
-        public RawCliClient GetRawClient() => RawClient;
-        public UtilityCliClient GetUtilityClient() => UtilityClient;
-        public WalletCliClient GetWalletClient() => WalletClient;
-        public ForgeClient GetForgeClient() => ForgeClient;
+        public BlockchainCliClient BlockchainCliClient => BlockchainClient;
+        private readonly BlockchainCliClient BlockchainClient;
+
+        public GenerateCliClient GenerateCliClient => GenerateClient;
+        private readonly GenerateCliClient GenerateClient;
+
+        public OffChainCliClient OffChainCliClient => OffChainClient;
+        private readonly OffChainCliClient OffChainClient;
+
+        public ControlCliClient ControlCliClient => ControlClient;
+        private readonly ControlCliClient ControlClient;
+
+        public NetworkCliClient NetworkCliClient => NetworkClient;
+        private readonly NetworkCliClient NetworkClient;
+
+        public UtilityCliClient UtilityCliClient => UtilityClient;
+        private readonly UtilityCliClient UtilityClient;
+
+        public MiningCliClient MiningCliClient => MiningClient;
+        private readonly MiningCliClient MiningClient;
+
+        public WalletCliClient WalletCliClient => WalletClient;
+        private readonly WalletCliClient WalletClient;
+
+        public RawCliClient RawCliClient => RawClient;
+        private readonly RawCliClient RawClient;
+
+        public ForgeClient ForgeClient => Forge;
+        private readonly ForgeClient Forge;
     }
 }

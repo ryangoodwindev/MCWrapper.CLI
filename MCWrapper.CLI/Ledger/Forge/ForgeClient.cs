@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MCWrapper.CLI.Ledger.Forge
+namespace MCWrapper.CLI.Ledger.Clients
 {
     /// <summary>
     /// Start and kill the multichaind process directly;

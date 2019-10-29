@@ -2,7 +2,7 @@
 using MCWrapper.Ledger.Entities;
 using System.Threading.Tasks;
 
-namespace MCWrapper.CLI.Ledger.Clients.Wallet
+namespace MCWrapper.CLI.Ledger.Clients
 {
     /// <summary>
     /// Extension methods derived from the WalletCLIClient contract and WalletCLIClient implementation

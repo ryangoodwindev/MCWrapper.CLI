@@ -1,6 +1,4 @@
 ﻿using MCWrapper.CLI.Ledger.Clients;
-using MCWrapper.CLI.Ledger.Factory;
-using MCWrapper.CLI.Ledger.Forge;
 using MCWrapper.CLI.Options;
 using MCWrapper.Ledger.Entities.Options;
 using Microsoft.Extensions.Configuration;
@@ -40,9 +38,8 @@ namespace MCWrapper.CLI.Extensions
         public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services)
         {
             // load Options from the local environment variable store
-            // 
-            services.Configure<CliOptions>(config => new CliOptions())
-                .Configure<RuntimeParamOptions>(config => new RuntimeParamOptions());
+            services.Configure<RuntimeParamOptions>(config => new RuntimeParamOptions())
+                .Configure<CliOptions>(config => new CliOptions());
 
             // command line interface clients and client factory
             services.AddTransient<BlockchainCliClient>()
@@ -85,8 +82,8 @@ namespace MCWrapper.CLI.Extensions
         public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services, IConfiguration configuration)
         {
             // load Options from the IConfiguration interface (appsettings.json file usually)
-            services.Configure<CliOptions>(configuration)
-                .Configure<RuntimeParamOptions>(configuration);
+            services.Configure<RuntimeParamOptions>(configuration)
+                .Configure<CliOptions>(configuration);
 
             // command line interface clients and client factory
             services.AddTransient<BlockchainCliClient>()
@@ -120,19 +117,19 @@ namespace MCWrapper.CLI.Extensions
         /// </para>
         /// <para>
         ///     This method requires the CliOptions and RuntimeParamOptions property values to be
-        ///     explicitly passed via the <paramref name="runtimeConfig"/> and <paramref name="profileConfig"/> 
+        ///     explicitly passed via the <paramref name="runtimeParamOptions"/> and <paramref name="cliOptions"/> 
         ///     Action parameters when added to the DI pipeline. Least secure method and should only be used during testing or in sandbox environments.
         /// </para>
         /// </summary>
         /// <param name="services">Service container</param>
-        /// <param name="profileConfig">Blockchain profile configuration (Information the app will use to connect to a MultiChain ledger)</param>
-        /// <param name="runtimeConfig">Runtime parameter configuration (How a MultiChain ledger should behave)</param>
+        /// <param name="cliOptions">Blockchain profile configuration (Information the app will use to connect to a MultiChain ledger)</param>
+        /// <param name="runtimeParamOptions">Runtime parameter configuration (How a MultiChain ledger should behave)</param>
         /// <returns></returns>
-        public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services, Action<CliOptions> profileConfig, [Optional] Action<RuntimeParamOptions> runtimeConfig)
+        public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services, Action<CliOptions> cliOptions, [Optional] Action<RuntimeParamOptions> runtimeParamOptions)
         {
             // configure Options by invoking Actions
-            services.Configure((Action<CliOptions>)(config => profileConfig?.Invoke(new CliOptions())))
-                .Configure((Action<RuntimeParamOptions>)(config => runtimeConfig?.Invoke(new RuntimeParamOptions())));
+            services.Configure((Action<RuntimeParamOptions>)(config => runtimeParamOptions?.Invoke(new RuntimeParamOptions())))
+                .Configure((Action<CliOptions>)(config => cliOptions?.Invoke(new CliOptions())));
 
             // command line interface clients and client factory
             services.AddTransient<BlockchainCliClient>()

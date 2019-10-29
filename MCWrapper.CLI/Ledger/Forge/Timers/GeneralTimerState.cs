@@ -1,4 +1,4 @@
-﻿namespace MCWrapper.CLI.Ledger.Forge
+﻿namespace MCWrapper.CLI.Ledger.Clients
 {
     /// <summary>
     /// Timer state used for tracking multichain-cli.exe interactions

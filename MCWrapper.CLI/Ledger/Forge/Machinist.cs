@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 
-namespace MCWrapper.CLI.Ledger.Forge
+namespace MCWrapper.CLI.Ledger.Clients
 {
     /// <summary>
     /// Machinist interacts with MultiChain binary files directly and monitors their reponses while reacting accordingly

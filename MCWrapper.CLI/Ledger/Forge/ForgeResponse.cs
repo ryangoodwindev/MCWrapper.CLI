@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MCWrapper.CLI.Ledger.Forge
+namespace MCWrapper.CLI.Ledger.Clients
 {
     /// <summary>
     /// Forge response handles responses from the ForgeClient
