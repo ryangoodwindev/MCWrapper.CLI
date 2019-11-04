@@ -22,11 +22,24 @@ namespace MCWrapper.CLI.Options
     /// </summary>
     public class CliOptions
     {
+        public CliOptions() { }
+
         /// <summary>
         /// Create a new CliOptions object
         /// No arguments
         /// </summary>
-        public CliOptions() { }
+        public CliOptions(bool loadFromEnvironment) 
+        {
+            if (loadFromEnvironment)
+            {
+                ChainName = nameof(ChainName).GetEnvironmentVariable();
+                ChainBurnAddress = nameof(ChainBurnAddress).GetEnvironmentVariable();
+                ChainAdminAddress = nameof(ChainAdminAddress).GetEnvironmentVariable();
+                ChainBinaryLocation = nameof(ChainBinaryLocation).GetEnvironmentVariable();
+                ChainDefaultLocation = nameof(ChainDefaultLocation).GetEnvironmentVariable();
+                ChainDefaultColdNodeLocation = nameof(ChainDefaultColdNodeLocation).GetEnvironmentVariable();
+            }
+        }
 
         /// <summary>
         /// Multichain blockchain name as declared in the params.dat file;
@@ -44,14 +57,7 @@ namespace MCWrapper.CLI.Options
         /// </para>
         /// 
         /// </summary>
-        public string ChainName
-        {
-            get => string.IsNullOrEmpty(chainName) ? 
-                nameof(ChainName).GetEnvironmentVariable() : chainName ?? string.Empty;
-
-            set => chainName = value;
-        }
-        private string chainName = string.Empty;
+        public string ChainName { get; set; } = string.Empty;
 
         /// <summary>
         /// Your blockchain node administror's public key.
@@ -60,14 +66,7 @@ namespace MCWrapper.CLI.Options
         ///     ChainAdminAddress is required for the CLI client to function as expected;
         /// </para>
         /// </summary>
-        public string ChainAdminAddress
-        {
-            get => string.IsNullOrEmpty(chainAdminAddress) ? 
-                nameof(ChainAdminAddress).GetEnvironmentVariable() : chainAdminAddress ?? string.Empty;
-
-            set => chainAdminAddress = value;
-        }
-        private string chainAdminAddress = string.Empty;
+        public string ChainAdminAddress { get; set; } = string.Empty;
 
         /// <summary>
         /// Blockchain address used for 'burning' Assets/Streams. 
@@ -78,14 +77,7 @@ namespace MCWrapper.CLI.Options
         ///     ChainBurnAddress is not required for the CLI client to function as expected;
         /// </para>
         /// </summary>
-        public string ChainBurnAddress
-        {
-            get => string.IsNullOrEmpty(chainBurnAddress) ? 
-                nameof(ChainBurnAddress).GetEnvironmentVariable() : chainBurnAddress ?? string.Empty;
-
-            set => chainBurnAddress = value;
-        }
-        private string chainBurnAddress = string.Empty;
+        public string ChainBurnAddress { get; set; } = string.Empty;
 
         /// <summary>
         /// Local directory the application may locate the Multichain library files (multichaind.exe, multichain-util.exe, and multichain-cli.exe, etc..)
@@ -94,14 +86,7 @@ namespace MCWrapper.CLI.Options
         ///     ChainBinaryLocation is required for the CLI and Forge clients to function as expected;
         /// </para>
         /// </summary>
-        public string ChainBinaryLocation
-        {
-            get => string.IsNullOrEmpty(chainBinaryLocation) ? 
-                nameof(ChainBinaryLocation).GetEnvironmentVariable() : chainBinaryLocation  ?? string.Empty;
-
-            set => chainBinaryLocation = value;
-        }
-        private string chainBinaryLocation = string.Empty;
+        public string ChainBinaryLocation { get; set; } = string.Empty;
 
         /// <summary>
         /// Default directory that blockchains are found
@@ -115,14 +100,7 @@ namespace MCWrapper.CLI.Options
         /// </para>
         /// <para>Generally, this location in Linux is ~/.multichain</para>
         /// </summary>
-        public string ChainDefaultLocation
-        {
-            get => string.IsNullOrEmpty(chainDefaultLocation) ? 
-                nameof(ChainDefaultLocation).GetEnvironmentVariable() : chainDefaultLocation ?? string.Empty;
-
-            set => chainDefaultLocation = value;
-        }
-        private string chainDefaultLocation = string.Empty;
+        public string ChainDefaultLocation { get; set; } = string.Empty;
 
         /// <summary>
         /// Default  directory that cold nodes are found
@@ -138,13 +116,6 @@ namespace MCWrapper.CLI.Options
         /// </para>
         /// <para>Generally, this location in Linux is ~/.multichain-cold</para>
         /// </summary>
-        public string ChainDefaultColdNodeLocation
-        {
-            get => string.IsNullOrEmpty(chainDefaultColdNodeLocation) ? 
-                nameof(ChainDefaultColdNodeLocation).GetEnvironmentVariable() : chainDefaultColdNodeLocation ?? string.Empty;
-
-            set => chainDefaultColdNodeLocation = value;
-        }
-        private string chainDefaultColdNodeLocation = string.Empty;
+        public string ChainDefaultColdNodeLocation { get; set; } = string.Empty;
     }
 }

@@ -16,8 +16,8 @@ namespace MCWrapper.CLI.Connection
         /// Create a new CliClient instance;
         /// Inject arguments to multichain-cli.exe and receive a string response
         /// </summary>
-        /// <param name="blockchainOptions"></param>
-        public CliClient(IOptions<CliOptions> blockchainOptions) => CliOptions = blockchainOptions.Value;
+        /// <param name="cliOptions"></param>
+        public CliClient(IOptions<CliOptions> cliOptions) => CliOptions = cliOptions.Value;
 
         public CliOptions CliOptions { get; }
 

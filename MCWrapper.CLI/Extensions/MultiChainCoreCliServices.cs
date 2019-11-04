@@ -37,9 +37,33 @@ namespace MCWrapper.CLI.Extensions
         /// <returns></returns>
         public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services)
         {
+            var cliOptions = new CliOptions(true);
+            var runtimeOptions = new RuntimeParamOptions(true);
+
             // load Options from the local environment variable store
-            services.Configure<RuntimeParamOptions>(config => new RuntimeParamOptions())
-                .Configure<CliOptions>(config => new CliOptions());
+            services.Configure<RuntimeParamOptions>(config => 
+            {
+                config.BanTx = runtimeOptions.BanTx;
+                config.LockBlock = runtimeOptions.LockBlock;
+                config.MaxShownData = runtimeOptions.MaxShownData;
+                config.AutoSubscribe = runtimeOptions.AutoSubscribe;
+                config.HandshakeLocal = runtimeOptions.HandshakeLocal;
+                config.MiningTurnOver = runtimeOptions.MiningTurnOver;
+                config.MineEmptyRounds = runtimeOptions.MineEmptyRounds;
+                config.HideKnownOpDrops = runtimeOptions.HideKnownOpDrops;
+                config.MaxQueryScanItems = runtimeOptions.MaxQueryScanItems;
+                config.LockAdminMineRounds = runtimeOptions.LockAdminMineRounds;
+                config.MiningRequiresPeers = runtimeOptions.MiningRequiresPeers;
+            })
+            .Configure<CliOptions>(config =>
+            {
+                config.ChainName = cliOptions.ChainName;
+                config.ChainBurnAddress = cliOptions.ChainBurnAddress;
+                config.ChainAdminAddress = cliOptions.ChainAdminAddress;
+                config.ChainBinaryLocation = cliOptions.ChainBinaryLocation;
+                config.ChainDefaultLocation = cliOptions.ChainDefaultLocation;
+                config.ChainDefaultColdNodeLocation = cliOptions.ChainDefaultColdNodeLocation;
+            });
 
             // command line interface clients and client factory
             services.AddTransient<BlockchainCliClient>()
