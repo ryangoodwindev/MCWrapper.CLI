@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
@@ -8,14 +8,26 @@ namespace MCWrapper.CLI.Ledger.Clients
     public class ForgeResponse
     {
         /// <summary>
-        /// stdout value from MultiChain Core binary
+        /// Create a new ForgeResponse instance
         /// </summary>
-        public string Output;
+        /// <param name="output"></param>
+        /// <param name="error"></param>
+        /// <param name="success"></param>
+        public ForgeResponse() { }
 
         /// <summary>
-        /// stderr value from MultiChain Core binary
+        /// Create a new ForgeResponse instance with parameters
         /// </summary>
-        public string Error;
+        /// <param name="output"></param>
+        public ForgeResponse(string output) => StandardOutput = output;
+
+        /// <summary>
+        /// Create a new ForgeResponse instance with parameters
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="error"></param>
+        public ForgeResponse(string output, string error)
+            : this(output) => StandardError = error;
 
         /// <summary>
         /// Create a new ForgeResponse instance with parameters
@@ -23,61 +35,47 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="output"></param>
         /// <param name="error"></param>
         /// <param name="success"></param>
-        public ForgeResponse(string output, string error)
-        {
-            this.Output = output;
-            this.Error = error;
-        }
+        public ForgeResponse(string output, string error, bool success)
+            : this(output, error) => Success = success;
 
         /// <summary>
-        /// Equality override
+        /// stdout value from MultiChain Core binary
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public override bool Equals(object? obj)
+        public string StandardOutput 
         {
-            return obj is ForgeResponse other &&
-                   Output == other.Output &&
-                   Error == other.Error;
+            get => output; 
+            set => output = value; 
         }
+        private string output = string.Empty;
 
         /// <summary>
-        /// Hash code override
+        /// stderr value from MultiChain Core binary
         /// </summary>
-        /// <returns></returns>
-        public override int GetHashCode()
+        public string StandardError
         {
-            return HashCode.Combine(Output, Error);
+            get => error;
+            set => error = value;
         }
+        private string error = string.Empty;
 
         /// <summary>
-        /// Deconstruct to ValueTuple(string, string, bool)
+        /// Was action successful
         /// </summary>
-        /// <param name="output"></param>
-        /// <param name="error"></param>
-        /// <param name="success"></param>
-        public void Deconstruct(out string output, out string error)
-        {
-            output = this.Output;
-            error = this.Error;
+        public bool Success 
+        { 
+            get => success; 
+            set => success = value; 
         }
-
+        private bool success = false;
+     
         /// <summary>
-        /// Implicitly convert ForgeResponse struct to ValueTuple(string, string, bool)
+        /// 
         /// </summary>
-        /// <param name="value"></param>
-        public static implicit operator (string output, string error)(ForgeResponse value)
-        {
-            return (value.Output, value.Error);
+        public Dictionary<string, string> Errors 
+        { 
+            get => errors; 
+            set => errors = value;
         }
-
-        /// <summary>
-        /// Implicitly convert ValueTuple(string, string, bool) to ForgeResponse struct instance
-        /// </summary>
-        /// <param name="value"></param>
-        public static implicit operator ForgeResponse((string output, string error) value)
-        {
-            return new ForgeResponse(value.output, value.error);
-        }
+        private Dictionary<string, string> errors = new Dictionary<string, string>();
     }
 }

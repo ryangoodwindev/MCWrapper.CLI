@@ -9,7 +9,7 @@
         /// Track timer lifetime; 
         /// How many times has the timer completed?
         /// </summary>
-        public int Counter { get; set; }
+        public int Counter;
 
         /// <summary>
         /// Is the task associated with the timer been completed? Was it successful?

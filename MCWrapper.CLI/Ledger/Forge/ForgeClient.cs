@@ -2,12 +2,10 @@
 using MCWrapper.CLI.Options;
 using MCWrapper.Ledger.Entities.ErrorHandling;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
@@ -28,7 +26,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <summary>
         /// Create a new blockchain Forge instance
         /// </summary>
-        public ForgeClient(IOptions<CliOptions> options) 
+        public ForgeClient(IOptions<CliOptions> options)
             : base(options) { }
 
         /// <summary>
@@ -37,8 +35,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName"></param>
         /// <returns></returns>
-        public Task<ForgeResponse> CreateBlockchainAsync(string blockchainName) => 
-            Task.Run(() => CreateBlockchain(blockchainName));
+        public new Task<ForgeResponse> CreateBlockchainAsync(string blockchainName) =>
+            base.CreateBlockchainAsync(blockchainName);
 
         /// <summary>
         /// Start a MultiChain blockchain present on the local Windows environment and use HTTP connections;
@@ -55,7 +53,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             foreach (var param in runtimeParams)
                 paramsBuilder.AppendFormat("-{0}={1} ", param.Key, param.Value);
 
-            return Task.Run(() => StartBlockchain(blockchainName, useSsl, paramsBuilder.ToString()));
+            return StartBlockchainAsync(blockchainName, useSsl, paramsBuilder.ToString());
         }
 
         /// <summary>
@@ -109,17 +107,15 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName"></param>
         /// <returns></returns>
-        public Task<ForgeResponse> StartColdNodeAsync(string blockchainName)
+        public new Task<ForgeResponse> StartColdNodeAsync(string blockchainName)
         {
-            // check if cold node path exists
-            // check if cold node path contains a copy of the hot node's params.dat file
-            _ = !Directory.Exists(MultiChainPaths.GetColdWalletPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName))
-                    ? throw new ServiceException("Sorry, we can't find the MultiChainCold folder. Please be sure to run CreateColdNode first or create the folder manually.")
-                    : !File.Exists(MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName))
-                    ? throw new ServiceException($"Sorry, it seems there is no params.dat file found in the Cold Node wallet you are trying to use for blockchain {blockchainName}")
-                    : false;
+            if (!Directory.Exists(MultiChainPaths.GetColdWalletPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
+                throw new ServiceException("Sorry, we can't find the MultiChainCold folder. Please be sure to run CreateColdNode first or create the folder manually.");
 
-            return Task.Run(() => StartColdNode(blockchainName));
+            if (!File.Exists(MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
+                throw new ServiceException($"Sorry, it seems there is no params.dat file found in the Cold Node wallet you are trying to use for blockchain {blockchainName}");
+
+            return base.StartColdNodeAsync(blockchainName);
         }
 
         /// <summary>
@@ -130,23 +126,23 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="ipAddress"></param>
         /// <param name="port"></param>
         /// <returns></returns>
-        public Task<ForgeResponse> ConnectToRemoteNodeAsync(string blockchainName, string ipAddress, string port, [Optional] bool useSSL) =>
-            Task.Run(() => ConnectToRemoteNode(blockchainName, ipAddress, port, useSSL));
+        public new Task<ForgeResponse> ConnectToRemoteNodeAsync(string blockchainName, string ipAddress, string port, [Optional] bool useSSL) =>
+            base.ConnectToRemoteNodeAsync(blockchainName, ipAddress, port, useSSL);
 
         /// <summary>
         /// Stop a MultiChain blockchain running on the local Windows environment
         /// </summary>
         /// <param name="blockchainName"></param>
         /// <returns></returns>
-        public Task<ForgeResponse> StopBlockchainAsync(string blockchainName) => 
-            Task.Run(() => StopBlockchain(blockchainName));
+        public new Task<ForgeResponse> StopBlockchainAsync(string blockchainName) =>
+            base.StopBlockchainAsync(blockchainName);
 
         /// <summary>
         /// Stop a MultiChain cold node running on the local Windows environment
         /// </summary>
         /// <param name="blockchainName"></param>
         /// <returns></returns>
-        public Task<ForgeResponse> StopColdNodeAsync(string blockchainName) => 
-            Task.Run(() => StopColdNode(blockchainName));
+        public new Task<ForgeResponse> StopColdNodeAsync(string blockchainName) =>
+            base.StopColdNodeAsync(blockchainName);
     }
 }
