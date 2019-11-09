@@ -8,21 +8,21 @@
         /// <summary>
         /// Start multichaind.exe
         /// </summary>
-        public const string MultiChainDExe = "multichaind.exe";
+        public const string MultiChainDExe = "multichaind";
 
         /// <summary>
         /// Start multichain-util.exe
         /// </summary>
-        public const string MultiChainUtilExe = "multichain-util.exe";
+        public const string MultiChainUtilExe = "multichain-util";
 
         /// <summary>
         /// Start multichain-cli.exe
         /// </summary>
-        public const string MultiChainCliExe = "multichain-cli.exe";
+        public const string MultiChainCliExe = "multichain-cli";
 
         /// <summary>
         /// Start multichain-cold.exe
         /// </summary>
-        public const string MultiChainDColdExe = "multichaind-cold.exe";
+        public const string MultiChainDColdExe = "multichaind-cold";
     }
 }
