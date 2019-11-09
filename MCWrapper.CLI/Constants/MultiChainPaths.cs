@@ -34,7 +34,9 @@ namespace MCWrapper.CLI.Constants
             }
             else if (OSDetection.IsLinux())
             {
-                throw new NotImplementedException("Linux is not implemented yet. Sorry.");
+                _multiChainFolder = string.IsNullOrEmpty(multiChainHotDirectory)
+                    ? "./multichain"
+                    : multiChainHotDirectory;
             }
             else if (OSDetection.IsMacOS())
             {
@@ -70,7 +72,9 @@ namespace MCWrapper.CLI.Constants
             }
             else if (OSDetection.IsLinux())
             {
-                throw new NotImplementedException("Linux is not implemented yet. Sorry.");
+                _multiChainFolder = string.IsNullOrEmpty(multiChainColdDirectory)
+                    ? "./multichain-cold"
+                    : multiChainColdDirectory;
             }
             else if (OSDetection.IsMacOS())
             {
@@ -81,14 +85,14 @@ namespace MCWrapper.CLI.Constants
         }
 
         // MultiChain/<blockchainName>/params.dat location
-        public static string GetHotWalletParamsDatPath([Optional] string chainDefaultLocation, string blockchainName)
+        public static string GetHotWalletParamsDatPath([Optional] string multiChainHotDirectory, string blockchainName)
         {
-            return Path.Combine(GetHotWalletPath(chainDefaultLocation, blockchainName), "params.dat");
+            return Path.Combine(GetHotWalletPath(multiChainHotDirectory, blockchainName), "params.dat");
         }
 
         // MultichainCold/<blockchainName>/params.dat
-        public static string GetColdWalletParamsDatPath([Optional] string chainDefaultColdNodeLocation, string blockchainName) =>
-            Path.Combine(GetColdWalletPath(chainDefaultColdNodeLocation, blockchainName), "params.dat");
+        public static string GetColdWalletParamsDatPath([Optional] string multiChainColdDirectory, string blockchainName) =>
+            Path.Combine(GetColdWalletPath(multiChainColdDirectory, blockchainName), "params.dat");
 
         // multichaind.exe
         public static string GetMultiChainDExePath(string chainBinaryLocation) =>
