@@ -436,7 +436,8 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (ResponseIsSuccess())
                 response.Success = true;
             else if (ResponseIsFailure())
-                response.Errors.Add("Response_Failed_Reason_Exists", "");
+                response.Errors.Add("Response_Failed_Reason_Exists",
+                    "Couldn't connect to the seed node please check multichaind is running at that address and that your firewall settings allow incoming connections");
             else
                 response.Errors.Add("Response_Failed_Reason_None", 
                     "Sorry, for some reason the remote host could not be contacted or the connection was refused by the host.");
@@ -444,16 +445,14 @@ namespace MCWrapper.CLI.Ledger.Clients
             return response;
 
             // determine response success
-            bool ResponseIsSuccess()
-            {
-                return response.StandardOutput.Contains("", StringComparison.OrdinalIgnoreCase);
-            }
+            bool ResponseIsSuccess() => 
+                !response.StandardError.Contains("Error: Couldn't connect to the seed node", StringComparison.OrdinalIgnoreCase) 
+                && !response.StandardError.Contains("please check multichaind is running at that address and that your firewall settings allow incoming connections.", StringComparison.OrdinalIgnoreCase);
 
             // determine response success
-            bool ResponseIsFailure()
-            {
-                return response.StandardError.Contains("", StringComparison.OrdinalIgnoreCase);
-            }
+            bool ResponseIsFailure() => 
+                response.StandardError.Contains("Error: Couldn't connect to the seed node", StringComparison.OrdinalIgnoreCase)
+                && response.StandardError.Contains("please check multichaind is running at that address and that your firewall settings allow incoming connections.", StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>

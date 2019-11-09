@@ -44,8 +44,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName"></param>
         /// <returns></returns>
-        public Task<ForgeResponse> StartBlockchainAsync(string blockchainName,
-            [Optional] bool useSsl, [Optional] Dictionary<string, object> runtimeParams)
+        public Task<ForgeResponse> StartBlockchainAsync(string blockchainName, [Optional] bool useSsl, [Optional] Dictionary<string, object> runtimeParams)
         {
             var paramsBuilder = new StringBuilder();
             runtimeParams ??= new Dictionary<string, object>();
