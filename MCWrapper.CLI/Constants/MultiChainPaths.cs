@@ -1,8 +1,6 @@
 ﻿using MCWrapper.Ledger.Entities.Extensions;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace MCWrapper.CLI.Constants
@@ -12,40 +10,6 @@ namespace MCWrapper.CLI.Constants
         private const string DEFAULT_WIN_EXE_PATH_0 = @"C:\";
         private const string DEFAULT_WIN_EXE_PATH_1 = @"C:\multichain";
         private const string DEFAULT_LINUX_EXE_PATH = @"/user/local/bin";
-
-        public static IList<string> ListLocalBlockchainHotNodes([Optional] string multiChainHotDirectory)
-        {
-            var blockchainNames = new List<string>();
-
-            if (!string.IsNullOrEmpty(multiChainHotDirectory))
-            {
-                if (Directory.Exists(multiChainHotDirectory))
-                {
-                    var directories = Directory.EnumerateDirectories(multiChainHotDirectory);
-                    blockchainNames = directories.ToList();
-                }
-            }
-            else if (OSDetection.IsWindows())
-            {
-                var winPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MultiChain");
-                var directories = Directory.EnumerateDirectories(winPath);
-                blockchainNames = directories.ToList();
-            }
-            else if (OSDetection.IsLinux() && OSDetection.IsMacOS())
-            {
-
-            }
-
-            return blockchainNames;
-        }
-
-        public static IList<string> ListLocalBlockchainColdNodes([Optional] string multiChainColdDirectory)
-        {
-            //var blockchains = new List<string>();
-
-            //return blockchains;
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// Get the local file path where a specific MultiChain blockchain hot node resides.
