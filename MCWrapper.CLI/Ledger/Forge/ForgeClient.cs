@@ -2,6 +2,7 @@
 using MCWrapper.CLI.Options;
 using MCWrapper.Ledger.Entities.ErrorHandling;
 using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -56,6 +57,15 @@ namespace MCWrapper.CLI.Ledger.Clients
         }
 
         /// <summary>
+        /// Stop a MultiChain blockchain running on the local Windows environment
+        /// </summary>
+        /// <param name="blockchainName"></param>
+        /// <returns></returns>
+        public new Task<ForgeResponse> StopBlockchainAsync(string blockchainName) =>
+            base.StopBlockchainAsync(blockchainName);
+
+
+        /// <summary>
         /// Create a local MultiChain blockchain cold node/wallet
         /// Create a Cold Node
         ///
@@ -83,22 +93,21 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName"></param>
         /// <returns></returns>
-        public async Task CreateColdNodeAsync(string blockchainName)
+        public async Task<bool> CreateColdNodeAsync(string blockchainName)
         {
-            if (!Directory.Exists(MultiChainPaths.GetHotWalletPath(CliOptions.ChainDefaultLocation, blockchainName)) || !File.Exists(MultiChainPaths.GetHotWalletParamsDatPath(CliOptions.ChainDefaultLocation, blockchainName)))
-                throw new DirectoryNotFoundException($"Hot Node path is not found. Unable to access params.dat file: {MultiChainPaths.GetHotWalletPath(CliOptions.ChainDefaultLocation, blockchainName)}");
+            try
+            {
+                var hotNodeParamsDatPath = MultiChainPaths.GetHotWalletParamsDatPath(CliOptions.ChainDefaultLocation, blockchainName);
+                var coldeNodeParamsDatPath = MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName);
+                var params_dat = await File.ReadAllLinesAsync(hotNodeParamsDatPath);
+                await File.WriteAllLinesAsync(coldeNodeParamsDatPath, params_dat);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
-            if (!Directory.Exists(CliOptions.ChainDefaultColdNodeLocation))
-                Directory.CreateDirectory(CliOptions.ChainDefaultColdNodeLocation).CreateSubdirectory(blockchainName);
-            else if (!Directory.Exists(MultiChainPaths.GetColdWalletPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
-                Directory.CreateDirectory(MultiChainPaths.GetColdWalletPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName));
-
-            if (File.Exists(MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
-                throw new ServiceException($"Sorry, looks like the params.dat file already exists in the Cold Node Wallet named: {blockchainName}");
-
-            var params_dat = await File.ReadAllLinesAsync(MultiChainPaths.GetHotWalletParamsDatPath(CliOptions.ChainDefaultLocation, blockchainName));
-
-            await File.WriteAllLinesAsync(MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName), params_dat);
+            return true;
         }
 
         /// <summary>
@@ -106,16 +115,17 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName"></param>
         /// <returns></returns>
-        public new Task<ForgeResponse> StartColdNodeAsync(string blockchainName)
-        {
-            if (!Directory.Exists(MultiChainPaths.GetColdWalletPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
-                throw new ServiceException("Sorry, we can't find the MultiChainCold folder. Please be sure to run CreateColdNode first or create the folder manually.");
+        public new Task<ForgeResponse> StartColdNodeAsync(string blockchainName) => 
+            base.StartColdNodeAsync(blockchainName);
 
-            if (!File.Exists(MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
-                throw new ServiceException($"Sorry, it seems there is no params.dat file found in the Cold Node wallet you are trying to use for blockchain {blockchainName}");
+        /// <summary>
+        /// Stop a MultiChain cold node running on the local Windows environment
+        /// </summary>
+        /// <param name="blockchainName"></param>
+        /// <returns></returns>
+        public new Task<ForgeResponse> StopColdNodeAsync(string blockchainName) =>
+            base.StopColdNodeAsync(blockchainName);
 
-            return base.StartColdNodeAsync(blockchainName);
-        }
 
         /// <summary>
         /// Connect to a remote MultiChain node. 
@@ -127,21 +137,5 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         public new Task<ForgeResponse> ConnectToRemoteNodeAsync(string blockchainName, string ipAddress, string port, [Optional] bool useSSL) =>
             base.ConnectToRemoteNodeAsync(blockchainName, ipAddress, port, useSSL);
-
-        /// <summary>
-        /// Stop a MultiChain blockchain running on the local Windows environment
-        /// </summary>
-        /// <param name="blockchainName"></param>
-        /// <returns></returns>
-        public new Task<ForgeResponse> StopBlockchainAsync(string blockchainName) =>
-            base.StopBlockchainAsync(blockchainName);
-
-        /// <summary>
-        /// Stop a MultiChain cold node running on the local Windows environment
-        /// </summary>
-        /// <param name="blockchainName"></param>
-        /// <returns></returns>
-        public new Task<ForgeResponse> StopColdNodeAsync(string blockchainName) =>
-            base.StopColdNodeAsync(blockchainName);
     }
 }

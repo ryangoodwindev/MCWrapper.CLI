@@ -1,8 +1,10 @@
 ﻿using MCWrapper.CLI.Constants;
 using MCWrapper.CLI.Options;
+using MCWrapper.Ledger.Entities.ErrorHandling;
 using Microsoft.Extensions.Options;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -284,6 +286,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         public Task<ForgeResponse> StartColdNodeAsync(string blockchainName) =>
             Task.Run(() => StartColdNode(blockchainName));
 
+
+
         /// <summary>
         /// Start a blockchain cold node
         /// </summary>
@@ -291,6 +295,12 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         private ForgeResponse StartColdNode(string blockchainName)
         {
+            if (!Directory.Exists(MultiChainPaths.GetColdWalletPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
+                throw new ServiceException("Sorry, we can't find the MultiChainCold folder. Please be sure to run CreateColdNode first or create the folder manually.");
+
+            if (!File.Exists(MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
+                throw new ServiceException($"Sorry, it seems there is no params.dat file found in the Cold Node wallet you are trying to use for blockchain {blockchainName}");
+
             // disposable Process
             using var process = new Process();
 
