@@ -7,19 +7,27 @@ namespace MCWrapper.CLI.Constants
 {
     public static class MultiChainPaths
     {
+        private const string DEFAULT_WIN_EXE_PATH_0 = @"C:\";
+        private const string DEFAULT_WIN_EXE_PATH_1 = @"C:\multichain";
+        private const string DEFAULT_LINUX_EXE_PATH = @"/user/local/bin";
+
         /// <summary>
+        /// Get the local file path where a specific MultiChain blockchain hot node resides.
         /// <para>
         ///     If no <paramref name="multiChainHotDirectory"/> is passed then the following default locations are used.
         /// </para>
         /// 
         /// Windows - C:\Users\{CurrentUser}\AppData\Roaming\MultiChain\{<paramref name="blockchainName"/>}
-        /// Linux - ./multichain/<blockchainName>
-        /// MacOS - ./multichain/<blockchainName> 
-        /// FreeBSD - ./multichain/<blockchainName>
+        /// <para>
+        ///     Linux - ./multichain/{<paramref name="blockchainName"/>}
+        /// </para>
+        /// <para>
+        ///     MacOS - ./multichain/{<paramref name="blockchainName"/>}
+        /// </para>
         /// 
         /// </summary>
-        /// <param name="multiChainHotDirectory">On Linux this is generally './multichain'. On Windows this is generally the 'AppData/Roaming' folder for the current user.</param>
-        /// <param name="blockchainName"></param>
+        /// <param name="multiChainHotDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+        /// <param name="blockchainName">Name of the target blockchain.</param>
         /// <returns></returns>
         public static string GetHotWalletPath([Optional] string multiChainHotDirectory, string blockchainName)
         {
@@ -32,33 +40,34 @@ namespace MCWrapper.CLI.Constants
 
                 _multiChainFolder = Path.Combine(defaultLocation, "MultiChain");
             }
-            else if (OSDetection.IsLinux())
+            else if (OSDetection.IsLinux()|| OSDetection.IsMacOS())
             {
                 _multiChainFolder = string.IsNullOrEmpty(multiChainHotDirectory)
                     ? "./multichain"
                     : multiChainHotDirectory;
-            }
-            else if (OSDetection.IsMacOS())
-            {
-                throw new NotImplementedException("MacOs is not implemented yet. Sorry.");
             }
 
             return Path.Combine(_multiChainFolder, blockchainName);
         }
 
         /// <summary>
+        /// Get the local file path where a specific MultiChain blockchain cold node resides.
         /// <para>
         ///     If no <paramref name="multiChainColdDirectory"/> is passed then the following default locations are used.
         /// </para>
         /// 
         /// Windows - C:\Users\{CurrentUser}\AppData\Roaming\MultiChainCold\{<paramref name="blockchainName"/>}
-        /// Linux - ./multichain-cold/<blockchainName>
-        /// MacOS - ./multichain-cold/<blockchainName> 
-        /// FreeBSD - ./multichain-cold/<blockchainName>
+        /// <para>
+        ///     Linux - ./multichain-cold/{<paramref name="blockchainName"/>}
+        /// </para>
+        /// <para>
+        ///     MacOS - ./multichain-cold/{<paramref name="blockchainName"/>}
+        /// </para>
         /// 
         /// </summary>
-        /// <param name="multiChainColdDirectory"></param>
-        /// <param name="blockchainName"></param>
+        /// <param name="multiChainColdDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+        /// <param name="blockchainName">Name of the target blockchain.</param>
+        /// <returns></returns>
         public static string GetColdWalletPath([Optional] string multiChainColdDirectory, string blockchainName)
         {
             var _multiChainFolder = string.Empty;
@@ -70,44 +79,200 @@ namespace MCWrapper.CLI.Constants
 
                 _multiChainFolder = Path.Combine(defaultLocation, "MultiChainCold");
             }
-            else if (OSDetection.IsLinux())
+            else if (OSDetection.IsLinux() || OSDetection.IsMacOS())
             {
                 _multiChainFolder = string.IsNullOrEmpty(multiChainColdDirectory)
                     ? "./multichain-cold"
                     : multiChainColdDirectory;
             }
-            else if (OSDetection.IsMacOS())
-            {
-                throw new NotImplementedException("MacOs is not implemented yet. Sorry.");
-            }
 
             return Path.Combine(_multiChainFolder, blockchainName);
         }
 
-        // MultiChain/<blockchainName>/params.dat location
-        public static string GetHotWalletParamsDatPath([Optional] string multiChainHotDirectory, string blockchainName)
-        {
-            return Path.Combine(GetHotWalletPath(multiChainHotDirectory, blockchainName), "params.dat");
-        }
+        /// <summary>
+        /// Get the local file path where a specific MultiChain blockchain hot node params.dat file resides.
+        /// <para>
+        ///     If no <paramref name="multiChainHotDirectory"/> is passed then the following default locations are used.
+        /// </para>
+        /// 
+        /// Windows - C:\Users\{CurrentUser}\AppData\Roaming\MultiChain\{<paramref name="blockchainName"/>}\params.dat
+        /// <para>
+        ///     Linux - ./multichain/{<paramref name="blockchainName"/>}/params.dat
+        /// </para>
+        /// <para>
+        ///     MacOS - ./multichain/{<paramref name="blockchainName"/>}/params.dat
+        /// </para>
+        /// 
+        /// </summary>
+        /// <param name="multiChainHotDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+        /// <param name="blockchainName">Name of the target blockchain.</param>
+        /// <returns></returns>
+        public static string GetHotWalletParamsDatPath([Optional] string multiChainHotDirectory, string blockchainName) => 
+            Path.Combine(GetHotWalletPath(multiChainHotDirectory, blockchainName), "params.dat");
 
-        // MultichainCold/<blockchainName>/params.dat
+        /// <summary>
+        /// Get the local file path where a specific MultiChain blockchain cold node params.dat file resides.
+        /// <para>
+        ///     If no <paramref name="multiChainColdDirectory"/> is passed then the following default locations are used.
+        /// </para>
+        /// 
+        /// Windows - C:\Users\{CurrentUser}\AppData\Roaming\MultiChainCold\{<paramref name="blockchainName"/>}\params.dat
+        /// <para>
+        ///     Linux - ./multichain-cold/{<paramref name="blockchainName"/>}/params.dat
+        /// </para>
+        /// <para>
+        ///     MacOS - ./multichain-cold/{<paramref name="blockchainName"/>}/params.dat
+        /// </para>
+        /// 
+        /// </summary>
+        /// <param name="multiChainColdDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+        /// <param name="blockchainName">Name of the target blockchain.</param>
+        /// <returns></returns>
         public static string GetColdWalletParamsDatPath([Optional] string multiChainColdDirectory, string blockchainName) =>
             Path.Combine(GetColdWalletPath(multiChainColdDirectory, blockchainName), "params.dat");
 
-        // multichaind.exe
-        public static string GetMultiChainDExePath(string chainBinaryLocation) =>
-            Path.Combine(chainBinaryLocation, MultiChainFilenames.MultiChainDExe);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="multichainExeDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+        /// <returns></returns>
+        public static string GetMultiChainDExePath(string multichainExeDirectory)
+        {
+            // determine if the user passed a 'multichainExeDirectly' value,
+            // then determine if the Directory exists.
+            if (!string.IsNullOrEmpty(multichainExeDirectory)
+                && Directory.Exists(Path.Combine(multichainExeDirectory, MultiChainFilenames.MultiChainDExe)))
+                return Path.Combine(multichainExeDirectory, MultiChainFilenames.MultiChainDExe);
+            else if (OSDetection.IsWindows())
+            {
+                // if the user didn't pass a directory or the directory doesn't exist then,
+                // determine if the first default location exists 'C:\multichaind.exe'.
+                if (Directory.Exists(Path.Combine(DEFAULT_WIN_EXE_PATH_0, MultiChainFilenames.MultiChainDExe)))
+                    return Path.Combine(DEFAULT_WIN_EXE_PATH_0, MultiChainFilenames.MultiChainDExe);
+                // if the first default directory doesn't exist then,
+                // determine if the second default location exists 'C:\multichain\multichaind.exe'.
+                else if (Directory.Exists(Path.Combine(DEFAULT_WIN_EXE_PATH_1, MultiChainFilenames.MultiChainDExe)))
+                    return Path.Combine(DEFAULT_WIN_EXE_PATH_1, MultiChainFilenames.MultiChainDExe);
+                else
+                    throw new DirectoryNotFoundException();
+            }
+            else if (OSDetection.IsLinux() || OSDetection.IsMacOS())
+            {
+                if (Directory.Exists(Path.Combine(DEFAULT_LINUX_EXE_PATH, MultiChainFilenames.MultiChainDExe)))
+                    return Path.Combine(DEFAULT_LINUX_EXE_PATH, MultiChainFilenames.MultiChainDExe);
+                else
+                    throw new DirectoryNotFoundException();
+            }
 
-        // multichain-cli.exe
-        public static string GetMultiChainCliExePath(string chainBinaryLocation) =>
-            Path.Combine(chainBinaryLocation, MultiChainFilenames.MultiChainCliExe);
+            return string.Empty;
+        }
 
-        // multichaind-cold.exe
-        public static string GetMultiChainDColdExePath(string chainBinaryLocation) =>
-            Path.Combine(chainBinaryLocation, MultiChainFilenames.MultiChainDColdExe);
+        /// <summary>
+        /// Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.
+        /// </summary>
+        /// <param name="multichainExeDirectory"></param>
+        /// <returns></returns>
+        public static string GetMultiChainCliExePath(string multichainExeDirectory)
+        {
+            // determine if the user passed a 'multichainExeDirectly' value,
+            // then determine if the Directory exists.
+            if (!string.IsNullOrEmpty(multichainExeDirectory)
+                && Directory.Exists(Path.Combine(multichainExeDirectory, MultiChainFilenames.MultiChainCliExe)))
+                return Path.Combine(multichainExeDirectory, MultiChainFilenames.MultiChainCliExe);
+            else if (OSDetection.IsWindows())
+            {
+                // if the user didn't pass a directory or the directory doesn't exist then,
+                // determine if the first default location exists 'C:\multichain-cli.exe'.
+                if (Directory.Exists(Path.Combine(DEFAULT_WIN_EXE_PATH_0, MultiChainFilenames.MultiChainCliExe)))
+                    return Path.Combine(DEFAULT_WIN_EXE_PATH_0, MultiChainFilenames.MultiChainCliExe);
+                // if the first default directory doesn't exist then,
+                // determine if the second default location exists 'C:\multichain\multichain-cli.exe'.
+                else if (Directory.Exists(Path.Combine(DEFAULT_WIN_EXE_PATH_1, MultiChainFilenames.MultiChainCliExe)))
+                    return Path.Combine(DEFAULT_WIN_EXE_PATH_1, MultiChainFilenames.MultiChainCliExe);
+                else
+                    throw new DirectoryNotFoundException();
+            }
+            else if (OSDetection.IsLinux() || OSDetection.IsMacOS())
+            {
+                if (Directory.Exists(Path.Combine(DEFAULT_LINUX_EXE_PATH, MultiChainFilenames.MultiChainCliExe)))
+                    return Path.Combine(DEFAULT_LINUX_EXE_PATH, MultiChainFilenames.MultiChainCliExe);
+                else
+                    throw new DirectoryNotFoundException();
+            }
 
-        // multichain-util.exe
-        public static string GetMultiChainUtilExePath(string chainBinaryLocation) =>
-            Path.Combine(chainBinaryLocation, MultiChainFilenames.MultiChainUtilExe);
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.
+        /// </summary>
+        /// <param name="multichainExeDirectory"></param>
+        /// <returns></returns>
+        public static string GetMultiChainDColdExePath(string multichainExeDirectory)
+        {
+            // determine if the user passed a 'multichainExeDirectly' value,
+            // then determine if the Directory exists.
+            if (!string.IsNullOrEmpty(multichainExeDirectory)
+                && Directory.Exists(Path.Combine(multichainExeDirectory, MultiChainFilenames.MultiChainDColdExe)))
+                return Path.Combine(multichainExeDirectory, MultiChainFilenames.MultiChainDColdExe);
+            else if (OSDetection.IsWindows())
+            {
+                // if the user didn't pass a directory or the directory doesn't exist then,
+                // determine if the first default location exists 'C:\multichaind-cold.exe'.
+                if (Directory.Exists(Path.Combine(DEFAULT_WIN_EXE_PATH_0, MultiChainFilenames.MultiChainDColdExe)))
+                    return Path.Combine(DEFAULT_WIN_EXE_PATH_0, MultiChainFilenames.MultiChainDColdExe);
+                // if the first default directory doesn't exist then,
+                // determine if the second default location exists 'C:\multichain\multichaind-cold.exe'.
+                else if (Directory.Exists(Path.Combine(DEFAULT_WIN_EXE_PATH_1, MultiChainFilenames.MultiChainDColdExe)))
+                    return Path.Combine(DEFAULT_WIN_EXE_PATH_1, MultiChainFilenames.MultiChainDColdExe);
+                else
+                    throw new DirectoryNotFoundException();
+            }
+            else if (OSDetection.IsLinux() || OSDetection.IsMacOS())
+            {
+                if (Directory.Exists(Path.Combine(DEFAULT_LINUX_EXE_PATH, MultiChainFilenames.MultiChainDColdExe)))
+                    return Path.Combine(DEFAULT_LINUX_EXE_PATH, MultiChainFilenames.MultiChainDColdExe);
+                else
+                    throw new DirectoryNotFoundException();
+            }
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.
+        /// </summary>
+        /// <param name="multichainExeDirectory"></param>
+        /// <returns></returns>
+        public static string GetMultiChainUtilExePath(string multichainExeDirectory)
+        {
+            // determine if the user passed a 'multichainExeDirectly' value,
+            // then determine if the Directory exists.
+            if (!string.IsNullOrEmpty(multichainExeDirectory)
+                && Directory.Exists(Path.Combine(multichainExeDirectory, MultiChainFilenames.MultiChainUtilExe)))
+                return Path.Combine(multichainExeDirectory, MultiChainFilenames.MultiChainUtilExe);
+            else if (OSDetection.IsWindows())
+            {
+                // if the user didn't pass a directory or the directory doesn't exist then,
+                // determine if the first default location exists 'C:\multichain-util.exe'.
+                if (Directory.Exists(Path.Combine(DEFAULT_WIN_EXE_PATH_0, MultiChainFilenames.MultiChainUtilExe)))
+                    return Path.Combine(DEFAULT_WIN_EXE_PATH_0, MultiChainFilenames.MultiChainUtilExe);
+                // if the first default directory doesn't exist then,
+                // determine if the second default location exists 'C:\multichain\multichain-util.exe'.
+                else if (Directory.Exists(Path.Combine(DEFAULT_WIN_EXE_PATH_1, MultiChainFilenames.MultiChainUtilExe)))
+                    return Path.Combine(DEFAULT_WIN_EXE_PATH_1, MultiChainFilenames.MultiChainUtilExe);
+                else
+                    throw new DirectoryNotFoundException();
+            }
+            else if (OSDetection.IsLinux() || OSDetection.IsMacOS())
+            {
+                if (Directory.Exists(Path.Combine(DEFAULT_LINUX_EXE_PATH, MultiChainFilenames.MultiChainUtilExe)))
+                    return Path.Combine(DEFAULT_LINUX_EXE_PATH, MultiChainFilenames.MultiChainUtilExe);
+                else
+                    throw new DirectoryNotFoundException();
+            }
+
+            return string.Empty;
+        }
     }
 }
