@@ -156,11 +156,12 @@ namespace MCWrapper.CLI.Constants
         /// <returns></returns>
         public static string GetColdWalletParamsDatPath([Optional] string multiChainColdDirectory, string blockchainName)
         {
-            var coldParamsDat = Path.Combine(GetColdWalletPath(multiChainColdDirectory, blockchainName), "params.dat");
-            if (File.Exists(coldParamsDat))
-                return coldParamsDat;
-            else
-                throw new FileNotFoundException($"{blockchainName} blockchain cold node params.dat file not found. Location: {coldParamsDat}");
+            var coldNodePath = Path.Combine(GetColdWalletPath(multiChainColdDirectory, blockchainName));
+            var coldParamsDat = Path.Combine(coldNodePath, "params.dat");
+            if (!Directory.Exists(coldNodePath))
+                Directory.CreateDirectory(coldNodePath);
+
+            return coldParamsDat;
         }
 
         /// <summary>

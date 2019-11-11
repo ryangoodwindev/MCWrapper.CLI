@@ -51,7 +51,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             runtimeParams ??= new Dictionary<string, object>();
 
             foreach (var param in runtimeParams)
-                paramsBuilder.AppendFormat("-{0}={1} ", param.Key, param.Value);
+                paramsBuilder.AppendFormat($"-{param.Key}={param.Value} ");
 
             return StartBlockchainAsync(blockchainName, useSsl, paramsBuilder.ToString());
         }
@@ -97,17 +97,26 @@ namespace MCWrapper.CLI.Ledger.Clients
         {
             try
             {
+                // verify if hot node params.dat file exists; FileNotFoundException is thrown if not.
                 var hotNodeParamsDatPath = MultiChainPaths.GetHotWalletParamsDatPath(CliOptions.ChainDefaultLocation, blockchainName);
+
+                // verify if cold node path exists to receive new cold node params.dat file.
                 var coldeNodeParamsDatPath = MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName);
+                
+                // if we get this far we know the hot node params.dat file exists, let us read the file into an array
                 var params_dat = await File.ReadAllLinesAsync(hotNodeParamsDatPath);
-                await File.WriteAllLinesAsync(coldeNodeParamsDatPath, params_dat);
+
+                // if we get this far we know the hot node params.dat file exists and that the cold node directory also has been
+                // created or already exists.
+                if (!File.Exists(coldeNodeParamsDatPath))
+                    await File.WriteAllLinesAsync(coldeNodeParamsDatPath, params_dat);
+
+                return File.Exists(coldeNodeParamsDatPath);
             }
             catch (Exception)
             {
                 throw;
             }
-
-            return true;
         }
 
         /// <summary>
