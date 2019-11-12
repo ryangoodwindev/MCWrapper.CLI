@@ -3,13 +3,13 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace MCWrapper.CLI.Constants
+namespace MCWrapper.CLI.Helpers
 {
-    public static class MultiChainPaths
+    public static class MultiChainPathHelper
     {
         private const string DEFAULT_WIN_EXE_PATH_0 = @"C:\";
         private const string DEFAULT_WIN_EXE_PATH_1 = @"C:\multichain";
-        private const string DEFAULT_LINUX_EXE_PATH = @"/user/local/bin";
+        private const string DEFAULT_LINUX_EXE_PATH = @"/usr/local/bin";
 
         /// <summary>
         /// Get the local file path where a specific MultiChain blockchain hot node resides.

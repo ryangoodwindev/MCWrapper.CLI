@@ -1,4 +1,6 @@
 ﻿using MCWrapper.CLI.Constants;
+using MCWrapper.CLI.Helpers;
+using MCWrapper.CLI.Helpers.ErrorHandling;
 using MCWrapper.CLI.Options;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -29,7 +31,7 @@ namespace MCWrapper.CLI.Connection
         /// <param name="methodName"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public Task<CliResponse<T>> TransactAsync<T>(string blockchainName, string methodName, string[]? parameters = null, CliArguments? cliOptions = null) => 
+        public Task<CliResponse<T>> TransactAsync<T>(string blockchainName, string methodName, string[]? parameters = null, CliArgumentHelper? cliOptions = null) => 
             Task.Run(() => Transact<T>(blockchainName, methodName, parameters, cliOptions));
 
         /// <summary>
@@ -39,16 +41,28 @@ namespace MCWrapper.CLI.Connection
         /// <param name="blockchainName"></param>
         /// <param name="methodName"></param>
         /// <param name="parameters"></param>
-        /// <param name="cliOptions"></param>
+        /// <param name="cliArguments"></param>
         /// <returns></returns>
-        private CliResponse<T> Transact<T>(string blockchainName, string methodName, string[]? parameters, CliArguments? cliOptions)
+        private CliResponse<T> Transact<T>(string blockchainName, string methodName, string[]? parameters, CliArgumentHelper? cliArguments)
         {
+            // throw exception on no blockchain name
+            if (string.IsNullOrEmpty(blockchainName)) throw new BlockchainNameException();
+
+            // An empty or null ChainBinaryLocation occurs under the following conditions:
+            //  1. No "ChainBinaryLocation" environment variable detected in the local environment.
+            //  2. No "ChainBinaryLocation" value present on the appsettings.json file.
+            //  3. No "ChainBinaryLocation" value explicitly passed during 'AddMultiChainCoreCliServices' or 'AddMultiChainCoreServices' configuration
+            //
+            //  If any of the above scenarios are occurring then we will try to use the default locations according to the Operating System in use.
+            //      - Windows..: C:\ or C:\multichain
+            //      - Linux....: /usr/local/bin
+            var binaryLocation = MultiChainPathHelper.GetMultiChainCliExePath(CliOptions.ChainBinaryLocation);
+
             try
             {
-                cliOptions ??= new CliArguments();
+                cliArguments ??= new CliArgumentHelper();
                 var arguments = new StringBuilder();
-
-                arguments.Append(cliOptions.ToString(blockchainName));
+                arguments.Append(cliArguments.ToString(blockchainName));
                 arguments.Append($"{methodName} ");
 
                 if (parameters?.Length > 0)
@@ -56,8 +70,9 @@ namespace MCWrapper.CLI.Connection
 
                 using var process = new Process();
 
-                process.StartInfo.FileName = Path.Combine(CliOptions.ChainBinaryLocation, MultiChainFilenames.MultiChainCliExe);
+                process.StartInfo.FileName = binaryLocation;
                 process.StartInfo.Arguments = arguments.ToString();
+
                 process.StartInfo.CreateNoWindow = true;
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.RedirectStandardError = true;

@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace MCWrapper.CLI.Constants
+namespace MCWrapper.CLI.Helpers
 {
     /// <summary>
     /// Command line options that can be passed as arguments to multichain-cli.exe
     /// </summary>
-    public class CliArguments
+    public class CliArgumentHelper
     {
         /// <summary>
         /// Specify configuration file (default: multichain.conf)
@@ -124,45 +124,27 @@ namespace MCWrapper.CLI.Constants
         /// </summary>
         /// <returns></returns>
         public string HelpArgument => Help;
+        private const string Help = "help";
 
         /// <summary>
         /// Return Cold Node CLI switch
         /// </summary>
         /// <returns></returns>
         public string ColdNodeSwitch => Cold;
+        private const string Cold = "-cold";
 
         /// <summary>
         /// Return RpcSsl CLI switch
         /// </summary>
         /// <returns></returns>
         public string RpcSslSwitch => RpcSsl;
+        private const string RpcSsl = "-rpcssl";
 
         /// <summary>
         /// Return RpcWait CLI switch
         /// </summary>
         /// <returns></returns>
         public string RpcWaitSwitch => RpcWait;
-
-        // ! Helpers
-
-        /// <summary>
-        /// Generate help menu
-        /// </summary>
-        private const string Help = "help";
-
-        /// <summary>
-        /// Connect to multichaind-cold: use multichaind-cold default directory if -datadir is not set
-        /// </summary>
-        private const string Cold = "-cold";
-
-        /// <summary>
-        /// Use OpenSSL (https) for JSON-RPC connections
-        /// </summary>
-        private const string RpcSsl = "-rpcssl";
-
-        /// <summary>
-        /// Wait for RPC server to start
-        /// </summary>
         private const string RpcWait = "-rpcwait";
     }
 }
