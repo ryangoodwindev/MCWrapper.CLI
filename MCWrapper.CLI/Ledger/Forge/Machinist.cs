@@ -286,8 +286,6 @@ namespace MCWrapper.CLI.Ledger.Clients
         public Task<ForgeResponse> StartColdNodeAsync(string blockchainName) =>
             Task.Run(() => StartColdNode(blockchainName));
 
-
-
         /// <summary>
         /// Start a blockchain cold node
         /// </summary>
@@ -317,6 +315,11 @@ namespace MCWrapper.CLI.Ledger.Clients
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.RedirectStandardOutput = true;
 
+            // stdout & stderr StringBuilders are accessed by multiple threads
+            // lock objects to prevent exception and cross threading.
+            object stdoutLock = new object();
+            object stderrLock = new object();
+
             // storage for sdtout and stderr
             var stderr = new StringBuilder();
             var stdout = new StringBuilder();
@@ -325,14 +328,14 @@ namespace MCWrapper.CLI.Ledger.Clients
             process.ErrorDataReceived += (sender, args) =>
             {
                 var cast = args as DataReceivedEventArgs;
-                stderr.Append(cast.Data);
+                AddStdErr(cast.Data);
             };
 
             // set data received delegate
             process.OutputDataReceived += (sender, args) =>
             {
                 var cast = args as DataReceivedEventArgs;
-                stdout.Append(cast.Data);
+                AddStdOut(cast.Data);
             };
 
             // kick-off Process
@@ -342,33 +345,99 @@ namespace MCWrapper.CLI.Ledger.Clients
             process.BeginErrorReadLine();
             process.BeginOutputReadLine();
 
+            // configure timer and ticker
+            var maxCounter = 40;
+            var timerState = new GeneralTimerState();
+            var waitForStart = new Timer(
+                callback: WaitForStartCallback,
+                state: timerState,
+                dueTime: 0,
+                period: 250);
+
+            // initialize a new response
+            var response = new ForgeResponse();
+
+            // timer handles Process stdout & sdterr content since multichaind doesn't exit in windows
+            // we detect and handle failure or success based on the stdout & stderr
+            while (!timerState.TimerJobSuccess && timerState.Counter <= maxCounter)
+            {
+                if (ResponseIsSuccess())
+                {
+                    response.Success = true;
+                    timerState.TimerJobSuccess = true;
+                }
+                else if (ResponseIsFailure())
+                {
+                    timerState.TimerJobSuccess = true;
+                    response.Errors.Add("Response_Failed_Reason_Exists",
+                        $"Sorry, it seems that a blockchain with this name might already be running in this environment: {blockchainName}");
+                }
+            }
+
             // ensure Process has completed
-            process.WaitForExit();
+            process.WaitForExit(1);
 
-            // set response
-            var response = new ForgeResponse(stdout.ToString(), stderr.ToString());
+            // set response properties
+            response.StandardError = GetStdErr();
+            response.StandardOutput = GetStdOut();
 
-            // determine success
-            // set errors if necessary
-            if (ResponseIsSuccess())
-                response.Success = true;
-            else if (ResponseIsFailure())
-                response.Errors.Add("Response_Failed_Reason_Exists", 
-                    "ERROR: Couldn't initialize permission database for blockchain EntropyChain. Probably multichaind for this blockchain is already running.");
-            else
-                response.Errors.Add("Response_Failed_Reason_None",
-                        "Sorry, something went wrong and this blockchain could not be started.");
+            // determine if no result is detected
+            if (timerState.Counter >= maxCounter && response.Errors.Count == 0 && !response.Success)
+                response.Errors.Add("Response_Failed_Reason_Unknown", $"Sorry, it seems that something went wrong while starting blockchain cold node: {blockchainName}");
 
             return response;
 
+            // lock for multiple thread access
+            string GetStdOut()
+            {
+                lock (stdoutLock)
+                    return stdout.ToString();
+            }
+
+            // lock for multiple thread access
+            string GetStdErr()
+            {
+                lock (stderrLock)
+                    return stderr.ToString();
+            }
+
+            // lock for multiple thread access
+            void AddStdOut(string phrase)
+            {
+                lock (stdoutLock)
+                    stdout.Append(phrase);
+            }
+
+            // lock for multiple thread access
+            void AddStdErr(string phrase)
+            {
+                lock (stderrLock)
+                    stderr.Append(phrase);
+            }
+
             // determine response success
-            bool ResponseIsSuccess() => response.StandardOutput.Contains("Offline Daemon", StringComparison.OrdinalIgnoreCase)
-                    && response.StandardOutput.Contains("Listening for API requests on port", StringComparison.OrdinalIgnoreCase)
-                    && response.StandardOutput.Contains("Node ready.", StringComparison.OrdinalIgnoreCase);
+            bool ResponseIsSuccess()
+            {
+                var output = GetStdOut();
+                return output.Contains("Listening for API requests on port", StringComparison.OrdinalIgnoreCase) 
+                    && output.Contains("Node ready.", StringComparison.OrdinalIgnoreCase);
+            }
 
             // determine response failure
-            bool ResponseIsFailure() => 
-                response.StandardError.Contains("Couldn't initialize permission database for blockchain EntropyChain. Probably multichaind for this blockchain is already running. Exiting...", StringComparison.OrdinalIgnoreCase);
+            bool ResponseIsFailure()
+            {
+                var error = GetStdErr();
+                return error.Contains("Couldn't initialize permission database for blockchain EntropyChain. Probably multichaind for this blockchain is already running. Exiting...", StringComparison.OrdinalIgnoreCase);
+            }
+
+            // Timer callback
+            static void WaitForStartCallback(object? state)
+            {
+                var timerState = state as GeneralTimerState
+                    ?? throw new ArgumentNullException("GeneralTimerState is null");
+
+                Interlocked.Increment(ref timerState.Counter);
+            }
         }
 
         /// <summary>

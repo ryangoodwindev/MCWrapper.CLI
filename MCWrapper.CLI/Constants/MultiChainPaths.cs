@@ -31,33 +31,14 @@ namespace MCWrapper.CLI.Constants
         /// <returns></returns>
         public static string GetHotWalletPath([Optional] string multiChainHotDirectory, string blockchainName)
         {
-            var failedFilePath = string.Empty;
             if (!string.IsNullOrEmpty(multiChainHotDirectory))
-            {
-                var userPath = Path.Combine(multiChainHotDirectory, blockchainName);
-                if (Directory.Exists(userPath))
-                    return userPath;
-                else
-                    failedFilePath = userPath;
-            }
+                return Path.Combine(multiChainHotDirectory, blockchainName);
             else if (OSDetection.IsWindows())
-            {
-                var winPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MultiChain", blockchainName);
-                if (Directory.Exists(winPath))
-                    return winPath;
-                else
-                    failedFilePath = winPath;
-            }
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MultiChain", blockchainName);
             else if (OSDetection.IsLinux() || OSDetection.IsMacOS())
-            {
-                var linuxPath = Path.Combine("./multichain", blockchainName);
-                if (Directory.Exists(linuxPath))
-                    return linuxPath;
-                else
-                    failedFilePath = linuxPath;
-            }
+                return Path.Combine("./multichain", blockchainName);
 
-            throw new DirectoryNotFoundException($"MultiChain hot node was not found at, {failedFilePath}");
+            return string.Empty;
         }
 
         /// <summary>
@@ -80,33 +61,14 @@ namespace MCWrapper.CLI.Constants
         /// <returns></returns>
         public static string GetColdWalletPath([Optional] string multiChainColdDirectory, string blockchainName)
         {
-            var failedFilePath = string.Empty;
             if (!string.IsNullOrEmpty(multiChainColdDirectory))
-            {
-                var userPath = Path.Combine(multiChainColdDirectory, blockchainName);
-                if (Directory.Exists(userPath))
-                    return userPath;
-                else
-                    failedFilePath = userPath;
-            }
+                return Path.Combine(multiChainColdDirectory, blockchainName);
             else if (OSDetection.IsWindows())
-            {
-                var winPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MultiChainCold", blockchainName);
-                if (Directory.Exists(winPath))
-                    return winPath;
-                else
-                    failedFilePath = winPath;
-            }
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MultiChainCold", blockchainName);
             else if (OSDetection.IsLinux() || OSDetection.IsMacOS())
-            {
-                var linuxPath = Path.Combine("./multichain-cold", blockchainName);
-                if (Directory.Exists(linuxPath))
-                    return linuxPath;
-                else
-                    failedFilePath = linuxPath;
-            }
+                return Path.Combine("./multichain-cold", blockchainName);
 
-            throw new DirectoryNotFoundException($"MultiChain cold node was not found at, {failedFilePath}");
+            return string.Empty;
         }
 
         /// <summary>
@@ -127,14 +89,8 @@ namespace MCWrapper.CLI.Constants
         /// <param name="multiChainHotDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
         /// <param name="blockchainName">Name of the target blockchain.</param>
         /// <returns></returns>
-        public static string GetHotWalletParamsDatPath([Optional] string multiChainHotDirectory, string blockchainName)
-        {
-            var hotParamsDat = Path.Combine(GetHotWalletPath(multiChainHotDirectory, blockchainName), "params.dat");
-            if (File.Exists(hotParamsDat))
-                return hotParamsDat;
-            else
-                throw new FileNotFoundException($"{blockchainName} blockchain hot node params.dat file not found. Location: {hotParamsDat}");
-        }
+        public static string GetHotWalletParamsDatPath([Optional] string multiChainHotDirectory, string blockchainName) => 
+            Path.Combine(GetHotWalletPath(multiChainHotDirectory, blockchainName), "params.dat");
 
         /// <summary>
         /// Get the local file path where a specific MultiChain blockchain cold node params.dat file resides.
@@ -262,6 +218,9 @@ namespace MCWrapper.CLI.Constants
             var failedFilePath = string.Empty;
             if (!string.IsNullOrEmpty(multichainExeDirectory))
             {
+                if (OSDetection.IsWindows())
+                    filename = $"{filename}.exe";
+
                 var userPath = Path.Combine(multichainExeDirectory, filename);
                 if (File.Exists(userPath))
                     return userPath;
@@ -270,8 +229,8 @@ namespace MCWrapper.CLI.Constants
             }
             else if (OSDetection.IsWindows())
             {
-                var winPath_0 = Path.Combine(DEFAULT_WIN_EXE_PATH_0, filename);
-                var winPath_1 = Path.Combine(DEFAULT_WIN_EXE_PATH_1, filename);
+                var winPath_0 = Path.Combine(DEFAULT_WIN_EXE_PATH_0, $"{filename}.exe");
+                var winPath_1 = Path.Combine(DEFAULT_WIN_EXE_PATH_1, $"{filename}.exe");
                 if (File.Exists(winPath_0))
                     return winPath_0;
                 else if (File.Exists(winPath_1))
