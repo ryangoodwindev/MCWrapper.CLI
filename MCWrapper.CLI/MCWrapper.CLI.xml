@@ -9,9 +9,9 @@
             Create a new CliClient instance;
             Inject arguments to multichain-cli.exe and receive a string response
             </summary>
-            <param name="blockchainOptions"></param>
+            <param name="cliOptions"></param>
         </member>
-        <member name="M:MCWrapper.CLI.Connection.CliClient.TransactAsync``1(System.String,System.String,System.String[],MCWrapper.CLI.Constants.CliArguments)">
+        <member name="M:MCWrapper.CLI.Connection.CliClient.TransactAsync``1(System.String,System.String,System.String[],MCWrapper.CLI.Helpers.CliArgumentHelper)">
             <summary>
             Send commands to MultiChain Core
             </summary>
@@ -21,7 +21,7 @@
             <param name="parameters"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Connection.CliClient.Transact``1(System.String,System.String,System.String[],MCWrapper.CLI.Constants.CliArguments)">
+        <member name="M:MCWrapper.CLI.Connection.CliClient.Transact``1(System.String,System.String,System.String[],MCWrapper.CLI.Helpers.CliArgumentHelper)">
             <summary>
             Private member that handles work
             </summary>
@@ -29,7 +29,7 @@
             <param name="blockchainName"></param>
             <param name="methodName"></param>
             <param name="parameters"></param>
-            <param name="cliOptions"></param>
+            <param name="cliArguments"></param>
             <returns></returns>
         </member>
         <member name="T:MCWrapper.CLI.Connection.CliResponse`1">
@@ -125,7 +125,7 @@
              </para>
              </summary>
         </member>
-        <member name="M:MCWrapper.CLI.Options.CliOptions.#ctor">
+        <member name="M:MCWrapper.CLI.Options.CliOptions.#ctor(System.Boolean)">
             <summary>
             Create a new CliOptions object
             No arguments
@@ -206,117 +206,6 @@
                 C:\Users\{Current User}\AppData\Roaming\MultiChainCold
             </para>
             <para>Generally, this location in Linux is ~/.multichain-cold</para>
-            </summary>
-        </member>
-        <member name="T:MCWrapper.CLI.Constants.CliArguments">
-            <summary>
-            Command line options that can be passed as arguments to multichain-cli.exe
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.Conf">
-            <summary>
-            Specify configuration file (default: multichain.conf)
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.DataDir">
-            <summary>
-            Specify data directory
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.RequestOut">
-            <summary>
-            Send request to stderr, stdout or null (not print it at all), default stderr
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.SaveCliLog">
-            <summary>
-            If n=0 multichain-cli history is not saved, default 1
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.RpcConnect">
-            <summary>
-            Send commands to node running on IP (default: 127.0.0.1)
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.RpcPort">
-            <summary>
-            Connect to JSON-RPC on -port-
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.RpcUser">
-            <summary>
-            Username for JSON-RPC connections
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.RpcPassword">
-            <summary>
-            Password for JSON-RPC connections
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.IsColdNode">
-            <summary>
-            Indicates to CliClient whether this is a cold node or not
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.UseRpcWait">
-            <summary>
-            Indicates to CliClient whether to wait for RPC server to start or not
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.UseRpcssl">
-            <summary>
-            Indicates to CliClient whether or not to use OpenSSL (https) for JSON-RPC connections
-            </summary>
-        </member>
-        <member name="M:MCWrapper.CLI.Constants.CliArguments.ToString(System.String)">
-            <summary>
-            Returns a string that represents the current object as a properly formatted string of command line switches and arguments
-            usable for passing to multichain-cli.exe
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.HelpArgument">
-            <summary>
-            Return Help CLI swtich
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.ColdNodeSwitch">
-            <summary>
-            Return Cold Node CLI switch
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.RpcSslSwitch">
-            <summary>
-            Return RpcSsl CLI switch
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:MCWrapper.CLI.Constants.CliArguments.RpcWaitSwitch">
-            <summary>
-            Return RpcWait CLI switch
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="F:MCWrapper.CLI.Constants.CliArguments.Help">
-            <summary>
-            Generate help menu
-            </summary>
-        </member>
-        <member name="F:MCWrapper.CLI.Constants.CliArguments.Cold">
-            <summary>
-            Connect to multichaind-cold: use multichaind-cold default directory if -datadir is not set
-            </summary>
-        </member>
-        <member name="F:MCWrapper.CLI.Constants.CliArguments.RpcSsl">
-            <summary>
-            Use OpenSSL (https) for JSON-RPC connections
-            </summary>
-        </member>
-        <member name="F:MCWrapper.CLI.Constants.CliArguments.RpcWait">
-            <summary>
-            Wait for RPC server to start
             </summary>
         </member>
         <member name="T:MCWrapper.CLI.Constants.MultiChainFilenames">
@@ -445,13 +334,300 @@
             </para>
             <para>
                 This method requires the CliOptions and RuntimeParamOptions property values to be
-                explicitly passed via the <paramref name="runtimeConfig"/> and <paramref name="profileConfig"/> 
+                explicitly passed via the <paramref name="runtimeParamOptions"/> and <paramref name="cliOptions"/> 
                 Action parameters when added to the DI pipeline. Least secure method and should only be used during testing or in sandbox environments.
             </para>
             </summary>
             <param name="services">Service container</param>
-            <param name="profileConfig">Blockchain profile configuration (Information the app will use to connect to a MultiChain ledger)</param>
-            <param name="runtimeConfig">Runtime parameter configuration (How a MultiChain ledger should behave)</param>
+            <param name="cliOptions">Blockchain profile configuration (Information the app will use to connect to a MultiChain ledger)</param>
+            <param name="runtimeParamOptions">Runtime parameter configuration (How a MultiChain ledger should behave)</param>
+            <returns></returns>
+        </member>
+        <member name="T:MCWrapper.CLI.Helpers.CliArgumentHelper">
+            <summary>
+            Command line options that can be passed as arguments to multichain-cli.exe
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.Conf">
+            <summary>
+            Specify configuration file (default: multichain.conf)
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.DataDir">
+            <summary>
+            Specify data directory
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.RequestOut">
+            <summary>
+            Send request to stderr, stdout or null (not print it at all), default stderr
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.SaveCliLog">
+            <summary>
+            If n=0 multichain-cli history is not saved, default 1
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.RpcConnect">
+            <summary>
+            Send commands to node running on IP (default: 127.0.0.1)
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.RpcPort">
+            <summary>
+            Connect to JSON-RPC on -port-
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.RpcUser">
+            <summary>
+            Username for JSON-RPC connections
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.RpcPassword">
+            <summary>
+            Password for JSON-RPC connections
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.IsColdNode">
+            <summary>
+            Indicates to CliClient whether this is a cold node or not
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.UseRpcWait">
+            <summary>
+            Indicates to CliClient whether to wait for RPC server to start or not
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.UseRpcssl">
+            <summary>
+            Indicates to CliClient whether or not to use OpenSSL (https) for JSON-RPC connections
+            </summary>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.CliArgumentHelper.ToString(System.String)">
+            <summary>
+            Returns a string that represents the current object as a properly formatted string of command line switches and arguments
+            usable for passing to multichain-cli.exe
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.HelpArgument">
+            <summary>
+            Return Help CLI swtich
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.ColdNodeSwitch">
+            <summary>
+            Return Cold Node CLI switch
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.RpcSslSwitch">
+            <summary>
+            Return RpcSsl CLI switch
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.RpcWaitSwitch">
+            <summary>
+            Return RpcWait CLI switch
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MCWrapper.CLI.Helpers.ErrorHandling.BlockchainNameException">
+            <summary>
+            Custom blockchain name exception for handling the absence of a blockchain name parameter in the CliClient class
+            </summary>
+        </member>
+        <member name="F:MCWrapper.CLI.Helpers.ErrorHandling.BlockchainNameException._message">
+            <summary>
+            Custom message
+            </summary>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.ErrorHandling.BlockchainNameException.#ctor">
+            <summary>
+            Parameterless constructor uses private field value to set message
+            </summary>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.ErrorHandling.BlockchainNameException.#ctor(System.String)">
+            <summary>
+            Parameterized constructor
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.ErrorHandling.BlockchainNameException.#ctor(System.String,System.Exception)">
+            <summary>
+            Parameterized constructor
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.MultiChainPathHelper.GetHotWalletPath(System.String,System.String)">
+            <summary>
+            Get the local file path where a specific MultiChain blockchain hot node resides.
+            <para>
+                If no <paramref name="multiChainHotDirectory"/> is passed then the following default locations are used.
+            </para>
+            
+            Windows - C:\Users\{CurrentUser}\AppData\Roaming\MultiChain\{<paramref name="blockchainName"/>}
+            <para>
+                Linux - ./multichain/{<paramref name="blockchainName"/>}
+            </para>
+            <para>
+                MacOS - ./multichain/{<paramref name="blockchainName"/>}
+            </para>
+            
+            </summary>
+            <param name="multiChainHotDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+            <param name="blockchainName">Name of the target blockchain.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.MultiChainPathHelper.GetColdWalletPath(System.String,System.String)">
+            <summary>
+            Get the local file path where a specific MultiChain blockchain cold node resides.
+            <para>
+                If no <paramref name="multiChainColdDirectory"/> is passed then the following default locations are used.
+            </para>
+            
+            Windows - C:\Users\{CurrentUser}\AppData\Roaming\MultiChainCold\{<paramref name="blockchainName"/>}
+            <para>
+                Linux - ./multichain-cold/{<paramref name="blockchainName"/>}
+            </para>
+            <para>
+                MacOS - ./multichain-cold/{<paramref name="blockchainName"/>}
+            </para>
+            
+            </summary>
+            <param name="multiChainColdDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+            <param name="blockchainName">Name of the target blockchain.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.MultiChainPathHelper.GetHotWalletParamsDatPath(System.String,System.String)">
+            <summary>
+            Get the local file path where a specific MultiChain blockchain hot node params.dat file resides.
+            <para>
+                If no <paramref name="multiChainHotDirectory"/> is passed then the following default locations are used.
+            </para>
+            
+            Windows - C:\Users\{CurrentUser}\AppData\Roaming\MultiChain\{<paramref name="blockchainName"/>}\params.dat
+            <para>
+                Linux - ./multichain/{<paramref name="blockchainName"/>}/params.dat
+            </para>
+            <para>
+                MacOS - ./multichain/{<paramref name="blockchainName"/>}/params.dat
+            </para>
+            
+            </summary>
+            <param name="multiChainHotDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+            <param name="blockchainName">Name of the target blockchain.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.MultiChainPathHelper.GetColdWalletParamsDatPath(System.String,System.String)">
+            <summary>
+            Get the local file path where a specific MultiChain blockchain cold node params.dat file resides.
+            <para>
+                If no <paramref name="multiChainColdDirectory"/> is passed then the following default locations are used.
+            </para>
+            
+            Windows - C:\Users\{CurrentUser}\AppData\Roaming\MultiChainCold\{<paramref name="blockchainName"/>}\params.dat
+            <para>
+                Linux - ./multichain-cold/{<paramref name="blockchainName"/>}/params.dat
+            </para>
+            <para>
+                MacOS - ./multichain-cold/{<paramref name="blockchainName"/>}/params.dat
+            </para>
+            
+            </summary>
+            <param name="multiChainColdDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+            <param name="blockchainName">Name of the target blockchain.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.MultiChainPathHelper.GetMultiChainDExePath(System.String)">
+            <summary>
+            Verify and return a valid filepath to access multichaind.exe. 'DirectoryNotFoundException' returned on file not found.
+            <para>
+                1. If the consumer has passed a 'multichainExeDirectory' the location is verified and returned.
+            </para>
+            <para>
+                2. If the consumer did not pass a 'multichainExeDirectory' value or 'multichainExeDirectory' doesn't exist then we attempt to detect the current Operating System.
+                <para>
+                    - If Windows is detected then we determine if either of the default locations exist 'C:\multichaind.exe' or 'C:\multichain\multichaind.exe.
+                </para>
+                <para>
+                    - If Linux is detected then we determine if the default location exists '/user/bin/local/multichaind'.
+                </para>
+            </para>
+            <para>
+                3. If none of the verified paths a valid then a 'DirectoryNotFoundException' is thrown.
+            </para>
+            </summary>
+            <param name="multichainExeDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.MultiChainPathHelper.GetMultiChainCliExePath(System.String)">
+            <summary>
+            Verify and return a valid filepath to access multichain-cli.exe. 'DirectoryNotFoundException' returned on file not found.
+            <para>
+                1. If the consumer has passed a 'multichainExeDirectory' the location is verified and returned.
+            </para>
+            <para>
+                2. If the consumer did not pass a 'multichainExeDirectory' value or 'multichainExeDirectory' doesn't exist then we attempt to detect the current Operating System.
+                <para>
+                    - If Windows is detected then we determine if either of the default locations exist 'C:\multichain-cli.exe' or 'C:\multichain\multichain-cli.exe.
+                </para>
+                <para>
+                    - If Linux is detected then we determine if the default location exists '/user/bin/local/multichain-cli'.
+                </para>
+            </para>
+            <para>
+                3. If none of the verified paths a valid then a 'DirectoryNotFoundException' is thrown.
+            </para>
+            </summary>
+            <param name="multichainExeDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.MultiChainPathHelper.GetMultiChainDColdExePath(System.String)">
+            <summary>
+            Verify and return a valid filepath to access multichaind-cold.exe. 'DirectoryNotFoundException' returned on file not found.
+            <para>
+                1. If the consumer has passed a 'multichainExeDirectory' the location is verified and returned.
+            </para>
+            <para>
+                2. If the consumer did not pass a 'multichainExeDirectory' value or 'multichainExeDirectory' doesn't exist then we attempt to detect the current Operating System.
+                <para>
+                    - If Windows is detected then we determine if either of the default locations exist 'C:\multichaind-cold.exe' or 'C:\multichain\multichaind-cold.exe.
+                </para>
+                <para>
+                    - If Linux is detected then we determine if the default location exists '/user/bin/local/multichaind-cold'.
+                </para>
+            </para>
+            <para>
+                3. If none of the verified paths a valid then a 'DirectoryNotFoundException' is thrown.
+            </para>
+            </summary>
+            <param name="multichainExeDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Helpers.MultiChainPathHelper.GetMultiChainUtilExePath(System.String)">
+            <summary>
+            Verify and return a valid filepath to access multichain-util.exe. 'DirectoryNotFoundException' returned on file not found.
+            <para>
+                1. If the consumer has passed a 'multichainExeDirectory' the location is verified and returned.
+            </para>
+            <para>
+                2. If the consumer did not pass a 'multichainExeDirectory' value or 'multichainExeDirectory' doesn't exist then we attempt to detect the current Operating System.
+                <para>
+                    - If Windows is detected then we determine if either of the default locations exist 'C:\multichain-util.exe' or 'C:\multichain\multichain-util.exe.
+                </para>
+                <para>
+                    - If Linux is detected then we determine if the default location exists '/user/bin/local/multichain-util'.
+                </para>
+            </para>
+            <para>
+                3. If none of the verified paths a valid then a 'DirectoryNotFoundException' is thrown.
+            </para>
+            </summary>
+            <param name="multichainExeDirectory">Optionally consumers may override the default directory detected by MCWrapper.CLI with their own file path value.</param>
             <returns></returns>
         </member>
         <member name="M:MCWrapper.CLI.Ledger.Clients.BlockchainCliClient.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">
@@ -5354,12 +5530,12 @@
             <param name="new_passphrase">The new passphrase</param>
             <returns></returns>
         </member>
-        <member name="T:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions">
+        <member name="T:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions">
             <summary>
             Extension methods derived from the WalletCLIClient contract and WalletCLIClient implementation
             </summary>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateStream(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.StreamEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateStream(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.StreamEntity)">
             <summary>
             Create stream; Blockchain name is inferred
             </summary>
@@ -5367,7 +5543,7 @@
             <param name="streamEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateStream(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.StreamEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateStream(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.StreamEntity)">
             <summary>
             Create stream; Blockchain name is explicit
             </summary>
@@ -5376,7 +5552,7 @@
             <param name="streamEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateStreamFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.StreamEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateStreamFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.StreamEntity)">
             <summary>
             Create stream from an address; Blockchain name is inferred
             </summary>
@@ -5385,7 +5561,7 @@
             <param name="streamEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateStreamFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.StreamEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateStreamFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.StreamEntity)">
             <summary>
             Create stream from an address; Blockchain name is explicit
             </summary>
@@ -5395,7 +5571,7 @@
             <param name="streamEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateUpgrade(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.UpgradeEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateUpgrade(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.UpgradeEntity)">
             <summary>
             Create upgrade; Blockchain name is inferred
             </summary>
@@ -5403,7 +5579,7 @@
             <param name="upgradeEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateUpgrade(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.UpgradeEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateUpgrade(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.UpgradeEntity)">
             <summary>
             Create upgrade; Blockchain name is explicit
             </summary>
@@ -5412,7 +5588,7 @@
             <param name="upgradeEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateUpgradeFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.UpgradeEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateUpgradeFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.UpgradeEntity)">
             <summary>
             Create upgrade from an address; Blockchain name is inferred
             </summary>
@@ -5421,7 +5597,7 @@
             <param name="upgradeEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateUpgradeFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.UpgradeEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateUpgradeFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.UpgradeEntity)">
             <summary>
             Create upgrade from an address; Blockchain name is explicit
             </summary>
@@ -5431,7 +5607,7 @@
             <param name="upgradeEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateStreamFilter(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.StreamFilterEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateStreamFilter(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.StreamFilterEntity)">
             <summary>
             Create stream filter; Blockchain name is inferred
             </summary>
@@ -5439,7 +5615,7 @@
             <param name="streamFilterEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateStreamFilter(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.StreamFilterEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateStreamFilter(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.StreamFilterEntity)">
             <summary>
             Create stream filter; Blockchain name is explicit
             </summary>
@@ -5448,7 +5624,7 @@
             <param name="streamFilterEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateStreamFilterFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.StreamFilterEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateStreamFilterFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.StreamFilterEntity)">
             <summary>
             Create stream filter from an address; Blockchain name is inferred
             </summary>
@@ -5457,7 +5633,7 @@
             <param name="streamFilterEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateStreamFilterFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.StreamFilterEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateStreamFilterFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.StreamFilterEntity)">
             <summary>
             Create stream filter from an address; Blockchain name is explicit
             </summary>
@@ -5467,7 +5643,7 @@
             <param name="streamFilterEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateTxFilter(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.TxFilterEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateTxFilter(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.TxFilterEntity)">
             <summary>
             Create transaction filter; Blockchain name is inferred
             </summary>
@@ -5475,7 +5651,7 @@
             <param name="txFilterEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateTxFilter(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.TxFilterEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateTxFilter(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.TxFilterEntity)">
             <summary>
             Create transaction filter; Blockchain name is explicit
             </summary>
@@ -5484,7 +5660,7 @@
             <param name="txFilterEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateTxFilterFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.TxFilterEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateTxFilterFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.TxFilterEntity)">
             <summary>
             Create transaction filter from an address; Blockchain name is inferred
             </summary>
@@ -5493,7 +5669,7 @@
             <param name="txFilterEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.CreateTxFilterFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.TxFilterEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.CreateTxFilterFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.TxFilterEntity)">
             <summary>
             Create transaction filter from an address; Blockchain name is explicit
             </summary>
@@ -5503,7 +5679,7 @@
             <param name="txFilterEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity)">
             <summary>
             Create stream item; Blockchain name is inferred
             </summary>
@@ -5511,7 +5687,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
             <summary>
             Create stream item; Blockchain name is inferred
             </summary>
@@ -5519,7 +5695,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
             <summary>
             Create stream item; Blockchain name is inferred
             </summary>
@@ -5527,7 +5703,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
             <summary>
             Create stream item; Blockchain name is inferred
             </summary>
@@ -5535,7 +5711,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity)">
             <summary>
             Create stream item; Blockchain name is inferred
             </summary>
@@ -5543,7 +5719,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
             <summary>
             Create stream item; Blockchain name is inferred
             </summary>
@@ -5551,7 +5727,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
             <summary>
             Create stream item; Blockchain name is inferred
             </summary>
@@ -5559,7 +5735,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
             <summary>
             Create stream item; Blockchain name is inferred
             </summary>
@@ -5567,7 +5743,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
             <summary>
             Create stream item; Blockchain name is explicit
             </summary>
@@ -5576,7 +5752,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
             <summary>
             Create stream item; Blockchain name is explicit
             </summary>
@@ -5585,7 +5761,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
             <summary>
             Create stream item; Blockchain name is explicit
             </summary>
@@ -5594,7 +5770,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKey(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
             <summary>
             Create stream item; Blockchain name is explicit
             </summary>
@@ -5603,7 +5779,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
             <summary>
             Create stream item; Blockchain name is explicit
             </summary>
@@ -5612,7 +5788,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
             <summary>
             Create stream item; Blockchain name is explicit
             </summary>
@@ -5621,7 +5797,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
             <summary>
             Create stream item; Blockchain name is explicit
             </summary>
@@ -5630,7 +5806,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeys(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
             <summary>
             Create stream item; Blockchain name is explicit
             </summary>
@@ -5639,7 +5815,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
             <summary>
             Create stream item from an address; Blockchain name is inferred
             </summary>
@@ -5648,7 +5824,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
             <summary>
             Create stream item from an address; Blockchain name is inferred
             </summary>
@@ -5657,7 +5833,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
             <summary>
             Create stream item from an address; Blockchain name is inferred
             </summary>
@@ -5666,7 +5842,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
             <summary>
             Create stream item from an address; Blockchain name is inferred
             </summary>
@@ -5675,7 +5851,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
             <summary>
             Create stream item from an address; Blockchain name is inferred
             </summary>
@@ -5684,7 +5860,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
             <summary>
             Create stream item from an address; Blockchain name is inferred
             </summary>
@@ -5693,7 +5869,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
             <summary>
             Create stream item from an address; Blockchain name is inferred
             </summary>
@@ -5702,7 +5878,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
             <summary>
             Create stream item from an address; Blockchain name is inferred
             </summary>
@@ -5711,7 +5887,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
             <summary>
             Create stream item from an address; Blockchain name is explicit
             </summary>
@@ -5721,7 +5897,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
             <summary>
             Create stream item from an address; Blockchain name is explicit
             </summary>
@@ -5731,7 +5907,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
             <summary>
             Create stream item from an address; Blockchain name is explicit
             </summary>
@@ -5741,7 +5917,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeyFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
             <summary>
             Create stream item from an address; Blockchain name is explicit
             </summary>
@@ -5751,7 +5927,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity)">
             <summary>
             Create stream item from an address; Blockchain name is explicit
             </summary>
@@ -5761,7 +5937,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataCached})">
             <summary>
             Create stream item from an address; Blockchain name is explicit
             </summary>
@@ -5771,7 +5947,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataJson})">
             <summary>
             Create stream item from an address; Blockchain name is explicit
             </summary>
@@ -5781,7 +5957,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishStreamItemKeysFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishEntity{MCWrapper.Ledger.Entities.DataText})">
             <summary>
             Create stream item from an address; Blockchain name is explicit
             </summary>
@@ -5791,7 +5967,7 @@
             <param name="streamItemEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishMultiStreamItems(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishMultiEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishMultiStreamItems(MCWrapper.CLI.Ledger.Clients.WalletCliClient,MCWrapper.Ledger.Entities.PublishMultiEntity)">
             <summary>
             Publish multiple stream items; Blockchain name is inferred
             </summary>
@@ -5799,7 +5975,7 @@
             <param name="publishMultiEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishMultiStreamItems(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishMultiEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishMultiStreamItems(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishMultiEntity)">
             <summary>
             Publish multiple stream items; Blockchain name is explicit
             </summary>
@@ -5808,7 +5984,7 @@
             <param name="publishMultiEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishMultiStreamItemsFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishMultiEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishMultiStreamItemsFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,MCWrapper.Ledger.Entities.PublishMultiEntity)">
             <summary>
             Publish multiple stream items from an address; Blockchain name is inferred
             </summary>
@@ -5817,7 +5993,7 @@
             <param name="publishMultiEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Wallet.WalletCliExtensions.PublishMultiStreamItemsFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishMultiEntity)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.WalletCliExtensions.PublishMultiStreamItemsFrom(MCWrapper.CLI.Ledger.Clients.WalletCliClient,System.String,System.String,MCWrapper.Ledger.Entities.PublishMultiEntity)">
             <summary>
             Publish multiple stream items from an address; Blockchain name is explicit
             </summary>
@@ -5827,7 +6003,7 @@
             <param name="publishMultiEntity"></param>
             <returns></returns>
         </member>
-        <member name="T:MCWrapper.CLI.Ledger.Forge.ForgeClient">
+        <member name="T:MCWrapper.CLI.Ledger.Clients.ForgeClient">
             <summary>
             Start and kill the multichaind process directly;
             This class implements the IForge contract to interact directly with the multichaind.exe binary;
@@ -5840,12 +6016,12 @@
             </para>
             </summary>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeClient.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeClient.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">
             <summary>
             Create a new blockchain Forge instance
             </summary>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeClient.CreateBlockchainAsync(System.String)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeClient.CreateBlockchainAsync(System.String)">
             <summary>
             Create a new MultiChain blockchain in the local Windows environment;
             Passed <paramref name="blockchainName"/> value will be used as the new blockchain name;
@@ -5853,7 +6029,7 @@
             <param name="blockchainName"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeClient.StartBlockchainAsync(System.String,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeClient.StartBlockchainAsync(System.String,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.Object})">
             <summary>
             Start a MultiChain blockchain present on the local Windows environment and use HTTP connections;
             Passed <paramref name="blockchainName"/> value will be used as the local blockchain name;
@@ -5861,7 +6037,14 @@
             <param name="blockchainName"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeClient.CreateColdNodeAsync(System.String)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeClient.StopBlockchainAsync(System.String)">
+            <summary>
+            Stop a MultiChain blockchain running on the local Windows environment
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeClient.CreateColdNodeAsync(System.String)">
              <summary>
              Create a local MultiChain blockchain cold node/wallet
              Create a Cold Node
@@ -5891,14 +6074,21 @@
              <param name="blockchainName"></param>
              <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeClient.StartColdNodeAsync(System.String)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeClient.StartColdNodeAsync(System.String)">
             <summary>
             Start an existing local MultiChain blockchain cold node/wallet
             </summary>
             <param name="blockchainName"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeClient.ConnectToRemoteNodeAsync(System.String,System.String,System.String,System.Boolean)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeClient.StopColdNodeAsync(System.String)">
+            <summary>
+            Stop a MultiChain cold node running on the local Windows environment
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeClient.ConnectToRemoteNodeAsync(System.String,System.String,System.String,System.Boolean)">
             <summary>
             Connect to a remote MultiChain node. 
             Returns process id to caller
@@ -5908,36 +6098,33 @@
             <param name="port"></param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeClient.StopBlockchainAsync(System.String)">
-            <summary>
-            Stop a MultiChain blockchain running on the local Windows environment
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeClient.StopColdNodeAsync(System.String)">
-            <summary>
-            Stop a MultiChain cold node running on the local Windows environment
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
-        <member name="T:MCWrapper.CLI.Ledger.Forge.ForgeResponse">
+        <member name="T:MCWrapper.CLI.Ledger.Clients.ForgeResponse">
             <summary>
             Forge response handles responses from the ForgeClient
             </summary>
         </member>
-        <member name="F:MCWrapper.CLI.Ledger.Forge.ForgeResponse.Output">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeResponse.#ctor">
             <summary>
-            stdout value from MultiChain Core binary
+            Create a new ForgeResponse instance
             </summary>
+            <param name="output"></param>
+            <param name="error"></param>
+            <param name="success"></param>
         </member>
-        <member name="F:MCWrapper.CLI.Ledger.Forge.ForgeResponse.Error">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeResponse.#ctor(System.String)">
             <summary>
-            stderr value from MultiChain Core binary
+            Create a new ForgeResponse instance with parameters
             </summary>
+            <param name="output"></param>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeResponse.#ctor(System.String,System.String)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeResponse.#ctor(System.String,System.String)">
+            <summary>
+            Create a new ForgeResponse instance with parameters
+            </summary>
+            <param name="output"></param>
+            <param name="error"></param>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.ForgeResponse.#ctor(System.String,System.String,System.Boolean)">
             <summary>
             Create a new ForgeResponse instance with parameters
             </summary>
@@ -5945,106 +6132,229 @@
             <param name="error"></param>
             <param name="success"></param>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeResponse.Equals(System.Object)">
+        <member name="P:MCWrapper.CLI.Ledger.Clients.ForgeResponse.StandardOutput">
             <summary>
-            Equality override
+            stdout value from MultiChain Core binary
             </summary>
-            <param name="obj"></param>
-            <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeResponse.GetHashCode">
+        <member name="P:MCWrapper.CLI.Ledger.Clients.ForgeResponse.StandardError">
             <summary>
-            Hash code override
+            stderr value from MultiChain Core binary
             </summary>
-            <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeResponse.Deconstruct(System.String@,System.String@)">
+        <member name="P:MCWrapper.CLI.Ledger.Clients.ForgeResponse.Success">
             <summary>
-            Deconstruct to ValueTuple(string, string, bool)
+            Was action successful
             </summary>
-            <param name="output"></param>
-            <param name="error"></param>
-            <param name="success"></param>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeResponse.op_Implicit(MCWrapper.CLI.Ledger.Forge.ForgeResponse)~System.ValueTuple{System.String,System.String}">
+        <member name="P:MCWrapper.CLI.Ledger.Clients.ForgeResponse.Errors">
             <summary>
-            Implicitly convert ForgeResponse struct to ValueTuple(string, string, bool)
+            
             </summary>
-            <param name="value"></param>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.ForgeResponse.op_Implicit(System.ValueTuple{System.String,System.String})~MCWrapper.CLI.Ledger.Forge.ForgeResponse">
-            <summary>
-            Implicitly convert ValueTuple(string, string, bool) to ForgeResponse struct instance
-            </summary>
-            <param name="value"></param>
-        </member>
-        <member name="T:MCWrapper.CLI.Ledger.Forge.Machinist">
+        <member name="T:MCWrapper.CLI.Ledger.Clients.Machinist">
             <summary>
             Machinist interacts with MultiChain binary files directly and monitors their reponses while reacting accordingly
             </summary>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.Machinist.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">
             <summary>
             Create a new Machinist instance
             </summary>
         </member>
-        <member name="T:MCWrapper.CLI.Ledger.Forge.BlockchainTimerState">
+        <member name="P:MCWrapper.CLI.Ledger.Clients.Machinist.CliOptions">
+            <summary>
+            Command Line Interface option values
+            </summary>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.CreateBlockchainAsync(System.String)">
+            <summary>
+            Create a new MultiChain blockchain ledger according to blockchain name
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.CreateBlockChain(System.String)">
+            <summary>
+            Create a new MultiChain blockchain ledger according to blockchain name
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StartBlockchainAsync(System.String,System.Boolean,System.String)">
+            <summary>
+            Start an existing blockchain according to name
+            </summary>
+            <param name="blockchainName"></param>
+            <param name="useSsl"></param>
+            <param name="runtimeCommands"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StartBlockchain(System.String,System.Boolean,System.String)">
+            <summary>
+            Start an existing blockchain according to name
+            </summary>
+            <param name="blockchainName"></param>
+            <param name="useSsl"></param>
+            <param name="runtimeCommands"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StartColdNodeAsync(System.String)">
+            <summary>
+            Start a blockchain cold node
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StartColdNode(System.String)">
+            <summary>
+            Start a blockchain cold node
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.ConnectToRemoteNodeAsync(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Connect to a remote MultiChain ledger
+            </summary>
+            <param name="blockchainName"></param>
+            <param name="ipAddress"></param>
+            <param name="port"></param>
+            <param name="useSSL"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.ConnectToRemoteNode(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Connect to a remote MultiChain ledger
+            </summary>
+            <param name="blockchainName"></param>
+            <param name="ipAddress"></param>
+            <param name="port"></param>
+            <param name="useSSL"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StopBlockchainAsync(System.String)">
+            <summary>
+            Stop blockchain according to name
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StopBlockchain(System.String)">
+            <summary>
+            Stop blockchain according to name
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StopColdNodeAsync(System.String)">
+            <summary>
+            Stop a cold node according to blockchain name value
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StopColdNode(System.String)">
+            <summary>
+            Stop a cold node according to blockchain name value
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MCWrapper.CLI.Ledger.Clients.BlockchainTimerState">
             <summary>
             Timer state used for tracking multichain-cli.exe interactions
             </summary>
         </member>
-        <member name="F:MCWrapper.CLI.Ledger.Forge.BlockchainTimerState.Ticks">
+        <member name="F:MCWrapper.CLI.Ledger.Clients.BlockchainTimerState.Ticks">
             <summary>
             Timer lifetime tracker
             </summary>
         </member>
-        <member name="F:MCWrapper.CLI.Ledger.Forge.BlockchainTimerState.BlockCount">
+        <member name="F:MCWrapper.CLI.Ledger.Clients.BlockchainTimerState.BlockCount">
             <summary>
             Track number of blocks currently available on the selected blockchain
             </summary>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.BlockchainTimerState.#ctor">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.BlockchainTimerState.#ctor">
             <summary>
             Create a new blockchain timer instance
             </summary>
         </member>
-        <member name="T:MCWrapper.CLI.Ledger.Forge.GeneralTimerState">
+        <member name="T:MCWrapper.CLI.Ledger.Clients.GeneralTimerState">
             <summary>
             Timer state used for tracking multichain-cli.exe interactions
             </summary>
         </member>
-        <member name="P:MCWrapper.CLI.Ledger.Forge.GeneralTimerState.Counter">
+        <member name="F:MCWrapper.CLI.Ledger.Clients.GeneralTimerState.Counter">
             <summary>
             Track timer lifetime; 
             How many times has the timer completed?
             </summary>
         </member>
-        <member name="P:MCWrapper.CLI.Ledger.Forge.GeneralTimerState.TimerJobSuccess">
+        <member name="P:MCWrapper.CLI.Ledger.Clients.GeneralTimerState.TimerJobSuccess">
             <summary>
             Is the task associated with the timer been completed? Was it successful?
             </summary>
         </member>
-        <member name="P:MCWrapper.CLI.Ledger.Forge.GeneralTimerState.ParamsDatPath">
+        <member name="P:MCWrapper.CLI.Ledger.Clients.GeneralTimerState.ParamsDatPath">
             <summary>
             Path to the MultiChain params.dat file necessary during some timer based tasks.
             </summary>
         </member>
-        <member name="P:MCWrapper.CLI.Ledger.Forge.GeneralTimerState.MultiChainConfPath">
+        <member name="P:MCWrapper.CLI.Ledger.Clients.GeneralTimerState.MultiChainConfPath">
             <summary>
             Path to the MultiChain multichain.conf file necessary during some timer based tasks.
             </summary>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.GeneralTimerState.#ctor">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.GeneralTimerState.#ctor">
             <summary>
             Create a new TimerState instance
             </summary>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Forge.GeneralTimerState.#ctor(System.String,System.String)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.GeneralTimerState.#ctor(System.String,System.String)">
             <summary>
             Create a new parameterized TimerState instance
             </summary>
             <param name="paramsDatPath"></param>
             <param name="multichainConfPath"></param>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Forge.LocalBlockchainRepo.#ctor">
+            <summary>
+            
+            </summary>
+            <param name="repoType"></param>
+            <param name="multiChainNodeDirectory"></param>
+        </member>
+        <member name="P:MCWrapper.CLI.Ledger.Forge.LocalBlockchainRepo.BlockchainsFound">
+            <summary>
+            True => 'Blockchains' dictionary contains at least one entry.
+            <para>
+                False => 'Blockchains' dictionary contains at no entries.
+            </para>
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Ledger.Forge.LocalBlockchainRepo.Blockchains">
+            <summary>
+            Key => Blockchain name
+            <para>
+                Value => Full local file path to blockchain folder
+            </para>
+            </summary>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Forge.LocalBlockchainRepo.SetRepoAsHotNodes(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="multiChainHotDirectory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Forge.LocalBlockchainRepo.SetRepoAsColdNodes(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="multiChainColdDirectory"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

@@ -1,4 +1,5 @@
-﻿using MCWrapper.Ledger.Entities.Extensions;
+﻿using MCWrapper.CLI.Constants;
+using MCWrapper.Ledger.Entities.Extensions;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;

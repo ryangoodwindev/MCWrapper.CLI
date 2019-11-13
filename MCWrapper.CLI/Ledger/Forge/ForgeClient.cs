@@ -1,4 +1,5 @@
 ﻿using MCWrapper.CLI.Constants;
+using MCWrapper.CLI.Helpers;
 using MCWrapper.CLI.Options;
 using MCWrapper.Ledger.Entities.ErrorHandling;
 using Microsoft.Extensions.Options;
@@ -98,10 +99,10 @@ namespace MCWrapper.CLI.Ledger.Clients
             try
             {
                 // verify if hot node params.dat file exists; FileNotFoundException is thrown if not.
-                var hotNodeParamsDatPath = MultiChainPaths.GetHotWalletParamsDatPath(CliOptions.ChainDefaultLocation, blockchainName);
+                var hotNodeParamsDatPath = MultiChainPathHelper.GetHotWalletParamsDatPath(CliOptions.ChainDefaultLocation, blockchainName);
 
                 // verify if cold node path exists to receive new cold node params.dat file.
-                var coldeNodeParamsDatPath = MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName);
+                var coldeNodeParamsDatPath = MultiChainPathHelper.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName);
                 
                 // if we get this far we know the hot node params.dat file exists, let us read the file into an array
                 var params_dat = await File.ReadAllLinesAsync(hotNodeParamsDatPath);

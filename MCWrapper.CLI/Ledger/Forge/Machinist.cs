@@ -1,4 +1,5 @@
 ﻿using MCWrapper.CLI.Constants;
+using MCWrapper.CLI.Helpers;
 using MCWrapper.CLI.Options;
 using MCWrapper.Ledger.Entities.ErrorHandling;
 using Microsoft.Extensions.Options;
@@ -46,7 +47,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             using var process = new Process();
 
             // set filename to multichain-util
-            process.StartInfo.FileName = MultiChainPaths.GetMultiChainUtilExePath(CliOptions.ChainBinaryLocation);
+            process.StartInfo.FileName = MultiChainPathHelper.GetMultiChainUtilExePath(CliOptions.ChainBinaryLocation);
 
             // populate argument list
             process.StartInfo.ArgumentList.Add(RuntimeCommand.Create);
@@ -136,7 +137,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             using var process = new Process();
 
             // set file name to multichaind
-            process.StartInfo.FileName = MultiChainPaths.GetMultiChainDExePath(CliOptions.ChainBinaryLocation);
+            process.StartInfo.FileName = MultiChainPathHelper.GetMultiChainDExePath(CliOptions.ChainBinaryLocation);
 
             // populate argument list
             process.StartInfo.ArgumentList.Add(blockchainName);
@@ -293,17 +294,17 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         private ForgeResponse StartColdNode(string blockchainName)
         {
-            if (!Directory.Exists(MultiChainPaths.GetColdWalletPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
+            if (!Directory.Exists(MultiChainPathHelper.GetColdWalletPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
                 throw new ServiceException("Sorry, we can't find the MultiChainCold folder. Please be sure to run CreateColdNode first or create the folder manually.");
 
-            if (!File.Exists(MultiChainPaths.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
+            if (!File.Exists(MultiChainPathHelper.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName)))
                 throw new ServiceException($"Sorry, it seems there is no params.dat file found in the Cold Node wallet you are trying to use for blockchain {blockchainName}");
 
             // disposable Process
             using var process = new Process();
 
             // set file name to multichaind-cold
-            process.StartInfo.FileName = MultiChainPaths.GetMultiChainDColdExePath(CliOptions.ChainBinaryLocation);
+            process.StartInfo.FileName = MultiChainPathHelper.GetMultiChainDColdExePath(CliOptions.ChainBinaryLocation);
 
             // populate argument list
             process.StartInfo.ArgumentList.Add(blockchainName);
@@ -465,7 +466,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             using var process = new Process();
 
             // set file name to multichaind
-            process.StartInfo.FileName = MultiChainPaths.GetMultiChainDExePath(CliOptions.ChainBinaryLocation);
+            process.StartInfo.FileName = MultiChainPathHelper.GetMultiChainDExePath(CliOptions.ChainBinaryLocation);
 
             // populate argument list
             process.StartInfo.ArgumentList.Add($"{blockchainName}@{ipAddress}:{port}");
@@ -553,7 +554,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             using var process = new Process();
 
             // set file name to multichaind
-            process.StartInfo.FileName = MultiChainPaths.GetMultiChainCliExePath(CliOptions.ChainBinaryLocation);
+            process.StartInfo.FileName = MultiChainPathHelper.GetMultiChainCliExePath(CliOptions.ChainBinaryLocation);
 
             // populate argument list
             process.StartInfo.ArgumentList.Add(blockchainName);
@@ -627,7 +628,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             using var process = new Process();
 
             // set file name to multichaind
-            process.StartInfo.FileName = MultiChainPaths.GetMultiChainCliExePath(CliOptions.ChainBinaryLocation);
+            process.StartInfo.FileName = MultiChainPathHelper.GetMultiChainCliExePath(CliOptions.ChainBinaryLocation);
 
             // populate argument list
             process.StartInfo.ArgumentList.Add(RuntimeCommand.Cold);

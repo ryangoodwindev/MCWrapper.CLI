@@ -12,21 +12,14 @@
 
 MCWrapper.RPC and MCWrapper.CLI are the two projects.
 
-Version 1.1.0:
-Updated to support multi-frameworks.
-
-Version 2.0.0
-Updated CliClientFactory to use properties instead of methods; Renamed properties slightly; Made property names more consistent with the RpcClientFactory present in MCWrapper.RPC
-
-Version 2.0.1:
-Update to MCWrapper.Ledger.Entities 2.1.0 to fix CliOptions and RuntimeParamOptions value loading failure</PackageReleaseNotes>
+Version 3.0.0: Breaking changes; Please refer to the Github Repo for this project and review any commit that includes 'Version 2.1.0' or 'Version 3.0.0' in the title.</PackageReleaseNotes>
     <Authors>Myndblock LLC, Ryan Goodwin</Authors>
     <Company>Myndblock LLC</Company>
     <Description>A simple .NET Core wrapper for the MultiChain Core blockchain library that utilitzes the Command Line Interface (CLI) to communicate with distributed ledgers. Written with C# 8.0 and supports .NET Core 2.1, 2.2, and 3.0.
-** This library has only been tested under Windows environments. We still need to write a custom Terminal provider for LInux and MacOs environments during the next version release.</Description>
+** This library has only been tested under Windows environments. We still need to write a custom Terminal provider for LInux and MacOs environments with an upcoming release.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>2.0.1</Version>
+    <Version>3.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
