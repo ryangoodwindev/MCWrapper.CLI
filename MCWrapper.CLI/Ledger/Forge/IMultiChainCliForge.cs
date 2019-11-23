@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using MCWrapper.CLI.Ledger.Contracts;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
-    public interface IForge
+    public interface IMultiChainCliForge : IMultiChainCli
     {
         Task<ForgeResponse> ConnectToRemoteNodeAsync(string blockchainName, string ipAddress, string port, [Optional] bool useSSL);
         Task<ForgeResponse> CreateBlockchainAsync(string blockchainName);

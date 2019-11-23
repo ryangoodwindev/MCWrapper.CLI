@@ -75,7 +75,7 @@ namespace MCWrapper.CLI.Extensions
                 .AddTransient<MultiChainCliWalletClient>()
                 .AddTransient<MultiChainCliMiningClient>()
                 .AddTransient<MultiChainCliRawClient>()
-                .AddTransient<ForgeClient>()
+                .AddTransient<MultiChainCliForgeClient>()
                 .AddTransient<MultiChainCliClientFactory>();
 
             return services;
@@ -119,7 +119,7 @@ namespace MCWrapper.CLI.Extensions
                 .AddTransient<MultiChainCliWalletClient>()
                 .AddTransient<MultiChainCliMiningClient>()
                 .AddTransient<MultiChainCliRawClient>()
-                .AddTransient<ForgeClient>()
+                .AddTransient<MultiChainCliForgeClient>()
                 .AddTransient<MultiChainCliClientFactory>();
 
             return services;
@@ -165,7 +165,7 @@ namespace MCWrapper.CLI.Extensions
                 .AddTransient<MultiChainCliWalletClient>()
                 .AddTransient<MultiChainCliMiningClient>()
                 .AddTransient<MultiChainCliRawClient>()
-                .AddTransient<ForgeClient>()
+                .AddTransient<MultiChainCliForgeClient>()
                 .AddTransient<MultiChainCliClientFactory>();
 
             return services;

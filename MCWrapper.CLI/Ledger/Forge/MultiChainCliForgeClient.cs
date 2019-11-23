@@ -23,12 +23,12 @@ namespace MCWrapper.CLI.Ledger.Clients
     ///     MacOS and Linux OS detection will be added in version 1.1.3;
     /// </para>
     /// </summary>
-    public class ForgeClient : Machinist, IForge
+    public class MultiChainCliForgeClient : Machinist, IMultiChainCliForge
     {
         /// <summary>
         /// Create a new blockchain Forge instance
         /// </summary>
-        public ForgeClient(IOptions<CliOptions> options)
+        public MultiChainCliForgeClient(IOptions<CliOptions> options)
             : base(options) { }
 
         /// <summary>
@@ -64,7 +64,6 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         public new Task<ForgeResponse> StopBlockchainAsync(string blockchainName) =>
             base.StopBlockchainAsync(blockchainName);
-
 
         /// <summary>
         /// Create a local MultiChain blockchain cold node/wallet
@@ -135,7 +134,6 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         public new Task<ForgeResponse> StopColdNodeAsync(string blockchainName) =>
             base.StopColdNodeAsync(blockchainName);
-
 
         /// <summary>
         /// Connect to a remote MultiChain node. 
