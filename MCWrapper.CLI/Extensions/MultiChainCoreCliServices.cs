@@ -40,6 +40,11 @@ namespace MCWrapper.CLI.Extensions
             var cliOptions = new CliOptions(true);
             var runtimeOptions = new RuntimeParamOptions(true);
 
+            // todo maybe we need to also check the Secret Manager for variable values?
+            // todo perhap we can analyze cliOptions and/or runtimeOptions and if null'ish then we can verify Secret Manager
+
+            // todo maybe we need some error handling here to detect lack of configuration early in the pipleline, as well. TBD
+
             // load Options from the local environment variable store
             services.Configure<RuntimeParamOptions>(config => 
             {
@@ -66,17 +71,17 @@ namespace MCWrapper.CLI.Extensions
             });
 
             // command line interface clients and client factory
-            services.AddTransient<MultiChainCliGeneralClient>()
-                .AddTransient<MultiChainCliGenerateClient>()
-                .AddTransient<MultiChainCliOffChainClient>()
-                .AddTransient<MultiChainCliControlClient>()
-                .AddTransient<MultiChainCliNetworkClient>()
-                .AddTransient<MultiChainCliUtilityClient>()
-                .AddTransient<MultiChainCliWalletClient>()
-                .AddTransient<MultiChainCliMiningClient>()
-                .AddTransient<MultiChainCliRawClient>()
-                .AddTransient<MultiChainCliForgeClient>()
-                .AddTransient<MultiChainCliClientFactory>();
+            services.AddTransient<IMultiChainCliGeneral, MultiChainCliGeneralClient>()
+                .AddTransient<IMultiChainCliGenerate, MultiChainCliGenerateClient>()
+                .AddTransient<IMultiChainCliOffChain, MultiChainCliOffChainClient>()
+                .AddTransient<IMultiChainCliControl, MultiChainCliControlClient>()
+                .AddTransient<IMultiChainCliNetwork, MultiChainCliNetworkClient>()
+                .AddTransient<IMultiChainCliUtility, MultiChainCliUtilityClient>()
+                .AddTransient<IMultiChainCliWallet, MultiChainCliWalletClient>()
+                .AddTransient<IMultiChainCliMining, MultiChainCliMiningClient>()
+                .AddTransient<IMultiChainCliRaw, MultiChainCliRawClient>()
+                .AddTransient<IMultiChainCliForge, MultiChainCliForgeClient>()
+                .AddTransient<IMultiChainCliClientFactory, MultiChainCliClientFactory>();
 
             return services;
         }
@@ -109,18 +114,20 @@ namespace MCWrapper.CLI.Extensions
             services.Configure<RuntimeParamOptions>(configuration)
                 .Configure<CliOptions>(configuration);
 
+            // todo maybe we need some error handling here to detect lack of configuration early in the pipleline, as well. TBD
+
             // command line interface clients and client factory
-            services.AddTransient<MultiChainCliGeneralClient>()
-                .AddTransient<MultiChainCliGenerateClient>()
-                .AddTransient<MultiChainCliOffChainClient>()
-                .AddTransient<MultiChainCliControlClient>()
-                .AddTransient<MultiChainCliNetworkClient>()
-                .AddTransient<MultiChainCliUtilityClient>()
-                .AddTransient<MultiChainCliWalletClient>()
-                .AddTransient<MultiChainCliMiningClient>()
-                .AddTransient<MultiChainCliRawClient>()
-                .AddTransient<MultiChainCliForgeClient>()
-                .AddTransient<MultiChainCliClientFactory>();
+            services.AddTransient<IMultiChainCliGeneral, MultiChainCliGeneralClient>()
+               .AddTransient<IMultiChainCliGenerate, MultiChainCliGenerateClient>()
+               .AddTransient<IMultiChainCliOffChain, MultiChainCliOffChainClient>()
+               .AddTransient<IMultiChainCliControl, MultiChainCliControlClient>()
+               .AddTransient<IMultiChainCliNetwork, MultiChainCliNetworkClient>()
+               .AddTransient<IMultiChainCliUtility, MultiChainCliUtilityClient>()
+               .AddTransient<IMultiChainCliWallet, MultiChainCliWalletClient>()
+               .AddTransient<IMultiChainCliMining, MultiChainCliMiningClient>()
+               .AddTransient<IMultiChainCliRaw, MultiChainCliRawClient>()
+               .AddTransient<IMultiChainCliForge, MultiChainCliForgeClient>()
+               .AddTransient<IMultiChainCliClientFactory, MultiChainCliClientFactory>();
 
             return services;
         }
@@ -155,18 +162,20 @@ namespace MCWrapper.CLI.Extensions
             services.Configure((Action<RuntimeParamOptions>)(config => runtimeParamOptions?.Invoke(new RuntimeParamOptions())))
                 .Configure((Action<CliOptions>)(config => cliOptions?.Invoke(new CliOptions())));
 
+            // todo maybe we need some error handling here to detect lack of configuration early in the pipleline, as well. TBD
+
             // command line interface clients and client factory
-            services.AddTransient<MultiChainCliGeneralClient>()
-                .AddTransient<MultiChainCliGenerateClient>()
-                .AddTransient<MultiChainCliOffChainClient>()
-                .AddTransient<MultiChainCliControlClient>()
-                .AddTransient<MultiChainCliNetworkClient>()
-                .AddTransient<MultiChainCliUtilityClient>()
-                .AddTransient<MultiChainCliWalletClient>()
-                .AddTransient<MultiChainCliMiningClient>()
-                .AddTransient<MultiChainCliRawClient>()
-                .AddTransient<MultiChainCliForgeClient>()
-                .AddTransient<MultiChainCliClientFactory>();
+            services.AddTransient<IMultiChainCliGeneral, MultiChainCliGeneralClient>()
+               .AddTransient<IMultiChainCliGenerate, MultiChainCliGenerateClient>()
+               .AddTransient<IMultiChainCliOffChain, MultiChainCliOffChainClient>()
+               .AddTransient<IMultiChainCliControl, MultiChainCliControlClient>()
+               .AddTransient<IMultiChainCliNetwork, MultiChainCliNetworkClient>()
+               .AddTransient<IMultiChainCliUtility, MultiChainCliUtilityClient>()
+               .AddTransient<IMultiChainCliWallet, MultiChainCliWalletClient>()
+               .AddTransient<IMultiChainCliMining, MultiChainCliMiningClient>()
+               .AddTransient<IMultiChainCliRaw, MultiChainCliRawClient>()
+               .AddTransient<IMultiChainCliForge, MultiChainCliForgeClient>()
+               .AddTransient<IMultiChainCliClientFactory, MultiChainCliClientFactory>();
 
             return services;
         }
