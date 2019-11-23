@@ -9,21 +9,23 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    ///
+    /// <para>MutliChain Core methods implemented by the MultiChainCliGeneralClient concrete class</para>
+    ///
+    /// getassetinfo, getbestblockhash, getblock, getblockchaininfo,
+    /// getblockcount, getblockhash, getchaintips, getdifficulty,
+    /// getfiltercode, getlastblockinfo, getmempoolinfo, getrawmempool,
+    /// getstreaminfo, gettxout, gettxoutsetinfo, listassets, listblocks,
+    /// listpermissions, liststreamfilters, liststreams, listtxfilters,
+    /// listupgrades, runstreamfilter, runtxfilter, teststreamfilter,
+    /// testtxfilter, verifychain, verifypermission
+    ///
+    /// </summary>
     public class MultiChainCliGeneralClient : MultiChainCliClient, IMultiChainCliGeneral
     {
         /// <summary>
-        /// Create a new BlockchainCLIClient instance with parameters
-        /// 
-        /// <para>
-        ///     MutliChain methods implemented:
-        ///     getassetinfo, getbestblockhash, getblock, getblockchaininfo,
-        ///     getblockcount, getblockhash, getchaintips, getdifficulty,
-        ///     getfiltercode, getlastblockinfo, getmempoolinfo, getrawmempool,
-        ///     getstreaminfo, gettxout, gettxoutsetinfo, listassets, listblocks,
-        ///     listpermissions, liststreamfilters, liststreams, listtxfilters,
-        ///     listupgrades, runstreamfilter, runtxfilter, teststreamfilter,
-        ///     testtxfilter, verifychain, verifypermission
-        /// </para>
+        /// Create a new MultiChainCliGeneralClient instance
         /// </summary>
         /// <param name="options"></param>
         public MultiChainCliGeneralClient(IOptions<CliOptions> options)

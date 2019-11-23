@@ -6,6 +6,38 @@ using MCWrapper.Data.Models.Wallet;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    ///
+    /// <para>MutliChain Core methods established by the IMultiChainCliWallet contract</para>
+    ///
+    /// addmultisigaddress, appendrawexchange, approvefrom, backupwallet,
+    /// combineunspent, completerawexchange, create, createfrom,
+    /// createrawexchange, createrawsendfrom, decoderawexchange,
+    /// disablerawtransaction, dumpprivkey, dumpwallet, encryptwallet,
+    /// getaccount, getaccountaddress, getaddressbalances, getaddresses,
+    /// getaddressesbyaccount, getaddresstransaction, getassetbalances,
+    /// getassettransaction, getbalance, getmultibalances, getnewaddress,
+    /// getrawchangeaddress, getreceivedbyaccount, getreceivedbyaddress,
+    /// getstreamitem, getstreamkeysummary, getstreampublishersummary,
+    /// gettotalbalances, gettransaction, gettxoutdata, getunconfirmedbalance,
+    /// getwalletinfo, getwallettransaction, grant, grantfrom, grantwithdata,
+    /// grantwithdatafrom, importaddress, importprivkey, importwallet, issue,
+    /// issuefrom, issuemore, issuemorefrom, keypoolrefill, listaccounts,
+    /// listaddresses, listaddressgroupings, listaddresstransactions,
+    /// listassettransactions, listlockunspent, listreceivedbyaccount,
+    /// listreceivedbyaddress, listsinceblock, liststreamblockitems,
+    /// liststreamitems, liststreamkeyitems, liststreamkeys, liststreampublisheritems,
+    /// liststreampublishers, liststreamqueryitems, liststreamtxitems,
+    /// listtransactions, listunspent, listwallettransactions, lockunspent,
+    /// move, preparelockunspent, preparelockunspentfrom, publish, publishfrom,
+    /// publishmulti, publishmultifrom, purgepublisheditems, purgestreamitems,
+    /// resendwallettransactions, retrievestreamitems, revoke, revokefrom, send,
+    /// sendasset, sendassetfrom, sendfrom, sendfromaccount, sendmany, sendwithdata,
+    /// sendwithdatafrom, setaccount, settxfee, signmessage, subscribe, trimsubscribe,
+    /// txouttobinarycache, unsubscribe, walletlock, walletpassphrase,
+    /// walletpassphrasechange,
+    ///
+    /// </summary>
     public interface IMultiChainCliWallet : IMultiChainCli
     {
         Task<CliResponse<object>> AddMultiSigAddressAsync(int n_required, string[] keys, [Optional] string account);

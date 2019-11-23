@@ -8,6 +8,15 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods implemented by the MultiChainCliUtilityClient concrete class</para>
+    ///
+    /// appendbinarycache, createbinarycache, createkeypairs,
+    /// createmultisig, deletebinarycache, estimatefee, estimatepriority,
+    /// validateaddress, verifymessage
+    /// 
+    /// </summary>
     public class MultiChainCliUtilityClient : MultiChainCliClient, IMultiChainCliUtility
     {
         /// <summary>

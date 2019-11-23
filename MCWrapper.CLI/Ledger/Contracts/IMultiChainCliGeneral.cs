@@ -6,6 +6,19 @@ using MCWrapper.Data.Models.Blockchain;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    ///
+    /// <para>MutliChain Core methods established by the IMultiChainCliGeneral contract</para>
+    ///
+    /// getassetinfo, getbestblockhash, getblock, getblockchaininfo,
+    /// getblockcount, getblockhash, getchaintips, getdifficulty,
+    /// getfiltercode, getlastblockinfo, getmempoolinfo, getrawmempool,
+    /// getstreaminfo, gettxout, gettxoutsetinfo, listassets, listblocks,
+    /// listpermissions, liststreamfilters, liststreams, listtxfilters,
+    /// listupgrades, runstreamfilter, runtxfilter, teststreamfilter,
+    /// testtxfilter, verifychain, verifypermission
+    ///
+    /// </summary>
     public interface IMultiChainCliGeneral : IMultiChainCli
     {
         Task<CliResponse<GetAssetInfoResult>> GetAssetInfoAsync(string asset_identifier, bool verbose = false);

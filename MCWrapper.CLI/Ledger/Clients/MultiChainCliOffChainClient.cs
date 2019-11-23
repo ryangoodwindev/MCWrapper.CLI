@@ -8,22 +8,20 @@ using System.Threading.Tasks;
 namespace MCWrapper.CLI.Ledger.Clients
 {
     /// <summary>
-    ///
-    /// MutliChain methods implemented:
-    ///
+    /// 
+    /// <para>MutliChain Core methods implemented by the MultiChainCliOffChainClient concrete class</para>
+    /// 
     /// purgepublisheditems, purgestreamitems, retrievestreamitems
-    ///
-    ///  OffChain services to support MultiChain Enterprise users
-    /// I do not have access to an Enterprise version of MultiChain
+    /// 
+    /// OffChain services to support MultiChain Enterprise users
+    /// I do not have access to an Enterprise version of MultiChain 
     /// so no unit testing can be performed against these methods
-    ///
-    /// <para>Inherits CliClient</para>
-    ///
+    /// 
     /// </summary>
     public class MultiChainCliOffChainClient : MultiChainCliClient, IMultiChainCliOffChain
     {
         /// <summary>
-        /// Create a new OffChainCLIClient instance with parameters
+        /// Create a new MultiChainCliOffChainClient instance
         /// </summary>
         /// <param name="options"></param>
         public MultiChainCliOffChainClient(IOptions<CliOptions> options)

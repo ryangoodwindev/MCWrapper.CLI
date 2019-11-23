@@ -9,17 +9,19 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods implemented by the MultiChainCliRawClient concrete class</para>
+    ///
+    /// appendrawchange, appendrawdata, appendrawtransaction,
+    /// createrawtransaction, decoderawtransaction, decodescript,
+    /// getrawtransaction, sendrawtransaction, signrawtransaction
+    /// 
+    /// </summary>
     public class MultiChainCliRawClient : MultiChainCliClient, IMultiChainCliRaw
     {
         /// <summary>
-        /// Create a new RawCLIClient instance with parameters
-        /// 
-        /// <para>
-        ///     MutliChain methods implemented:
-        ///     appendrawchange, appendrawdata, appendrawtransaction, 
-        ///     createrawtransaction, decoderawtransaction, decodescript, 
-        ///     getrawtransaction, sendrawtransaction, signrawtransaction
-        /// </para>
+        /// Create a new MultiChainCliRawClient instance 
         /// </summary>
         /// <param name="options"></param>
         public MultiChainCliRawClient(IOptions<CliOptions> options)

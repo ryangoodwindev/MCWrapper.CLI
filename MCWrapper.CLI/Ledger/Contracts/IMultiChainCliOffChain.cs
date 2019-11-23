@@ -4,6 +4,17 @@ using MCWrapper.CLI.Ledger.Contracts;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods established by the IMultiChainCliOffChain contract</para>
+    /// 
+    /// purgepublisheditems, purgestreamitems, retrievestreamitems
+    /// 
+    /// OffChain services to support MultiChain Enterprise users
+    /// I do not have access to an Enterprise version of MultiChain 
+    /// so no unit testing can be performed against these methods
+    /// 
+    /// </summary>
     public interface IMultiChainCliOffChain : IMultiChainCli
     {
         Task<CliResponse<object>> PurgePublishedItemsAsync(object items);

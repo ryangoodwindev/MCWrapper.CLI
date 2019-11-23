@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods implemented by the MultiChainCliControlClient concrete class</para>
+    ///
+    /// clearmempool, getblockchainparams, getinfo, getruntimeparams,
+    /// help, pause, resume, setlastblock, setruntimeparam, stop
+    /// 
+    /// </summary>
     public class MultiChainCliControlClient : MultiChainCliClient, IMultiChainCliControl
     {
         /// <summary>
-        /// Create a new ControlCLIClient instance with parameters.
-        /// 
-        /// <para>
-        ///     MutliChain methods implemented:
-        ///     clearmempool, getblockchainparams, getinfo, getruntimeparams,
-        ///     help, pause, resume, setlastblock, setruntimeparam, stop
-        /// </para>
+        /// Create a new MultiChainCliControlClient instance
         /// </summary>
         /// <param name="options"></param>
         public MultiChainCliControlClient(IOptions<CliOptions> options)

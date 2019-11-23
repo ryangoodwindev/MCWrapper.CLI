@@ -4,6 +4,13 @@ using MCWrapper.CLI.Ledger.Contracts;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods established by the IMultiChainCliGenerate contract</para>
+    ///
+    /// getgenerate, gethashespersec, setgenerate
+    /// 
+    /// </summary>
     public interface IMultiChainCliGenerate : IMultiChainCli
     {
         Task<CliResponse<bool>> GetGeneratedAsync();

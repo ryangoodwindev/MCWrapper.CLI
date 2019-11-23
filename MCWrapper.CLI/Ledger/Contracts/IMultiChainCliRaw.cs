@@ -6,6 +6,15 @@ using MCWrapper.Data.Models.Raw;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods established by the IMultiChainCliRaw contract</para>
+    ///
+    /// appendrawchange, appendrawdata, appendrawtransaction,
+    /// createrawtransaction, decoderawtransaction, decodescript,
+    /// getrawtransaction, sendrawtransaction, signrawtransaction
+    /// 
+    /// </summary>
     public interface IMultiChainCliRaw : IMultiChainCli
     {
         Task<CliResponse<object>> AppendRawChangeAsync(string tx_hex, string address, [Optional] double native_fee);

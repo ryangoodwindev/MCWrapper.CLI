@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods implemented by the MultiChainCliMiningClient concrete class</para>
+    ///
+    /// getblocktemplate, getmininginfo, getnetworkhashps,
+    /// prioritisetransaction, submitblock
+    /// 
+    /// </summary>
     public class MultiChainCliMiningClient : MultiChainCliClient, IMultiChainCliMining
     {
         /// <summary>
-        /// Create a new MineCLIClient instance with parameters
-        /// 
-        /// <para>
-        ///     MutliChain methods implemented:
-        ///     getblocktemplate, getmininginfo, getnetworkhashps, 
-        ///     prioritisetransaction, submitblock
-        /// </para>
+        /// Create a new MultiChainCliMiningClient instance
         /// </summary>
         /// <param name="options"></param>
         public MultiChainCliMiningClient(IOptions<CliOptions> options)

@@ -6,6 +6,14 @@ using MCWrapper.Data.Models.Network;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods established by the IMultiChainCliNetwork contract</para>
+    /// 
+    /// addnode, getaddednodeinfo, getchunkqueueinfo, getchunkqueuetotals, 
+    /// getconnectioncount, getnettotals, getnetworkinfo, getpeerinfo, ping
+    /// 
+    /// </summary>
     public interface IMultiChainCliNetwork : IMultiChainCli
     {
         Task<CliResponse<object>> AddNodeAsync(string node, string action);

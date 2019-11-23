@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods implemented by the MultiChainCliNetworkClient concrete class</para>
+    /// 
+    /// addnode, getaddednodeinfo, getchunkqueueinfo, getchunkqueuetotals, 
+    /// getconnectioncount, getnettotals, getnetworkinfo, getpeerinfo, ping
+    /// 
+    /// </summary>
     public class MultiChainCliNetworkClient : MultiChainCliClient, IMultiChainCliNetwork
     {
         /// <summary>
-        /// Create a new NetworkCLIClient instance with parameters
-        /// 
-        /// <para>
-        ///     MutliChain methods implemented:
-        ///     addnode, getaddednodeinfo, getchunkqueueinfo, getchunkqueuetotals, 
-        ///     getconnectioncount, getnettotals, getnetworkinfo, getpeerinfo, ping
-        /// </para>
+        /// Create a new MultiChainCliNetworkClient instance
         /// </summary>
         /// <param name="options"></param>
         public MultiChainCliNetworkClient(IOptions<CliOptions> options)

@@ -5,6 +5,15 @@ using MCWrapper.Data.Models.Utility;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods established by the IMultiChainCliUtility contract</para>
+    ///
+    /// appendbinarycache, createbinarycache, createkeypairs,
+    /// createmultisig, deletebinarycache, estimatefee, estimatepriority,
+    /// validateaddress, verifymessage
+    /// 
+    /// </summary>
     public interface IMultiChainCliUtility : IMultiChainCli
     {
         Task<CliResponse<int>> AppendBinaryCacheAsync(string identifier, string data_hex);

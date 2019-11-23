@@ -4,6 +4,14 @@ using MCWrapper.CLI.Ledger.Contracts;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods established by the IMultiChainCliMining contract</para>
+    ///
+    /// getblocktemplate, getmininginfo, getnetworkhashps,
+    /// prioritisetransaction, submitblock
+    /// 
+    /// </summary>
     public interface IMultiChainCliMining : IMultiChainCli
     {
         Task<CliResponse<object>> GetBlockTemplateAsync(string json_request_object);

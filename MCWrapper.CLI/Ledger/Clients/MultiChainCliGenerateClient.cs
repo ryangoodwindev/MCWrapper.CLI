@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    /// 
+    /// <para>MutliChain Core methods implemented by the MultiChainCliGenerateClient concrete class</para>
+    ///
+    /// getgenerate, gethashespersec, setgenerate
+    /// 
+    /// </summary>
     public class MultiChainCliGenerateClient : MultiChainCliClient, IMultiChainCliGenerate
     {
         /// <summary>
-        /// Create a new GenerateCLIClient instance with parameters
-        /// 
-        /// <para>
-        ///     MutliChain methods implemented:
-        ///     getgenerate, gethashespersec, setgenerate
-        /// </para>
+        /// Create a new MultiChainCliGenerateClient instance
         /// </summary>
         /// <param name="options"></param>
         public MultiChainCliGenerateClient(IOptions<CliOptions> options)

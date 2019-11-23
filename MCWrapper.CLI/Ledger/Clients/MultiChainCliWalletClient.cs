@@ -10,40 +10,42 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
+    /// <summary>
+    ///
+    /// <para>MutliChain Core methods implemented by the MultiChainCliWalletClient concrete class</para>
+    ///
+    /// addmultisigaddress, appendrawexchange, approvefrom, backupwallet,
+    /// combineunspent, completerawexchange, create, createfrom,
+    /// createrawexchange, createrawsendfrom, decoderawexchange,
+    /// disablerawtransaction, dumpprivkey, dumpwallet, encryptwallet,
+    /// getaccount, getaccountaddress, getaddressbalances, getaddresses,
+    /// getaddressesbyaccount, getaddresstransaction, getassetbalances,
+    /// getassettransaction, getbalance, getmultibalances, getnewaddress,
+    /// getrawchangeaddress, getreceivedbyaccount, getreceivedbyaddress,
+    /// getstreamitem, getstreamkeysummary, getstreampublishersummary,
+    /// gettotalbalances, gettransaction, gettxoutdata, getunconfirmedbalance,
+    /// getwalletinfo, getwallettransaction, grant, grantfrom, grantwithdata,
+    /// grantwithdatafrom, importaddress, importprivkey, importwallet, issue,
+    /// issuefrom, issuemore, issuemorefrom, keypoolrefill, listaccounts,
+    /// listaddresses, listaddressgroupings, listaddresstransactions,
+    /// listassettransactions, listlockunspent, listreceivedbyaccount,
+    /// listreceivedbyaddress, listsinceblock, liststreamblockitems,
+    /// liststreamitems, liststreamkeyitems, liststreamkeys, liststreampublisheritems,
+    /// liststreampublishers, liststreamqueryitems, liststreamtxitems,
+    /// listtransactions, listunspent, listwallettransactions, lockunspent,
+    /// move, preparelockunspent, preparelockunspentfrom, publish, publishfrom,
+    /// publishmulti, publishmultifrom, purgepublisheditems, purgestreamitems,
+    /// resendwallettransactions, retrievestreamitems, revoke, revokefrom, send,
+    /// sendasset, sendassetfrom, sendfrom, sendfromaccount, sendmany, sendwithdata,
+    /// sendwithdatafrom, setaccount, settxfee, signmessage, subscribe, trimsubscribe,
+    /// txouttobinarycache, unsubscribe, walletlock, walletpassphrase,
+    /// walletpassphrasechange,
+    ///
+    /// </summary>
     public class MultiChainCliWalletClient : MultiChainCliClient, IMultiChainCliWallet
     {
         /// <summary>
-        /// Create a new WalletCLIClient instance with parameters
-        /// 
-        /// <para>
-        ///     MutliChain methods implemented:
-        ///     addmultisigaddress, appendrawexchange, approvefrom, backupwallet,
-        ///     combineunspent, completerawexchange, create, createfrom, 
-        ///     createrawexchange, createrawsendfrom, decoderawexchange, 
-        ///     disablerawtransaction, dumpprivkey, dumpwallet, encryptwallet,
-        ///     getaccount, getaccountaddress, getaddressbalances, getaddresses, 
-        ///     getaddressesbyaccount, getaddresstransaction, getassetbalances, 
-        ///     getassettransaction, getbalance, getmultibalances, getnewaddress, 
-        ///     getrawchangeaddress, getreceivedbyaccount, getreceivedbyaddress,
-        ///     getstreamitem, getstreamkeysummary, getstreampublishersummary, 
-        ///     gettotalbalances, gettransaction, gettxoutdata, getunconfirmedbalance, 
-        ///     getwalletinfo, getwallettransaction, grant, grantfrom, grantwithdata, 
-        ///     grantwithdatafrom, importaddress, importprivkey, importwallet, issue, 
-        ///     issuefrom, issuemore, issuemorefrom, keypoolrefill, listaccounts, 
-        ///     listaddresses, listaddressgroupings, listaddresstransactions, 
-        ///     listassettransactions, listlockunspent, listreceivedbyaccount,
-        ///     listreceivedbyaddress, listsinceblock, liststreamblockitems, 
-        ///     liststreamitems, liststreamkeyitems, liststreamkeys, liststreampublisheritems,
-        ///     liststreampublishers, liststreamqueryitems, liststreamtxitems, 
-        ///     listtransactions, listunspent, listwallettransactions, lockunspent,
-        ///     move, preparelockunspent, preparelockunspentfrom, publish, publishfrom,
-        ///     publishmulti, publishmultifrom, purgepublisheditems, purgestreamitems, 
-        ///     resendwallettransactions, retrievestreamitems, revoke, revokefrom, send, 
-        ///     sendasset, sendassetfrom, sendfrom, sendfromaccount, sendmany, sendwithdata,
-        ///     sendwithdatafrom, setaccount, settxfee, signmessage, subscribe, trimsubscribe, 
-        ///     txouttobinarycache, unsubscribe, walletlock, walletpassphrase, 
-        ///     walletpassphrasechange,
-        /// </para>
+        /// Create a new Wallet CLI client
         /// </summary>
         /// <param name="options"></param>
         public MultiChainCliWalletClient(IOptions<CliOptions> options)
