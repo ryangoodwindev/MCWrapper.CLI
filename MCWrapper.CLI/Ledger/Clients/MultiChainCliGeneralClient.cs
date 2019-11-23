@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
-    public class BlockchainCliClient : CliClient
+    public class MultiChainCliGeneralClient : MultiChainCliClient, IMultiChainCliGeneral
     {
         /// <summary>
         /// Create a new BlockchainCLIClient instance with parameters
@@ -26,7 +26,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </para>
         /// </summary>
         /// <param name="options"></param>
-        public BlockchainCliClient(IOptions<CliOptions> options)
+        public MultiChainCliGeneralClient(IOptions<CliOptions> options)
             : base(options) { }
 
         /// <summary>

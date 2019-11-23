@@ -20,13 +20,13 @@ namespace MCWrapper.CLI.Ledger.Clients
     /// <para>Inherits CliClient</para>
     ///
     /// </summary>
-    public class OffChainCliClient : CliClient
+    public class MultiChainCliOffChainClient : MultiChainCliClient, IMultiChainCliOffChain
     {
         /// <summary>
         /// Create a new OffChainCLIClient instance with parameters
         /// </summary>
         /// <param name="options"></param>
-        public OffChainCliClient(IOptions<CliOptions> options)
+        public MultiChainCliOffChainClient(IOptions<CliOptions> options)
             : base(options) { }
 
         /// <summary>

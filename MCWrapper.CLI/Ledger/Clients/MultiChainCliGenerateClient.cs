@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
-    public class GenerateCliClient : CliClient
+    public class MultiChainCliGenerateClient : MultiChainCliClient, IMultiChainCliGenerate
     {
         /// <summary>
         /// Create a new GenerateCLIClient instance with parameters
@@ -17,7 +17,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </para>
         /// </summary>
         /// <param name="options"></param>
-        public GenerateCliClient(IOptions<CliOptions> options)
+        public MultiChainCliGenerateClient(IOptions<CliOptions> options)
             : base(options) { }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns>(numeric) The recent hashes per second when generation is on (will return 0 if generation is off)</returns>
-        public Task<CliResponse<int>> GetHashesPerSecAsync(string blockchainName) => 
+        public Task<CliResponse<int>> GetHashesPerSecAsync(string blockchainName) =>
             TransactAsync<int>(blockchainName, GenerateAction.GetHashesPerSecMethod);
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns>(numeric) The recent hashes per second when generation is on (will return 0 if generation is off)</returns>
-        public Task<CliResponse<int>> GetHashesPerSecAsync() => 
+        public Task<CliResponse<int>> GetHashesPerSecAsync() =>
             GetHashesPerSecAsync(CliOptions.ChainName);
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="generate">Set to true to turn on generation, off to turn off.</param>
         /// <param name="gen_proc_limit">Set the processor limit for when generation is on. Can be -1 for unlimited.</param>
         /// <returns>String value identifying this transaction</returns>
-        public Task<CliResponse<object>> SetGenerateAsync(bool generate, int gen_proc_limit) => 
+        public Task<CliResponse<object>> SetGenerateAsync(bool generate, int gen_proc_limit) =>
             SetGenerateAsync(CliOptions.ChainName, generate, gen_proc_limit);
     }
 }

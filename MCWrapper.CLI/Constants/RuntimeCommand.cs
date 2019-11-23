@@ -3,7 +3,7 @@
     /// <summary>
     /// Cammands that can be passed to multichaind.exe and/or multichain-util.exe
     /// </summary>
-    public struct RuntimeCommand
+    public sealed class RuntimeCommand
     {
         /// <summary>
         /// HTTPS swtich starts the specified MultiChain Core blockchain and requires HTTPS JSON-RPC calls;

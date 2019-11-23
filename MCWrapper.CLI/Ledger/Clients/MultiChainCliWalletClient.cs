@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
-    public class WalletCliClient : CliClient
+    public class MultiChainCliWalletClient : MultiChainCliClient, IMultiChainCliWallet
     {
         /// <summary>
         /// Create a new WalletCLIClient instance with parameters
@@ -46,7 +46,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </para>
         /// </summary>
         /// <param name="options"></param>
-        public WalletCliClient(IOptions<CliOptions> options)
+        public MultiChainCliWalletClient(IOptions<CliOptions> options)
             : base(options) { }
 
         /// <summary>

@@ -3,7 +3,7 @@
     /// <summary>
     /// Collection of Multichain filenames
     /// </summary>
-    public struct MultiChainFilenames
+    public sealed class MultiChainFilenames
     {
         /// <summary>
         /// Start multichaind.exe

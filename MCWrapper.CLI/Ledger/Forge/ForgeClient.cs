@@ -23,7 +23,7 @@ namespace MCWrapper.CLI.Ledger.Clients
     ///     MacOS and Linux OS detection will be added in version 1.1.3;
     /// </para>
     /// </summary>
-    public class ForgeClient : Machinist
+    public class ForgeClient : Machinist, IForge
     {
         /// <summary>
         /// Create a new blockchain Forge instance
@@ -103,7 +103,7 @@ namespace MCWrapper.CLI.Ledger.Clients
 
                 // verify if cold node path exists to receive new cold node params.dat file.
                 var coldeNodeParamsDatPath = MultiChainPathHelper.GetColdWalletParamsDatPath(CliOptions.ChainDefaultColdNodeLocation, blockchainName);
-                
+
                 // if we get this far we know the hot node params.dat file exists, let us read the file into an array
                 var params_dat = await File.ReadAllLinesAsync(hotNodeParamsDatPath);
 
@@ -125,7 +125,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName"></param>
         /// <returns></returns>
-        public new Task<ForgeResponse> StartColdNodeAsync(string blockchainName) => 
+        public new Task<ForgeResponse> StartColdNodeAsync(string blockchainName) =>
             base.StartColdNodeAsync(blockchainName);
 
         /// <summary>

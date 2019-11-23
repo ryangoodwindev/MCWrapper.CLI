@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
-    public class UtilityCliClient : CliClient
+    public class MultiChainCliUtilityClient : MultiChainCliClient, IMultiChainCliUtility
     {
         /// <summary>
         /// Create a new UtilityCLIClient instance with parameters
@@ -21,7 +21,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </para>
         /// </summary>
         /// <param name="options"></param>
-        public UtilityCliClient(IOptions<CliOptions> options)
+        public MultiChainCliUtilityClient(IOptions<CliOptions> options)
             : base(options) { }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="identifier">Binary cache item identifier</param>
         /// <param name="data_hex">The hex string to be added to binary cache item</param>
-        public Task<CliResponse<int>> AppendBinaryCacheAsync(string identifier, string data_hex) => 
+        public Task<CliResponse<int>> AppendBinaryCacheAsync(string identifier, string data_hex) =>
             AppendBinaryCacheAsync(CliOptions.ChainName, identifier, data_hex);
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        public Task<CliResponse<string>> CreateBinaryCacheAsync() => 
+        public Task<CliResponse<string>> CreateBinaryCacheAsync() =>
             CreateBinaryCacheAsync(CliOptions.ChainName);
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="count">Number of key pairs to generate</param>
         /// <returns></returns>
-        public Task<CliResponse<CreateKeyPairsResult[]>> CreateKeyPairsAsync(int count = 1) => 
+        public Task<CliResponse<CreateKeyPairsResult[]>> CreateKeyPairsAsync(int count = 1) =>
             CreateKeyPairsAsync(CliOptions.ChainName, count);
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="n_required">The number of required signatures out of the n keys or addresses</param>
         /// <param name="keys">A json array of keys which are addresses or hex-encoded public keys</param>
         /// <returns></returns>
-        public Task<CliResponse<CreateMultiSigResult>> CreateMultiSigAsync(int n_required, string[] keys) => 
+        public Task<CliResponse<CreateMultiSigResult>> CreateMultiSigAsync(int n_required, string[] keys) =>
             CreateMultiSigAsync(CliOptions.ChainName, n_required, keys);
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="identifier">Binary cache item identifier, "*" - to clear all items</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> DeleteBinaryCacheAsync(string identifier) => 
+        public Task<CliResponse<object>> DeleteBinaryCacheAsync(string identifier) =>
             DeleteBinaryCacheAsync(CliOptions.ChainName, identifier);
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="n_blocks">Number of blocks to estimate fee for</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> EstimateFeeAsync(string blockchainName, int n_blocks) => 
+        public Task<CliResponse<object>> EstimateFeeAsync(string blockchainName, int n_blocks) =>
             TransactAsync<object>(blockchainName, UtilityAction.EstimateFeeMethod, new[] { $"{n_blocks}" });
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="n_blocks">Number of blocks to estimate priority for</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> EstimatePriorityAsync(string blockchainName, int n_blocks) => 
+        public Task<CliResponse<object>> EstimatePriorityAsync(string blockchainName, int n_blocks) =>
             TransactAsync<object>(blockchainName, UtilityAction.EstimatePriorityMethod, new[] { $"{n_blocks}" });
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="n_blocks">Number of blocks to estimate priority for</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> EstimatePriorityAsync(int n_blocks) => 
+        public Task<CliResponse<object>> EstimatePriorityAsync(int n_blocks) =>
             EstimateFeeAsync(CliOptions.ChainName, n_blocks);
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="signature">The signature provided by the signer in base 64 encoding (see signmessage)</param>
         /// <param name="message">The message that was signed</param>
         /// <returns></returns>
-        public Task<CliResponse<bool>> VerifyMessageAsync(string address, string signature, string message) => 
+        public Task<CliResponse<bool>> VerifyMessageAsync(string address, string signature, string message) =>
             VerifyMessageAsync(CliOptions.ChainName, address, signature, message);
     }
 }

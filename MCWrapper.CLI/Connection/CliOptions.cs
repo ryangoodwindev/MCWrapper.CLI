@@ -22,6 +22,9 @@ namespace MCWrapper.CLI.Options
     /// </summary>
     public class CliOptions
     {
+        /// <summary>
+        /// Create a new CliOptions object
+        /// </summary>
         public CliOptions() { }
 
         /// <summary>

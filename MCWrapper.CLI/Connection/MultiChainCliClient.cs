@@ -12,15 +12,22 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Connection
 {
-    public class CliClient
+    /// <summary>
+    /// Defines Command Line Interface Process client
+    /// </summary>
+    public abstract class MultiChainCliClient
     {
         /// <summary>
         /// Create a new CliClient instance;
         /// Inject arguments to multichain-cli.exe and receive a string response
         /// </summary>
         /// <param name="cliOptions"></param>
-        public CliClient(IOptions<CliOptions> cliOptions) => CliOptions = cliOptions.Value;
+        protected MultiChainCliClient(IOptions<CliOptions> cliOptions) =>
+            CliOptions = cliOptions.Value;
 
+        /// <summary>
+        /// MultiChain CLI options
+        /// </summary>
         public CliOptions CliOptions { get; }
 
         /// <summary>
@@ -115,7 +122,7 @@ namespace MCWrapper.CLI.Connection
                 else
                 {
                     // deserialize information about the request we sent to multichain-cli.exe
-                    clientResponse.Request = JsonConvert.DeserializeObject<CLIClientRequestObject>(_stderr);
+                    clientResponse.Request = JsonConvert.DeserializeObject<CLIRequest>(_stderr);
 
                     try
                     {

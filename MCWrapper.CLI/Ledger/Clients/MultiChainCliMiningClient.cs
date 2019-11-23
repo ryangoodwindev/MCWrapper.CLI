@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
-    public class MiningCliClient : CliClient
+    public class MultiChainCliMiningClient : MultiChainCliClient, IMultiChainCliMining
     {
         /// <summary>
         /// Create a new MineCLIClient instance with parameters
@@ -18,7 +18,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </para>
         /// </summary>
         /// <param name="options"></param>
-        public MiningCliClient(IOptions<CliOptions> options)
+        public MultiChainCliMiningClient(IOptions<CliOptions> options)
             : base(options) { }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para> ,...]}</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetBlockTemplateAsync(string blockchainName, string json_request_object) => 
+        public Task<CliResponse<object>> GetBlockTemplateAsync(string blockchainName, string json_request_object) =>
             TransactAsync<object>(blockchainName, MiningAction.GetBlockTemplateMethod, new[] { json_request_object });
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para> ,...]}</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetBlockTemplateAsync(string json_request_object) => 
+        public Task<CliResponse<object>> GetBlockTemplateAsync(string json_request_object) =>
             GetBlockTemplateAsync(CliOptions.ChainName, json_request_object);
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetMiningInfoAsync(string blockchainName) => 
+        public Task<CliResponse<object>> GetMiningInfoAsync(string blockchainName) =>
             TransactAsync<object>(blockchainName, MiningAction.GetMiningInfoMethod);
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetMiningInfoAsync() => 
+        public Task<CliResponse<object>> GetMiningInfoAsync() =>
             GetMiningInfoAsync(CliOptions.ChainName);
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blocks">The number of blocks, or -1 for blocks since last difficulty change</param>
         /// <param name="height">To estimate at the time of the given height</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetNetworkHashPsAsync(string blockchainName, int blocks = 120, int height = -1) => 
+        public Task<CliResponse<object>> GetNetworkHashPsAsync(string blockchainName, int blocks = 120, int height = -1) =>
             TransactAsync<object>(blockchainName, MiningAction.GetNetworkHashPsMethod, new[] { $"{blocks}", $"{height}" });
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blocks">The number of blocks, or -1 for blocks since last difficulty change</param>
         /// <param name="height">To estimate at the time of the given height</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetNetworkHashPsAsync(int blocks = 120, int height = -1) => 
+        public Task<CliResponse<object>> GetNetworkHashPsAsync(int blocks = 120, int height = -1) =>
             GetNetworkHashPsAsync(CliOptions.ChainName, blocks, height);
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>The fee is not actually paid, only the algorithm for selecting transactions into a block considers the transaction as it would have paid a higher (or lower) fee</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PrioritiseTransactionAsync(string blockchainName, string txid, double priority_delta, double fee_delta) => 
+        public Task<CliResponse<object>> PrioritiseTransactionAsync(string blockchainName, string txid, double priority_delta, double fee_delta) =>
             TransactAsync<object>(blockchainName, MiningAction.PrioritiseTransactionMethod, new[] { txid, $"{priority_delta}", $"{fee_delta}" });
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>he fee is not actually paid, only the algorithm for selecting transactions into a block considers the transaction as it would have paid a higher (or lower) fee</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PrioritiseTransactionAsync(string txid, double priority_delta, double fee_delta) => 
+        public Task<CliResponse<object>> PrioritiseTransactionAsync(string txid, double priority_delta, double fee_delta) =>
             PrioritiseTransactionAsync(CliOptions.ChainName, txid, priority_delta, fee_delta);
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "workid" : "id"               (string, optional) if the server provided a workid, it MUST be included with submissions }</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SubmitBlockAsync(string blockchainName, string hex_data, string json_parameters_object = "") => 
+        public Task<CliResponse<object>> SubmitBlockAsync(string blockchainName, string hex_data, string json_parameters_object = "") =>
             TransactAsync<object>(blockchainName, MiningAction.SubmitBlockMethod, new[] { hex_data, json_parameters_object });
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "workid" : "id"               (string, optional) if the server provided a workid, it MUST be included with submissions }</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SubmitBlockAsync(string hex_data, string json_parameters_object = "") => 
+        public Task<CliResponse<object>> SubmitBlockAsync(string hex_data, string json_parameters_object = "") =>
             SubmitBlockAsync(CliOptions.ChainName, hex_data, json_parameters_object);
     }
 }

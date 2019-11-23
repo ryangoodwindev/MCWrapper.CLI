@@ -66,17 +66,17 @@ namespace MCWrapper.CLI.Extensions
             });
 
             // command line interface clients and client factory
-            services.AddTransient<BlockchainCliClient>()
-                .AddTransient<GenerateCliClient>()
-                .AddTransient<OffChainCliClient>()
-                .AddTransient<ControlCliClient>()
-                .AddTransient<NetworkCliClient>()
-                .AddTransient<UtilityCliClient>()
-                .AddTransient<WalletCliClient>()
-                .AddTransient<MiningCliClient>()
-                .AddTransient<RawCliClient>()
+            services.AddTransient<MultiChainCliGeneralClient>()
+                .AddTransient<MultiChainCliGenerateClient>()
+                .AddTransient<MultiChainCliOffChainClient>()
+                .AddTransient<MultiChainCliControlClient>()
+                .AddTransient<MultiChainCliNetworkClient>()
+                .AddTransient<MultiChainCliUtilityClient>()
+                .AddTransient<MultiChainCliWalletClient>()
+                .AddTransient<MultiChainCliMiningClient>()
+                .AddTransient<MultiChainCliRawClient>()
                 .AddTransient<ForgeClient>()
-                .AddTransient<CliClientFactory>();
+                .AddTransient<MultiChainCliClientFactory>();
 
             return services;
         }
@@ -110,17 +110,17 @@ namespace MCWrapper.CLI.Extensions
                 .Configure<CliOptions>(configuration);
 
             // command line interface clients and client factory
-            services.AddTransient<BlockchainCliClient>()
-                .AddTransient<GenerateCliClient>()
-                .AddTransient<OffChainCliClient>()
-                .AddTransient<ControlCliClient>()
-                .AddTransient<NetworkCliClient>()
-                .AddTransient<UtilityCliClient>()
-                .AddTransient<WalletCliClient>()
-                .AddTransient<MiningCliClient>()
-                .AddTransient<RawCliClient>()
+            services.AddTransient<MultiChainCliGeneralClient>()
+                .AddTransient<MultiChainCliGenerateClient>()
+                .AddTransient<MultiChainCliOffChainClient>()
+                .AddTransient<MultiChainCliControlClient>()
+                .AddTransient<MultiChainCliNetworkClient>()
+                .AddTransient<MultiChainCliUtilityClient>()
+                .AddTransient<MultiChainCliWalletClient>()
+                .AddTransient<MultiChainCliMiningClient>()
+                .AddTransient<MultiChainCliRawClient>()
                 .AddTransient<ForgeClient>()
-                .AddTransient<CliClientFactory>();
+                .AddTransient<MultiChainCliClientFactory>();
 
             return services;
         }
@@ -156,17 +156,17 @@ namespace MCWrapper.CLI.Extensions
                 .Configure((Action<CliOptions>)(config => cliOptions?.Invoke(new CliOptions())));
 
             // command line interface clients and client factory
-            services.AddTransient<BlockchainCliClient>()
-                .AddTransient<GenerateCliClient>()
-                .AddTransient<OffChainCliClient>()
-                .AddTransient<ControlCliClient>()
-                .AddTransient<NetworkCliClient>()
-                .AddTransient<UtilityCliClient>()
-                .AddTransient<WalletCliClient>()
-                .AddTransient<MiningCliClient>()
-                .AddTransient<RawCliClient>()
+            services.AddTransient<MultiChainCliGeneralClient>()
+                .AddTransient<MultiChainCliGenerateClient>()
+                .AddTransient<MultiChainCliOffChainClient>()
+                .AddTransient<MultiChainCliControlClient>()
+                .AddTransient<MultiChainCliNetworkClient>()
+                .AddTransient<MultiChainCliUtilityClient>()
+                .AddTransient<MultiChainCliWalletClient>()
+                .AddTransient<MultiChainCliMiningClient>()
+                .AddTransient<MultiChainCliRawClient>()
                 .AddTransient<ForgeClient>()
-                .AddTransient<CliClientFactory>();
+                .AddTransient<MultiChainCliClientFactory>();
 
             return services;
         }

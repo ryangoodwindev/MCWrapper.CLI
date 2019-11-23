@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
-    public class ControlCliClient : CliClient
+    public class MultiChainCliControlClient : MultiChainCliClient, IMultiChainCliControl
     {
         /// <summary>
         /// Create a new ControlCLIClient instance with parameters.
@@ -20,7 +20,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </para>
         /// </summary>
         /// <param name="options"></param>
-        public ControlCliClient(IOptions<CliOptions> options)
+        public MultiChainCliControlClient(IOptions<CliOptions> options)
             : base(options) { }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        public Task<CliResponse<string>> ClearMemPoolAsync(string blockchainName) => 
+        public Task<CliResponse<string>> ClearMemPoolAsync(string blockchainName) =>
             TransactAsync<string>(blockchainName, ControlAction.ClearMemPoolMethod);
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        public Task<CliResponse<string>> ClearMemPoolAsync() => 
+        public Task<CliResponse<string>> ClearMemPoolAsync() =>
             ClearMemPoolAsync(CliOptions.ChainName);
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="display_names">Use display names instead of internal</param>
         /// <param name="with_upgrades">Take upgrades into account</param>
         /// <returns></returns>
-        public Task<CliResponse<GetBlockchainParamsResult>> GetBlockchainParamsAsync(string blockchainName, bool display_names = false, bool with_upgrades = false) => 
+        public Task<CliResponse<GetBlockchainParamsResult>> GetBlockchainParamsAsync(string blockchainName, bool display_names = false, bool with_upgrades = false) =>
             TransactAsync<GetBlockchainParamsResult>(blockchainName, ControlAction.GetBlockchainParamsMethod, new[] { $"{display_names}".ToLower(), $"{with_upgrades}".ToLower() });
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="display_names">Use display names instead of internal</param>
         /// <param name="with_upgrades">Take upgrades into account</param>
         /// <returns></returns>
-        public Task<CliResponse<GetBlockchainParamsResult>> GetBlockchainParamsAsync(bool display_names = false, bool with_upgrades = false) => 
+        public Task<CliResponse<GetBlockchainParamsResult>> GetBlockchainParamsAsync(bool display_names = false, bool with_upgrades = false) =>
             GetBlockchainParamsAsync(CliOptions.ChainName, display_names, with_upgrades);
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        public Task<CliResponse<GetInfoResult>> GetInfoAsync(string blockchainName) => 
+        public Task<CliResponse<GetInfoResult>> GetInfoAsync(string blockchainName) =>
             TransactAsync<GetInfoResult>(blockchainName, ControlAction.GetInfoMethod);
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        public Task<CliResponse<GetRuntimeParamsResult>> GetRuntimeParamsAsync(string blockchainName) => 
+        public Task<CliResponse<GetRuntimeParamsResult>> GetRuntimeParamsAsync(string blockchainName) =>
             TransactAsync<GetRuntimeParamsResult>(blockchainName, ControlAction.GetRuntimeParamsMethod);
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="command">The command to get help on</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> HelpAsync(string blockchainName, string command = "getinfo") => 
+        public Task<CliResponse<object>> HelpAsync(string blockchainName, string command = "getinfo") =>
             TransactAsync<object>(blockchainName, ControlAction.HelpMethod, new[] { command });
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="command">The command to get help on</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> HelpAsync(string command = "getinfo") => 
+        public Task<CliResponse<object>> HelpAsync(string command = "getinfo") =>
             HelpAsync(CliOptions.ChainName, command);
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="tasks">Task(s) to be paused. Possible values: incoming,mining,offchain</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PauseAsync(string blockchainName, string tasks = "incoming,mining") => 
+        public Task<CliResponse<object>> PauseAsync(string blockchainName, string tasks = "incoming,mining") =>
             TransactAsync<object>(blockchainName, ControlAction.PauseMethod, new[] { tasks });
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="tasks">Task(s) to be paused. Possible values: incoming,mining,offchain</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PauseAsync(string tasks = "incoming,mining") => 
+        public Task<CliResponse<object>> PauseAsync(string tasks = "incoming,mining") =>
             PauseAsync(CliOptions.ChainName, tasks);
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <param name="tasks">Task(s) to be resumed. Possible values: incoming,mining,offchain</param>
-        public Task<CliResponse<object>> ResumeAsync(string tasks = "incoming,mining") => 
+        public Task<CliResponse<object>> ResumeAsync(string tasks = "incoming,mining") =>
             ResumeAsync(CliOptions.ChainName, tasks);
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(numeric, optional) The block height in active chain or height before current tip (if negative)</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SetLastBlockAsync([Optional] object hash_or_height) => 
+        public Task<CliResponse<object>> SetLastBlockAsync([Optional] object hash_or_height) =>
             SetLastBlockAsync(CliOptions.ChainName, hash_or_height);
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        public Task<CliResponse<string>> StopAsync(string blockchainName) => 
+        public Task<CliResponse<string>> StopAsync(string blockchainName) =>
             TransactAsync<string>(blockchainName, ControlAction.StopMethod);
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        public Task<CliResponse<string>> StopAsync() => 
+        public Task<CliResponse<string>> StopAsync() =>
             StopAsync(CliOptions.ChainName);
     }
 }
