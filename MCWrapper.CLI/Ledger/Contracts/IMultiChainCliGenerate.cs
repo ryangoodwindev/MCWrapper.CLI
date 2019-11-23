@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using MCWrapper.CLI.Connection;
+﻿using MCWrapper.CLI.Connection;
 using MCWrapper.CLI.Ledger.Contracts;
+using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {

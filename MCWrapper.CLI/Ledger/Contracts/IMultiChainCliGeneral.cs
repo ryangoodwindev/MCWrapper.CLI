@@ -1,8 +1,8 @@
-﻿using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using MCWrapper.CLI.Connection;
+﻿using MCWrapper.CLI.Connection;
 using MCWrapper.CLI.Ledger.Contracts;
 using MCWrapper.Data.Models.Blockchain;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
