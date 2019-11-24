@@ -8,22 +8,83 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>Previously, the Command Line Interface (CLI) logic contained in this project was packaged with the full MCWrapper package which became to unwieldy to maintain and has been broken into two seperate projects.
+    <PackageReleaseNotes>MultiChain Command Line Interface (CLI) client interfaces should be injected into Controllers or Razor Pages as follows.
 
-MCWrapper.RPC and MCWrapper.CLI are the two projects.
+IMultiChainCliGenerate :.....: Provide access to Generate MultChain Core methods.
+getgenerate, gethashespersec, setgenerate
 
-Version 3.0.0: Breaking changes; Please refer to the Github Repo for this project and review any commit that includes 'Version 2.1.0' or 'Version 3.0.0' in the title.</PackageReleaseNotes>
+IMultiChainCliOffChain :....: Provides access to OffChain MultChain Core methods.
+purgepublisheditems, purgestreamitems, retrievestreamitems
+
+IMultiChainCliControl :.....: Provides access to Control MultChain Core methods.
+clearmempool, getblockchainparams, getinfo, getruntimeparams, 
+help, pause, resume, setlastblock, setruntimeparam, stop
+
+IMultiChainCliGeneral :.....: Provides access to General MultChain Core methods
+getassetinfo, getbestblockhash, getblock, getblockchaininfo,
+getblockcount, getblockhash, getchaintips, getdifficulty,
+getfiltercode, getlastblockinfo, getmempoolinfo, getrawmempool,
+getstreaminfo, gettxout, gettxoutsetinfo, listassets, listblocks,
+listpermissions, liststreamfilters, liststreams, listtxfilters,
+listupgrades, runstreamfilter, runtxfilter, teststreamfilter,
+testtxfilter, verifychain, verifypermission
+
+IMultiChainCliNetwork :.....: Provides access to Network MultChain Core methods 
+addnode, getaddednodeinfo, getchunkqueueinfo, getchunkqueuetotals, 
+getconnectioncount, getnettotals, getnetworkinfo, getpeerinfo, ping
+
+IMultiChainCliUtility :.........: Provides access to Utility MultChain Core methods 
+appendbinarycache, createbinarycache, createkeypairs,
+createmultisig, deletebinarycache, estimatefee, estimatepriority,
+validateaddress, verifymessage
+
+IMultiChainCliMining :.........: Provides access to Mining MultChain Core methods 
+getblocktemplate, getmininginfo, getnetworkhashps,
+prioritisetransaction, submitblock
+
+IMultiChainCliWallet :.........: Provides access to Wallet MultChain Core methods 
+addmultisigaddress, appendrawexchange, approvefrom, backupwallet,
+combineunspent, completerawexchange, create, createfrom,
+createrawexchange, createrawsendfrom, decoderawexchange,
+disablerawtransaction, dumpprivkey, dumpwallet, encryptwallet,
+getaccount, getaccountaddress, getaddressbalances, getaddresses,
+getaddressesbyaccount, getaddresstransaction, getassetbalances,
+getassettransaction, getbalance, getmultibalances, getnewaddress,
+getrawchangeaddress, getreceivedbyaccount, getreceivedbyaddress,
+getstreamitem, getstreamkeysummary, getstreampublishersummary,
+gettotalbalances, gettransaction, gettxoutdata, getunconfirmedbalance,
+getwalletinfo, getwallettransaction, grant, grantfrom, grantwithdata,
+grantwithdatafrom, importaddress, importprivkey, importwallet, issue,
+issuefrom, issuemore, issuemorefrom, keypoolrefill, listaccounts,
+listaddresses, listaddressgroupings, listaddresstransactions,
+listassettransactions, listlockunspent, listreceivedbyaccount,
+listreceivedbyaddress, listsinceblock, liststreamblockitems,
+liststreamitems, liststreamkeyitems, liststreamkeys, liststreampublisheritems,
+liststreampublishers, liststreamqueryitems, liststreamtxitems,
+listtransactions, listunspent, listwallettransactions, lockunspent,
+move, preparelockunspent, preparelockunspentfrom, publish, publishfrom,
+publishmulti, publishmultifrom, purgepublisheditems, purgestreamitems,
+resendwallettransactions, retrievestreamitems, revoke, revokefrom, send,
+sendasset, sendassetfrom, sendfrom, sendfromaccount, sendmany, sendwithdata,
+sendwithdatafrom, setaccount, settxfee, signmessage, subscribe, trimsubscribe,
+txouttobinarycache, unsubscribe, walletlock, walletpassphrase,
+walletpassphrasechange,
+
+IMultiChainCliRaw :.........: Provides access to Raw MultChain Core methods 
+appendrawchange, appendrawdata, appendrawtransaction,
+createrawtransaction, decoderawtransaction, decodescript,
+getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
     <Authors>Myndblock LLC, Ryan Goodwin</Authors>
     <Company>Myndblock LLC</Company>
     <Description>A simple .NET Core wrapper for the MultiChain Core blockchain library that utilitzes the Command Line Interface (CLI) to communicate with distributed ledgers. Written with C# 8.0 and supports .NET Core 2.1, 2.2, and 3.0.
-** This library has only been tested under Windows environments. We still need to write a custom Terminal provider for LInux and MacOs environments with an upcoming release.</Description>
+** This library is only supported on Windows environments in this version.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>3.0.0</Version>
+    <Version>4.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\rgood\source\repos\MCWrapper.CLI\MCWrapper.CLI\MCWrapper.CLI.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
