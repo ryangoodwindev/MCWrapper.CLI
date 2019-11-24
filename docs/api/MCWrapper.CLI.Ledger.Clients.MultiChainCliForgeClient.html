@@ -1,0 +1,602 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MultiChainCliForgeClient
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MultiChainCliForgeClient
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient">
+  
+  
+  <h1 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient" class="text-break">Class MultiChainCliForgeClient
+  </h1>
+  <div class="markdown level0 summary"><p>Start and kill the multichaind process directly;
+This class implements the IForge contract to interact directly with the multichaind.exe binary;
+At the moment the Forge only works in Windows environments;</p>
+<p>
+    Path to MultiChain library needs to be loaded via IOptions pipeline using ForgeOptions type
+</p>
+<p>
+    MacOS and Linux OS detection will be added in version 1.1.3;
+</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.html">MultiChainCliMachinist</a></div>
+    <div class="level2"><span class="xref">MultiChainCliForgeClient</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliForge.html">IMultiChainCliForge</a></div>
+    <div><a class="xref" href="MCWrapper.CLI.Ledger.Contracts.IMultiChainCli.html">IMultiChainCli</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.html#MCWrapper_CLI_Ledger_Clients_MultiChainCliMachinist_CliOptions">MultiChainCliMachinist.CliOptions</a>
+    </div>
+    <div>
+      <a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.html#MCWrapper_CLI_Ledger_Clients_MultiChainCliMachinist_StartBlockchainAsync_System_String_System_Boolean_System_String_">MultiChainCliMachinist.StartBlockchainAsync(String, Boolean, String)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="MCWrapper.CLI.Ledger.Clients.html">MCWrapper.CLI.Ledger.Clients</a></h6>
+  <h6><strong>Assembly</strong>: MCWrapper.CLI.dll</h6>
+  <h5 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MultiChainCliForgeClient : MultiChainCliMachinist, IMultiChainCliForge, IMultiChainCli</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient__ctor_Microsoft_Extensions_Options_IOptions_MCWrapper_CLI_Options_CliOptions__.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.%23ctor(Microsoft.Extensions.Options.IOptions%7BMCWrapper.CLI.Options.CliOptions%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Forge/MultiChainCliForgeClient.cs/#L31">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient__ctor_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.#ctor*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient__ctor_Microsoft_Extensions_Options_IOptions_MCWrapper_CLI_Options_CliOptions__" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">MultiChainCliForgeClient(IOptions&lt;CliOptions&gt;)</h4>
+  <div class="markdown level1 summary"><p>Create a new blockchain Forge instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MultiChainCliForgeClient(IOptions&lt;CliOptions&gt; options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Options.IOptions</span>&lt;<a class="xref" href="MCWrapper.CLI.Options.CliOptions.html">CliOptions</a>&gt;</td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_ConnectToRemoteNodeAsync_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.ConnectToRemoteNodeAsync(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Forge/MultiChainCliForgeClient.cs/#L149">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_ConnectToRemoteNodeAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.ConnectToRemoteNodeAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_ConnectToRemoteNodeAsync_System_String_System_String_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.ConnectToRemoteNodeAsync(System.String,System.String,System.String,System.Boolean)">ConnectToRemoteNodeAsync(String, String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Connect to a remote MultiChain node.
+Returns process id to caller</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ForgeResponse&gt; ConnectToRemoteNodeAsync(string blockchainName, string ipAddress, string port, bool useSSL)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ipAddress</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">port</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useSSL</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Ledger.Clients.ForgeResponse.html">ForgeResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_CreateBlockchainAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.CreateBlockchainAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Forge/MultiChainCliForgeClient.cs/#L40">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_CreateBlockchainAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.CreateBlockchainAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_CreateBlockchainAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.CreateBlockchainAsync(System.String)">CreateBlockchainAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Create a new MultiChain blockchain in the local Windows environment;
+Passed <code data-dev-comment-type="paramref" class="paramref">blockchainName</code> value will be used as the new blockchain name;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ForgeResponse&gt; CreateBlockchainAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Ledger.Clients.ForgeResponse.html">ForgeResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_CreateColdNodeAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.CreateColdNodeAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Forge/MultiChainCliForgeClient.cs/#L98">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_CreateColdNodeAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.CreateColdNodeAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_CreateColdNodeAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.CreateColdNodeAsync(System.String)">CreateColdNodeAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Create a local MultiChain blockchain cold node/wallet
+Create a Cold Node</p>
+<p>If Hot Wallet path does not exist throw exception
+since we won't be able to access the Hot Wallet's
+params.dat file which is required to configure
+the Cold Wallet properly.</p>
+<p>Next, verify whether or not the MultiChainCold
+directory exists in the /AppData/Roaming folder.
+If the Cold Node directory does not exist, we
+create it. If we end up creating this folder then
+we store the returned DirectoryInfo as coldNodeDirectory
+since we will need to create the Code Wallet
+sub-directory within the new Cold Node folder.</p>
+<p>Next, verify whether or not a folder named after
+the passed blockchainName value exists in the
+Cold Wallet path. If the Cold Wallet path does
+not exist, we create it.</p>
+<p>Finally, we check if a params.dat file is available
+in the Cold Wallet path. If not, then we copy it
+from the Hot Node path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; CreateColdNodeAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StartBlockchainAsync_System_String_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StartBlockchainAsync(System.String%2CSystem.Boolean%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Forge/MultiChainCliForgeClient.cs/#L51">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StartBlockchainAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StartBlockchainAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StartBlockchainAsync_System_String_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StartBlockchainAsync(System.String,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.Object})">StartBlockchainAsync(String, Boolean, Dictionary&lt;String, Object&gt;)</h4>
+  <div class="markdown level1 summary"><p>Start a MultiChain blockchain present on the local Windows environment and use HTTP connections;
+Passed <code data-dev-comment-type="paramref" class="paramref">blockchainName</code> value will be used as the local blockchain name;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ForgeResponse&gt; StartBlockchainAsync(string blockchainName, bool useSsl, Dictionary&lt;string, object&gt; runtimeParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useSsl</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">runtimeParams</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Ledger.Clients.ForgeResponse.html">ForgeResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StartColdNodeAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StartColdNodeAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Forge/MultiChainCliForgeClient.cs/#L129">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StartColdNodeAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StartColdNodeAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StartColdNodeAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StartColdNodeAsync(System.String)">StartColdNodeAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Start an existing local MultiChain blockchain cold node/wallet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ForgeResponse&gt; StartColdNodeAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Ledger.Clients.ForgeResponse.html">ForgeResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StopBlockchainAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StopBlockchainAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Forge/MultiChainCliForgeClient.cs/#L67">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StopBlockchainAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StopBlockchainAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StopBlockchainAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StopBlockchainAsync(System.String)">StopBlockchainAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Stop a MultiChain blockchain running on the local Windows environment</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ForgeResponse&gt; StopBlockchainAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Ledger.Clients.ForgeResponse.html">ForgeResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StopColdNodeAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StopColdNodeAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Forge/MultiChainCliForgeClient.cs/#L137">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StopColdNodeAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StopColdNodeAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient_StopColdNodeAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.StopColdNodeAsync(System.String)">StopColdNodeAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Stop a MultiChain cold node running on the local Windows environment</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ForgeResponse&gt; StopColdNodeAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Ledger.Clients.ForgeResponse.html">ForgeResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliForge.html">IMultiChainCliForge</a>
+  </div>
+  <div>
+      <a class="xref" href="MCWrapper.CLI.Ledger.Contracts.IMultiChainCli.html">IMultiChainCli</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliForgeClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Forge/MultiChainCliForgeClient.cs/#L26" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

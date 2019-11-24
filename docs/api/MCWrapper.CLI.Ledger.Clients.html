@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace MCWrapper.CLI.Ledger.Clients
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace MCWrapper.CLI.Ledger.Clients
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="MCWrapper.CLI.Ledger.Clients">
+  
+  <h1 id="MCWrapper_CLI_Ledger_Clients" data-uid="MCWrapper.CLI.Ledger.Clients" class="text-break">Namespace MCWrapper.CLI.Ledger.Clients
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.BlockchainTimerState.html">BlockchainTimerState</a></h4>
+      <section><p>Timer state used for tracking multichain-cli.exe interactions</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.ForgeResponse.html">ForgeResponse</a></h4>
+      <section><p>Forge response handles responses from the ForgeClient</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.GeneralTimerState.html">GeneralTimerState</a></h4>
+      <section><p>Timer state used for tracking multichain-cli.exe interactions</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.html">MultiChainCliClientFactory</a></h4>
+      <section><p>MultiChainCliClientFactory provides access to a collection of MultiChainCliClients</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliControlClient.html">MultiChainCliControlClient</a></h4>
+      <section><p>MutliChain Core methods implemented by the MultiChainCliControlClient concrete class</p>
+<p>clearmempool, getblockchainparams, getinfo, getruntimeparams,
+help, pause, resume, setlastblock, setruntimeparam, stop</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient.html">MultiChainCliForgeClient</a></h4>
+      <section><p>Start and kill the multichaind process directly;
+This class implements the IForge contract to interact directly with the multichaind.exe binary;
+At the moment the Forge only works in Windows environments;</p>
+<p>
+    Path to MultiChain library needs to be loaded via IOptions pipeline using ForgeOptions type
+</p>
+<p>
+    MacOS and Linux OS detection will be added in version 1.1.3;
+</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.html">MultiChainCliGeneralClient</a></h4>
+      <section><p>MutliChain Core methods implemented by the MultiChainCliGeneralClient concrete class</p>
+<p>getassetinfo, getbestblockhash, getblock, getblockchaininfo,
+getblockcount, getblockhash, getchaintips, getdifficulty,
+getfiltercode, getlastblockinfo, getmempoolinfo, getrawmempool,
+getstreaminfo, gettxout, gettxoutsetinfo, listassets, listblocks,
+listpermissions, liststreamfilters, liststreams, listtxfilters,
+listupgrades, runstreamfilter, runtxfilter, teststreamfilter,
+testtxfilter, verifychain, verifypermission</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliGenerateClient.html">MultiChainCliGenerateClient</a></h4>
+      <section><p>MutliChain Core methods implemented by the MultiChainCliGenerateClient concrete class</p>
+<p>getgenerate, gethashespersec, setgenerate</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.html">MultiChainCliMachinist</a></h4>
+      <section><p>Machinist interacts with MultiChain binary files directly and monitors their reponses while reacting accordingly</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliMiningClient.html">MultiChainCliMiningClient</a></h4>
+      <section><p>MutliChain Core methods implemented by the MultiChainCliMiningClient concrete class</p>
+<p>getblocktemplate, getmininginfo, getnetworkhashps,
+prioritisetransaction, submitblock</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliNetworkClient.html">MultiChainCliNetworkClient</a></h4>
+      <section><p>MutliChain Core methods implemented by the MultiChainCliNetworkClient concrete class</p>
+<p>addnode, getaddednodeinfo, getchunkqueueinfo, getchunkqueuetotals,
+getconnectioncount, getnettotals, getnetworkinfo, getpeerinfo, ping</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliOffChainClient.html">MultiChainCliOffChainClient</a></h4>
+      <section><p>MutliChain Core methods implemented by the MultiChainCliOffChainClient concrete class</p>
+<p>purgepublisheditems, purgestreamitems, retrievestreamitems</p>
+<p>OffChain services to support MultiChain Enterprise users
+I do not have access to an Enterprise version of MultiChain
+so no unit testing can be performed against these methods</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.html">MultiChainCliRawClient</a></h4>
+      <section><p>MutliChain Core methods implemented by the MultiChainCliRawClient concrete class</p>
+<p>appendrawchange, appendrawdata, appendrawtransaction,
+createrawtransaction, decoderawtransaction, decodescript,
+getrawtransaction, sendrawtransaction, signrawtransaction</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliUtilityClient.html">MultiChainCliUtilityClient</a></h4>
+      <section><p>MutliChain Core methods implemented by the MultiChainCliUtilityClient concrete class</p>
+<p>appendbinarycache, createbinarycache, createkeypairs,
+createmultisig, deletebinarycache, estimatefee, estimatepriority,
+validateaddress, verifymessage</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletClient.html">MultiChainCliWalletClient</a></h4>
+      <section><p>MutliChain Core methods implemented by the MultiChainCliWalletClient concrete class</p>
+<p>addmultisigaddress, appendrawexchange, approvefrom, backupwallet,
+combineunspent, completerawexchange, create, createfrom,
+createrawexchange, createrawsendfrom, decoderawexchange,
+disablerawtransaction, dumpprivkey, dumpwallet, encryptwallet,
+getaccount, getaccountaddress, getaddressbalances, getaddresses,
+getaddressesbyaccount, getaddresstransaction, getassetbalances,
+getassettransaction, getbalance, getmultibalances, getnewaddress,
+getrawchangeaddress, getreceivedbyaccount, getreceivedbyaddress,
+getstreamitem, getstreamkeysummary, getstreampublishersummary,
+gettotalbalances, gettransaction, gettxoutdata, getunconfirmedbalance,
+getwalletinfo, getwallettransaction, grant, grantfrom, grantwithdata,
+grantwithdatafrom, importaddress, importprivkey, importwallet, issue,
+issuefrom, issuemore, issuemorefrom, keypoolrefill, listaccounts,
+listaddresses, listaddressgroupings, listaddresstransactions,
+listassettransactions, listlockunspent, listreceivedbyaccount,
+listreceivedbyaddress, listsinceblock, liststreamblockitems,
+liststreamitems, liststreamkeyitems, liststreamkeys, liststreampublisheritems,
+liststreampublishers, liststreamqueryitems, liststreamtxitems,
+listtransactions, listunspent, listwallettransactions, lockunspent,
+move, preparelockunspent, preparelockunspentfrom, publish, publishfrom,
+publishmulti, publishmultifrom, purgepublisheditems, purgestreamitems,
+resendwallettransactions, retrievestreamitems, revoke, revokefrom, send,
+sendasset, sendassetfrom, sendfrom, sendfromaccount, sendmany, sendwithdata,
+sendwithdatafrom, setaccount, settxfee, signmessage, subscribe, trimsubscribe,
+txouttobinarycache, unsubscribe, walletlock, walletpassphrase,
+walletpassphrasechange,</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletExtensions.html">MultiChainCliWalletExtensions</a></h4>
+      <section><p>IMultiChainCliWallet Extension methods</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliClientFactory.html">IMultiChainCliClientFactory</a></h4>
+      <section><p>MultiChainCliClientFactory provides access to a collection of MultiChainCliClients</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliControl.html">IMultiChainCliControl</a></h4>
+      <section><p>MutliChain Core methods established by the IMultiChainCliControl contract</p>
+<p>clearmempool, getblockchainparams, getinfo, getruntimeparams,
+help, pause, resume, setlastblock, setruntimeparam, stop</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliForge.html">IMultiChainCliForge</a></h4>
+      <section><p>Action established by IMultiChainCliForge</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.html">IMultiChainCliGeneral</a></h4>
+      <section><p>MutliChain Core methods established by the IMultiChainCliGeneral contract</p>
+<p>getassetinfo, getbestblockhash, getblock, getblockchaininfo,
+getblockcount, getblockhash, getchaintips, getdifficulty,
+getfiltercode, getlastblockinfo, getmempoolinfo, getrawmempool,
+getstreaminfo, gettxout, gettxoutsetinfo, listassets, listblocks,
+listpermissions, liststreamfilters, liststreams, listtxfilters,
+listupgrades, runstreamfilter, runtxfilter, teststreamfilter,
+testtxfilter, verifychain, verifypermission</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliGenerate.html">IMultiChainCliGenerate</a></h4>
+      <section><p>MutliChain Core methods established by the IMultiChainCliGenerate contract</p>
+<p>getgenerate, gethashespersec, setgenerate</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliMining.html">IMultiChainCliMining</a></h4>
+      <section><p>MutliChain Core methods established by the IMultiChainCliMining contract</p>
+<p>getblocktemplate, getmininginfo, getnetworkhashps,
+prioritisetransaction, submitblock</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliNetwork.html">IMultiChainCliNetwork</a></h4>
+      <section><p>MutliChain Core methods established by the IMultiChainCliNetwork contract</p>
+<p>addnode, getaddednodeinfo, getchunkqueueinfo, getchunkqueuetotals,
+getconnectioncount, getnettotals, getnetworkinfo, getpeerinfo, ping</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliOffChain.html">IMultiChainCliOffChain</a></h4>
+      <section><p>MutliChain Core methods established by the IMultiChainCliOffChain contract</p>
+<p>purgepublisheditems, purgestreamitems, retrievestreamitems</p>
+<p>OffChain services to support MultiChain Enterprise users
+I do not have access to an Enterprise version of MultiChain
+so no unit testing can be performed against these methods</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliRaw.html">IMultiChainCliRaw</a></h4>
+      <section><p>MutliChain Core methods established by the IMultiChainCliRaw contract</p>
+<p>appendrawchange, appendrawdata, appendrawtransaction,
+createrawtransaction, decoderawtransaction, decodescript,
+getrawtransaction, sendrawtransaction, signrawtransaction</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliUtility.html">IMultiChainCliUtility</a></h4>
+      <section><p>MutliChain Core methods established by the IMultiChainCliUtility contract</p>
+<p>appendbinarycache, createbinarycache, createkeypairs,
+createmultisig, deletebinarycache, estimatefee, estimatepriority,
+validateaddress, verifymessage</p>
+</section>
+      <h4><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.html">IMultiChainCliWallet</a></h4>
+      <section><p>MutliChain Core methods established by the IMultiChainCliWallet contract</p>
+<p>addmultisigaddress, appendrawexchange, approvefrom, backupwallet,
+combineunspent, completerawexchange, create, createfrom,
+createrawexchange, createrawsendfrom, decoderawexchange,
+disablerawtransaction, dumpprivkey, dumpwallet, encryptwallet,
+getaccount, getaccountaddress, getaddressbalances, getaddresses,
+getaddressesbyaccount, getaddresstransaction, getassetbalances,
+getassettransaction, getbalance, getmultibalances, getnewaddress,
+getrawchangeaddress, getreceivedbyaccount, getreceivedbyaddress,
+getstreamitem, getstreamkeysummary, getstreampublishersummary,
+gettotalbalances, gettransaction, gettxoutdata, getunconfirmedbalance,
+getwalletinfo, getwallettransaction, grant, grantfrom, grantwithdata,
+grantwithdatafrom, importaddress, importprivkey, importwallet, issue,
+issuefrom, issuemore, issuemorefrom, keypoolrefill, listaccounts,
+listaddresses, listaddressgroupings, listaddresstransactions,
+listassettransactions, listlockunspent, listreceivedbyaccount,
+listreceivedbyaddress, listsinceblock, liststreamblockitems,
+liststreamitems, liststreamkeyitems, liststreamkeys, liststreampublisheritems,
+liststreampublishers, liststreamqueryitems, liststreamtxitems,
+listtransactions, listunspent, listwallettransactions, lockunspent,
+move, preparelockunspent, preparelockunspentfrom, publish, publishfrom,
+publishmulti, publishmultifrom, purgepublisheditems, purgestreamitems,
+resendwallettransactions, retrievestreamitems, revoke, revokefrom, send,
+sendasset, sendassetfrom, sendfrom, sendfromaccount, sendmany, sendwithdata,
+sendwithdatafrom, setaccount, settxfee, signmessage, subscribe, trimsubscribe,
+txouttobinarycache, unsubscribe, walletlock, walletpassphrase,
+walletpassphrasechange,</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

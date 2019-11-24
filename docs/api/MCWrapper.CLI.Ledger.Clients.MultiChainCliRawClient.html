@@ -1,0 +1,1376 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MultiChainCliRawClient
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MultiChainCliRawClient
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient">
+  
+  
+  <h1 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient" class="text-break">Class MultiChainCliRawClient
+  </h1>
+  <div class="markdown level0 summary"><p>MutliChain Core methods implemented by the MultiChainCliRawClient concrete class</p>
+<p>appendrawchange, appendrawdata, appendrawtransaction,
+createrawtransaction, decoderawtransaction, decodescript,
+getrawtransaction, sendrawtransaction, signrawtransaction</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="MCWrapper.CLI.Connection.MultiChainCliClient.html">MultiChainCliClient</a></div>
+    <div class="level2"><span class="xref">MultiChainCliRawClient</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliRaw.html">IMultiChainCliRaw</a></div>
+    <div><a class="xref" href="MCWrapper.CLI.Ledger.Contracts.IMultiChainCli.html">IMultiChainCli</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="MCWrapper.CLI.Connection.MultiChainCliClient.html#MCWrapper_CLI_Connection_MultiChainCliClient_CliOptions">MultiChainCliClient.CliOptions</a>
+    </div>
+    <div>
+      <a class="xref" href="MCWrapper.CLI.Connection.MultiChainCliClient.html#MCWrapper_CLI_Connection_MultiChainCliClient_TransactAsync__1_System_String_System_String_System_String___MCWrapper_CLI_Helpers_CliArgumentHelper_">MultiChainCliClient.TransactAsync&lt;T&gt;(String, String, String[], CliArgumentHelper)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="MCWrapper.CLI.Ledger.Clients.html">MCWrapper.CLI.Ledger.Clients</a></h6>
+  <h6><strong>Assembly</strong>: MCWrapper.CLI.dll</h6>
+  <h5 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MultiChainCliRawClient : MultiChainCliClient, IMultiChainCliRaw, IMultiChainCli</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient__ctor_Microsoft_Extensions_Options_IOptions_MCWrapper_CLI_Options_CliOptions__.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.%23ctor(Microsoft.Extensions.Options.IOptions%7BMCWrapper.CLI.Options.CliOptions%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L27">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient__ctor_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.#ctor*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient__ctor_Microsoft_Extensions_Options_IOptions_MCWrapper_CLI_Options_CliOptions__" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">MultiChainCliRawClient(IOptions&lt;CliOptions&gt;)</h4>
+  <div class="markdown level1 summary"><p>Create a new MultiChainCliRawClient instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MultiChainCliRawClient(IOptions&lt;CliOptions&gt; options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Options.IOptions</span>&lt;<a class="xref" href="MCWrapper.CLI.Options.CliOptions.html">CliOptions</a>&gt;</td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawChangeAsync_System_String_System_String_System_Double_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawChangeAsync(System.String%2CSystem.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L55">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawChangeAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawChangeAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawChangeAsync_System_String_System_String_System_Double_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawChangeAsync(System.String,System.String,System.Double)">AppendRawChangeAsync(String, String, Double)</h4>
+  <div class="markdown level1 summary"><p>Appends change output to raw transaction, containing any remaining assets / native currency in the inputs that are not already sent to other outputs.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; AppendRawChangeAsync(string tx_hex, string address, double native_fee)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The hex string of the raw transaction)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>The address to send the change to</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">native_fee</span></td>
+        <td><p>Native currency value deducted from that amount so it becomes a transaction fee. Default - calculated automatically</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawChangeAsync_System_String_System_String_System_String_System_Double_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawChangeAsync(System.String%2CSystem.String%2CSystem.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L41">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawChangeAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawChangeAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawChangeAsync_System_String_System_String_System_String_System_Double_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawChangeAsync(System.String,System.String,System.String,System.Double)">AppendRawChangeAsync(String, String, String, Double)</h4>
+  <div class="markdown level1 summary"><p>Appends change output to raw transaction, containing any remaining assets / native currency in the inputs that are not already sent to other outputs.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; AppendRawChangeAsync(string blockchainName, string tx_hex, string address, double native_fee)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The hex string of the raw transaction)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>The address to send the change to</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">native_fee</span></td>
+        <td><p>Native currency value deducted from that amount so it becomes a transaction fee. Default - calculated automatically</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawDataAsync_System_String_System_Object_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawDataAsync(System.String%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L82">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawDataAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawDataAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawDataAsync_System_String_System_Object_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawDataAsync(System.String,System.Object)">AppendRawDataAsync(String, Object)</h4>
+  <div class="markdown level1 summary"><p>Appends new OP_RETURN output to existing raw transaction</p>
+<p>Returns hex-encoded raw transaction.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; AppendRawDataAsync(string tx_hex, object data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The transaction hex string</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Data, see help data-all for details</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawDataAsync_System_String_System_String_System_Object_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawDataAsync(System.String%2CSystem.String%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L69">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawDataAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawDataAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawDataAsync_System_String_System_String_System_Object_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawDataAsync(System.String,System.String,System.Object)">AppendRawDataAsync(String, String, Object)</h4>
+  <div class="markdown level1 summary"><p>Appends new OP_RETURN output to existing raw transaction</p>
+<p>Returns hex-encoded raw transaction.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; AppendRawDataAsync(string blockchainName, string tx_hex, object data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The transaction hex string</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Data, see help data-all for details</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawTransactionAsync_System_String_System_Object___System_Object_System_Object___System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawTransactionAsync(System.String%2CSystem.Object%5B%5D%2CSystem.Object%2CSystem.Object%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L112">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawTransactionAsync_System_String_System_Object___System_Object_System_Object___System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawTransactionAsync(System.String,System.Object[],System.Object,System.Object[],System.String)">AppendRawTransactionAsync(String, Object[], Object, Object[], String)</h4>
+  <div class="markdown level1 summary"><p>Append inputs and outputs to raw transaction</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; AppendRawTransactionAsync(string tx_hex, object[] transactions, object addresses, object[] data, string action = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>Source transaction hex string</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">transactions</span></td>
+        <td><p>A json array of json objects</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">addresses</span></td>
+        <td><p>Object with addresses as keys, see help addresses-all for details</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Array of hexadecimal strings or data objects, see help data-all for details</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">action</span></td>
+        <td><p>Additional actions: &quot;lock&quot;, &quot;sign&quot;, &quot;lock,sign&quot;, &quot;sign,lock&quot;, &quot;send&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawTransactionAsync_System_String_System_String_System_Object___System_Object_System_Object___System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawTransactionAsync(System.String%2CSystem.String%2CSystem.Object%5B%5D%2CSystem.Object%2CSystem.Object%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L98">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_AppendRawTransactionAsync_System_String_System_String_System_Object___System_Object_System_Object___System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.AppendRawTransactionAsync(System.String,System.String,System.Object[],System.Object,System.Object[],System.String)">AppendRawTransactionAsync(String, String, Object[], Object, Object[], String)</h4>
+  <div class="markdown level1 summary"><p>Append inputs and outputs to raw transaction</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; AppendRawTransactionAsync(string blockchainName, string tx_hex, object[] transactions, object addresses, object[] data, string action = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>Source transaction hex string</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">transactions</span></td>
+        <td><p>A json array of json objects</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">addresses</span></td>
+        <td><p>Object with addresses as keys, see help addresses-all for details</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Array of hexadecimal strings or data objects, see help data-all for details</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">action</span></td>
+        <td><p>Additional actions: &quot;lock&quot;, &quot;sign&quot;, &quot;lock,sign&quot;, &quot;sign,lock&quot;, &quot;send&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_CreateRawTransactionAsync_System_Object___System_Object_System_Object___System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.CreateRawTransactionAsync(System.Object%5B%5D%2CSystem.Object%2CSystem.Object%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L140">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_CreateRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.CreateRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_CreateRawTransactionAsync_System_Object___System_Object_System_Object___System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.CreateRawTransactionAsync(System.Object[],System.Object,System.Object[],System.String)">CreateRawTransactionAsync(Object[], Object, Object[], String)</h4>
+  <div class="markdown level1 summary"><p>Create a transaction spending the given inputs.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; CreateRawTransactionAsync(object[] transactions, object addresses, object[] data, string action = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">transactions</span></td>
+        <td><p>A json array of json objects</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">addresses</span></td>
+        <td><p>Object with addresses as keys, see help addresses-all for details</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Array of hexadecimal strings or data objects, see help data-all for details</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">action</span></td>
+        <td><p>Additional actions: &quot;lock&quot;, &quot;sign&quot;, &quot;lock,sign&quot;, &quot;sign,lock&quot;, &quot;send&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_CreateRawTransactionAsync_System_String_System_Object___System_Object_System_Object___System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.CreateRawTransactionAsync(System.String%2CSystem.Object%5B%5D%2CSystem.Object%2CSystem.Object%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L127">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_CreateRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.CreateRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_CreateRawTransactionAsync_System_String_System_Object___System_Object_System_Object___System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.CreateRawTransactionAsync(System.String,System.Object[],System.Object,System.Object[],System.String)">CreateRawTransactionAsync(String, Object[], Object, Object[], String)</h4>
+  <div class="markdown level1 summary"><p>Create a transaction spending the given inputs.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; CreateRawTransactionAsync(string blockchainName, object[] transactions, object addresses, object[] data, string action = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">transactions</span></td>
+        <td><p>A json array of json objects</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">addresses</span></td>
+        <td><p>Object with addresses as keys, see help addresses-all for details</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Array of hexadecimal strings or data objects, see help data-all for details</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">action</span></td>
+        <td><p>Additional actions: &quot;lock&quot;, &quot;sign&quot;, &quot;lock,sign&quot;, &quot;sign,lock&quot;, &quot;send&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeRawTransactionAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeRawTransactionAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L163">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeRawTransactionAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeRawTransactionAsync(System.String)">DecodeRawTransactionAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Return a JSON object representing the serialized, hex-encoded transaction.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;DecodeRawTransactionResult&gt;&gt; DecodeRawTransactionAsync(string tx_hex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The transaction hex string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Raw.DecodeRawTransactionResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeRawTransactionAsync_System_String_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeRawTransactionAsync(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L152">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeRawTransactionAsync_System_String_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeRawTransactionAsync(System.String,System.String)">DecodeRawTransactionAsync(String, String)</h4>
+  <div class="markdown level1 summary"><p>Return a JSON object representing the serialized, hex-encoded transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;DecodeRawTransactionResult&gt;&gt; DecodeRawTransactionAsync(string blockchainName, string tx_hex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The transaction hex string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Raw.DecodeRawTransactionResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeScriptAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeScriptAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L186">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeScriptAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeScriptAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeScriptAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeScriptAsync(System.String)">DecodeScriptAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Decode a hex-encoded script.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; DecodeScriptAsync(string script_hex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">script_hex</span></td>
+        <td><p>The hex encoded script</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeScriptAsync_System_String_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeScriptAsync(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L175">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeScriptAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeScriptAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_DecodeScriptAsync_System_String_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.DecodeScriptAsync(System.String,System.String)">DecodeScriptAsync(String, String)</h4>
+  <div class="markdown level1 summary"><p>Decode a hex-encoded script.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; DecodeScriptAsync(string blockchainName, string script_hex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">script_hex</span></td>
+        <td><p>The hex encoded script</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_GetRawTransactionAsync_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.GetRawTransactionAsync(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L217">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_GetRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.GetRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_GetRawTransactionAsync_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.GetRawTransactionAsync(System.String,System.Boolean)">GetRawTransactionAsync(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>
+    NOTE: By default this function only works sometimes. This is when the tx is in the mempool or there is an unspent 
+    output in the utxo for this transaction. To make it always work, you need to maintain a transaction index, using the -txindex command line option.
+</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; GetRawTransactionAsync(string txid, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">txid</span></td>
+        <td><p>The transaction id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If 0, return a string, other return a json object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_GetRawTransactionAsync_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.GetRawTransactionAsync(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L202">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_GetRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.GetRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_GetRawTransactionAsync_System_String_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.GetRawTransactionAsync(System.String,System.String,System.Boolean)">GetRawTransactionAsync(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>
+    NOTE: By default this function only works sometimes. This is when the tx is in the mempool or there is an unspent 
+    output in the utxo for this transaction. To make it always work, you need to maintain a transaction index, using the -txindex command line option.
+</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; GetRawTransactionAsync(string blockchainName, string txid, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">txid</span></td>
+        <td><p>The transaction id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If 0, return a string, other return a json object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SendRawTransactionAsync_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SendRawTransactionAsync(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L243">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SendRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SendRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SendRawTransactionAsync_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SendRawTransactionAsync(System.String,System.Boolean)">SendRawTransactionAsync(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Submits raw transaction (serialized, hex-encoded) to local node and network.</p>
+<p>Also see createrawtransaction and signrawtransaction calls.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; SendRawTransactionAsync(string tx_hex, bool allow_high_fees = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The hex string of the raw transaction)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">allow_high_fees</span></td>
+        <td><p>Allow high fees</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SendRawTransactionAsync_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SendRawTransactionAsync(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L231">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SendRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SendRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SendRawTransactionAsync_System_String_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SendRawTransactionAsync(System.String,System.String,System.Boolean)">SendRawTransactionAsync(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Submits raw transaction (serialized, hex-encoded) to local node and network.</p>
+<p>Also see createrawtransaction and signrawtransaction calls.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; SendRawTransactionAsync(string blockchainName, string tx_hex, bool allow_high_fees = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The hex string of the raw transaction)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">allow_high_fees</span></td>
+        <td><p>Allow high fees</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SignRawTransactionAsync_System_String_System_Object___System_Object___System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SignRawTransactionAsync(System.String%2CSystem.Object%5B%5D%2CSystem.Object%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L294">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SignRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SignRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SignRawTransactionAsync_System_String_System_Object___System_Object___System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SignRawTransactionAsync(System.String,System.Object[],System.Object[],System.String)">SignRawTransactionAsync(String, Object[], Object[], String)</h4>
+  <div class="markdown level1 summary"><p>Sign inputs for raw transaction (serialized, hex-encoded).</p>
+<p>
+    The second optional argument (may be null) is an array of previous transaction outputs that
+    this transaction depends on but may not yet be in the block chain.
+</p>
+<p>
+     The third optional argument (may be null) is an array of base58-encoded private
+    keys that, if given, will be the only keys used to sign the transaction.
+</p>
+<p>Requires wallet passphrase to be set with walletpassphrase call.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;SignRawTransactionResult&gt;&gt; SignRawTransactionAsync(string tx_hex, object[] prevtxs, object[] privatekeys, string sighashtype)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The transaction hex string</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">prevtxs</span></td>
+        <td><p>An json array of previous dependent transaction outputs</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">privatekeys</span></td>
+        <td><p>A json array of base58-encoded private keys for signing</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sighashtype</span></td>
+        <td><p>The signature hash type. Must be one of: &quot;All&quot;, &quot;NONE&quot;, &quot;SINGLE&quot;, &quot;ALL|ANYONECANPAY&quot;, &quot;NONE|ANYONECANPAY&quot;, &quot;SINGLE|ANYONECANPAY&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Raw.SignRawTransactionResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SignRawTransactionAsync_System_String_System_String_System_Object___System_Object___System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SignRawTransactionAsync(System.String%2CSystem.String%2CSystem.Object%5B%5D%2CSystem.Object%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L269">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SignRawTransactionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SignRawTransactionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient_SignRawTransactionAsync_System_String_System_String_System_Object___System_Object___System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient.SignRawTransactionAsync(System.String,System.String,System.Object[],System.Object[],System.String)">SignRawTransactionAsync(String, String, Object[], Object[], String)</h4>
+  <div class="markdown level1 summary"><p>Sign inputs for raw transaction (serialized, hex-encoded).</p>
+<p>
+    The second optional argument (may be null) is an array of previous transaction outputs that
+    this transaction depends on but may not yet be in the block chain.
+</p>
+<p>
+     The third optional argument (may be null) is an array of base58-encoded private
+    keys that, if given, will be the only keys used to sign the transaction.
+</p>
+<p>Requires wallet passphrase to be set with walletpassphrase call.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;SignRawTransactionResult&gt;&gt; SignRawTransactionAsync(string blockchainName, string tx_hex, object[] prevtxs, object[] privatekeys, string sighashtype)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The transaction hex string</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">prevtxs</span></td>
+        <td><p>An json array of previous dependent transaction outputs</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">privatekeys</span></td>
+        <td><p>A json array of base58-encoded private keys for signing</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sighashtype</span></td>
+        <td><p>The signature hash type. Must be one of: &quot;All&quot;, &quot;NONE&quot;, &quot;SINGLE&quot;, &quot;ALL|ANYONECANPAY&quot;, &quot;NONE|ANYONECANPAY&quot;, &quot;SINGLE|ANYONECANPAY&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Raw.SignRawTransactionResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliRaw.html">IMultiChainCliRaw</a>
+  </div>
+  <div>
+      <a class="xref" href="MCWrapper.CLI.Ledger.Contracts.IMultiChainCli.html">IMultiChainCli</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliRawClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliRawClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliRawClient.cs/#L21" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

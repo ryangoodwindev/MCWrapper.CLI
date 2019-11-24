@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MultiChainCliClientFactory
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MultiChainCliClientFactory
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory">
+  
+  
+  <h1 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory" class="text-break">Class MultiChainCliClientFactory
+  </h1>
+  <div class="markdown level0 summary"><p>MultiChainCliClientFactory provides access to a collection of MultiChainCliClients</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">MultiChainCliClientFactory</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliClientFactory.html">IMultiChainCliClientFactory</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="MCWrapper.CLI.Ledger.Clients.html">MCWrapper.CLI.Ledger.Clients</a></h6>
+  <h6><strong>Assembly</strong>: MCWrapper.CLI.dll</h6>
+  <h5 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MultiChainCliClientFactory : IMultiChainCliClientFactory</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory__ctor_MCWrapper_CLI_Ledger_Clients_IMultiChainCliGenerate_MCWrapper_CLI_Ledger_Clients_IMultiChainCliOffChain_MCWrapper_CLI_Ledger_Clients_IMultiChainCliControl_MCWrapper_CLI_Ledger_Clients_IMultiChainCliGeneral_MCWrapper_CLI_Ledger_Clients_IMultiChainCliNetwork_MCWrapper_CLI_Ledger_Clients_IMultiChainCliUtility_MCWrapper_CLI_Ledger_Clients_IMultiChainCliMining_MCWrapper_CLI_Ledger_Clients_IMultiChainCliWallet_MCWrapper_CLI_Ledger_Clients_IMultiChainCliForge_MCWrapper_CLI_Ledger_Clients_IMultiChainCliRaw_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.%23ctor(MCWrapper.CLI.Ledger.Clients.IMultiChainCliGenerate%2CMCWrapper.CLI.Ledger.Clients.IMultiChainCliOffChain%2CMCWrapper.CLI.Ledger.Clients.IMultiChainCliControl%2CMCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral%2CMCWrapper.CLI.Ledger.Clients.IMultiChainCliNetwork%2CMCWrapper.CLI.Ledger.Clients.IMultiChainCliUtility%2CMCWrapper.CLI.Ledger.Clients.IMultiChainCliMining%2CMCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet%2CMCWrapper.CLI.Ledger.Clients.IMultiChainCliForge%2CMCWrapper.CLI.Ledger.Clients.IMultiChainCliRaw)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L28">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory__ctor_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.#ctor*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory__ctor_MCWrapper_CLI_Ledger_Clients_IMultiChainCliGenerate_MCWrapper_CLI_Ledger_Clients_IMultiChainCliOffChain_MCWrapper_CLI_Ledger_Clients_IMultiChainCliControl_MCWrapper_CLI_Ledger_Clients_IMultiChainCliGeneral_MCWrapper_CLI_Ledger_Clients_IMultiChainCliNetwork_MCWrapper_CLI_Ledger_Clients_IMultiChainCliUtility_MCWrapper_CLI_Ledger_Clients_IMultiChainCliMining_MCWrapper_CLI_Ledger_Clients_IMultiChainCliWallet_MCWrapper_CLI_Ledger_Clients_IMultiChainCliForge_MCWrapper_CLI_Ledger_Clients_IMultiChainCliRaw_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.#ctor(MCWrapper.CLI.Ledger.Clients.IMultiChainCliGenerate,MCWrapper.CLI.Ledger.Clients.IMultiChainCliOffChain,MCWrapper.CLI.Ledger.Clients.IMultiChainCliControl,MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral,MCWrapper.CLI.Ledger.Clients.IMultiChainCliNetwork,MCWrapper.CLI.Ledger.Clients.IMultiChainCliUtility,MCWrapper.CLI.Ledger.Clients.IMultiChainCliMining,MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet,MCWrapper.CLI.Ledger.Clients.IMultiChainCliForge,MCWrapper.CLI.Ledger.Clients.IMultiChainCliRaw)">MultiChainCliClientFactory(IMultiChainCliGenerate, IMultiChainCliOffChain, IMultiChainCliControl, IMultiChainCliGeneral, IMultiChainCliNetwork, IMultiChainCliUtility, IMultiChainCliMining, IMultiChainCliWallet, IMultiChainCliForge, IMultiChainCliRaw)</h4>
+  <div class="markdown level1 summary"><p>MultiChainCliClientFactory provides access to a collection of MultiChainCliClients</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MultiChainCliClientFactory(IMultiChainCliGenerate multiChainCliGenerate, IMultiChainCliOffChain multiChainCliOffChain, IMultiChainCliControl multiChainCliControl, IMultiChainCliGeneral multiChainCliGeneral, IMultiChainCliNetwork multiChainCliNetwork, IMultiChainCliUtility multiChainCliUtility, IMultiChainCliMining multiChainCliMining, IMultiChainCliWallet multiChainCliWallet, IMultiChainCliForge multiChainCliForge, IMultiChainCliRaw multiChainCliRaw)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliGenerate.html">IMultiChainCliGenerate</a></td>
+        <td><span class="parametername">multiChainCliGenerate</span></td>
+        <td><p>Provides access to Generate (native currency or coins) MultChain Core methods</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliOffChain.html">IMultiChainCliOffChain</a></td>
+        <td><span class="parametername">multiChainCliOffChain</span></td>
+        <td><p>Provides access to OffChain MultChain Core methods</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliControl.html">IMultiChainCliControl</a></td>
+        <td><span class="parametername">multiChainCliControl</span></td>
+        <td><p>Provides access to Control MultChain Core methods</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.html">IMultiChainCliGeneral</a></td>
+        <td><span class="parametername">multiChainCliGeneral</span></td>
+        <td><p>Provides access to General MultChain Core methods</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliNetwork.html">IMultiChainCliNetwork</a></td>
+        <td><span class="parametername">multiChainCliNetwork</span></td>
+        <td><p>Provides access to Network MultChain Core methods</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliUtility.html">IMultiChainCliUtility</a></td>
+        <td><span class="parametername">multiChainCliUtility</span></td>
+        <td><p>Provides access to Utility MultChain Core methods</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliMining.html">IMultiChainCliMining</a></td>
+        <td><span class="parametername">multiChainCliMining</span></td>
+        <td><p>Provides access to Mining MultChain Core methods</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.html">IMultiChainCliWallet</a></td>
+        <td><span class="parametername">multiChainCliWallet</span></td>
+        <td><p>Provides access to Wallet MultChain Core methods</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliForge.html">IMultiChainCliForge</a></td>
+        <td><span class="parametername">multiChainCliForge</span></td>
+        <td><p>Provides access to the custom MultiChain Cli Forge client</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliRaw.html">IMultiChainCliRaw</a></td>
+        <td><span class="parametername">multiChainCliRaw</span></td>
+        <td><p>Provides access to Raw MultChain Core methods</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliControlClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliControlClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L95">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliControlClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliControlClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliControlClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliControlClient">MultiChainCliControlClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to Control MultChain Core methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliControl MultiChainCliControlClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliControl.html">IMultiChainCliControl</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliForgeClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliForgeClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L131">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliForgeClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliForgeClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliForgeClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliForgeClient">MultiChainCliForgeClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to the custom MultiChain Cli Forge client</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliForge MultiChainCliForgeClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliForge.html">IMultiChainCliForge</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliGeneralClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliGeneralClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L101">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliGeneralClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliGeneralClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliGeneralClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliGeneralClient">MultiChainCliGeneralClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to General MultChain Core methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliGeneral MultiChainCliGeneralClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.html">IMultiChainCliGeneral</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliGenerateClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliGenerateClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L83">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliGenerateClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliGenerateClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliGenerateClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliGenerateClient">MultiChainCliGenerateClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to Generate (native currency or coins) MultChain Core methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliGenerate MultiChainCliGenerateClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliGenerate.html">IMultiChainCliGenerate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliMiningClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliMiningClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L119">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliMiningClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliMiningClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliMiningClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliMiningClient">MultiChainCliMiningClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to Mining MultChain Core methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliMining MultiChainCliMiningClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliMining.html">IMultiChainCliMining</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliNetworkClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliNetworkClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L107">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliNetworkClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliNetworkClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliNetworkClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliNetworkClient">MultiChainCliNetworkClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to Network MultChain Core methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliNetwork MultiChainCliNetworkClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliNetwork.html">IMultiChainCliNetwork</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliOffChainClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliOffChainClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L89">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliOffChainClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliOffChainClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliOffChainClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliOffChainClient">MultiChainCliOffChainClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to OffChain MultChain Core methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliOffChain MultiChainCliOffChainClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliOffChain.html">IMultiChainCliOffChain</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliRawClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliRawClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L137">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliRawClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliRawClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliRawClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliRawClient">MultiChainCliRawClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to Raw MultChain Core methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliRaw MultiChainCliRawClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliRaw.html">IMultiChainCliRaw</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliUtilityClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliUtilityClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L113">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliUtilityClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliUtilityClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliUtilityClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliUtilityClient">MultiChainCliUtilityClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to Utility MultChain Core methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliUtility MultiChainCliUtilityClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliUtility.html">IMultiChainCliUtility</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliWalletClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliWalletClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L125">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliWalletClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliWalletClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_MultiChainCliWalletClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.MultiChainCliWalletClient">MultiChainCliWalletClient</h4>
+  <div class="markdown level1 summary"><p>Provides access to Wallet MultChain Core methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCliWallet MultiChainCliWalletClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.html">IMultiChainCliWallet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_GetRequiredCliClient__1.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.GetRequiredCliClient%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L77">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_GetRequiredCliClient_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.GetRequiredCliClient*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory_GetRequiredCliClient__1" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory.GetRequiredCliClient``1">GetRequiredCliClient&lt;IMultiChainCli&gt;()</h4>
+  <div class="markdown level1 summary"><p>Get a required MultiChainCliClient</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMultiChainCli GetRequiredCliClient&lt;IMultiChainCli&gt;()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMultiChainCli</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">IMultiChainCli</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliClientFactory.html">IMultiChainCliClientFactory</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliClientFactory.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliClientFactory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Factory/MultiChainCliClientFactory.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

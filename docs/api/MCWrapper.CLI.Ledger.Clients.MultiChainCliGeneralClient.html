@@ -1,0 +1,3440 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MultiChainCliGeneralClient
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MultiChainCliGeneralClient
+   ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient">
+  
+  
+  <h1 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient" class="text-break">Class MultiChainCliGeneralClient
+  </h1>
+  <div class="markdown level0 summary"><p>MutliChain Core methods implemented by the MultiChainCliGeneralClient concrete class</p>
+<p>getassetinfo, getbestblockhash, getblock, getblockchaininfo,
+getblockcount, getblockhash, getchaintips, getdifficulty,
+getfiltercode, getlastblockinfo, getmempoolinfo, getrawmempool,
+getstreaminfo, gettxout, gettxoutsetinfo, listassets, listblocks,
+listpermissions, liststreamfilters, liststreams, listtxfilters,
+listupgrades, runstreamfilter, runtxfilter, teststreamfilter,
+testtxfilter, verifychain, verifypermission</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="MCWrapper.CLI.Connection.MultiChainCliClient.html">MultiChainCliClient</a></div>
+    <div class="level2"><span class="xref">MultiChainCliGeneralClient</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.html">IMultiChainCliGeneral</a></div>
+    <div><a class="xref" href="MCWrapper.CLI.Ledger.Contracts.IMultiChainCli.html">IMultiChainCli</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="MCWrapper.CLI.Connection.MultiChainCliClient.html#MCWrapper_CLI_Connection_MultiChainCliClient_CliOptions">MultiChainCliClient.CliOptions</a>
+    </div>
+    <div>
+      <a class="xref" href="MCWrapper.CLI.Connection.MultiChainCliClient.html#MCWrapper_CLI_Connection_MultiChainCliClient_TransactAsync__1_System_String_System_String_System_String___MCWrapper_CLI_Helpers_CliArgumentHelper_">MultiChainCliClient.TransactAsync&lt;T&gt;(String, String, String[], CliArgumentHelper)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="MCWrapper.CLI.Ledger.Clients.html">MCWrapper.CLI.Ledger.Clients</a></h6>
+  <h6><strong>Assembly</strong>: MCWrapper.CLI.dll</h6>
+  <h5 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MultiChainCliGeneralClient : MultiChainCliClient, IMultiChainCliGeneral, IMultiChainCli</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient__ctor_Microsoft_Extensions_Options_IOptions_MCWrapper_CLI_Options_CliOptions__.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.%23ctor(Microsoft.Extensions.Options.IOptions%7BMCWrapper.CLI.Options.CliOptions%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L31">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient__ctor_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.#ctor*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient__ctor_Microsoft_Extensions_Options_IOptions_MCWrapper_CLI_Options_CliOptions__" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">MultiChainCliGeneralClient(IOptions&lt;CliOptions&gt;)</h4>
+  <div class="markdown level1 summary"><p>Create a new MultiChainCliGeneralClient instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MultiChainCliGeneralClient(IOptions&lt;CliOptions&gt; options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Options.IOptions</span>&lt;<a class="xref" href="MCWrapper.CLI.Options.CliOptions.html">CliOptions</a>&gt;</td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetAssetInfoAsync_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetAssetInfoAsync(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L56">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetAssetInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetAssetInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetAssetInfoAsync_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetAssetInfoAsync(System.String,System.Boolean)">GetAssetInfoAsync(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns information about a single blockchain asset referenced by issue txid, asset reference, or asset name.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetAssetInfoResult&gt;&gt; GetAssetInfoAsync(string asset_identifier, bool verbose = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">asset_identifier</span></td>
+        <td><p>One of: issue txid, asset reference, asset name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of all issue transactions, including follow-ons</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetAssetInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetAssetInfoAsync_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetAssetInfoAsync(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L44">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetAssetInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetAssetInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetAssetInfoAsync_System_String_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetAssetInfoAsync(System.String,System.String,System.Boolean)">GetAssetInfoAsync(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns information about a single blockchain asset referenced by issue txid, asset reference, or asset name.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetAssetInfoResult&gt;&gt; GetAssetInfoAsync(string blockchainName, string asset_identifier, bool verbose = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">asset_identifier</span></td>
+        <td><p>One of: issue txid, asset reference, asset name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of all issue transactions, including follow-ons</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetAssetInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBestBlockHashAsync.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBestBlockHashAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L77">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBestBlockHashAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBestBlockHashAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBestBlockHashAsync" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBestBlockHashAsync">GetBestBlockHashAsync()</h4>
+  <div class="markdown level1 summary"><p>Returns a hex encoded hash of the best (tip) block in the longest block chain.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;string&gt;&gt; GetBestBlockHashAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBestBlockHashAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBestBlockHashAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L67">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBestBlockHashAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBestBlockHashAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBestBlockHashAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBestBlockHashAsync(System.String)">GetBestBlockHashAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Returns a hex encoded hash of the best (tip) block in the longest block chain.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;string&gt;&gt; GetBestBlockHashAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockAsync__1_System_Object_System_Object_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockAsync%60%601(System.Object%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L107">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockAsync__1_System_Object_System_Object_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockAsync``1(System.Object,System.Object)">GetBlockAsync&lt;T&gt;(Object, Object)</h4>
+  <div class="markdown level1 summary"><p>Returns hex-encoded data or json object for block.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;T&gt;&gt; GetBlockAsync&lt;T&gt;(object hash_or_height, object verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">hash_or_height</span></td>
+        <td><p>(string or numeric) The block hash or height in the active chain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>(numeric or boolean, optional, default=1) 0(or false) - encoded data, 1(or true) - json object, 2 - with tx encoded data, 4 - with tx json object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockAsync__1_System_String_System_Object_System_Object_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockAsync%60%601(System.String%2CSystem.Object%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L90">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockAsync__1_System_String_System_Object_System_Object_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockAsync``1(System.String,System.Object,System.Object)">GetBlockAsync&lt;T&gt;(String, Object, Object)</h4>
+  <div class="markdown level1 summary"><p>Returns hex-encoded data or json object for block.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;T&gt;&gt; GetBlockAsync&lt;T&gt;(string blockchainName, object hash_or_height, object verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">hash_or_height</span></td>
+        <td><p>(string or numeric) The block hash or height in the active chain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>(numeric or boolean, optional, default=1) 0(or false) - encoded data, 1(or true) - json object, 2 - with tx encoded data, 4 - with tx json object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockchainInfoAsync.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L149">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockchainInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockchainInfoAsync" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync">GetBlockchainInfoAsync()</h4>
+  <div class="markdown level1 summary"><p>Returns an object containing various state info regarding block chain processing.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetBlockchainInfoResult&gt;&gt; GetBlockchainInfoAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetBlockchainInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockchainInfoAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L139">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockchainInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockchainInfoAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync(System.String)">GetBlockchainInfoAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Returns an object containing various state info regarding block chain processing.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetBlockchainInfoResult&gt;&gt; GetBlockchainInfoAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetBlockchainInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockCountAsync.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockCountAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L128">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockCountAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockCountAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockCountAsync" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockCountAsync">GetBlockCountAsync()</h4>
+  <div class="markdown level1 summary"><p>Returns the number of blocks in the longest block chain.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;long&gt;&gt; GetBlockCountAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Int64</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockCountAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockCountAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L118">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockCountAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockCountAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockCountAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockCountAsync(System.String)">GetBlockCountAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Returns the number of blocks in the longest block chain.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;long&gt;&gt; GetBlockCountAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Int64</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockHashAsync_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockHashAsync(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L172">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockHashAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockHashAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockHashAsync_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockHashAsync(System.Int32)">GetBlockHashAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns hash of block in best-block-chain at index provided.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;string&gt;&gt; GetBlockHashAsync(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The integer block index</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockHashAsync_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockHashAsync(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L161">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockHashAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockHashAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetBlockHashAsync_System_String_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockHashAsync(System.String,System.Int32)">GetBlockHashAsync(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns hash of block in best-block-chain at index provided.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;string&gt;&gt; GetBlockHashAsync(string blockchainName, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The integer block index</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetChainTipsAsync.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetChainTipsAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L193">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetChainTipsAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetChainTipsAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetChainTipsAsync" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetChainTipsAsync">GetChainTipsAsync()</h4>
+  <div class="markdown level1 summary"><p>Return information about all known tips in the block tree, including the main chain as well as orphaned branches.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetChainTipsResult[]&gt;&gt; GetChainTipsAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetChainTipsResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetChainTipsAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetChainTipsAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L183">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetChainTipsAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetChainTipsAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetChainTipsAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetChainTipsAsync(System.String)">GetChainTipsAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Return information about all known tips in the block tree, including the main chain as well as orphaned branches.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetChainTipsResult[]&gt;&gt; GetChainTipsAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetChainTipsResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetDifficultyAsync.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetDifficultyAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L214">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetDifficultyAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetDifficultyAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetDifficultyAsync" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetDifficultyAsync">GetDifficultyAsync()</h4>
+  <div class="markdown level1 summary"><p>Returns the proof-of-work difficulty as a multiple of the minimum difficulty.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;double&gt;&gt; GetDifficultyAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Double</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetDifficultyAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetDifficultyAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L204">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetDifficultyAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetDifficultyAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetDifficultyAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetDifficultyAsync(System.String)">GetDifficultyAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Returns the proof-of-work difficulty as a multiple of the minimum difficulty.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;double&gt;&gt; GetDifficultyAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Double</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetFilterCodeAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetFilterCodeAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L237">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetFilterCodeAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetFilterCodeAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetFilterCodeAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetFilterCodeAsync(System.String)">GetFilterCodeAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Returns code for specified filter</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;string&gt;&gt; GetFilterCodeAsync(string filter_identifier)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter_identifier</span></td>
+        <td><p>One of: create txid, filter reference, filter name</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetFilterCodeAsync_System_String_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetFilterCodeAsync(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L226">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetFilterCodeAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetFilterCodeAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetFilterCodeAsync_System_String_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetFilterCodeAsync(System.String,System.String)">GetFilterCodeAsync(String, String)</h4>
+  <div class="markdown level1 summary"><p>Returns code for specified filter</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;string&gt;&gt; GetFilterCodeAsync(string blockchainName, string filter_identifier)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter_identifier</span></td>
+        <td><p>One of: create txid, filter reference, filter name</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetLastBlockInfoAsync_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetLastBlockInfoAsync(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L260">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetLastBlockInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetLastBlockInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetLastBlockInfoAsync_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetLastBlockInfoAsync(System.Int32)">GetLastBlockInfoAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns information about the last or recent blocks in the active chain.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetLastBlockInfoResult&gt;&gt; GetLastBlockInfoAsync(int skip = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">skip</span></td>
+        <td><p>The number of blocks back to skip. Default 0</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetLastBlockInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetLastBlockInfoAsync_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetLastBlockInfoAsync(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L249">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetLastBlockInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetLastBlockInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetLastBlockInfoAsync_System_String_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetLastBlockInfoAsync(System.String,System.Int32)">GetLastBlockInfoAsync(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns information about the last or recent blocks in the active chain.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetLastBlockInfoResult&gt;&gt; GetLastBlockInfoAsync(string blockchainName, int skip = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">skip</span></td>
+        <td><p>The number of blocks back to skip. Default 0</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetLastBlockInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetMemPoolInfoAsync.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetMemPoolInfoAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L281">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetMemPoolInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetMemPoolInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetMemPoolInfoAsync" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetMemPoolInfoAsync">GetMemPoolInfoAsync()</h4>
+  <div class="markdown level1 summary"><p>Returns details on the active state of the TX memory pool.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetMemPoolInfoResult&gt;&gt; GetMemPoolInfoAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetMemPoolInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetMemPoolInfoAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetMemPoolInfoAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L271">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetMemPoolInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetMemPoolInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetMemPoolInfoAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetMemPoolInfoAsync(System.String)">GetMemPoolInfoAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Returns details on the active state of the TX memory pool.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetMemPoolInfoResult&gt;&gt; GetMemPoolInfoAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetMemPoolInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetRawMemPoolAsync_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetRawMemPoolAsync(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L304">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetRawMemPoolAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetRawMemPoolAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetRawMemPoolAsync_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetRawMemPoolAsync(System.Boolean)">GetRawMemPoolAsync(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns all transaction ids in memory pool as a json array of string transaction ids.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetRawMemPoolResult&gt;&gt; GetRawMemPoolAsync(bool verbose = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>true for a json object, false for array of transaction ids</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetRawMemPoolResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetRawMemPoolAsync_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetRawMemPoolAsync(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L293">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetRawMemPoolAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetRawMemPoolAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetRawMemPoolAsync_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetRawMemPoolAsync(System.String,System.Boolean)">GetRawMemPoolAsync(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns all transaction ids in memory pool as a json array of string transaction ids.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetRawMemPoolResult&gt;&gt; GetRawMemPoolAsync(string blockchainName, bool verbose = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>true for a json object, false for array of transaction ids</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetRawMemPoolResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetStreamInfoAsync_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetStreamInfoAsync(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L329">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetStreamInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetStreamInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetStreamInfoAsync_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetStreamInfoAsync(System.String,System.Boolean)">GetStreamInfoAsync(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns information about a single stream.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetStreamInfoResult&gt;&gt; GetStreamInfoAsync(string stream_identifier, bool verbose = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">stream_identifier</span></td>
+        <td><p>One of: create txid, stream reference, stream name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of creators</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetStreamInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetStreamInfoAsync_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetStreamInfoAsync(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L317">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetStreamInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetStreamInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetStreamInfoAsync_System_String_System_String_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetStreamInfoAsync(System.String,System.String,System.Boolean)">GetStreamInfoAsync(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns information about a single stream.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetStreamInfoResult&gt;&gt; GetStreamInfoAsync(string blockchainName, string stream_identifier, bool verbose = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">stream_identifier</span></td>
+        <td><p>One of: create txid, stream reference, stream name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of creators</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetStreamInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutAsync_System_String_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutAsync(System.String%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L356">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutAsync_System_String_System_Int32_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutAsync(System.String,System.Int32,System.Boolean)">GetTxOutAsync(String, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns details about an unspent transaction output.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetTxOutResult&gt;&gt; GetTxOutAsync(string txid, int n, bool include_mem_pool = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">txid</span></td>
+        <td><p>The transaction id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td><p>vout value</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">include_mem_pool</span></td>
+        <td><p>Whether to included the mem pool</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetTxOutResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutAsync_System_String_System_String_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutAsync(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L343">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutAsync_System_String_System_String_System_Int32_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutAsync(System.String,System.String,System.Int32,System.Boolean)">GetTxOutAsync(String, String, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns details about an unspent transaction output.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetTxOutResult&gt;&gt; GetTxOutAsync(string blockchainName, string txid, int n, bool include_mem_pool = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">txid</span></td>
+        <td><p>The transaction id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td><p>vout value</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">include_mem_pool</span></td>
+        <td><p>Whether to included the mem pool</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetTxOutResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutSetInfoAsync.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutSetInfoAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L377">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutSetInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutSetInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutSetInfoAsync" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutSetInfoAsync">GetTxOutSetInfoAsync()</h4>
+  <div class="markdown level1 summary"><p>Returns statistics about the unspent transaction output set. Note this call may take some time.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetTxOutSetInfoResult&gt;&gt; GetTxOutSetInfoAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetTxOutSetInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutSetInfoAsync_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutSetInfoAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L367">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutSetInfoAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutSetInfoAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_GetTxOutSetInfoAsync_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetTxOutSetInfoAsync(System.String)">GetTxOutSetInfoAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Returns statistics about the unspent transaction output set. Note this call may take some time.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;GetTxOutSetInfoResult&gt;&gt; GetTxOutSetInfoAsync(string blockchainName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.GetTxOutSetInfoResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListAssetsAsync_System_Object_System_Boolean_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListAssetsAsync(System.Object%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L411">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListAssetsAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListAssetsAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListAssetsAsync_System_Object_System_Boolean_System_Int32_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListAssetsAsync(System.Object,System.Boolean,System.Int32,System.Int32)">ListAssetsAsync(Object, Boolean, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined assets.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListAssetsResult[]&gt;&gt; ListAssetsAsync(object asset_identifiers, bool verbose, int count, int start)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">asset_identifiers</span></td>
+        <td><p>(string, optional) Asset identifier - one of the following: issue txid, asset reference, asset name, or (array, optional) A json array of asset identifiers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of all issue transactions, including follow-ons</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>The number of assets to display</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">start</span></td>
+        <td><p>Start from specific asset, 0 based, if negative - from the end</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListAssetsResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListAssetsAsync_System_String_System_Object_System_Boolean_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListAssetsAsync(System.String%2CSystem.Object%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L392">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListAssetsAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListAssetsAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListAssetsAsync_System_String_System_Object_System_Boolean_System_Int32_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListAssetsAsync(System.String,System.Object,System.Boolean,System.Int32,System.Int32)">ListAssetsAsync(String, Object, Boolean, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined assets.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListAssetsResult[]&gt;&gt; ListAssetsAsync(string blockchainName, object asset_identifiers, bool verbose, int count, int start)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">asset_identifiers</span></td>
+        <td><p>(string, optional) Asset identifier - one of the following: issue txid, asset reference, asset name, or (array, optional) A json array of asset identifiers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of all issue transactions, including follow-ons</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>The number of assets to display</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">start</span></td>
+        <td><p>Start from specific asset, 0 based, if negative - from the end</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListAssetsResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListBlocksAsync_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListBlocksAsync(System.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L466">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListBlocksAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListBlocksAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListBlocksAsync_System_Object_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListBlocksAsync(System.Object,System.Boolean)">ListBlocksAsync(Object, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns list of block information objects</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListBlocksResult[]&gt;&gt; ListBlocksAsync(object block_set_identifier, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">block_set_identifier</span></td>
+        <td><p>Comma delimited list of block identifiers: block height, block hash, block height range, e.g. block-from - block-to, number of last blocks in the active chain (if negative)</p>
+<p>or</p>
+<p>String that represents a &quot;block-set-identifier&quot;</p>
+<p>or</p>
+<p>A json array of block identifiers block-set-identifier</p>
+<p>or</p>
+<p>A json object with time range
+{
+  &quot;starttime&quot; : start-time      (numeric,required) Start time.
+  &quot;endtime&quot; : end-time          (numeric,required) End time.
+}</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns more information</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListBlocksResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListBlocksAsync_System_String_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListBlocksAsync(System.String%2CSystem.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L437">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListBlocksAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListBlocksAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListBlocksAsync_System_String_System_Object_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListBlocksAsync(System.String,System.Object,System.Boolean)">ListBlocksAsync(String, Object, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns list of block information objects</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListBlocksResult[]&gt;&gt; ListBlocksAsync(string blockchainName, object block_set_identifier, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">block_set_identifier</span></td>
+        <td><p>Comma delimited list of block identifiers: block height, block hash, block height range, e.g. block-from - block-to, number of last blocks in the active chain (if negative)</p>
+<p>or</p>
+<p>String that represents a &quot;block-set-identifier&quot;</p>
+<p>or</p>
+<p>A json array of block identifiers block-set-identifier</p>
+<p>or</p>
+<p>A json object with time range
+{
+  &quot;starttime&quot; : start-time      (numeric,required) Start time.
+  &quot;endtime&quot; : end-time          (numeric,required) End time.
+}</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns more information</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListBlocksResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListPermissionsAsync_System_String_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListPermissionsAsync(System.String%2CSystem.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L501">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListPermissionsAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListPermissionsAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListPermissionsAsync_System_String_System_Object_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListPermissionsAsync(System.String,System.Object,System.Boolean)">ListPermissionsAsync(String, Object, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns a list of all permissions which have been explicitly granted to addresses.</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListPermissionsResult[]&gt;&gt; ListPermissionsAsync(string permissions, object addresses, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">permissions</span></td>
+        <td><p>Permission strings, comma delimited. Possible values: connect,send,receive,issue,mine,admin,activate,create. Default: all</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">addresses</span></td>
+        <td><p>(string, optional, default &quot;*&quot;) The addresses to retrieve permissions for. &quot;*&quot; for all addresses</p>
+<p>or</p>
+<p>(array, optional) A json array of addresses to return permissions for</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of pending grants</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListPermissionsResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListPermissionsAsync_System_String_System_String_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListPermissionsAsync(System.String%2CSystem.String%2CSystem.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L484">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListPermissionsAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListPermissionsAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListPermissionsAsync_System_String_System_String_System_Object_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListPermissionsAsync(System.String,System.String,System.Object,System.Boolean)">ListPermissionsAsync(String, String, Object, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns a list of all permissions which have been explicitly granted to addresses.</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListPermissionsResult[]&gt;&gt; ListPermissionsAsync(string blockchainName, string permissions, object addresses, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">permissions</span></td>
+        <td><p>Permission strings, comma delimited. Possible values: connect,send,receive,issue,mine,admin,activate,create. Default: all</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">addresses</span></td>
+        <td><p>(string, optional, default &quot;*&quot;) The addresses to retrieve permissions for. &quot;*&quot; for all addresses</p>
+<p>or</p>
+<p>(array, optional) A json array of addresses to return permissions for</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of pending grants</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListPermissionsResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamFiltersAsync_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamFiltersAsync(System.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L534">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamFiltersAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamFiltersAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamFiltersAsync_System_Object_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamFiltersAsync(System.Object,System.Boolean)">ListStreamFiltersAsync(Object, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined stream filters</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListStreamFiltersResult[]&gt;&gt; ListStreamFiltersAsync(object filter_identifers, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">filter_identifers</span></td>
+        <td><p> (string, optional, default=*) Filter identifier - one of: create txid, filter reference, filter name.</p>
+<p>or</p>
+<p>(array, optional) A json array of filter identifiers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of creators and approval details</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListStreamFiltersResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamFiltersAsync_System_String_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamFiltersAsync(System.String%2CSystem.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L518">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamFiltersAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamFiltersAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamFiltersAsync_System_String_System_Object_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamFiltersAsync(System.String,System.Object,System.Boolean)">ListStreamFiltersAsync(String, Object, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined stream filters</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListStreamFiltersResult[]&gt;&gt; ListStreamFiltersAsync(string blockchainName, object filter_identifers, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">filter_identifers</span></td>
+        <td><p> (string, optional, default=*) Filter identifier - one of: create txid, filter reference, filter name.</p>
+<p>or</p>
+<p>(array, optional) A json array of filter identifiers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of creators and approval details</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListStreamFiltersResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamsAsync_System_Object_System_Boolean_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamsAsync(System.Object%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L576">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamsAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamsAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamsAsync_System_Object_System_Boolean_System_Int32_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamsAsync(System.Object,System.Boolean,System.Int32,System.Int32)">ListStreamsAsync(Object, Boolean, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined streams</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListStreamsResult[]&gt;&gt; ListStreamsAsync(object stream_identifiers, bool verbose, int count, int start)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">stream_identifiers</span></td>
+        <td><p>(string, optional, default=*, all streams) Stream identifier - one of the following: issue txid, stream reference, stream name</p>
+<p>or</p>
+<p>(array, optional) A json array of stream identifiers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns stream list of creators</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>The number of streams to display</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">start</span></td>
+        <td><p>Start from specific stream, 0 based, if negative - from the end</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListStreamsResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamsAsync_System_String_System_Object_System_Boolean_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamsAsync(System.String%2CSystem.Object%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L553">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamsAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamsAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListStreamsAsync_System_String_System_Object_System_Boolean_System_Int32_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListStreamsAsync(System.String,System.Object,System.Boolean,System.Int32,System.Int32)">ListStreamsAsync(String, Object, Boolean, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined streams</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListStreamsResult[]&gt;&gt; ListStreamsAsync(string blockchainName, object stream_identifiers, bool verbose, int count, int start)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">stream_identifiers</span></td>
+        <td><p>(string, optional, default=*, all streams) Stream identifier - one of the following: issue txid, stream reference, stream name</p>
+<p>or</p>
+<p>(array, optional) A json array of stream identifiers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns stream list of creators</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>The number of streams to display</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">start</span></td>
+        <td><p>Start from specific stream, 0 based, if negative - from the end</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListStreamsResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListTxFiltersAsync_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListTxFiltersAsync(System.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L609">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListTxFiltersAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListTxFiltersAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListTxFiltersAsync_System_Object_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListTxFiltersAsync(System.Object,System.Boolean)">ListTxFiltersAsync(Object, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined tx filters</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListTxFiltersResult[]&gt;&gt; ListTxFiltersAsync(object filter_identifiers, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">filter_identifiers</span></td>
+        <td><p>(string, optional, default=*) Filter identifier - one of: create txid, filter reference, filter name</p>
+<p>or</p>
+<p>(array, optional) A json array of filter identifiers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of creators and approval details</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListTxFiltersResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListTxFiltersAsync_System_String_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListTxFiltersAsync(System.String%2CSystem.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L593">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListTxFiltersAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListTxFiltersAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListTxFiltersAsync_System_String_System_Object_System_Boolean_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListTxFiltersAsync(System.String,System.Object,System.Boolean)">ListTxFiltersAsync(String, Object, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined tx filters</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;ListTxFiltersResult[]&gt;&gt; ListTxFiltersAsync(string blockchainName, object filter_identifiers, bool verbose)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">filter_identifiers</span></td>
+        <td><p>(string, optional, default=*) Filter identifier - one of: create txid, filter reference, filter name</p>
+<p>or</p>
+<p>(array, optional) A json array of filter identifiers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">verbose</span></td>
+        <td><p>If true, returns list of creators and approval details</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.ListTxFiltersResult</span>[]&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListUpgradesAsync_System_Object_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListUpgradesAsync(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L645">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListUpgradesAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListUpgradesAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListUpgradesAsync_System_Object_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListUpgradesAsync(System.Object)">ListUpgradesAsync(Object)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined upgrades</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; ListUpgradesAsync(object upgrade_identifiers)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">upgrade_identifiers</span></td>
+        <td><p>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</p>
+<p>or</p>
+<p>(array, optional) A json array of upgrade identifiers</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListUpgradesAsync_System_String_System_Object_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListUpgradesAsync(System.String%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L625">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListUpgradesAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListUpgradesAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_ListUpgradesAsync_System_String_System_Object_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.ListUpgradesAsync(System.String,System.Object)">ListUpgradesAsync(String, Object)</h4>
+  <div class="markdown level1 summary"><p>Returns list of defined upgrades</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;object&gt;&gt; ListUpgradesAsync(string blockchainName, object upgrade_identifiers)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">upgrade_identifiers</span></td>
+        <td><p>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</p>
+<p>or</p>
+<p>(array, optional) A json array of upgrade identifiers</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunStreamFilterAsync_System_String_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunStreamFilterAsync(System.String%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L685">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunStreamFilterAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunStreamFilterAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunStreamFilterAsync_System_String_System_String_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunStreamFilterAsync(System.String,System.String,System.Int32)">RunStreamFilterAsync(String, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Compile an existing filter and optionally test it on a transaction</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;RunStreamFilterResult&gt;&gt; RunStreamFilterAsync(string filter_identifier, string tx_hex, int vout)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter_identifier</span></td>
+        <td><p>One of: create txid, filter reference, filter name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The transaction hex string to filter, otherwise filter compiled only</p>
+<p>or</p>
+<p>The transaction id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">vout</span></td>
+        <td><p>The output number, if omitted and txid/tx-hex is specified, found automatically</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.RunStreamFilterResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunStreamFilterAsync_System_String_System_String_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunStreamFilterAsync(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L663">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunStreamFilterAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunStreamFilterAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunStreamFilterAsync_System_String_System_String_System_String_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunStreamFilterAsync(System.String,System.String,System.String,System.Int32)">RunStreamFilterAsync(String, String, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Compile an existing filter and optionally test it on a transaction</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;RunStreamFilterResult&gt;&gt; RunStreamFilterAsync(string blockchainName, string filter_identifier, string tx_hex, int vout)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter_identifier</span></td>
+        <td><p>One of: create txid, filter reference, filter name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>The transaction hex string to filter, otherwise filter compiled only</p>
+<p>or</p>
+<p>The transaction id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">vout</span></td>
+        <td><p>The output number, if omitted and txid/tx-hex is specified, found automatically</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.RunStreamFilterResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunTxFilterAsync_System_String_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunTxFilterAsync(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L718">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunTxFilterAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunTxFilterAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunTxFilterAsync_System_String_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunTxFilterAsync(System.String,System.String)">RunTxFilterAsync(String, String)</h4>
+  <div class="markdown level1 summary"><p>Compile an existing filter and optionally test it on a transaction</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;RunTxFilterResult&gt;&gt; RunTxFilterAsync(string filter_identifier, string tx_hex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter_identifier</span></td>
+        <td><p>One of: create txid, filter reference, filter name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>(string, optional) The transaction hex string to filter, otherwise filter compiled only</p>
+<p>or</p>
+<p>(string, optional) The transaction id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.RunTxFilterResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunTxFilterAsync_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunTxFilterAsync(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L702">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunTxFilterAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunTxFilterAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_RunTxFilterAsync_System_String_System_String_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.RunTxFilterAsync(System.String,System.String,System.String)">RunTxFilterAsync(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Compile an existing filter and optionally test it on a transaction</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;RunTxFilterResult&gt;&gt; RunTxFilterAsync(string blockchainName, string filter_identifier, string tx_hex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter_identifier</span></td>
+        <td><p>One of: create txid, filter reference, filter name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>(string, optional) The transaction hex string to filter, otherwise filter compiled only</p>
+<p>or</p>
+<p>(string, optional) The transaction id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.RunTxFilterResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestStreamFilterAsync_System_Object_System_String_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestStreamFilterAsync(System.Object%2CSystem.String%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L760">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestStreamFilterAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestStreamFilterAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestStreamFilterAsync_System_Object_System_String_System_String_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestStreamFilterAsync(System.Object,System.String,System.String,System.Int32)">TestStreamFilterAsync(Object, String, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Compile a test filter and optionally test it on a transaction</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;TestStreamFilterResult&gt;&gt; TestStreamFilterAsync(object restrictions, string javascript_code, string tx_hex, int vout)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">restrictions</span></td>
+        <td><p>A json object with filter restrictions</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">javascript_code</span></td>
+        <td><p>JavaScript filter code, see help filter</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>(string, optional) The transaction hex string to filter, otherwise filter compiled only</p>
+<p>or</p>
+<p>(string, optional) The transaction id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">vout</span></td>
+        <td><p>The output number, if omitted and txid/tx-hex is specified, found automatically</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.TestStreamFilterResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestStreamFilterAsync_System_String_System_Object_System_String_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestStreamFilterAsync(System.String%2CSystem.Object%2CSystem.String%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L737">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestStreamFilterAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestStreamFilterAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestStreamFilterAsync_System_String_System_Object_System_String_System_String_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestStreamFilterAsync(System.String,System.Object,System.String,System.String,System.Int32)">TestStreamFilterAsync(String, Object, String, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Compile a test filter and optionally test it on a transaction</p>
+<p>Blockchain name is explicitly passed as parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;TestStreamFilterResult&gt;&gt; TestStreamFilterAsync(string blockchainName, object restrictions, string javascript_code, string tx_hex, int vout)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">restrictions</span></td>
+        <td><p>A json object with filter restrictions</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">javascript_code</span></td>
+        <td><p>JavaScript filter code, see help filter</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p>(string, optional) The transaction hex string to filter, otherwise filter compiled only</p>
+<p>or</p>
+<p>(string, optional) The transaction id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">vout</span></td>
+        <td><p>The output number, if omitted and txid/tx-hex is specified, found automatically</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.TestStreamFilterResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestTxFilterAsync_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestTxFilterAsync(System.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L806">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestTxFilterAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestTxFilterAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestTxFilterAsync_System_Object_System_String_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestTxFilterAsync(System.Object,System.String,System.String)">TestTxFilterAsync(Object, String, String)</h4>
+  <div class="markdown level1 summary"><p>Compile a test filter and optionally test it on a transaction</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;TestTxFilterResult&gt;&gt; TestTxFilterAsync(object restrictions, string javascript_code, string tx_hex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">restrictions</span></td>
+        <td><p>(object, required)  a json object with filter restrictions</p>
+<p>{</p>
+<p>&quot;for&quot;: &quot;entity-identifier&quot;    (string, optional) Asset/stream identifier - one of: create txid, stream reference, stream name.</p>
+<p> or</p>
+<p>&quot;for&quot;: entity-identifier(s)   (array, optional) A json array of asset/stream identifiers</p>
+<p>}</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">javascript_code</span></td>
+        <td><p>JavaScript filter code, see help filters</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p> (string, optional) The transaction hex string to filter, otherwise filter compiled only</p>
+<p>or</p>
+<p>(string, optional) The transaction id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.TestTxFilterResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestTxFilterAsync_System_String_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestTxFilterAsync(System.String%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L783">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestTxFilterAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestTxFilterAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_TestTxFilterAsync_System_String_System_Object_System_String_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.TestTxFilterAsync(System.String,System.Object,System.String,System.String)">TestTxFilterAsync(String, Object, String, String)</h4>
+  <div class="markdown level1 summary"><p>Compile a test filter and optionally test it on a transaction</p>
+<p>Blockchain name is inferred from CliOptions properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;TestTxFilterResult&gt;&gt; TestTxFilterAsync(string blockchainName, object restrictions, string javascript_code, string tx_hex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">restrictions</span></td>
+        <td><p>(object, required)  a json object with filter restrictions</p>
+<p>{</p>
+<p>&quot;for&quot;: &quot;entity-identifier&quot;    (string, optional) Asset/stream identifier - one of: create txid, stream reference, stream name.</p>
+<p> or</p>
+<p>&quot;for&quot;: entity-identifier(s)   (array, optional) A json array of asset/stream identifiers</p>
+<p>}</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">javascript_code</span></td>
+        <td><p>JavaScript filter code, see help filters</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tx_hex</span></td>
+        <td><p> (string, optional) The transaction hex string to filter, otherwise filter compiled only</p>
+<p>or</p>
+<p>(string, optional) The transaction id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">MCWrapper.Data.Models.Blockchain.TestTxFilterResult</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyChainAsync_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyChainAsync(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L847">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyChainAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyChainAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyChainAsync_System_Int32_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyChainAsync(System.Int32,System.Int32)">VerifyChainAsync(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Verify blockchain database</p>
+<p>
+    Arguments:
+</p>
+<p>
+    1. checklevel (numeric, optional, 0-4, default=3) How thorough the block verification is.
+</p>
+<p>
+    2. numblocks (numeric, optional, default=288, 0=all) The number of blocks to check.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;bool&gt;&gt; VerifyChainAsync(int check_level, int num_blocks)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">check_level</span></td>
+        <td><p>(numeric, optional, 0-4, default=3) How thorough the block verification is</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">num_blocks</span></td>
+        <td><p>(numeric, optional, default=288, 0=all) The number of blocks to check</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyChainAsync_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyChainAsync(System.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L827">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyChainAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyChainAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyChainAsync_System_String_System_Int32_System_Int32_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyChainAsync(System.String,System.Int32,System.Int32)">VerifyChainAsync(String, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Verify blockchain database</p>
+<p>
+    Arguments:
+</p>
+<p>
+    1. checklevel (numeric, optional, 0-4, default=3) How thorough the block verification is.
+</p>
+<p>
+    2. numblocks (numeric, optional, default=288, 0=all) The number of blocks to check.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;bool&gt;&gt; VerifyChainAsync(string blockchainName, int check_level, int num_blocks)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">check_level</span></td>
+        <td><p>(numeric, optional, 0-4, default=3) How thorough the block verification is</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">num_blocks</span></td>
+        <td><p>(numeric, optional, default=288, 0=all) The number of blocks to check</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyPermissionAsync_System_String_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyPermissionAsync(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L866">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyPermissionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyPermissionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyPermissionAsync_System_String_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyPermissionAsync(System.String,System.String)">VerifyPermissionAsync(String, String)</h4>
+  <div class="markdown level1 summary"><p>Verify an addresses permission against a specific blockchain name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;bool&gt;&gt; VerifyPermissionAsync(string address, string permission)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>The address to verify permission for</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">permission</span></td>
+        <td><p>Permission string. Possible values: connect,send,receive,issue,mine,admin,activate,create</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyPermissionAsync_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyPermissionAsync(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L857">View Source</a>
+  </span>
+  <a id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyPermissionAsync_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyPermissionAsync*"></a>
+  <h4 id="MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient_VerifyPermissionAsync_System_String_System_String_System_String_" data-uid="MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.VerifyPermissionAsync(System.String,System.String,System.String)">VerifyPermissionAsync(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Verify an addresses permission against a specific <code data-dev-comment-type="paramref" class="paramref">blockchainName</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CliResponse&lt;bool&gt;&gt; VerifyPermissionAsync(string blockchainName, string address, string permission)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">blockchainName</span></td>
+        <td><p>Name of target blockchain</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>The address to verify permission for</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">permission</span></td>
+        <td><p>Permission string. Possible values: connect,send,receive,issue,mine,admin,activate,create</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="MCWrapper.CLI.Connection.CliResponse-1.html">CliResponse</a>&lt;<span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.html">IMultiChainCliGeneral</a>
+  </div>
+  <div>
+      <a class="xref" href="MCWrapper.CLI.Ledger.Contracts.IMultiChainCli.html">IMultiChainCli</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/new/master/apiSpec/new?filename=MCWrapper_CLI_Ledger_Clients_MultiChainCliGeneralClient.md&amp;value=---%0Auid%3A%20MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Ledger/Clients/MultiChainCliGeneralClient.cs/#L25" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
