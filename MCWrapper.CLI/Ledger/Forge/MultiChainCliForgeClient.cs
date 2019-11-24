@@ -23,7 +23,7 @@ namespace MCWrapper.CLI.Ledger.Clients
     ///     MacOS and Linux OS detection will be added in version 1.1.3;
     /// </para>
     /// </summary>
-    public class MultiChainCliForgeClient : Machinist, IMultiChainCliForge
+    public class MultiChainCliForgeClient : MultiChainCliMachinist, IMultiChainCliForge
     {
         /// <summary>
         /// Create a new blockchain Forge instance

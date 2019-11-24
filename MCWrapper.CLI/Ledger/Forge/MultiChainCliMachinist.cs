@@ -15,12 +15,12 @@ namespace MCWrapper.CLI.Ledger.Clients
     /// <summary>
     /// Machinist interacts with MultiChain binary files directly and monitors their reponses while reacting accordingly
     /// </summary>
-    public class Machinist
+    public abstract class MultiChainCliMachinist
     {
         /// <summary>
         /// Create a new Machinist instance
         /// </summary>
-        public Machinist(IOptions<CliOptions> cliOptions) => 
+        protected MultiChainCliMachinist(IOptions<CliOptions> cliOptions) => 
             CliOptions = cliOptions.Value;
 
         /// <summary>

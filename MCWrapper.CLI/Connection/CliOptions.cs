@@ -31,7 +31,7 @@ namespace MCWrapper.CLI.Options
         /// Create a new CliOptions object
         /// No arguments
         /// </summary>
-        public CliOptions(bool loadFromEnvironment) 
+        public CliOptions(bool loadFromEnvironment)
         {
             if (loadFromEnvironment)
             {
