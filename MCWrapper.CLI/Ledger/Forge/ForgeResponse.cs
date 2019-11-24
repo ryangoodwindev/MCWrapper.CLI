@@ -10,9 +10,6 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <summary>
         /// Create a new ForgeResponse instance
         /// </summary>
-        /// <param name="output"></param>
-        /// <param name="error"></param>
-        /// <param name="success"></param>
         public ForgeResponse() { }
 
         /// <summary>

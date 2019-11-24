@@ -146,8 +146,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "approve" : approve  (boolean, required) Approve or disapprove "for" : "stream-identifier"   (string, required)  Stream identifier - one of: create txid, stream reference, stream name. }</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> ApproveFromAsync(string blockchainName, string from_address, string upgrade_identifier, object approve) =>
-            TransactAsync<object>(blockchainName, WalletAction.ApproveFromMethod, new[] { from_address, upgrade_identifier, approve.SerializeAndEscape() });
+        public Task<CliResponse<object>> ApproveFromAsync(string blockchainName, string fromAddress, string entityIdentifier, object approve) =>
+            TransactAsync<object>(blockchainName, WalletAction.ApproveFromMethod, new[] { fromAddress, entityIdentifier, approve.SerializeAndEscape() });
 
         /// <summary>
         /// 
@@ -170,8 +170,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "approve" : approve  (boolean, required) Approve or disapprove "for" : "stream-identifier"   (string, required)  Stream identifier - one of: create txid, stream reference, stream name. }</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> ApproveFromAsync(string from_address, string upgrade_identifier, object approve) =>
-            ApproveFromAsync(CliOptions.ChainName, from_address, upgrade_identifier, approve);
+        public Task<CliResponse<object>> ApproveFromAsync(string fromAddress, string entityIdentifier, object approve) =>
+            ApproveFromAsync(CliOptions.ChainName, fromAddress, entityIdentifier, approve);
 
         /// <summary>
         /// 
@@ -1529,9 +1529,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="to_address">The address to send newly created asset to</param>
         /// <param name="asset_params"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="units">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="smallest_unit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
         /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="metadata">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <param name="custom_fields">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
         /// <returns></returns>
         public Task<CliResponse<string>> IssueAsync(string blockchainName, string to_address, object asset_params, int quantity, [Optional] double smallest_unit, [Optional] decimal native_amount, [Optional] object custom_fields)
         {
@@ -1555,9 +1555,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="to_address">The address to send newly created asset to</param>
         /// <param name="asset_params"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="units">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="smallest_unit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
         /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="metadata">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <param name="custom_fields">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
         /// <returns></returns>
         public Task<CliResponse<string>> IssueAsync(string to_address, object asset_params, int quantity, [Optional] double smallest_unit, [Optional] decimal native_amount, [Optional] object custom_fields) =>
             IssueAsync(CliOptions.ChainName, to_address, asset_params, quantity, smallest_unit, native_amount, custom_fields);
@@ -1573,9 +1573,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="to_address">The address to send newly created asset to</param>
         /// <param name="asset_params"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="units">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="smallest_unit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
         /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="metadata">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <param name="custom_fields">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
         /// <returns></returns>
         public Task<CliResponse<string>> IssueFromAsync(string blockchainName, string from_address, string to_address, object asset_params, int quantity, [Optional] double smallest_unit, [Optional] decimal native_amount, [Optional] object custom_fields)
         {
@@ -1603,9 +1603,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="to_address">The address to send newly created asset to</param>
         /// <param name="asset_params"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="units">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="smallest_unit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
         /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="metadata">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <param name="custom_fields">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
         /// <returns></returns>
         public Task<CliResponse<string>> IssueFromAsync(string from_address, string to_address, object asset_params, int quantity, [Optional] double smallest_unit, [Optional] decimal native_amount, [Optional] object custom_fields) =>
             IssueFromAsync(CliOptions.ChainName, from_address, to_address, asset_params, quantity, smallest_unit, native_amount, custom_fields);

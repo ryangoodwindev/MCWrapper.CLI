@@ -23,7 +23,7 @@ Version 3.0.0: Breaking changes; Please refer to the Github Repo for this projec
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>C:\Users\rgood\source\repos\MCWrapper.CLI\MCWrapper.CLI\MCWrapper.CLI.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">

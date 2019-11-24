@@ -6,6 +6,9 @@ using System.Runtime.InteropServices;
 
 namespace MCWrapper.CLI.Helpers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class MultiChainPathHelper
     {
         private const string DEFAULT_WIN_EXE_PATH_0 = @"C:\";

@@ -6,20 +6,37 @@ using System.Runtime.InteropServices;
 
 namespace MCWrapper.CLI.Ledger.Forge
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum BlockchainRepoType
     {
-        HotNodes, ColdNodes
+        /// <summary>
+        /// 
+        /// </summary>
+        HotNodes, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColdNodes
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class LocalBlockchainRepo
     {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="repoType"></param>
-        /// <param name="multiChainNodeDirectory"></param>
         public LocalBlockchainRepo() { }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="repoType"></param>
+        /// <param name="multiChainNodeDirectory"></param>
         public LocalBlockchainRepo(BlockchainRepoType repoType, [Optional] string multiChainNodeDirectory)
         {
             switch (repoType)

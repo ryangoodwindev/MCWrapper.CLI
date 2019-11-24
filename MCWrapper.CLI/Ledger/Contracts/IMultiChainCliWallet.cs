@@ -125,7 +125,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "approve" : approve  (boolean, required) Approve or disapprove "for" : "stream-identifier"   (string, required)  Stream identifier - one of: create txid, stream reference, stream name. }</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> ApproveFromAsync(string from_address, string upgrade_identifier, object approve);
+        Task<CliResponse<object>> ApproveFromAsync(string fromAddress, string entityIdentifier, object approve);
 
         /// <summary>
         /// 
@@ -149,7 +149,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "approve" : approve  (boolean, required) Approve or disapprove "for" : "stream-identifier"   (string, required)  Stream identifier - one of: create txid, stream reference, stream name. }</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> ApproveFromAsync(string blockchainName, string from_address, string upgrade_identifier, object approve);
+        Task<CliResponse<object>> ApproveFromAsync(string blockchainName, string fromAddress, string entityIdentifier, object approve);
 
         /// <summary>
         /// 

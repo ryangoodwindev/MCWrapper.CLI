@@ -8,6 +8,9 @@ using System.Runtime.InteropServices;
 
 namespace MCWrapper.CLI.Extensions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class MultiChainCoreCliServices
     {
         /// <summary>

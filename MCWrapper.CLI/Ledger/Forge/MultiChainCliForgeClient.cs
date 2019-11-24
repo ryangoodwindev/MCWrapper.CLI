@@ -41,10 +41,12 @@ namespace MCWrapper.CLI.Ledger.Clients
             base.CreateBlockchainAsync(blockchainName);
 
         /// <summary>
-        /// Start a MultiChain blockchain present on the local Windows environment and use HTTP connections;
+        ///  Start a MultiChain blockchain present on the local Windows environment and use HTTP connections;
         /// Passed <paramref name="blockchainName"/> value will be used as the local blockchain name;
         /// </summary>
         /// <param name="blockchainName"></param>
+        /// <param name="useSsl"></param>
+        /// <param name="runtimeParams"></param>
         /// <returns></returns>
         public Task<ForgeResponse> StartBlockchainAsync(string blockchainName, [Optional] bool useSsl, [Optional] Dictionary<string, object> runtimeParams)
         {
@@ -142,6 +144,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName"></param>
         /// <param name="ipAddress"></param>
         /// <param name="port"></param>
+        /// <param name="useSSL"></param>
         /// <returns></returns>
         public new Task<ForgeResponse> ConnectToRemoteNodeAsync(string blockchainName, string ipAddress, string port, [Optional] bool useSSL) =>
             base.ConnectToRemoteNodeAsync(blockchainName, ipAddress, port, useSSL);
