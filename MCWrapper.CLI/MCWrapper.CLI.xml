@@ -11198,115 +11198,6 @@
             <param name="blockchainName"></param>
             <returns></returns>
         </member>
-        <member name="T:MCWrapper.CLI.Ledger.Clients.Machinist">
-            <summary>
-            Machinist interacts with MultiChain binary files directly and monitors their reponses while reacting accordingly
-            </summary>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">
-            <summary>
-            Create a new Machinist instance
-            </summary>
-        </member>
-        <member name="P:MCWrapper.CLI.Ledger.Clients.Machinist.CliOptions">
-            <summary>
-            Command Line Interface option values
-            </summary>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.CreateBlockchainAsync(System.String)">
-            <summary>
-            Create a new MultiChain blockchain ledger according to blockchain name
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.CreateBlockChain(System.String)">
-            <summary>
-            Create a new MultiChain blockchain ledger according to blockchain name
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StartBlockchainAsync(System.String,System.Boolean,System.String)">
-            <summary>
-            Start an existing blockchain according to name
-            </summary>
-            <param name="blockchainName"></param>
-            <param name="useSsl"></param>
-            <param name="runtimeCommands"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StartBlockchain(System.String,System.Boolean,System.String)">
-            <summary>
-            Start an existing blockchain according to name
-            </summary>
-            <param name="blockchainName"></param>
-            <param name="useSsl"></param>
-            <param name="runtimeCommands"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StartColdNodeAsync(System.String)">
-            <summary>
-            Start a blockchain cold node
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StartColdNode(System.String)">
-            <summary>
-            Start a blockchain cold node
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.ConnectToRemoteNodeAsync(System.String,System.String,System.String,System.Boolean)">
-            <summary>
-            Connect to a remote MultiChain ledger
-            </summary>
-            <param name="blockchainName"></param>
-            <param name="ipAddress"></param>
-            <param name="port"></param>
-            <param name="useSSL"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.ConnectToRemoteNode(System.String,System.String,System.String,System.Boolean)">
-            <summary>
-            Connect to a remote MultiChain ledger
-            </summary>
-            <param name="blockchainName"></param>
-            <param name="ipAddress"></param>
-            <param name="port"></param>
-            <param name="useSSL"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StopBlockchainAsync(System.String)">
-            <summary>
-            Stop blockchain according to name
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StopBlockchain(System.String)">
-            <summary>
-            Stop blockchain according to name
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StopColdNodeAsync(System.String)">
-            <summary>
-            Stop a cold node according to blockchain name value
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.Machinist.StopColdNode(System.String)">
-            <summary>
-            Stop a cold node according to blockchain name value
-            </summary>
-            <param name="blockchainName"></param>
-            <returns></returns>
-        </member>
         <member name="T:MCWrapper.CLI.Ledger.Clients.MultiChainCliForgeClient">
             <summary>
             Start and kill the multichaind process directly;
@@ -11403,6 +11294,115 @@
             <param name="ipAddress"></param>
             <param name="port"></param>
             <param name="useSSL"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist">
+            <summary>
+            Machinist interacts with MultiChain binary files directly and monitors their reponses while reacting accordingly
+            </summary>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.#ctor(Microsoft.Extensions.Options.IOptions{MCWrapper.CLI.Options.CliOptions})">
+            <summary>
+            Create a new Machinist instance
+            </summary>
+        </member>
+        <member name="P:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.CliOptions">
+            <summary>
+            Command Line Interface option values
+            </summary>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.CreateBlockchainAsync(System.String)">
+            <summary>
+            Create a new MultiChain blockchain ledger according to blockchain name
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.CreateBlockChain(System.String)">
+            <summary>
+            Create a new MultiChain blockchain ledger according to blockchain name
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.StartBlockchainAsync(System.String,System.Boolean,System.String)">
+            <summary>
+            Start an existing blockchain according to name
+            </summary>
+            <param name="blockchainName"></param>
+            <param name="useSsl"></param>
+            <param name="runtimeCommands"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.StartBlockchain(System.String,System.Boolean,System.String)">
+            <summary>
+            Start an existing blockchain according to name
+            </summary>
+            <param name="blockchainName"></param>
+            <param name="useSsl"></param>
+            <param name="runtimeCommands"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.StartColdNodeAsync(System.String)">
+            <summary>
+            Start a blockchain cold node
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.StartColdNode(System.String)">
+            <summary>
+            Start a blockchain cold node
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.ConnectToRemoteNodeAsync(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Connect to a remote MultiChain ledger
+            </summary>
+            <param name="blockchainName"></param>
+            <param name="ipAddress"></param>
+            <param name="port"></param>
+            <param name="useSSL"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.ConnectToRemoteNode(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Connect to a remote MultiChain ledger
+            </summary>
+            <param name="blockchainName"></param>
+            <param name="ipAddress"></param>
+            <param name="port"></param>
+            <param name="useSSL"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.StopBlockchainAsync(System.String)">
+            <summary>
+            Stop blockchain according to name
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.StopBlockchain(System.String)">
+            <summary>
+            Stop blockchain according to name
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.StopColdNodeAsync(System.String)">
+            <summary>
+            Stop a cold node according to blockchain name value
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliMachinist.StopColdNode(System.String)">
+            <summary>
+            Stop a cold node according to blockchain name value
+            </summary>
+            <param name="blockchainName"></param>
             <returns></returns>
         </member>
         <member name="T:MCWrapper.CLI.Ledger.Clients.BlockchainTimerState">

@@ -161,11 +161,38 @@ namespace MCWrapper.CLI.Extensions
         /// <returns></returns>
         public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services, Action<CliOptions> cliOptions, [Optional] Action<RuntimeParamOptions> runtimeParamOptions)
         {
-            // configure Options by invoking Actions
-            services.Configure((Action<RuntimeParamOptions>)(config => runtimeParamOptions?.Invoke(new RuntimeParamOptions())))
-                .Configure((Action<CliOptions>)(config => cliOptions?.Invoke(new CliOptions())));
+            var _runtimeParamOptions = new RuntimeParamOptions();
+            var _cliOptions = new CliOptions();
+
+            runtimeParamOptions?.Invoke(_runtimeParamOptions);
+            cliOptions?.Invoke(_cliOptions);
 
             // todo maybe we need some error handling here to detect lack of configuration early in the pipleline, as well. TBD
+
+            // configure Options
+            services.Configure<RuntimeParamOptions>(config =>
+            {
+                config.BanTx = _runtimeParamOptions.BanTx;
+                config.LockBlock = _runtimeParamOptions.LockBlock;
+                config.MaxShownData = _runtimeParamOptions.MaxShownData;
+                config.AutoSubscribe = _runtimeParamOptions.AutoSubscribe;
+                config.HandshakeLocal = _runtimeParamOptions.HandshakeLocal;
+                config.MiningTurnOver = _runtimeParamOptions.MiningTurnOver;
+                config.MineEmptyRounds = _runtimeParamOptions.MineEmptyRounds;
+                config.HideKnownOpDrops = _runtimeParamOptions.HideKnownOpDrops;
+                config.MaxQueryScanItems = _runtimeParamOptions.MaxQueryScanItems;
+                config.LockAdminMineRounds = _runtimeParamOptions.LockAdminMineRounds;
+                config.MiningRequiresPeers = _runtimeParamOptions.MiningRequiresPeers;
+            })
+            .Configure<CliOptions>(config =>
+            {
+                config.ChainDefaultColdNodeLocation = _cliOptions.ChainDefaultColdNodeLocation;
+                config.ChainDefaultLocation = _cliOptions.ChainDefaultLocation;
+                config.ChainBinaryLocation = _cliOptions.ChainBinaryLocation;
+                config.ChainAdminAddress = _cliOptions.ChainAdminAddress;
+                config.ChainBurnAddress = _cliOptions.ChainBurnAddress;
+                config.ChainName = _cliOptions.ChainName;
+            });
 
             // command line interface clients and client factory
             services.AddTransient<IMultiChainCliGeneral, MultiChainCliGeneralClient>()
