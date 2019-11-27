@@ -5,15 +5,16 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>This is the HOMEPAGE. </title>
+    <title>MCWrapper.CLI</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="This is the HOMEPAGE. ">
+    <meta name="title" content="MCWrapper.CLI">
     <meta name="generator" content="docfx 2.47.0.0">
     
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
     <link rel="stylesheet" href="styles/docfx.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/prism.css">
     <meta property="docfx:navrel" content="toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
@@ -60,49 +61,315 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="this-is-the-homepage">This is the <strong>HOMEPAGE</strong>.</h1>
+        <h1 id="this-is-the-homepage">Learn more about <strong>MCWrapper.CLI</strong></h1>
 
-<p>Refer to <a href="http://daringfireball.net/projects/markdown/">Markdown</a> for how to write markdown files.</p>
-<h2 id="quick-start-notes">Quick Start Notes:</h2>
-<ol>
-<li>Add images to the <em>images</em> folder if the file is referencing an image.</li>
-</ol>
-</article>
-          </div>
+        <p>A simple .NET Core wrapper for the MultiChain Core blockchain library using Command Line Interface (CLI) clients that interact directly with the MultiChain Core executable files.</p>
+        <h2 id="quick-start-notes">Quick Start Notes:</h2>
+        <ol>
+          <li>Start a new .NET Core project in Visual Studio 2019</li>
+          <ul>
+            <li>Using a Web App or Web API project is easiest since the Dependency Injection (DI) pipeline is already built.</li>
+          </ul>
+          <li>Install the latest stable version of MCWrapper.CLI from the NuGet Package Manager or use the Package Manager command <code>Install-Package MCWrapper.CLI</code></li>
+          <li>Follow the steps to download and install the most recent stable version of <a href="https://www.multichain.com/download-community/" target="_blank">MultiChain Community</a> according to your operating system.</li>
+          <li>Complete step one of <a href="https://www.multichain.com/getting-started/" target="_blank">Getting Started with MultiChain</a>.</li>
+          <li>We will need the following information from the new MultiChain node.</li>
+          <ul>
+            <li>The name of the new blockchain node.</li>
+            <li>The new blockchain node admin's wallet address</li>
+            <ul>
+              <li>Run command > multichain-cli {blockchain name} listaddresses</li>
+              <li>There should only be one address listed at this point.</li>
+            </ul>
+            <li>The new blockchain node's burn address</li>
+            <ul>
+              <li>Run command > multichain-cli {blockchain name} getinfo</li>
+            </ul>
+            <li>Next we will add MCWrapper.CLI to our application's service container pipeline.</li>
+          </ul>
+        </ol>
+        <p>
+          Configuration for MCWrapper.CLI clients is handled internally via the IOptions pattern.
+          The options pattern uses classes to represent groups of related settings. Visit the GitHub page to preview
+          the <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/Connection/CliOptions.cs">CliOptions</a> class.
+        </p>
+      </article>
+      <article class="context wrap" id="_config" data-uid="">
+        <h2 id="configure-services">Configure Services:</h2>
+        <p>
+          Option #1 (preferred): This option is the most secure. Store the
+          MCWrapper.CLI CliOptions as Environment Variables 
+          that are automatically loaded on startup. Simply call the 
+          <em>AddMultiChainCoreCliServices</em> extension method after configuring 
+          the environment. More information is available at our help page 
+          for this <a href="https://mcwrapper.com/configure-options">topic</a>.
+        </p>
+<pre><code class="language-dotnet">// Startup class of the Web App or Web API
+public class Startup
+{
+  public Startup(IConfiguration configuration)
+  {
+    Configuration = configuration;
+  }
+
+  public IConfiguration Configuration { get; }
+
+  public void ConfigureServices(IServiceCollection services)
+  {
+    // ... previous code removed for brevity
+
+    services.AddMultiChainCoreCliServices();
+  }
+
+  public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+  {
+    // ... remaining code removed for brevity
+  }
+}</code></pre>
+        <br />
+        <p>
+          Option #2: This option is the still somewhat secure, depending on the
+          production environment. Store the MCWrapper.CLI CliOptions as
+          variables on an external configuration file (appsettings.json) that are 
+          automatically loaded on startup. Simply call the <em>AddMultiChainCoreCliServices</em>
+          extension method and pass in the <em>IConfiguration Configuration</em> property after 
+          configuring the file. More information is available at our help page for this
+          <a href="https://mcwrapper.com/configure-options">topic</a>.
+        </p>
+<pre><code class="language-dotnet">// Startup class of the Web App or Web API
+public class Startup
+{
+  public Startup(IConfiguration configuration)
+  {
+    Configuration = configuration;
+  }
+
+  public IConfiguration Configuration { get; }
+
+  public void ConfigureServices(IServiceCollection services)
+  {
+    // ... previous code removed for brevity
+
+    services.AddMultiChainCoreCliServices(Configuration);
+  }
+
+  public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+  {
+    // ... remaining code removed for brevity
+  }
+}</code></pre>
+        <br />
+        <p>
+          Option #3: This option is not secure and should only be used in non-production
+          environments. Explicitly pass the MCWrapper.CLI CliOptions as
+          arguments into the <em>AddMultiChainCoreCliServices</em> extension method and they will be
+          loaded during startup. More information is available at our help page for this
+            <a href="https://mcwrapper.com/configure-options">topic</a>.
+        </p>
+        <p>Your values will differ from ours, the values listed below are just an example.</p>
+<pre><code class="language-dotnet">// Startup class of the Web App or Web API
+public class Startup
+{
+  public Startup(IConfiguration configuration)
+  {
+    Configuration = configuration;
+  }
+
+  public IConfiguration Configuration { get; }
+
+  public void ConfigureServices(IServiceCollection services)
+  {
+    // ... previous code removed for brevity
+
+    services.AddMultiChainCoreCliServices(cliOptions =>
+    {
+      cliOptions.ChainAdminAddress = "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t";
+      cliOptions.ChainBurnAddress = "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS";
+      cliOptions.ChainName = "NewChain";
+      // if any of the next 3 properties are left null/empty default locations are used
+      cliOptions.ChainDefaultColdNodeLocation = string.Empty; // location for cold nodes
+      cliOptions.ChainDefaultLocation = string.Empty; // location for hot nodes
+      cliOptions.ChainBinaryLocation = string.Empty; // location of MultiChain Core executables
+    });
+  }
+
+  public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+  {
+    // ... remaining code removed for brevity
+  }
+}
+
+</code></pre>
+      </article>
+
+      <article class="context wrap" id="_environment" data-uid="">
+        <h2 id="environment-variables">Environment Variables:</h2>
+        <p>
+          When using the parameterless AddMultiChainCoreCliServices method MCWrapper.CLI will depend on the local machine's Environment
+          Variable store.
+        </p>
+        <p>
+          While depending on the Environment Variable store the following variable names are used.
+        </p>
+        <ul>
+          <li>Environment variable names required by MCWrapper.CLI</li>
+          <ul>
+            <li>ChainAdminAddress (string)</li>
+            <li>ChainBurnAddress (string)</li>
+            <li>ChainName (string)</li>
+            <li>ChainDefaultColdNodeLocation (string)</li>
+            <li>ChainDefaultLocation (string)</li>
+            <li>ChainBinaryLocation (string)</li>
+          </ul>
+        </ul>
+      </article>
+      <article class="context wrap" id="_iconfig" data-uid="">
+        <h2 id="iconfiguration">IConfiguration:</h2>
+        <p>
+          When using the IConfiguration argument along with the AddMultiChainCoreCliServices method MCWrapper.CLI will depend on
+          an external JSON Configuration file, generally named appsettings.json.
+        </p>
+        <p>
+          The external JSON configration file should contain the following variable names along with
+          their values.
+        </p>
+        <p>Your values will differ from ours, the values listed below are just an example.</p>
+<pre><code class="language-json">{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+
+  // values required by MCWrapper.CLI's CliOptions class
+  "ChainAdminAddress": "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t",
+  "ChainBurnAddress": "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS",
+  "ChainName": "NewChain",
+  // we leave these properties empty to indicate default locations should be used
+  "ChainDefaultColdNodeLocation": "",
+  "ChainDefaultLocation": "",
+  "ChainBinaryLocation": ""
+}</code></pre>
+
+      </article>
+
+      <article class="context wrap" id="_default-locations" data-uid="">
+        <h2 id="default-locations">Default Locations:</h2>
+        <p>
+          When using the MCWrapper.CLI clients if no value is assigned to the ChainDefaultColdNodeLocation,
+          ChainDefaultLocation, or the ChainBinaryLocation then default values are used within MCWrapper.CLI.
+        </p>
+        <p>
+          The default locations are as follows.
+        </p>
+        <p><strong>For Windows Environments</strong></p>
+        <ul>
+          <li>The default <em>ChainBinaryLocation</em> is auto-detected at either C:\ or C:\multichain</li>
+          <ul>
+            <li>
+              The <em>ChainBinaryLocation</em> is where multichaind.exe, multichain-cli.exe, multichaind-cold.exe, and multichain-util.exe will be stored.
+            </li>
+            <li>
+              MCWrapper.CLI requires access to this location due to not using JSON-RPC HTTP connections. Instead MCWrapper.CLI interacts
+              directly with the MultiChain Core binary files, passing arguments directly to the executables.
+            </li>
+            <li>
+              While MCWrapper.CLI is much slower than MCWrapper.RPC, due to interacting with the executables, MCWrapper.CLI is much more secure
+              since we are not broadcasting JSON-RPC calls via HTTP/HTTPS connections.
+            </li>
+          </ul>
+          <li>The default <em>ChainDefaultLocation</em> is auto-detected at C:\Users\&lt;Current Local User&gt;\AppData\Roaming\MultiChain</li>
+          <ul>
+            <li>
+              The <em>ChainDefaultLocation</em> is where existing hot nodes are located on the local machine and where new hot nodes can be
+              created by MCWrapper.CLI.
+            </li>
+            <li>
+              Note: MCWrapper.CLI does support creation of new hot or cold nodes and has the ability to start a node since we interact directly with the MultiChain Core executables.MCWrapper.RPC does not support these features since it is limited to the blockchain methods available over JSON-RPC. 
+            </li>
+          </ul>
+          <li>The default <em>ChainDefaultColdNodeLocation</em> is auto-detected at C:\Users\&lt;Current Local User&gt;\AppData\Roaming\MultiChainCold</li>
+          <ul>
+            <li>
+              The <em>ChainDefaultColdNodeLocation</em> more or less serves the same function as the <em>ChainDefaultLocation</em>, except the
+              <em>ChainDefaultColdNodeLocation</em> is for cold nodes instead of hot nodes.
+            </li>
+          </ul>
+        </ul>
+
+        <p><strong>For Linux Environments</strong></p>
+        <p>Disclaimer: We haven't fully tested or implemented MCWrapper.CLI to work with Linux, we are hoping to accomplish this very soon.</p>
+        <ul>
+          <li>The default <em>ChainBinaryLocation</em> is auto-detected at /usr/local/bin</li>
+          <ul>
+            <li>
+              The <em>ChainBinaryLocation</em> is where multichaind, multichain-cli, multichaind-cold, and multichain-util will be stored.
+            </li>
+            <li>
+              MCWrapper.CLI requires access to this location due to not using JSON-RPC HTTP connections. Instead MCWrapper.CLI interacts
+              directly with the MultiChain Core binary files, passing arguments directly to the executables.
+            </li>
+            <li>
+              While MCWrapper.CLI is much slower than MCWrapper.RPC, due to interacting with the executables, MCWrapper.CLI is much more secure
+              since we are not broadcasting JSON-RPC calls via HTTP/HTTPS connections.
+            </li>
+          </ul>
+          <li>The default <em>ChainDefaultLocation</em> is auto-detected at ./multichain</li>
+          <ul>
+          <li>
+            The <em>ChainDefaultLocation</em> is where existing hot nodes are located on the local machine and where new hot nodes can be
+            created by MCWrapper.CLI.
+          </li>
+          <li>
+            Note: MCWrapper.CLI does support creation of new hot or cold nodesand has the ability to start a node since we interact directly with the MultiChain Core executables. MCWrapper.RPC does not support these features since it is limited to the blockchain methods available over JSON-RPC. 
+          </li>
+        </ul>
+        <li>The default <em>ChainDefaultColdNodeLocation</em> is auto-detected at ./multichain-cold</li>
+        <ul>
+          <li>
+            The <em>ChainDefaultColdNodeLocation</em> more or less serves the same function as the <em>ChainDefaultLocation</em>, except the
+            <em>ChainDefaultColdNodeLocation</em> is for cold nodes instead of hot nodes.
+          </li>
+        </ul>
+      </ul>
+      <p><strong>For MacOS Environments</strong></p>
+      <p>No! (maybe someday, perhaps)</p>
+    </article>
+    </div>
           
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
+  <div class="hidden-sm col-md-2" role="complementary">
+    <div class="sideaffix">
+      <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/ryangoodwindev/MCWrapper.CLI/blob/master/MCWrapper.CLI/index.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
+                  
                 </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
-              </nav>
-            </div>
-          </div>
-        </div>
       </div>
+      <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+      </nav>
+    </div>
+  </div>
+  </div>
+</div>
       
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
+  <footer>
+    <div class="grad-bottom"></div>
+          <div class="footer">
+              <div class="container">
+                <span class="pull-right">
+                    <a href="#top">Back to top</a>
+                </span>
             
             <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
-      </footer>
-    </div>
+  </footer>
+</div>
     
     <script type="text/javascript" src="styles/docfx.vendor.js"></script>
     <script type="text/javascript" src="styles/docfx.js"></script>
     <script type="text/javascript" src="styles/main.js"></script>
+    <script type="text/javascript" src="styles/prism.js"></script>
   </body>
 </html>
