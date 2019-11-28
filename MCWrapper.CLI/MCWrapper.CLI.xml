@@ -734,6 +734,19 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliControlClient.GetInitStatusAsync(System.String)">
+            <summary>
+            Returns information about initialization status of this node
+            </summary>
+            <param name="blockchainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliControlClient.GetInitStatusAsync">
+            <summary>
+            Returns information about initialization status of this node
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliControlClient.GetRuntimeParamsAsync(System.String)">
             <summary>
             
@@ -5661,6 +5674,19 @@
             <para>Returns general information about this node and blockchain.</para>
             <para>Blockchain name is explicitly passed as parameter.</para>
             
+            </summary>
+            <param name="blockchainName">Name of target blockchain</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliControl.GetInitStatusAsync">
+            <summary>
+            Returns information about initialization status of this node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliControl.GetInitStatusAsync(System.String)">
+            <summary>
+            Returns information about initialization status of this node
             </summary>
             <param name="blockchainName">Name of target blockchain</param>
             <returns></returns>

@@ -95,6 +95,21 @@ namespace MCWrapper.CLI.Ledger.Clients
             GetInfoAsync(CliOptions.ChainName);
 
         /// <summary>
+        /// Returns information about initialization status of this node
+        /// </summary>
+        /// <param name="blockchainName"></param>
+        /// <returns></returns>
+        public Task<CliResponse<GetInitStatusResult>> GetInitStatusAsync(string blockchainName) =>
+            TransactAsync<GetInitStatusResult>(blockchainName, ControlAction.GetInitStatus);
+
+        /// <summary>
+        /// Returns information about initialization status of this node
+        /// </summary>
+        /// <returns></returns>
+        public Task<CliResponse<GetInitStatusResult>> GetInitStatusAsync() =>
+            GetInitStatusAsync(CliOptions.ChainName);
+
+        /// <summary>
         /// 
         /// <para>Returns a selection of this node's runtime parameters.</para>
         /// <para>Blockchain name is explicitly passed as parameter.</para>

@@ -80,6 +80,19 @@ namespace MCWrapper.CLI.Ledger.Clients
         Task<CliResponse<GetInfoResult>> GetInfoAsync(string blockchainName);
 
         /// <summary>
+        /// Returns information about initialization status of this node
+        /// </summary>
+        /// <returns></returns>
+        Task<CliResponse<GetInitStatusResult>> GetInitStatusAsync();
+
+        /// <summary>
+        /// Returns information about initialization status of this node
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <returns></returns>
+        Task<CliResponse<GetInitStatusResult>> GetInitStatusAsync(string blockchainName);
+
+        /// <summary>
         /// 
         /// <para>Returns a selection of this node's runtime parameters.</para>
         /// <para>Blockchain name is inferred from CliOptions properties.</para>
