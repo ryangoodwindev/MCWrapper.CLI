@@ -8,7 +8,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>Added new extension method that allows for RpcOptions to be passed as arguments instead of an Action&lt;T&gt;.
+    <PackageReleaseNotes>Added new extension method that allows for CliOptions to be passed as arguments instead of an Action&lt;T&gt;.
 Added Secret Manager detection for extension method receiving IConfiguration pipeline.
 
 Added support for MultChain Core blockchain method 'getinitstatus'
