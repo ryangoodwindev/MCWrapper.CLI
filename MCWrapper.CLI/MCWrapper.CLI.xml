@@ -283,7 +283,7 @@
         </member>
         <member name="T:MCWrapper.CLI.Extensions.MultiChainCoreCliServices">
             <summary>
-            
+            Extension methods offering several different options for adding MultiChain Core Command Line Interface services to your .NET Core application.
             </summary>
         </member>
         <member name="M:MCWrapper.CLI.Extensions.MultiChainCoreCliServices.AddMultiChainCoreCliServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
@@ -313,7 +313,7 @@
             <param name="services">Service container</param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Extensions.MultiChainCoreCliServices.AddMultiChainCoreCliServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:MCWrapper.CLI.Extensions.MultiChainCoreCliServices.AddMultiChainCoreCliServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.Boolean)">
             <summary>
             <para> **** Please be aware! MCWrapper.CLI has only been tested and configured to function in a Windows environment. ****</para>
             <para> **** We are working on a Linux client for version 2.0.0, current version is 1.0.0 ****</para>
@@ -335,6 +335,7 @@
             </summary>
             <param name="services">Service container</param>
             <param name="configuration">Configuration pipeline</param>
+            <param name="useSecrets">true = use Secrets Manager / false (default) = use appsettings.json</param>
             <returns></returns>
         </member>
         <member name="M:MCWrapper.CLI.Extensions.MultiChainCoreCliServices.AddMultiChainCoreCliServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{MCWrapper.CLI.Options.CliOptions},System.Action{MCWrapper.Ledger.Entities.Options.RuntimeParamOptions})">
@@ -361,6 +362,39 @@
             <param name="services">Service container</param>
             <param name="cliOptions">Blockchain profile configuration (Information the app will use to connect to a MultiChain ledger)</param>
             <param name="runtimeParamOptions">Runtime parameter configuration (How a MultiChain ledger should behave)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Extensions.MultiChainCoreCliServices.AddMultiChainCoreRpcServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.String,System.String,System.String,System.String,System.Action{MCWrapper.Ledger.Entities.Options.RuntimeParamOptions})">
+            <summary>
+            Add MultiChain Command Line Interface (CLI) services to an application's service container.
+            
+            <para>
+                Be aware a MultiChain blockchain network must be installed and configured externally from this application.
+            </para>
+            
+            <para>
+                The MultiChain library and installation instructions are availabale at https://multichain.com
+            </para>
+            
+            <para>
+                This method requires the CliOptions and RuntimeParamOptions property values to be
+                explicitly passed via the individual parameters for this method and the optional,
+                <paramref name="runtimeParamOptions"/> Action parameter when added to the DI pipeline.
+            </para>
+            <para>
+                See our documentation on Github, https://ryangoodwindev.github.io/MCWrapper/, 
+                for default locations used for <paramref name="chainBinaryLocation"/>,
+                <paramref name="chainDefaultLocation"/>, and <paramref name="chainDefaultColdNodeLocation"/>
+            </para>
+            </summary>
+            <param name="services">Service collection</param>
+            <param name="chainName">MultiChain Core blockchain node name</param>
+            <param name="burnAddress">MultiChain Core blockchain Burn address</param>
+            <param name="adminAddress">MultiChain Core blockchain Admin address</param>
+            <param name="chainBinaryLocation">MultiChain Core executable location (i.e multichaind, multichain-cli, multichain-util, and multichaind-cold)</param>
+            <param name="chainDefaultLocation">MulitChain Core hot node storage location</param>
+            <param name="chainDefaultColdNodeLocation">MultiChain Core cold node storage location</param>
+            <param name="runtimeParamOptions">MultiChain Core runtime parameters</param>
             <returns></returns>
         </member>
         <member name="T:MCWrapper.CLI.Helpers.CliArgumentHelper">

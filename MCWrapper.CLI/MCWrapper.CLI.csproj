@@ -8,7 +8,10 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>Added support for MultChain Core blockchain method 'getinitstatus'
+    <PackageReleaseNotes>Added new extension method that allows for RpcOptions to be passed as arguments instead of an Action&lt;T&gt;.
+Added Secret Manager detection for extension method receiving IConfiguration pipeline.
+
+Added support for MultChain Core blockchain method 'getinitstatus'
 
 MultiChain Command Line Interface (CLI) client interfaces should be injected into Controllers or Razor Pages as follows.
 
@@ -82,7 +85,7 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
 ** This library is only supported on Windows environments in this version.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>4.0.3</Version>
+    <Version>4.0.4</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

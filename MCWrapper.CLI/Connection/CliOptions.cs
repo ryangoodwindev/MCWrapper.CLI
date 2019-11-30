@@ -44,6 +44,16 @@ namespace MCWrapper.CLI.Options
             }
         }
 
+        public CliOptions(string chainName, string chainBurnAddress, string chainAdminAddress, string chainBinaryLocation, string chainDefaultLocation, string chainDefaultColdNodeLocation)
+        {
+            ChainName = chainName;
+            ChainBurnAddress = chainBurnAddress;
+            ChainAdminAddress = chainAdminAddress;
+            ChainBinaryLocation = chainBinaryLocation;
+            ChainDefaultLocation = chainDefaultLocation;
+            ChainDefaultColdNodeLocation = chainDefaultColdNodeLocation;
+        }
+
         /// <summary>
         /// Multichain blockchain name as declared in the params.dat file;
         /// 

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 namespace MCWrapper.CLI.Extensions
 {
     /// <summary>
-    /// 
+    /// Extension methods offering several different options for adding MultiChain Core Command Line Interface services to your .NET Core application.
     /// </summary>
     public static class MultiChainCoreCliServices
     {
@@ -111,6 +111,7 @@ namespace MCWrapper.CLI.Extensions
         /// </summary>
         /// <param name="services">Service container</param>
         /// <param name="configuration">Configuration pipeline</param>
+        /// <param name="useSecrets">true = use Secrets Manager / false (default) = use appsettings.json</param>
         /// <returns></returns>
         public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services, IConfiguration configuration, bool useSecrets = false)
         {
@@ -138,9 +139,9 @@ namespace MCWrapper.CLI.Extensions
             var cliOptions = provider.GetRequiredService<IOptions<CliOptions>>().Value;
 
             // detect misconfiguration early in pipeline
-            if (!string.IsNullOrEmpty(cliOptions.ChainAdminAddress)) throw new ArgumentNullException($"{nameof(cliOptions.ChainAdminAddress)} is required and cannot be empty or null");
-            if (!string.IsNullOrEmpty(cliOptions.ChainBurnAddress)) throw new ArgumentNullException($"{nameof(cliOptions.ChainBurnAddress)} is required and cannot be empty or null");
-            if (!string.IsNullOrEmpty(cliOptions.ChainName)) throw new ArgumentNullException($"{nameof(cliOptions.ChainName)} is required and cannot be empty or null");
+            if (string.IsNullOrEmpty(cliOptions.ChainAdminAddress)) throw new ArgumentNullException($"{nameof(cliOptions.ChainAdminAddress)} is required and cannot be empty or null");
+            if (string.IsNullOrEmpty(cliOptions.ChainBurnAddress)) throw new ArgumentNullException($"{nameof(cliOptions.ChainBurnAddress)} is required and cannot be empty or null");
+            if (string.IsNullOrEmpty(cliOptions.ChainName)) throw new ArgumentNullException($"{nameof(cliOptions.ChainName)} is required and cannot be empty or null");
 
             // command line interface clients and client factory
             services.AddTransient<IMultiChainCliGeneral, MultiChainCliGeneralClient>()
@@ -202,6 +203,102 @@ namespace MCWrapper.CLI.Extensions
                 config.ChainAdminAddress = _cliOptions.ChainAdminAddress;
                 config.ChainBurnAddress = _cliOptions.ChainBurnAddress;
                 config.ChainName = _cliOptions.ChainName;
+            });
+
+            if (runtimeParamOptions != null)
+            {
+                var _runtimeParamOptions = new RuntimeParamOptions();
+                runtimeParamOptions?.Invoke(_runtimeParamOptions);
+
+                services.Configure<RuntimeParamOptions>(config =>
+                {
+                    config.MiningRequiresPeers = _runtimeParamOptions.MiningRequiresPeers;
+                    config.LockAdminMineRounds = _runtimeParamOptions.LockAdminMineRounds;
+                    config.MaxQueryScanItems = _runtimeParamOptions.MaxQueryScanItems;
+                    config.HideKnownOpDrops = _runtimeParamOptions.HideKnownOpDrops;
+                    config.MineEmptyRounds = _runtimeParamOptions.MineEmptyRounds;
+                    config.MiningTurnOver = _runtimeParamOptions.MiningTurnOver;
+                    config.HandshakeLocal = _runtimeParamOptions.HandshakeLocal;
+                    config.AutoSubscribe = _runtimeParamOptions.AutoSubscribe;
+                    config.MaxShownData = _runtimeParamOptions.MaxShownData;
+                    config.LockBlock = _runtimeParamOptions.LockBlock;
+                    config.BanTx = _runtimeParamOptions.BanTx;
+                });
+            }
+
+            // command line interface clients and client factory
+            services.AddTransient<IMultiChainCliGeneral, MultiChainCliGeneralClient>()
+               .AddTransient<IMultiChainCliGenerate, MultiChainCliGenerateClient>()
+               .AddTransient<IMultiChainCliOffChain, MultiChainCliOffChainClient>()
+               .AddTransient<IMultiChainCliControl, MultiChainCliControlClient>()
+               .AddTransient<IMultiChainCliNetwork, MultiChainCliNetworkClient>()
+               .AddTransient<IMultiChainCliUtility, MultiChainCliUtilityClient>()
+               .AddTransient<IMultiChainCliWallet, MultiChainCliWalletClient>()
+               .AddTransient<IMultiChainCliMining, MultiChainCliMiningClient>()
+               .AddTransient<IMultiChainCliRaw, MultiChainCliRawClient>()
+               .AddTransient<IMultiChainCliForge, MultiChainCliForgeClient>()
+               .AddTransient<IMultiChainCliClientFactory, MultiChainCliClientFactory>();
+
+            return services;
+        }
+
+
+        /// <summary>
+        /// Add MultiChain Command Line Interface (CLI) services to an application's service container.
+        /// 
+        /// <para>
+        ///     Be aware a MultiChain blockchain network must be installed and configured externally from this application.
+        /// </para>
+        /// 
+        /// <para>
+        ///     The MultiChain library and installation instructions are availabale at https://multichain.com
+        /// </para>
+        /// 
+        /// <para>
+        ///     This method requires the CliOptions and RuntimeParamOptions property values to be
+        ///     explicitly passed via the individual parameters for this method and the optional,
+        ///     <paramref name="runtimeParamOptions"/> Action parameter when added to the DI pipeline.
+        /// </para>
+        /// <para>
+        ///     See our documentation on Github, https://ryangoodwindev.github.io/MCWrapper/, 
+        ///     for default locations used for <paramref name="chainBinaryLocation"/>,
+        ///     <paramref name="chainDefaultLocation"/>, and <paramref name="chainDefaultColdNodeLocation"/>
+        /// </para>
+        /// </summary>
+        /// <param name="services">Service collection</param>
+        /// <param name="chainName">MultiChain Core blockchain node name</param>
+        /// <param name="burnAddress">MultiChain Core blockchain Burn address</param>
+        /// <param name="adminAddress">MultiChain Core blockchain Admin address</param>
+        /// <param name="chainBinaryLocation">MultiChain Core executable location (i.e multichaind, multichain-cli, multichain-util, and multichaind-cold)</param>
+        /// <param name="chainDefaultLocation">MulitChain Core hot node storage location</param>
+        /// <param name="chainDefaultColdNodeLocation">MultiChain Core cold node storage location</param>
+        /// <param name="runtimeParamOptions">MultiChain Core runtime parameters</param>
+        /// <returns></returns>
+        public static IServiceCollection AddMultiChainCoreRpcServices(this IServiceCollection services,
+            string chainName,
+            string burnAddress,
+            string adminAddress,
+            [Optional] string chainBinaryLocation,
+            [Optional] string chainDefaultLocation,
+            [Optional] string chainDefaultColdNodeLocation,
+            [Optional] Action<RuntimeParamOptions> runtimeParamOptions)
+        {
+            var cliOptions = new CliOptions(chainName,
+                burnAddress,
+                adminAddress,
+                chainBinaryLocation,
+                chainDefaultLocation,
+                chainDefaultColdNodeLocation);
+
+            // configure Options
+            services.Configure<CliOptions>(config =>
+            {
+                config.ChainDefaultColdNodeLocation = cliOptions.ChainDefaultColdNodeLocation;
+                config.ChainDefaultLocation = cliOptions.ChainDefaultLocation;
+                config.ChainBinaryLocation = cliOptions.ChainBinaryLocation;
+                config.ChainAdminAddress = cliOptions.ChainAdminAddress;
+                config.ChainBurnAddress = cliOptions.ChainBurnAddress;
+                config.ChainName = cliOptions.ChainName;
             });
 
             if (runtimeParamOptions != null)
