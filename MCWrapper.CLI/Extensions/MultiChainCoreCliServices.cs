@@ -3,6 +3,7 @@ using MCWrapper.CLI.Options;
 using MCWrapper.Ledger.Entities.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Runtime.InteropServices;
 
@@ -43,35 +44,35 @@ namespace MCWrapper.CLI.Extensions
             var cliOptions = new CliOptions(true);
             var runtimeOptions = new RuntimeParamOptions(true);
 
-            // todo maybe we need to also check the Secret Manager for variable values?
-            // todo perhap we can analyze cliOptions and/or runtimeOptions and if null'ish then we can verify Secret Manager
-
-            // todo maybe we need some error handling here to detect lack of configuration early in the pipleline, as well. TBD
+            // detect misconfiguration early in pipeline
+            if (string.IsNullOrEmpty(cliOptions.ChainAdminAddress)) throw new ArgumentNullException($"{nameof(cliOptions.ChainAdminAddress)} is required and cannot be empty or null");
+            if (string.IsNullOrEmpty(cliOptions.ChainBurnAddress)) throw new ArgumentNullException($"{nameof(cliOptions.ChainBurnAddress)} is required and cannot be empty or null");
+            if (string.IsNullOrEmpty(cliOptions.ChainName)) throw new ArgumentNullException($"{nameof(cliOptions.ChainName)} is required and cannot be empty or null");
 
             // load Options from the local environment variable store
-            services.Configure<RuntimeParamOptions>(config => 
+            services.Configure<CliOptions>(config =>
             {
-                config.BanTx = runtimeOptions.BanTx;
-                config.LockBlock = runtimeOptions.LockBlock;
-                config.MaxShownData = runtimeOptions.MaxShownData;
-                config.AutoSubscribe = runtimeOptions.AutoSubscribe;
-                config.HandshakeLocal = runtimeOptions.HandshakeLocal;
-                config.MiningTurnOver = runtimeOptions.MiningTurnOver;
-                config.MineEmptyRounds = runtimeOptions.MineEmptyRounds;
-                config.HideKnownOpDrops = runtimeOptions.HideKnownOpDrops;
-                config.MaxQueryScanItems = runtimeOptions.MaxQueryScanItems;
-                config.LockAdminMineRounds = runtimeOptions.LockAdminMineRounds;
-                config.MiningRequiresPeers = runtimeOptions.MiningRequiresPeers;
-            })
-            .Configure<CliOptions>(config =>
-            {
-                config.ChainName = cliOptions.ChainName;
-                config.ChainBurnAddress = cliOptions.ChainBurnAddress;
-                config.ChainAdminAddress = cliOptions.ChainAdminAddress;
-                config.ChainBinaryLocation = cliOptions.ChainBinaryLocation;
-                config.ChainDefaultLocation = cliOptions.ChainDefaultLocation;
                 config.ChainDefaultColdNodeLocation = cliOptions.ChainDefaultColdNodeLocation;
-            });
+                config.ChainDefaultLocation = cliOptions.ChainDefaultLocation;
+                config.ChainBinaryLocation = cliOptions.ChainBinaryLocation;
+                config.ChainAdminAddress = cliOptions.ChainAdminAddress;
+                config.ChainBurnAddress = cliOptions.ChainBurnAddress;
+                config.ChainName = cliOptions.ChainName;
+            })
+                .Configure<RuntimeParamOptions>(config =>
+                {
+                    config.MiningRequiresPeers = runtimeOptions.MiningRequiresPeers;
+                    config.LockAdminMineRounds = runtimeOptions.LockAdminMineRounds;
+                    config.MaxQueryScanItems = runtimeOptions.MaxQueryScanItems;
+                    config.HideKnownOpDrops = runtimeOptions.HideKnownOpDrops;
+                    config.MineEmptyRounds = runtimeOptions.MineEmptyRounds;
+                    config.MiningTurnOver = runtimeOptions.MiningTurnOver;
+                    config.HandshakeLocal = runtimeOptions.HandshakeLocal;
+                    config.AutoSubscribe = runtimeOptions.AutoSubscribe;
+                    config.MaxShownData = runtimeOptions.MaxShownData;
+                    config.LockBlock = runtimeOptions.LockBlock;
+                    config.BanTx = runtimeOptions.BanTx;
+                });
 
             // command line interface clients and client factory
             services.AddTransient<IMultiChainCliGeneral, MultiChainCliGeneralClient>()
@@ -111,13 +112,35 @@ namespace MCWrapper.CLI.Extensions
         /// <param name="services">Service container</param>
         /// <param name="configuration">Configuration pipeline</param>
         /// <returns></returns>
-        public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services, IConfiguration configuration, bool useSecrets = false)
         {
-            // load Options from the IConfiguration interface (appsettings.json file usually)
-            services.Configure<RuntimeParamOptions>(configuration)
-                .Configure<CliOptions>(configuration);
+            if (!useSecrets)
+            {
+                // load Options from the IConfiguration interface (appsettings.json file usually)
+                services.Configure<RuntimeParamOptions>(configuration)
+                    .Configure<CliOptions>(configuration);
+            }
+            else
+            {
+                services.Configure<RuntimeParamOptions>(configuration)
+                    .Configure<CliOptions>(config =>
+                    {
+                        config.ChainDefaultColdNodeLocation = configuration["MULTICHAIN__DEFAULTCOLDNODELOCATION"];
+                        config.ChainDefaultLocation = configuration["MULTICHAIN__DEFAULTLOCATION"];
+                        config.ChainBinaryLocation = configuration["MULTICHAIN__BINARYLOCATION"];
+                        config.ChainAdminAddress = configuration["MULTICHAIN__ADMINADDRESS"];
+                        config.ChainBurnAddress = configuration["MULTICHAIN__BURNADDRESS"];
+                        config.ChainName = configuration["MULTICHAIN__NAME"];
+                    });
+            }
 
-            // todo maybe we need some error handling here to detect lack of configuration early in the pipleline, as well. TBD
+            var provider = services.BuildServiceProvider();
+            var cliOptions = provider.GetRequiredService<IOptions<CliOptions>>().Value;
+
+            // detect misconfiguration early in pipeline
+            if (!string.IsNullOrEmpty(cliOptions.ChainAdminAddress)) throw new ArgumentNullException($"{nameof(cliOptions.ChainAdminAddress)} is required and cannot be empty or null");
+            if (!string.IsNullOrEmpty(cliOptions.ChainBurnAddress)) throw new ArgumentNullException($"{nameof(cliOptions.ChainBurnAddress)} is required and cannot be empty or null");
+            if (!string.IsNullOrEmpty(cliOptions.ChainName)) throw new ArgumentNullException($"{nameof(cliOptions.ChainName)} is required and cannot be empty or null");
 
             // command line interface clients and client factory
             services.AddTransient<IMultiChainCliGeneral, MultiChainCliGeneralClient>()
@@ -161,30 +184,17 @@ namespace MCWrapper.CLI.Extensions
         /// <returns></returns>
         public static IServiceCollection AddMultiChainCoreCliServices(this IServiceCollection services, Action<CliOptions> cliOptions, [Optional] Action<RuntimeParamOptions> runtimeParamOptions)
         {
-            var _runtimeParamOptions = new RuntimeParamOptions();
+           
             var _cliOptions = new CliOptions();
-
-            runtimeParamOptions?.Invoke(_runtimeParamOptions);
             cliOptions?.Invoke(_cliOptions);
 
-            // todo maybe we need some error handling here to detect lack of configuration early in the pipleline, as well. TBD
+            // detect misconfiguration early in pipeline
+            if (string.IsNullOrEmpty(_cliOptions.ChainAdminAddress)) throw new ArgumentNullException($"{nameof(_cliOptions.ChainAdminAddress)} is required and cannot be empty or null");
+            if (string.IsNullOrEmpty(_cliOptions.ChainBurnAddress)) throw new ArgumentNullException($"{nameof(_cliOptions.ChainBurnAddress)} is required and cannot be empty or null");
+            if (string.IsNullOrEmpty(_cliOptions.ChainName)) throw new ArgumentNullException($"{nameof(_cliOptions.ChainName)} is required and cannot be empty or null");
 
             // configure Options
-            services.Configure<RuntimeParamOptions>(config =>
-            {
-                config.BanTx = _runtimeParamOptions.BanTx;
-                config.LockBlock = _runtimeParamOptions.LockBlock;
-                config.MaxShownData = _runtimeParamOptions.MaxShownData;
-                config.AutoSubscribe = _runtimeParamOptions.AutoSubscribe;
-                config.HandshakeLocal = _runtimeParamOptions.HandshakeLocal;
-                config.MiningTurnOver = _runtimeParamOptions.MiningTurnOver;
-                config.MineEmptyRounds = _runtimeParamOptions.MineEmptyRounds;
-                config.HideKnownOpDrops = _runtimeParamOptions.HideKnownOpDrops;
-                config.MaxQueryScanItems = _runtimeParamOptions.MaxQueryScanItems;
-                config.LockAdminMineRounds = _runtimeParamOptions.LockAdminMineRounds;
-                config.MiningRequiresPeers = _runtimeParamOptions.MiningRequiresPeers;
-            })
-            .Configure<CliOptions>(config =>
+            services.Configure<CliOptions>(config =>
             {
                 config.ChainDefaultColdNodeLocation = _cliOptions.ChainDefaultColdNodeLocation;
                 config.ChainDefaultLocation = _cliOptions.ChainDefaultLocation;
@@ -193,6 +203,27 @@ namespace MCWrapper.CLI.Extensions
                 config.ChainBurnAddress = _cliOptions.ChainBurnAddress;
                 config.ChainName = _cliOptions.ChainName;
             });
+
+            if (runtimeParamOptions != null)
+            {
+                var _runtimeParamOptions = new RuntimeParamOptions();
+                runtimeParamOptions?.Invoke(_runtimeParamOptions);
+
+                services.Configure<RuntimeParamOptions>(config =>
+                {
+                    config.MiningRequiresPeers = _runtimeParamOptions.MiningRequiresPeers;
+                    config.LockAdminMineRounds = _runtimeParamOptions.LockAdminMineRounds;
+                    config.MaxQueryScanItems = _runtimeParamOptions.MaxQueryScanItems;
+                    config.HideKnownOpDrops = _runtimeParamOptions.HideKnownOpDrops;
+                    config.MineEmptyRounds = _runtimeParamOptions.MineEmptyRounds;
+                    config.MiningTurnOver = _runtimeParamOptions.MiningTurnOver;
+                    config.HandshakeLocal = _runtimeParamOptions.HandshakeLocal;
+                    config.AutoSubscribe = _runtimeParamOptions.AutoSubscribe;
+                    config.MaxShownData = _runtimeParamOptions.MaxShownData;
+                    config.LockBlock = _runtimeParamOptions.LockBlock;
+                    config.BanTx = _runtimeParamOptions.BanTx;
+                });
+            }
 
             // command line interface clients and client factory
             services.AddTransient<IMultiChainCliGeneral, MultiChainCliGeneralClient>()
