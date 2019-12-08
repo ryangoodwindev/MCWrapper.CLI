@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace MCWrapper.CLI.Helpers
@@ -118,6 +119,52 @@ namespace MCWrapper.CLI.Helpers
             return formatted.ToString();
         }
 
+        /// <summary>
+        /// This is a new collection property that we are using witht he ArgumentList option when starting a new Process.
+        /// Ideally this will help with supporting both Linux and Windows environments in a more robust/reliable fashion.
+        /// </summary>
+        /// <returns></returns>
+        internal List<string> ToList(string blockchainName)
+        {
+            var argumentList = new List<string>();
+
+            if (IsColdNode)
+                argumentList.Add(ColdNodeSwitch);
+
+            if (UseRpcssl)
+                argumentList.Add(RpcSslSwitch);
+
+            if (UseRpcWait)
+                argumentList.Add(RpcWaitSwitch);
+
+            if (!string.IsNullOrEmpty(Conf))
+                argumentList.Add($"{nameof(Conf)}{Conf}");
+
+            if (!string.IsNullOrEmpty(DataDir))
+                argumentList.Add($"{nameof(DataDir)}{DataDir}");
+
+            if (!string.IsNullOrEmpty(RequestOut))
+                argumentList.Add($"{nameof(RequestOut)}{RequestOut}");
+
+            if (!string.IsNullOrEmpty(SaveCliLog))
+                argumentList.Add($"{nameof(SaveCliLog)}{SaveCliLog}");
+
+            if (!string.IsNullOrEmpty(RpcConnect))
+                argumentList.Add($"{nameof(RpcConnect)}{RpcConnect}");
+
+            if (!string.IsNullOrEmpty(RpcPort))
+                argumentList.Add($"{nameof(RpcPort)}{RpcPort}");
+
+            if (!string.IsNullOrEmpty(RpcUser))
+                argumentList.Add($"{nameof(RpcUser)}{RpcUser}");
+
+            if (!string.IsNullOrEmpty(RpcPassword))
+                argumentList.Add($"{nameof(RpcPassword)}{RpcPassword}");
+
+            argumentList.Add(blockchainName);
+
+            return argumentList;
+        }
 
         /// <summary>
         /// Return Help CLI swtich

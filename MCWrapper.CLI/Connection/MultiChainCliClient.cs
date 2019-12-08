@@ -5,8 +5,10 @@ using MCWrapper.CLI.Options;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,30 +57,33 @@ namespace MCWrapper.CLI.Connection
             // throw exception on no blockchain name
             if (string.IsNullOrEmpty(blockchainName)) throw new BlockchainNameException();
 
-            // An empty or null ChainBinaryLocation occurs under the following conditions:
-            //  1. No "ChainBinaryLocation" environment variable detected in the local environment.
-            //  2. No "ChainBinaryLocation" value present on the appsettings.json file.
-            //  3. No "ChainBinaryLocation" value explicitly passed during 'AddMultiChainCoreCliServices' or 'AddMultiChainCoreServices' configuration
-            //
-            //  If any of the above scenarios are occurring then we will try to use the default locations according to the Operating System in use.
-            //      - Windows..: C:\ or C:\multichain
-            //      - Linux....: /usr/local/bin
-            var binaryLocation = MultiChainPathHelper.GetMultiChainCliExePath(CliOptions.ChainBinaryLocation);
+            cliArguments ??= new CliArgumentHelper();
+            parameters ??= Array.Empty<string>();
 
             try
             {
-                cliArguments ??= new CliArgumentHelper();
-                var arguments = new StringBuilder();
-                arguments.Append(cliArguments.ToString(blockchainName));
-                arguments.Append($"{methodName} ");
-
-                if (parameters?.Length > 0)
-                    arguments.Append(string.Join(" ", parameters));
-
                 using var process = new Process();
 
-                process.StartInfo.FileName = binaryLocation;
-                process.StartInfo.Arguments = arguments.ToString();
+                // populate blockchain name and any additional CLI arguments before the methodName is added
+                foreach (var argument in cliArguments.ToList(blockchainName))
+                    process.StartInfo.ArgumentList.Add(argument);
+
+                // add methodName to argument list
+                process.StartInfo.ArgumentList.Add(methodName);
+
+                // finish up argument list with any arguments we want to pass to the remote methodName
+                foreach (var parameter in parameters.ToList())
+                    process.StartInfo.ArgumentList.Add(parameter);
+
+                // An empty or null ChainBinaryLocation occurs under the following conditions:
+                //  1. No "ChainBinaryLocation" environment variable detected in the local environment.
+                //  2. No "ChainBinaryLocation" value present on the appsettings.json file.
+                //  3. No "ChainBinaryLocation" value explicitly passed during 'AddMultiChainCoreCliServices' or 'AddMultiChainCoreServices' configuration
+                //
+                //  If any of the above scenarios are occurring then we will try to use the default locations according to the Operating System in use.
+                //      - Windows..: C:\ or C:\multichain
+                //      - Linux....: /usr/local/bin
+                process.StartInfo.FileName = MultiChainPathHelper.GetMultiChainCliExePath(CliOptions.ChainBinaryLocation);
 
                 process.StartInfo.CreateNoWindow = true;
                 process.StartInfo.UseShellExecute = false;

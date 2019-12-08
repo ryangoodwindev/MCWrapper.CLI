@@ -481,8 +481,13 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns list of pending grants</param>
         /// <returns></returns>
-        public Task<CliResponse<ListPermissionsResult[]>> ListPermissionsAsync(string blockchainName, [Optional] string permissions, [Optional] object addresses, [Optional] bool verbose) =>
-            TransactAsync<ListPermissionsResult[]>(blockchainName, BlockchainAction.ListPermissionsMethod, new[] { permissions, addresses.Serialize(), $"{verbose}".ToLower() });
+        public Task<CliResponse<ListPermissionsResult[]>> ListPermissionsAsync(string blockchainName, [Optional] string permissions, [Optional] object addresses, [Optional] bool verbose)
+        {
+            if (addresses is string str)
+                return TransactAsync<ListPermissionsResult[]>(blockchainName, BlockchainAction.ListPermissionsMethod, new[] { permissions, str, $"{verbose}".ToLower() });
+
+            return TransactAsync<ListPermissionsResult[]>(blockchainName, BlockchainAction.ListPermissionsMethod, new[] { permissions, addresses.Serialize(), $"{verbose}".ToLower() });
+        }
 
         /// <summary>
         ///
@@ -515,8 +520,13 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns list of creators and approval details</param>
         /// <returns></returns>
-        public Task<CliResponse<ListStreamFiltersResult[]>> ListStreamFiltersAsync(string blockchainName, [Optional] object filter_identifers, [Optional] bool verbose) =>
-            TransactAsync<ListStreamFiltersResult[]>(blockchainName, BlockchainAction.ListStreamFiltersMethod, new[] { filter_identifers.Serialize(), $"{verbose}".ToLower() });
+        public Task<CliResponse<ListStreamFiltersResult[]>> ListStreamFiltersAsync(string blockchainName, [Optional] object filter_identifers, [Optional] bool verbose)
+        {
+            if (filter_identifers is string str)
+                return TransactAsync<ListStreamFiltersResult[]>(blockchainName, BlockchainAction.ListStreamFiltersMethod, new[] { str, $"{verbose}".ToLower() });
+
+            return TransactAsync<ListStreamFiltersResult[]>(blockchainName, BlockchainAction.ListStreamFiltersMethod, new[] { filter_identifers.Serialize(), $"{verbose}".ToLower() });
+        }
 
         /// <summary>
         ///
@@ -590,8 +600,13 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns list of creators and approval details</param>
         /// <returns></returns>
-        public Task<CliResponse<ListTxFiltersResult[]>> ListTxFiltersAsync(string blockchainName, [Optional] object filter_identifiers, [Optional] bool verbose) =>
-            TransactAsync<ListTxFiltersResult[]>(blockchainName, BlockchainAction.ListTxFiltersMethod, new[] { filter_identifiers.Serialize(), $"{verbose}".ToLower() });
+        public Task<CliResponse<ListTxFiltersResult[]>> ListTxFiltersAsync(string blockchainName, [Optional] object filter_identifiers, [Optional] bool verbose)
+        {
+            if (filter_identifiers is string str)
+                return TransactAsync<ListTxFiltersResult[]>(blockchainName, BlockchainAction.ListTxFiltersMethod, new[] { str, $"{verbose}".ToLower() });
+
+            return TransactAsync<ListTxFiltersResult[]>(blockchainName, BlockchainAction.ListTxFiltersMethod, new[] { filter_identifiers.Serialize(), $"{verbose}".ToLower() });
+        }
 
         /// <summary>
         ///
@@ -699,8 +714,13 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(string, optional) The transaction id</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<RunTxFilterResult>> RunTxFilterAsync(string blockchainName, [Optional] string filter_identifier, [Optional] string tx_hex) =>
-            TransactAsync<RunTxFilterResult>(blockchainName, BlockchainAction.RunTxFilterMethod, new[] { filter_identifier, tx_hex });
+        public Task<CliResponse<RunTxFilterResult>> RunTxFilterAsync(string blockchainName, [Optional] string filter_identifier, [Optional] string tx_hex)
+        {
+            if (tx_hex == null)
+                return TransactAsync<RunTxFilterResult>(blockchainName, BlockchainAction.RunTxFilterMethod, new[] { filter_identifier });
+
+            return TransactAsync<RunTxFilterResult>(blockchainName, BlockchainAction.RunTxFilterMethod, new[] { filter_identifier, tx_hex });
+        }
 
         /// <summary>
         ///
@@ -780,8 +800,13 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para> (string, optional) The transaction hex string to filter, otherwise filter compiled only</para>
         ///     <para>or</para>
         ///     <para>(string, optional) The transaction id</para></param>
-        public Task<CliResponse<TestTxFilterResult>> TestTxFilterAsync(string blockchainName, object restrictions, string javascript_code, [Optional] string tx_hex) =>
-            TransactAsync<TestTxFilterResult>(blockchainName, BlockchainAction.TestTxFilterMethod, new[] { restrictions.SerializeAndEscape(), javascript_code, tx_hex });
+        public Task<CliResponse<TestTxFilterResult>> TestTxFilterAsync(string blockchainName, object restrictions, string javascript_code, [Optional] string tx_hex)
+        {
+            if (tx_hex == null)
+                return TransactAsync<TestTxFilterResult>(blockchainName, BlockchainAction.TestTxFilterMethod, new[] { restrictions.Serialize(), javascript_code });
+
+            return TransactAsync<TestTxFilterResult>(blockchainName, BlockchainAction.TestTxFilterMethod, new[] { restrictions.Serialize(), javascript_code, tx_hex });
+        }
 
         /// <summary>
         ///

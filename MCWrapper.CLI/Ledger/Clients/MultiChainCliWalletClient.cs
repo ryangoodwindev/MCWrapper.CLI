@@ -1539,7 +1539,7 @@ namespace MCWrapper.CLI.Ledger.Clients
 
             // todo this is hacky crap code; for now it works
             if (OSDetection.IsWindows() && asset_params.GetType().BaseType == typeof(object))
-                _assetModel = asset_params.SerializeAndEscape();
+                _assetModel = asset_params.Serialize();
             else if (OSDetection.IsWindows() && asset_params.GetType().BaseType == typeof(string))
                 _assetModel = asset_params.ToString() ?? string.Empty;
 
@@ -2353,7 +2353,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="_lock">Lock prepared unspent output. Default is true</param>
         /// <returns></returns>
         public Task<CliResponse<PrepareLockUnspentResult>> PrepareLockUnspentAsync(string blockchainName, object asset_quantities, bool _lock = true) =>
-            TransactAsync<PrepareLockUnspentResult>(blockchainName, WalletAction.PrepareLockUnspentMethod, new[] { asset_quantities.SerializeAndEscape(), $"{_lock}".ToLower() });
+            TransactAsync<PrepareLockUnspentResult>(blockchainName, WalletAction.PrepareLockUnspentMethod, new[] { asset_quantities.Serialize(), $"{_lock}".ToLower() });
 
         /// <summary>
         /// 
@@ -2381,7 +2381,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="_lock">Lock prepared unspent output</param>
         /// <returns></returns>
         public Task<CliResponse<PrepareLockUnspentFromResult>> PrepareLockUnspentFromAsync(string blockchainName, string from_address, object asset_quantities, bool _lock) =>
-            TransactAsync<PrepareLockUnspentFromResult>(blockchainName, WalletAction.PrepareLockUnspentFromMethod, new[] { from_address, asset_quantities.SerializeAndEscape(), $"{_lock}".ToLower() });
+            TransactAsync<PrepareLockUnspentFromResult>(blockchainName, WalletAction.PrepareLockUnspentFromMethod, new[] { from_address, asset_quantities.Serialize(), $"{_lock}".ToLower() });
 
         /// <summary>
         /// 
