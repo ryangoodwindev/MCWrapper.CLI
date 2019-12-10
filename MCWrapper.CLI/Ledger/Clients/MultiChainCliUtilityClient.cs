@@ -113,7 +113,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="keys">A json array of keys which are addresses or hex-encoded public keys</param>
         /// <returns></returns>
         public Task<CliResponse<CreateMultiSigResult>> CreateMultiSigAsync(string blockchainName, int n_required, string[] keys) =>
-            TransactAsync<CreateMultiSigResult>(blockchainName, UtilityAction.CreateMultiSigMethod, new[] { $"{n_required}", keys.SerializeAndEscape() });
+            TransactAsync<CreateMultiSigResult>(blockchainName, UtilityAction.CreateMultiSigMethod, new[] { $"{n_required}", keys.Serialize() });
 
         /// <summary>
         /// 

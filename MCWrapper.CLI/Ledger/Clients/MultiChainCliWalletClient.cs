@@ -2230,7 +2230,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="addresses">A json array of addresses to filter</param>
         /// <returns></returns>
         public Task<CliResponse<ListUnspentResult[]>> ListUnspentAsync(string blockchainName, [Optional] int min_conf, [Optional] int max_conf, [Optional] object addresses) =>
-            TransactAsync<ListUnspentResult[]>(blockchainName, WalletAction.ListUnspentMethod, new[] { $"{min_conf}", $"{max_conf}", addresses.SerializeAndEscape() });
+            TransactAsync<ListUnspentResult[]>(blockchainName, WalletAction.ListUnspentMethod, new[] { $"{min_conf}", $"{max_conf}", addresses.Serialize() });
 
         /// <summary>
         /// 
