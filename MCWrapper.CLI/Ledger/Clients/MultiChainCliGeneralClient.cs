@@ -394,7 +394,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (asset_identifiers.GetType() == typeof(string))
                 return TransactAsync<ListAssetsResult[]>(blockchainName, BlockchainAction.ListAssetsMethod, new[] { $"{asset_identifiers}", $"{verbose}".ToLower(), $"{count}", $"{start}" });
             else
-                return TransactAsync<ListAssetsResult[]>(blockchainName, BlockchainAction.ListAssetsMethod, new[] { asset_identifiers.SerializeAndEscape(), $"{verbose}".ToLower(), $"{count}", $"{start}" });
+                return TransactAsync<ListAssetsResult[]>(blockchainName, BlockchainAction.ListAssetsMethod, new[] { asset_identifiers.Serialize(), $"{verbose}".ToLower(), $"{count}", $"{start}" });
         }
 
         /// <summary>
@@ -439,7 +439,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (block_set_identifier.GetType() == typeof(string))
                 return TransactAsync<ListBlocksResult[]>(blockchainName, BlockchainAction.ListBlocksMethod, new[] { $"{block_set_identifier}", $"{verbose}".ToLower() });
             else
-                return TransactAsync<ListBlocksResult[]>(blockchainName, BlockchainAction.ListBlocksMethod, new[] { block_set_identifier.SerializeAndEscape(), $"{verbose}".ToLower() });
+                return TransactAsync<ListBlocksResult[]>(blockchainName, BlockchainAction.ListBlocksMethod, new[] { block_set_identifier.Serialize(), $"{verbose}".ToLower() });
         }
 
         /// <summary>
@@ -565,7 +565,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (stream_identifiers.GetType() == typeof(string))
                 return TransactAsync<ListStreamsResult[]>(blockchainName, BlockchainAction.ListStreamsMethod, new[] { $"{stream_identifiers}", $"{verbose}".ToLower(), $"{count}", $"{start}" });
             else
-                return TransactAsync<ListStreamsResult[]>(blockchainName, BlockchainAction.ListStreamsMethod, new[] { stream_identifiers.SerializeAndEscape(), $"{verbose}".ToLower(), $"{count}", $"{start}" });
+                return TransactAsync<ListStreamsResult[]>(blockchainName, BlockchainAction.ListStreamsMethod, new[] { stream_identifiers.Serialize(), $"{verbose}".ToLower(), $"{count}", $"{start}" });
         }
 
         /// <summary>
@@ -642,7 +642,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (upgrade_identifiers.GetType() == typeof(string))
                 return TransactAsync<object>(blockchainName, BlockchainAction.ListUpgradesMethod, new[] { $"{upgrade_identifiers}" });
             else
-                return TransactAsync<object>(blockchainName, BlockchainAction.ListUpgradesMethod, new[] { upgrade_identifiers.SerializeAndEscape() });
+                return TransactAsync<object>(blockchainName, BlockchainAction.ListUpgradesMethod, new[] { upgrade_identifiers.Serialize() });
         }
 
         /// <summary>
@@ -757,9 +757,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         public Task<CliResponse<TestStreamFilterResult>> TestStreamFilterAsync(string blockchainName, object restrictions, string javascript_code, [Optional] string tx_hex, [Optional] int vout)
         {
             if (string.IsNullOrEmpty(tx_hex))
-                return TransactAsync<TestStreamFilterResult>(blockchainName, BlockchainAction.TestStreamFilterMethod, new[] { restrictions.SerializeAndEscape(), javascript_code });
+                return TransactAsync<TestStreamFilterResult>(blockchainName, BlockchainAction.TestStreamFilterMethod, new[] { restrictions.Serialize(), javascript_code });
             else
-                return TransactAsync<TestStreamFilterResult>(blockchainName, BlockchainAction.TestStreamFilterMethod, new[] { restrictions.SerializeAndEscape(), javascript_code, tx_hex, $"{vout}" });
+                return TransactAsync<TestStreamFilterResult>(blockchainName, BlockchainAction.TestStreamFilterMethod, new[] { restrictions.Serialize(), javascript_code, tx_hex, $"{vout}" });
         }
 
         /// <summary>

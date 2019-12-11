@@ -97,7 +97,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="action">Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
         /// <returns></returns>
         public Task<CliResponse<object>> AppendRawTransactionAsync(string blockchainName, string tx_hex, object[] transactions, object addresses, [Optional] object[] data, string action = "") =>
-            TransactAsync<object>(blockchainName, RawAction.AppendRawTransactionMethod, new[] { tx_hex, transactions.SerializeAndEscape(), addresses.SerializeAndEscape(), data.SerializeAndEscape(), action });
+            TransactAsync<object>(blockchainName, RawAction.AppendRawTransactionMethod, new[] { tx_hex, transactions.Serialize(), addresses.Serialize(), data.Serialize(), action });
 
         /// <summary>
         /// 

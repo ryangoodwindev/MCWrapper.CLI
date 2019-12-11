@@ -67,9 +67,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         public Task<CliResponse<object>> AddMultiSigAddressAsync(string blockchainName, int n_required, string[] keys, [Optional] string account)
         {
             if (string.IsNullOrEmpty(account))
-                return TransactAsync<object>(blockchainName, WalletAction.AddMultiSigAddressMethod, new[] { $"{n_required}", keys.SerializeAndEscape() });
+                return TransactAsync<object>(blockchainName, WalletAction.AddMultiSigAddressMethod, new[] { $"{n_required}", keys.Serialize() });
             else
-                return TransactAsync<object>(blockchainName, WalletAction.AddMultiSigAddressMethod, new[] { $"{n_required}", keys.SerializeAndEscape(), account });
+                return TransactAsync<object>(blockchainName, WalletAction.AddMultiSigAddressMethod, new[] { $"{n_required}", keys.Serialize(), account });
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <returns></returns>
         public Task<CliResponse<AppendRawExchangeResult>> AppendRawExchangeAsync(string blockchainName, string hex, string txid, int vout, object ask_assets) =>
-            TransactAsync<AppendRawExchangeResult>(blockchainName, WalletAction.AppendRawExchangeMethod, new[] { hex, txid, $"{vout}", ask_assets.SerializeAndEscape() });
+            TransactAsync<AppendRawExchangeResult>(blockchainName, WalletAction.AppendRawExchangeMethod, new[] { hex, txid, $"{vout}", ask_assets.Serialize() });
 
         /// <summary>
         /// 
@@ -147,7 +147,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <returns></returns>
         public Task<CliResponse<object>> ApproveFromAsync(string blockchainName, string fromAddress, string entityIdentifier, object approve) =>
-            TransactAsync<object>(blockchainName, WalletAction.ApproveFromMethod, new[] { fromAddress, entityIdentifier, approve.SerializeAndEscape() });
+            TransactAsync<object>(blockchainName, WalletAction.ApproveFromMethod, new[] { fromAddress, entityIdentifier, approve.Serialize() });
 
         /// <summary>
         /// 
@@ -252,9 +252,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         public Task<CliResponse<object>> CompleteRawExchangeAsync(string blockchainName, string hex, string txid, int vout, object ask_assets, [Optional] object data) => data switch
         {
-            string s => TransactAsync<object>(blockchainName, WalletAction.CompleteRawExchangeMethod, new[] { hex, txid, $"{vout}", ask_assets.SerializeAndEscape(), s.Serialize() }),
+            string s => TransactAsync<object>(blockchainName, WalletAction.CompleteRawExchangeMethod, new[] { hex, txid, $"{vout}", ask_assets.Serialize(), s }),
 
-            object o => TransactAsync<object>(blockchainName, WalletAction.CompleteRawExchangeMethod, new[] { hex, txid, $"{vout}", ask_assets.SerializeAndEscape(), o.SerializeAndEscape() }),
+            object o => TransactAsync<object>(blockchainName, WalletAction.CompleteRawExchangeMethod, new[] { hex, txid, $"{vout}", ask_assets.Serialize(), o.Serialize() }),
         };
 
         /// <summary>
@@ -293,7 +293,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (restrictions_or_open.GetType() == typeof(bool))
                 restrictOrOpen = restrictions_or_open.ToString()?.ToLower() ?? string.Empty;
             else
-                restrictOrOpen = restrictions_or_open.SerializeAndEscape();
+                restrictOrOpen = restrictions_or_open.Serialize();
 
             // must triple escape JavaScript string
             if (custom_fields.GetType() == typeof(string))
@@ -302,7 +302,7 @@ namespace MCWrapper.CLI.Ledger.Clients
                 return TransactAsync<string>(blockchainName, WalletAction.CreateMethod, new string[] { entity_type, entity_name, restrictOrOpen, js });
             }
             else
-                return TransactAsync<string>(blockchainName, WalletAction.CreateMethod, new string[] { entity_type, entity_name, restrictOrOpen, custom_fields.SerializeAndEscape() });
+                return TransactAsync<string>(blockchainName, WalletAction.CreateMethod, new string[] { entity_type, entity_name, restrictOrOpen, custom_fields.Serialize() });
 
         }
 
@@ -336,9 +336,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         public Task<CliResponse<string>> CreateFromAsync(string blockchainName, string from_address, string entity_type, string entity_name, object restrictions_or_open, [Optional] object custom_fields) => custom_fields switch
         {
-            string s => TransactAsync<string>(blockchainName, WalletAction.CreateFromMethod, new string[] { from_address, entity_type, entity_name, restrictions_or_open.SerializeAndEscape(), s }),
+            string s => TransactAsync<string>(blockchainName, WalletAction.CreateFromMethod, new string[] { from_address, entity_type, entity_name, restrictions_or_open.Serialize(), s }),
 
-            object o => TransactAsync<string>(blockchainName, WalletAction.CreateFromMethod, new string[] { from_address, entity_type, entity_name, restrictions_or_open.SerializeAndEscape(), o.SerializeAndEscape() }),
+            object o => TransactAsync<string>(blockchainName, WalletAction.CreateFromMethod, new string[] { from_address, entity_type, entity_name, restrictions_or_open.Serialize(), o.Serialize() }),
         };
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="ask_assets">A json object of assets to ask</param>
         /// <returns></returns>
         public Task<CliResponse<string>> CreateRawExchangeAsync(string blockchainName, string txid, int vout, object ask_assets) =>
-            TransactAsync<string>(blockchainName, WalletAction.CreateRawExchangeMethod, new[] { txid, $"{vout}", ask_assets.SerializeAndEscape() });
+            TransactAsync<string>(blockchainName, WalletAction.CreateRawExchangeMethod, new[] { txid, $"{vout}", ask_assets.Serialize() });
 
         /// <summary>
         /// 
@@ -403,13 +403,13 @@ namespace MCWrapper.CLI.Ledger.Clients
         public Task<CliResponse<object>> CreateRawSendFromAsync(string blockchainName, string from_address, object addresses, [Optional] object[] data, [Optional] string action)
         {
             if (data == null && string.IsNullOrEmpty(action))
-                return TransactAsync<object>(blockchainName, WalletAction.CreateRawSendFromMethod, new[] { from_address, addresses.SerializeAndEscape() });
+                return TransactAsync<object>(blockchainName, WalletAction.CreateRawSendFromMethod, new[] { from_address, addresses.Serialize() });
             else if (string.IsNullOrEmpty(action) && data != null)
-                return TransactAsync<object>(blockchainName, WalletAction.CreateRawSendFromMethod, new[] { from_address, addresses.SerializeAndEscape(), data.SerializeAndEscape() });
+                return TransactAsync<object>(blockchainName, WalletAction.CreateRawSendFromMethod, new[] { from_address, addresses.Serialize(), data.Serialize() });
 
             data ??= new object[] { };
 
-            return TransactAsync<object>(blockchainName, WalletAction.CreateRawSendFromMethod, new[] { from_address, addresses.SerializeAndEscape(), data.SerializeAndEscape(), action });
+            return TransactAsync<object>(blockchainName, WalletAction.CreateRawSendFromMethod, new[] { from_address, addresses.Serialize(), data.Serialize(), action });
         }
 
         /// <summary>
@@ -1543,7 +1543,10 @@ namespace MCWrapper.CLI.Ledger.Clients
             else if (OSDetection.IsWindows() && asset_params.GetType().BaseType == typeof(string))
                 _assetModel = asset_params.ToString() ?? string.Empty;
 
-            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, _assetModel, $"{quantity}", $"{smallest_unit}", $"{native_amount}", custom_fields.SerializeAndEscape() });
+            if (custom_fields == null)
+                return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, _assetModel, $"{quantity}", $"{smallest_unit}", $"{native_amount}" });
+
+            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, _assetModel, $"{quantity}", $"{smallest_unit}", $"{native_amount}", custom_fields.Serialize() });
         }
 
         /// <summary>
@@ -1583,7 +1586,7 @@ namespace MCWrapper.CLI.Ledger.Clients
 
             // todo this is hacky crap code; for now it works
             if (asset_params.GetType().BaseType == typeof(object))
-                _assetModel = asset_params.SerializeAndEscape();
+                _assetModel = asset_params.Serialize();
             else if (asset_params.GetType().BaseType == typeof(string))
                 _assetModel = asset_params.ToString() ?? string.Empty;
 
@@ -2144,7 +2147,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="verbose">If true, returns information about item transaction</param>
         /// <returns></returns>
         public Task<CliResponse<object>> ListStreamQueryItemsAsync(string blockchainName, string stream_identifier, object query, bool verbose) =>
-            TransactAsync<object>(blockchainName, WalletAction.ListStreamQueryItemsMethod, new[] { stream_identifier, query.SerializeAndEscape(), $"{verbose}".ToLower() });
+            TransactAsync<object>(blockchainName, WalletAction.ListStreamQueryItemsMethod, new[] { stream_identifier, query.Serialize(), $"{verbose}".ToLower() });
 
         /// <summary>
         /// 
@@ -2292,7 +2295,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="unspent">A json array of objects. Each object should have the the txid (string) vout (numeric)</param>
         /// <returns></returns>
         public Task<CliResponse<object>> LockUnspentAsync(string blockchainName, bool unlock, object[] unspent) =>
-            TransactAsync<object>(blockchainName, WalletAction.LockUnspentMethod, new[] { $"{unlock}".ToLower(), unspent.SerializeAndEscape() });
+            TransactAsync<object>(blockchainName, WalletAction.LockUnspentMethod, new[] { $"{unlock}".ToLower(), unspent.Serialize() });
 
         /// <summary>
         /// 
@@ -2413,7 +2416,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         {
             string s => TransactAsync<string>(blockchainName, WalletAction.PublishMethod, new[] { stream_identifier, keys.Serialize(), s, options }),
 
-            object o => TransactAsync<string>(blockchainName, WalletAction.PublishMethod, new[] { stream_identifier, keys.Serialize(), o.SerializeAndEscape(), options }),
+            object o => TransactAsync<string>(blockchainName, WalletAction.PublishMethod, new[] { stream_identifier, keys.Serialize(), o.Serialize(), options }),
         };
 
         /// <summary>
@@ -2447,7 +2450,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         {
             string s => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, keys.Serialize(), s, options }),
 
-            object o => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, keys.Serialize(), o.SerializeAndEscape(), options }),
+            object o => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, keys.Serialize(), o.Serialize(), options }),
         };
 
         /// <summary>
@@ -2477,7 +2480,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="options">Should be "offchain" or omitted. Default for items if "options" field is omitted</param>
         /// <returns></returns>
         public Task<CliResponse<string>> PublishMultiAsync(string blockchainName, string stream_identifier, object[] items, [Optional] string options) =>
-            TransactAsync<string>(blockchainName, WalletAction.PublishMultiMethod, new string[] { stream_identifier, items.SerializeAndEscape(), options });
+            TransactAsync<string>(blockchainName, WalletAction.PublishMultiMethod, new string[] { stream_identifier, items.Serialize(), options });
 
         /// <summary>
         /// 
@@ -2505,7 +2508,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="options">Should be "offchain" or omitted. Default for items if "options" field is omitted</param>
         /// <returns></returns>
         public Task<CliResponse<string>> PublishMultiFromAsync(string blockchainName, string from_address, string stream_identifier, object[] items, [Optional] string options) =>
-            TransactAsync<string>(blockchainName, WalletAction.PublishMultiFromMethod, new string[] { from_address, stream_identifier, items.SerializeAndEscape(), options });
+            TransactAsync<string>(blockchainName, WalletAction.PublishMultiFromMethod, new string[] { from_address, stream_identifier, items.Serialize(), options });
 
         /// <summary>
         /// 
@@ -2958,7 +2961,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (entity_identifiers.GetType().Equals(typeof(string)))
                 _entity_identifier = entity_identifiers.ToString() ?? string.Empty;
             else
-                _entity_identifier = entity_identifiers.SerializeAndEscape();
+                _entity_identifier = entity_identifiers.Serialize();
 
             if (string.IsNullOrEmpty(parameters))
                 return TransactAsync<object>(blockchainName, WalletAction.SubscribeMethod, new string[] { _entity_identifier, $"{rescan}".ToLower() });
