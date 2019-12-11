@@ -2201,7 +2201,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data_hex_or_object">Data hex string or JSON data object or Text data object or Binary raw data created with appendbinarycache</param>
         /// <param name="options">Should be "offchain" or omitted</param>
         /// <returns></returns>
-        Task<CliResponse<string>> PublishFromAsync(string from_address, string stream_identifier, object keys, object data_hex_or_object, [Optional] string options);
+        Task<CliResponse<string>> PublishFromAsync(string from_address, string stream_identifier, object keys, object data_hex_or_object, string options = "");
 
         /// <summary>
         /// 
@@ -2216,7 +2216,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data_hex_or_object">Data hex string or JSON data object or Text data object or Binary raw data created with appendbinarycache</param>
         /// <param name="options">Should be "offchain" or omitted</param>
         /// <returns></returns>
-        Task<CliResponse<string>> PublishFromAsync(string blockchainName, string from_address, string stream_identifier, object keys, object data_hex_or_object, [Optional] string options);
+        Task<CliResponse<string>> PublishFromAsync(string blockchainName, string from_address, string stream_identifier, object keys, object data_hex_or_object, string options = "");
 
         /// <summary>
         /// 

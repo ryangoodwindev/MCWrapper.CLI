@@ -2446,11 +2446,11 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data_hex_or_object">Data hex string or JSON data object or Text data object or Binary raw data created with appendbinarycache</param>
         /// <param name="options">Should be "offchain" or omitted</param>
         /// <returns></returns>
-        public Task<CliResponse<string>> PublishFromAsync(string blockchainName, string from_address, string stream_identifier, object keys, object data_hex_or_object, [Optional] string options) => data_hex_or_object switch
+        public Task<CliResponse<string>> PublishFromAsync(string blockchainName, string from_address, string stream_identifier, object keys, object data_hex_or_object, string options = "") => (keys, data_hex_or_object) switch
         {
-            string s => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, keys.Serialize(), s, options }),
+            (string _keys, string _data) => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, _keys, _data, options }),
 
-            object o => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, keys.Serialize(), o.Serialize(), options }),
+            (object _keys, object _data) => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, _keys.Serialize(), _data.Serialize(), options }),
         };
 
         /// <summary>
@@ -2465,7 +2465,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data_hex_or_object">Data hex string or JSON data object or Text data object or Binary raw data created with appendbinarycache</param>
         /// <param name="options">Should be "offchain" or omitted</param>
         /// <returns></returns>
-        public Task<CliResponse<string>> PublishFromAsync(string from_address, string stream_identifier, object keys, object data_hex_or_object, [Optional] string options) =>
+        public Task<CliResponse<string>> PublishFromAsync(string from_address, string stream_identifier, object keys, object data_hex_or_object, string options = "") =>
             PublishFromAsync(CliOptions.ChainName, from_address, stream_identifier, keys, data_hex_or_object, options);
 
         /// <summary>

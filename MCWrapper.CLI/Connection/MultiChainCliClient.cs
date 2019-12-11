@@ -73,7 +73,10 @@ namespace MCWrapper.CLI.Connection
 
                 // finish up argument list with any arguments we want to pass to the remote methodName
                 foreach (var parameter in parameters.ToList())
-                    process.StartInfo.ArgumentList.Add(parameter);
+                {
+                    if (parameter != null)
+                        process.StartInfo.ArgumentList.Add(parameter);
+                }
 
                 // An empty or null ChainBinaryLocation occurs under the following conditions:
                 //  1. No "ChainBinaryLocation" environment variable detected in the local environment.
