@@ -464,6 +464,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:MCWrapper.CLI.Helpers.CliArgumentHelper.ToList(System.String)">
+            <summary>
+            This is a new collection property that we are using witht he ArgumentList option when starting a new Process.
+            Ideally this will help with supporting both Linux and Windows environments in a more robust/reliable fashion.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:MCWrapper.CLI.Helpers.CliArgumentHelper.HelpArgument">
             <summary>
             Return Help CLI swtich
@@ -3988,7 +3995,7 @@
              <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
              <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletClient.GrantWithDataAsync(System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.Int32)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletClient.GrantWithDataAsync(System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.UInt32)">
             <summary>
             
             <para>Grant permission(s) with metadata to a given address.</para>
@@ -4015,7 +4022,7 @@
             <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletClient.GrantWithDataAsync(System.String,System.String,System.Object,System.Decimal,System.Int32,System.Int32)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletClient.GrantWithDataAsync(System.String,System.String,System.Object,System.Decimal,System.Int32,System.UInt32)">
             <summary>
             
             <para>Grant permission(s) with metadata to a given address.</para>
@@ -4041,7 +4048,7 @@
             <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletClient.GrantWithDataFromAsync(System.String,System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.Int32)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletClient.GrantWithDataFromAsync(System.String,System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.UInt32)">
              <summary>
              
              <para>Grant permission with metadata using specific address.</para>
@@ -4070,7 +4077,7 @@
              <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
              <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletClient.GrantWithDataFromAsync(System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.Int32)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliWalletClient.GrantWithDataFromAsync(System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.UInt32)">
              <summary>
              
              <para>Grant permission with metadata using specific address.</para>
@@ -8877,7 +8884,7 @@
              <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
              <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.GrantWithDataAsync(System.String,System.String,System.Object,System.Decimal,System.Int32,System.Int32)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.GrantWithDataAsync(System.String,System.String,System.Object,System.Decimal,System.Int32,System.UInt32)">
             <summary>
             
             <para>Grant permission(s) with metadata to a given address.</para>
@@ -8903,7 +8910,7 @@
             <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.GrantWithDataAsync(System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.Int32)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.GrantWithDataAsync(System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.UInt32)">
             <summary>
             
             <para>Grant permission(s) with metadata to a given address.</para>
@@ -8930,7 +8937,7 @@
             <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
             <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.GrantWithDataFromAsync(System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.Int32)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.GrantWithDataFromAsync(System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.UInt32)">
              <summary>
              
              <para>Grant permission with metadata using specific address.</para>
@@ -8958,7 +8965,7 @@
              <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
              <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.GrantWithDataFromAsync(System.String,System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.Int32)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliWallet.GrantWithDataFromAsync(System.String,System.String,System.String,System.String,System.Object,System.Decimal,System.Int32,System.UInt32)">
              <summary>
              
              <para>Grant permission with metadata using specific address.</para>

@@ -8,7 +8,9 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>Added new extension method that allows for CliOptions to be passed as arguments instead of an Action&lt;T&gt;.
+    <PackageReleaseNotes>Converted to ArgumentList from Arguments when using Process.StartInfo, this should step us closer to working on Linux when using the CLI clients.
+
+Added new extension method that allows for CliOptions to be passed as arguments instead of an Action&lt;T&gt;.
 Added Secret Manager detection for extension method receiving IConfiguration pipeline.
 
 Added support for MultChain Core blockchain method 'getinitstatus'
@@ -85,11 +87,11 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
 ** This library is only supported on Windows environments in this version.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>4.0.4</Version>
+    <Version>4.0.5</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>C:\Users\rgood\source\repos\MCWrapper.CLI\MCWrapper.CLI\MCWrapper.CLI.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
