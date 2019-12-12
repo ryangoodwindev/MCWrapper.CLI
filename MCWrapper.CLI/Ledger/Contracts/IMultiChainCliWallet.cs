@@ -1204,7 +1204,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GrantWithDataAsync(string addresses, string permissions, object object_or_hex, [Optional] decimal native_amount, [Optional] int start_block, [Optional] int end_block);
+        Task<CliResponse<object>> GrantWithDataAsync(string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue);
 
         /// <summary>
         /// 
@@ -1231,7 +1231,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GrantWithDataAsync(string blockchainName, string addresses, string permissions, object object_or_hex, [Optional] decimal native_amount, [Optional] int start_block, [Optional] int end_block);
+        Task<CliResponse<object>> GrantWithDataAsync(string blockchainName, string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue);
 
         /// <summary>
         /// 
@@ -1259,7 +1259,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GrantWithDataFromAsync(string from_address, string to_addresses, string permissions, object object_or_hex, [Optional] decimal native_amount, [Optional] int start_block, [Optional] int end_block);
+        Task<CliResponse<object>> GrantWithDataFromAsync(string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue);
 
         /// <summary>
         /// 
@@ -1288,7 +1288,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GrantWithDataFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, object object_or_hex, [Optional] decimal native_amount, [Optional] int start_block, [Optional] int end_block);
+        Task<CliResponse<object>> GrantWithDataFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue);
 
         /// <summary>
         /// 

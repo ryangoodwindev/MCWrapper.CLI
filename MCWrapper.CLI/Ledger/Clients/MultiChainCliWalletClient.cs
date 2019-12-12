@@ -1349,8 +1349,12 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantWithDataAsync(string blockchainName, string addresses, string permissions, object object_or_hex, [Optional] decimal native_amount, [Optional] int start_block, [Optional] int end_block) =>
-            TransactAsync<object>(blockchainName, WalletAction.GrantWithDataMethod, new[] { addresses, permissions, object_or_hex.Serialize(), $"{native_amount}", $"{start_block}", $"{end_block}" });
+        public Task<CliResponse<object>> GrantWithDataAsync(string blockchainName, string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
+            (object_or_hex) switch
+            {
+                string s => TransactAsync<object>(blockchainName, WalletAction.GrantWithDataMethod, new[] { addresses, permissions, s, $"{native_amount}", $"{start_block}", $"{end_block}" }),
+                object o => TransactAsync<object>(blockchainName, WalletAction.GrantWithDataMethod, new[] { addresses, permissions, o.Serialize(), $"{native_amount}", $"{start_block}", $"{end_block}" })
+            };
 
         /// <summary>
         /// 
@@ -1376,7 +1380,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantWithDataAsync(string addresses, string permissions, object object_or_hex, [Optional] decimal native_amount, [Optional] int start_block, [Optional] int end_block) =>
+        public Task<CliResponse<object>> GrantWithDataAsync(string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
             GrantWithDataAsync(CliOptions.ChainName, addresses, permissions, object_or_hex, native_amount, start_block, end_block);
 
         /// <summary>
@@ -1406,8 +1410,12 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantWithDataFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, object object_or_hex, [Optional] decimal native_amount, [Optional] int start_block, [Optional] int end_block) =>
-            TransactAsync<object>(blockchainName, WalletAction.GrantWithDataFromMethod, new[] { from_address, to_addresses, permissions, object_or_hex.Serialize(), $"{native_amount}", $"{start_block}", $"{end_block}" });
+        public Task<CliResponse<object>> GrantWithDataFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
+            (object_or_hex) switch
+            {
+                string s => TransactAsync<object>(blockchainName, WalletAction.GrantWithDataFromMethod, new[] { from_address, to_addresses, permissions, s, $"{native_amount}", $"{start_block}", $"{end_block}" }),
+                object o => TransactAsync<object>(blockchainName, WalletAction.GrantWithDataFromMethod, new[] { from_address, to_addresses, permissions, o.Serialize(), $"{native_amount}", $"{start_block}", $"{end_block}" })
+            };
 
         /// <summary>
         /// 
@@ -1435,7 +1443,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantWithDataFromAsync(string from_address, string to_addresses, string permissions, object object_or_hex, [Optional] decimal native_amount, [Optional] int start_block, [Optional] int end_block) =>
+        public Task<CliResponse<object>> GrantWithDataFromAsync(string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
             GrantWithDataFromAsync(CliOptions.ChainName, from_address, to_addresses, permissions, object_or_hex, native_amount, start_block, end_block);
 
         /// <summary>
@@ -1740,7 +1748,11 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific address, 0 based, if negative - from the end</param>
         /// <returns></returns>
         public Task<CliResponse<ListAddressesResult[]>> ListAddressesAsync(string blockchainName, [Optional] object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start) =>
-            TransactAsync<ListAddressesResult[]>(blockchainName, WalletAction.ListAddressesMethod, new[] { addresses.Serialize(), $"{verbose}".ToLower(), $"{count}", $"{start}" });
+            (addresses) switch
+            {
+                string s => TransactAsync<ListAddressesResult[]>(blockchainName, WalletAction.ListAddressesMethod, new[] { s, $"{verbose}".ToLower(), $"{count}", $"{start}" }),
+                object o => TransactAsync<ListAddressesResult[]>(blockchainName, WalletAction.ListAddressesMethod, new[] { o.Serialize(), $"{verbose}".ToLower(), $"{count}", $"{start}" })
+            };
 
         /// <summary>
         /// 
@@ -1955,7 +1967,11 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <returns></returns>
         public Task<CliResponse<object>> ListStreamBlockItemsAsync(string blockchainName, string stream_identifier, object block_set_identifier, [Optional] bool verbose, [Optional] int count, [Optional] int start) =>
-            TransactAsync<object>(blockchainName, WalletAction.ListStreamBlockItemsMethod, new[] { stream_identifier, block_set_identifier.Serialize(), $"{verbose}".ToLower(), $"{count}", $"{start}" });
+            (block_set_identifier) switch
+            {
+                string s => TransactAsync<object>(blockchainName, WalletAction.ListStreamBlockItemsMethod, new[] { stream_identifier, s, $"{verbose}".ToLower(), $"{count}", $"{start}" }),
+                object o => TransactAsync<object>(blockchainName, WalletAction.ListStreamBlockItemsMethod, new[] { stream_identifier, o.Serialize(), $"{verbose}".ToLower(), $"{count}", $"{start}" })
+            };
 
         /// <summary>
         /// 
