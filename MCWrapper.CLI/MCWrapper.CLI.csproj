@@ -91,7 +91,7 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\rgood\source\repos\MCWrapper.CLI\MCWrapper.CLI\MCWrapper.CLI.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
