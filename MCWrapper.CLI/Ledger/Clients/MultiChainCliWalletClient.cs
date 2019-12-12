@@ -2133,7 +2133,11 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
         public Task<CliResponse<ListStreamPublishersResult[]>> ListStreamPublishersAsync(string blockchainName, string stream_identifier, object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering) =>
-            TransactAsync<ListStreamPublishersResult[]>(blockchainName, WalletAction.ListStreamPublishersMethod, new[] { stream_identifier, addresses.Serialize(), $"{verbose}".ToLower(), $"{count}", $"{start}", $"{local_ordering}".ToLower() });
+            (addresses) switch
+            {
+                string s => TransactAsync<ListStreamPublishersResult[]>(blockchainName, WalletAction.ListStreamPublishersMethod, new[] { stream_identifier, s, $"{verbose}".ToLower(), $"{count}", $"{start}", $"{local_ordering}".ToLower() }),
+                object o => TransactAsync<ListStreamPublishersResult[]>(blockchainName, WalletAction.ListStreamPublishersMethod, new[] { stream_identifier, o.Serialize(), $"{verbose}".ToLower(), $"{count}", $"{start}", $"{local_ordering}".ToLower() })
+            };
 
         /// <summary>
         /// 
@@ -2462,12 +2466,13 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data_hex_or_object">Data hex string or JSON data object or Text data object or Binary raw data created with appendbinarycache</param>
         /// <param name="options">Should be "offchain" or omitted</param>
         /// <returns></returns>
-        public Task<CliResponse<string>> PublishFromAsync(string blockchainName, string from_address, string stream_identifier, object keys, object data_hex_or_object, string options = "") => (keys, data_hex_or_object) switch
-        {
-            (string _keys, string _data) => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, _keys, _data, options }),
-
-            (object _keys, object _data) => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, _keys.Serialize(), _data.Serialize(), options }),
-        };
+        public Task<CliResponse<string>> PublishFromAsync(string blockchainName, string from_address, string stream_identifier, object keys, object data_hex_or_object, string options = "") => 
+            (keys, data_hex_or_object) switch
+            {
+                (string _keys, string _data) => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, _keys, _data, options }),
+                (object _keys, string _data) => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, _keys.Serialize(), _data, options }),
+                (object _keys, object _data) => TransactAsync<string>(blockchainName, WalletAction.PublishFromMethod, new[] { from_address, stream_identifier, _keys.Serialize(), _data.Serialize(), options })
+            };
 
         /// <summary>
         /// 
