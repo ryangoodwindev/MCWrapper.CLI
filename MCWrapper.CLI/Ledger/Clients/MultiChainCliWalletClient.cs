@@ -2826,8 +2826,15 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="amount_or_asset_quantities">The amount in native currency to send. eg 0.1 or a json object of assets to send</param>
         /// <param name="data_or_publish_new_stream_item">(string or object, required) Data, see help data-with for details.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SendWithDataAsync(string blockchainName, string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item) =>
-            TransactAsync<object>(blockchainName, WalletAction.SendWithDataMethod, new[] { to_address, amount_or_asset_quantities.Serialize(), data_or_publish_new_stream_item.Serialize() });
+        public Task<CliResponse<object>> SendWithDataAsync(string blockchainName,
+            string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item) => 
+            (amount_or_asset_quantities, data_or_publish_new_stream_item) switch
+            {
+                (int amount, string hex) => TransactAsync<object>(blockchainName, WalletAction.SendWithDataMethod, new[] { to_address, amount.ToString(), hex }),
+                (decimal amount, string hex) => TransactAsync<object>(blockchainName, WalletAction.SendWithDataMethod, new[] { to_address, amount.ToString(), hex }),
+                (object asset, object streamItem) => TransactAsync<object>(blockchainName, WalletAction.SendWithDataMethod, new[] { to_address, asset.Serialize(), streamItem.Serialize() }),
+            };
+            
 
         /// <summary>
         /// 
@@ -2854,8 +2861,14 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="amount_or_asset_quantities">The amount in native currency to send. eg 0.1 or a json object of assets to send</param>
         /// <param name="data_or_publish_new_stream_item">(string or object, required) Data, see help data-with for details.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SendWithDataFromAsync(string blockchainName, string from_address, string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item) =>
-            TransactAsync<object>(blockchainName, WalletAction.SendWithDataFromMethod, new[] { from_address, to_address, amount_or_asset_quantities.Serialize(), data_or_publish_new_stream_item.Serialize() });
+        public Task<CliResponse<object>> SendWithDataFromAsync(string blockchainName, string from_address,
+            string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item) =>
+            (amount_or_asset_quantities, data_or_publish_new_stream_item) switch
+            {
+                (int amount, string hex) => TransactAsync<object>(blockchainName, WalletAction.SendWithDataFromMethod, new[] { from_address, to_address, amount.ToString(), hex }),
+                (decimal amount, string hex) => TransactAsync<object>(blockchainName, WalletAction.SendWithDataFromMethod, new[] { from_address, to_address, amount.ToString(), hex }),
+                (object asset, object streamItem) => TransactAsync<object>(blockchainName, WalletAction.SendWithDataFromMethod, new[] { from_address, to_address, asset.Serialize(), streamItem.Serialize() }),
+            };
 
         /// <summary>
         /// 
