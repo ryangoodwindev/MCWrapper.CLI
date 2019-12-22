@@ -79,6 +79,48 @@ namespace MCWrapper.CLI.Ledger.Clients
 
         /// <summary>
         ///
+        /// <para>Returns an object containing various state info regarding block chain processing.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockchainInfoResult>> GetBlockchainInfoAsync(string blockchainName) =>
+            TransactAsync<GetBlockchainInfoResult>(blockchainName, BlockchainAction.GetBlockChainInfoMethod);
+
+        /// <summary>
+        ///
+        /// <para>Returns an object containing various state info regarding block chain processing.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockchainInfoResult>> GetBlockchainInfoAsync() =>
+            GetBlockchainInfoAsync(CliOptions.ChainName);
+
+        /// <summary>
+        ///
+        /// <para>Returns the number of blocks in the longest block chain.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <returns></returns>
+        public Task<CliResponse<long>> GetBlockCountAsync(string blockchainName) =>
+            TransactAsync<long>(blockchainName, BlockchainAction.GetBlockCountMethod);
+
+        /// <summary>
+        ///
+        /// <para>Returns the number of blocks in the longest block chain.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <returns></returns>
+        public Task<CliResponse<long>> GetBlockCountAsync() =>
+            GetBlockCountAsync(CliOptions.ChainName);
+
+        /// <summary>
+        ///
         /// <para>Returns hex-encoded data or json object for block.</para>
         /// <para>Blockchain name is explicitly passed as parameter.</para>
         ///
@@ -107,47 +149,15 @@ namespace MCWrapper.CLI.Ledger.Clients
         public Task<CliResponse<T>> GetBlockAsync<T>(object hash_or_height, [Optional] object verbose) =>
             GetBlockAsync<T>(CliOptions.ChainName, hash_or_height, verbose);
 
-        /// <summary>
-        ///
-        /// <para>Returns the number of blocks in the longest block chain.</para>
-        /// <para>Blockchain name is explicitly passed as parameter.</para>
-        ///
-        /// </summary>
-        /// <param name="blockchainName">Name of target blockchain</param>
-        /// <returns></returns>
-        public Task<CliResponse<long>> GetBlockCountAsync(string blockchainName) =>
-            TransactAsync<long>(blockchainName, BlockchainAction.GetBlockCountMethod);
+        public Task<CliResponse<string>> GetBlockEncodedAsync(string blockchainName, string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
 
-        /// <summary>
-        ///
-        /// <para>Returns the number of blocks in the longest block chain.</para>
-        /// <para>Blockchain name is inferred from CliOptions properties.</para>
-        ///
-        /// </summary>
-        /// <returns></returns>
-        public Task<CliResponse<long>> GetBlockCountAsync() =>
-            GetBlockCountAsync(CliOptions.ChainName);
-
-        /// <summary>
-        ///
-        /// <para>Returns an object containing various state info regarding block chain processing.</para>
-        /// <para>Blockchain name is explicitly passed as parameter.</para>
-        ///
-        /// </summary>
-        /// <param name="blockchainName">Name of target blockchain</param>
-        /// <returns></returns>
-        public Task<CliResponse<GetBlockchainInfoResult>> GetBlockchainInfoAsync(string blockchainName) =>
-            TransactAsync<GetBlockchainInfoResult>(blockchainName, BlockchainAction.GetBlockChainInfoMethod);
-
-        /// <summary>
-        ///
-        /// <para>Returns an object containing various state info regarding block chain processing.</para>
-        /// <para>Blockchain name is inferred from CliOptions properties.</para>
-        ///
-        /// </summary>
-        /// <returns></returns>
-        public Task<CliResponse<GetBlockchainInfoResult>> GetBlockchainInfoAsync() =>
-            GetBlockchainInfoAsync(CliOptions.ChainName);
+        public Task<CliResponse<string>> GetBlockEncodedAsync(string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
 
         /// <summary>
         ///
@@ -171,6 +181,56 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         public Task<CliResponse<string>> GetBlockHashAsync(int index) =>
             GetBlockHashAsync(CliOptions.ChainName, index);
+
+        public Task<CliResponse<GetBlockVerboseResult>> GetBlockVerboseAsync(string blockchainName, string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CliResponse<GetBlockVerboseResult>> GetBlockVerboseAsync(string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CliResponse<GetBlockV1Result>> GetBlockV1Async(string blockchainName, string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CliResponse<GetBlockV1Result>> GetBlockV1Async(string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CliResponse<GetBlockV2Result>> GetBlockV2Async(string blockchainName, string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CliResponse<GetBlockV2Result>> GetBlockV2Async(string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CliResponse<GetBlockV3Result>> GetBlockV3Async(string blockchainName, string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CliResponse<GetBlockV3Result>> GetBlockV3Async(string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CliResponse<GetBlockV4Result>> GetBlockV4Async(string blockchainName, string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CliResponse<GetBlockV4Result>> GetBlockV4Async(string hashOrHeight)
+        {
+            throw new System.NotImplementedException();
+        }
 
         /// <summary>
         ///

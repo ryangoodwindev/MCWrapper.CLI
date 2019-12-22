@@ -120,7 +120,7 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="MCWrapper.Data.Models" Version="1.0.1" />
+    <PackageReference Include="MCWrapper.Data.Models" Version="2.0.1" />
     <PackageReference Include="MCWrapper.Ledger.Actions" Version="1.0.1" />
     <PackageReference Include="MCWrapper.Ledger.Entities" Version="2.1.0" />
   </ItemGroup>
