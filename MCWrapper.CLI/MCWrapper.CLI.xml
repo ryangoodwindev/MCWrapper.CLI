@@ -1005,27 +1005,23 @@
              </summary>
              <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockAsync``1(System.String,System.Object,System.Object)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync(System.String)">
              <summary>
             
-             <para>Returns hex-encoded data or json object for block.</para>
+             <para>Returns an object containing various state info regarding block chain processing.</para>
              <para>Blockchain name is explicitly passed as parameter.</para>
             
              </summary>
              <param name="blockchainName">Name of target blockchain</param>
-             <param name="hash_or_height">(string or numeric) The block hash or height in the active chain</param>
-             <param name="verbose">(numeric or boolean, optional, default=1) 0(or false) - encoded data, 1(or true) - json object, 2 - with tx encoded data, 4 - with tx json object</param>
              <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockAsync``1(System.Object,System.Object)">
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync">
              <summary>
             
-             <para>Returns hex-encoded data or json object for block.</para>
+             <para>Returns an object containing various state info regarding block chain processing.</para>
              <para>Blockchain name is inferred from CliOptions properties.</para>
             
              </summary>
-             <param name="hash_or_height">(string or numeric) The block hash or height in the active chain</param>
-             <param name="verbose">(numeric or boolean, optional, default=1) 0(or false) - encoded data, 1(or true) - json object, 2 - with tx encoded data, 4 - with tx json object</param>
              <returns></returns>
         </member>
         <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockCountAsync(System.String)">
@@ -1047,24 +1043,26 @@
              </summary>
              <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync(System.String)">
-             <summary>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockEncodedAsync(System.String,System.String)">
+            <summary>
             
-             <para>Returns an object containing various state info regarding block chain processing.</para>
-             <para>Blockchain name is explicitly passed as parameter.</para>
+            <para>Returns hex-encoded data for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
             
-             </summary>
-             <param name="blockchainName">Name of target blockchain</param>
-             <returns></returns>
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockchainInfoAsync">
-             <summary>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockEncodedAsync(System.String)">
+            <summary>
             
-             <para>Returns an object containing various state info regarding block chain processing.</para>
-             <para>Blockchain name is inferred from CliOptions properties.</para>
+            <para>Returns hex-encoded data for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
             
-             </summary>
-             <returns></returns>
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
         </member>
         <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockHashAsync(System.String,System.Int32)">
              <summary>
@@ -1073,7 +1071,7 @@
              <para>Blockchain name is explicitly passed as parameter.</para>
             
              </summary>
-             <param name="blockchainName">Name of target blockchain</param>
+             <param name="blockchainName">Name of target MultiChain network</param>
              <param name="index">The integer block index</param>
              <returns></returns>
         </member>
@@ -1086,6 +1084,111 @@
              </summary>
              <param name="index">The integer block index</param>
              <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockVerboseAsync(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockVerboseAsync(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockV1Async(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockV1Async(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockV2Async(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockV2Async(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockV3Async(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockV3Async(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockV4Async(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetBlockV4Async(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
         </member>
         <member name="M:MCWrapper.CLI.Ledger.Clients.MultiChainCliGeneralClient.GetChainTipsAsync(System.String)">
              <summary>
@@ -5943,29 +6046,6 @@
              <param name="blockchainName">Name of target blockchain</param>
              <returns></returns>
         </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockAsync``1(System.Object,System.Object)">
-             <summary>
-            
-             <para>Returns hex-encoded data or json object for block.</para>
-             <para>Blockchain name is inferred from CliOptions properties.</para>
-            
-             </summary>
-             <param name="hash_or_height">(string or numeric) The block hash or height in the active chain</param>
-             <param name="verbose">(numeric or boolean, optional, default=1) 0(or false) - encoded data, 1(or true) - json object, 2 - with tx encoded data, 4 - with tx json object</param>
-             <returns></returns>
-        </member>
-        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockAsync``1(System.String,System.Object,System.Object)">
-             <summary>
-            
-             <para>Returns hex-encoded data or json object for block.</para>
-             <para>Blockchain name is explicitly passed as parameter.</para>
-            
-             </summary>
-             <param name="blockchainName">Name of target blockchain</param>
-             <param name="hash_or_height">(string or numeric) The block hash or height in the active chain</param>
-             <param name="verbose">(numeric or boolean, optional, default=1) 0(or false) - encoded data, 1(or true) - json object, 2 - with tx encoded data, 4 - with tx json object</param>
-             <returns></returns>
-        </member>
         <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockchainInfoAsync">
              <summary>
             
@@ -6004,6 +6084,27 @@
              <param name="blockchainName">Name of target blockchain</param>
              <returns></returns>
         </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockEncodedAsync(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockEncodedAsync(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
         <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockHashAsync(System.Int32)">
              <summary>
             
@@ -6024,6 +6125,111 @@
              <param name="blockchainName">Name of target blockchain</param>
              <param name="index">The integer block index</param>
              <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockVerboseAsync(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockVerboseAsync(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockV1Async(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockV1Async(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockV2Async(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockV2Async(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockV3Async(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockV3Async(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockV4Async(System.String,System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is explicitly passed as parameter.</para>
+            
+            </summary>
+            <param name="blockchainName">Name of target MultiChain network</param>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetBlockV4Async(System.String)">
+            <summary>
+            
+            <para>Returns hex-encoded data or json object for block.</para>
+            <para>Blockchain name is inferred from CliOptions as parameter.</para>
+            
+            </summary>
+            <param name="hashOrHeight">Block hash or height index</param>
+            <returns></returns>
         </member>
         <member name="M:MCWrapper.CLI.Ledger.Clients.IMultiChainCliGeneral.GetChainTipsAsync">
              <summary>
