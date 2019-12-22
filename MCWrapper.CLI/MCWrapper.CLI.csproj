@@ -89,7 +89,7 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
 ** This library is only supported on Windows environments in this version.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>4.1.5</Version>
+    <Version>4.1.6</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -122,7 +122,7 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="MCWrapper.Data.Models" Version="2.0.2" />
+    <PackageReference Include="MCWrapper.Data.Models" Version="2.0.3" />
     <PackageReference Include="MCWrapper.Ledger.Actions" Version="1.0.1" />
     <PackageReference Include="MCWrapper.Ledger.Entities" Version="2.1.0" />
   </ItemGroup>

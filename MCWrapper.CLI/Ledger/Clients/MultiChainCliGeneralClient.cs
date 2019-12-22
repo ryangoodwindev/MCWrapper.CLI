@@ -129,7 +129,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="hashOrHeight">Block hash or height index</param>
         /// <returns></returns>
         public Task<CliResponse<string>> GetBlockEncodedAsync(string blockchainName, string hashOrHeight) =>
-            TransactAsync<string>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
+            TransactAsync<string>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight, "false" });
 
         /// <summary>
         /// 
@@ -175,7 +175,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="hashOrHeight">Block hash or height index</param>
         /// <returns></returns>
         public Task<CliResponse<GetBlockVerboseResult>> GetBlockVerboseAsync(string blockchainName, string hashOrHeight) =>
-            TransactAsync<GetBlockVerboseResult>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
+            TransactAsync<GetBlockVerboseResult>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight, "true" });
 
         /// <summary>
         /// 
@@ -198,7 +198,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="hashOrHeight">Block hash or height index</param>
         /// <returns></returns>
         public Task<CliResponse<GetBlockV1Result>> GetBlockV1Async(string blockchainName, string hashOrHeight) =>
-            TransactAsync<GetBlockV1Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
+            TransactAsync<GetBlockV1Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight, 1.ToString() });
 
         /// <summary>
         /// 
@@ -221,7 +221,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="hashOrHeight">Block hash or height index</param>
         /// <returns></returns>
         public Task<CliResponse<GetBlockV2Result>> GetBlockV2Async(string blockchainName, string hashOrHeight) =>
-            TransactAsync<GetBlockV2Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
+            TransactAsync<GetBlockV2Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight, 2.ToString() });
 
         /// <summary>
         /// 
@@ -244,7 +244,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="hashOrHeight">Block hash or height index</param>
         /// <returns></returns>
         public Task<CliResponse<GetBlockV3Result>> GetBlockV3Async(string blockchainName, string hashOrHeight) =>
-            TransactAsync<GetBlockV3Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
+            TransactAsync<GetBlockV3Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight, 3.ToString() });
 
         /// <summary>
         /// 
@@ -267,7 +267,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="hashOrHeight">Block hash or height index</param>
         /// <returns></returns>
         public Task<CliResponse<GetBlockV4Result>> GetBlockV4Async(string blockchainName, string hashOrHeight) =>
-            TransactAsync<GetBlockV4Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
+            TransactAsync<GetBlockV4Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight, 4.ToString() });
 
         /// <summary>
         /// 
