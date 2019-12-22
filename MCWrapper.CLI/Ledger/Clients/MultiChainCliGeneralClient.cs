@@ -120,44 +120,27 @@ namespace MCWrapper.CLI.Ledger.Clients
             GetBlockCountAsync(CliOptions.ChainName);
 
         /// <summary>
-        ///
-        /// <para>Returns hex-encoded data or json object for block.</para>
-        /// <para>Blockchain name is explicitly passed as parameter.</para>
-        ///
+        /// 
+        /// <para>Returns hex-encoded data for block.</para>
+        /// <para>Blockchain name is inferred from CliOptions as parameter.</para>
+        /// 
         /// </summary>
-        /// <param name="blockchainName">Name of target blockchain</param>
-        /// <param name="hash_or_height">(string or numeric) The block hash or height in the active chain</param>
-        /// <param name="verbose">(numeric or boolean, optional, default=1) 0(or false) - encoded data, 1(or true) - json object, 2 - with tx encoded data, 4 - with tx json object</param>
+        /// <param name="blockchainName">Name of target MultiChain network</param>
+        /// <param name="hashOrHeight">Block hash or height index</param>
         /// <returns></returns>
-        public Task<CliResponse<T>> GetBlockAsync<T>(string blockchainName, object hash_or_height, [Optional] object verbose)
-        {
-            if (verbose == null)
-                return TransactAsync<T>(blockchainName, BlockchainAction.GetBlockMethod, new string[] { hash_or_height.ToString() ?? string.Empty });
-            else
-                return TransactAsync<T>(blockchainName, BlockchainAction.GetBlockMethod, new string[] { hash_or_height.ToString() ?? string.Empty, $"{verbose}".ToLower() });
-        }
+        public Task<CliResponse<string>> GetBlockEncodedAsync(string blockchainName, string hashOrHeight) =>
+            TransactAsync<string>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
 
         /// <summary>
-        ///
-        /// <para>Returns hex-encoded data or json object for block.</para>
-        /// <para>Blockchain name is inferred from CliOptions properties.</para>
-        ///
+        /// 
+        /// <para>Returns hex-encoded data for block.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
         /// </summary>
-        /// <param name="hash_or_height">(string or numeric) The block hash or height in the active chain</param>
-        /// <param name="verbose">(numeric or boolean, optional, default=1) 0(or false) - encoded data, 1(or true) - json object, 2 - with tx encoded data, 4 - with tx json object</param>
+        /// <param name="hashOrHeight">Block hash or height index</param>
         /// <returns></returns>
-        public Task<CliResponse<T>> GetBlockAsync<T>(object hash_or_height, [Optional] object verbose) =>
-            GetBlockAsync<T>(CliOptions.ChainName, hash_or_height, verbose);
-
-        public Task<CliResponse<string>> GetBlockEncodedAsync(string blockchainName, string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<CliResponse<string>> GetBlockEncodedAsync(string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        public Task<CliResponse<string>> GetBlockEncodedAsync(string hashOrHeight) =>
+            GetBlockEncodedAsync(CliOptions.ChainName, hashOrHeight);
 
         /// <summary>
         ///
@@ -165,7 +148,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <para>Blockchain name is explicitly passed as parameter.</para>
         ///
         /// </summary>
-        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="blockchainName">Name of target MultiChain network</param>
         /// <param name="index">The integer block index</param>
         /// <returns></returns>
         public Task<CliResponse<string>> GetBlockHashAsync(string blockchainName, int index) =>
@@ -182,55 +165,120 @@ namespace MCWrapper.CLI.Ledger.Clients
         public Task<CliResponse<string>> GetBlockHashAsync(int index) =>
             GetBlockHashAsync(CliOptions.ChainName, index);
 
-        public Task<CliResponse<GetBlockVerboseResult>> GetBlockVerboseAsync(string blockchainName, string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="blockchainName">Name of target MultiChain network</param>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockVerboseResult>> GetBlockVerboseAsync(string blockchainName, string hashOrHeight) =>
+            TransactAsync<GetBlockVerboseResult>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
 
-        public Task<CliResponse<GetBlockVerboseResult>> GetBlockVerboseAsync(string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is inferred from CliOptions as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockVerboseResult>> GetBlockVerboseAsync(string hashOrHeight) =>
+            GetBlockVerboseAsync(CliOptions.ChainName, hashOrHeight);
 
-        public Task<CliResponse<GetBlockV1Result>> GetBlockV1Async(string blockchainName, string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="blockchainName">Name of target MultiChain network</param>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockV1Result>> GetBlockV1Async(string blockchainName, string hashOrHeight) =>
+            TransactAsync<GetBlockV1Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
 
-        public Task<CliResponse<GetBlockV1Result>> GetBlockV1Async(string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is inferred from CliOptions as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockV1Result>> GetBlockV1Async(string hashOrHeight) =>
+            GetBlockV1Async(CliOptions.ChainName, hashOrHeight);
 
-        public Task<CliResponse<GetBlockV2Result>> GetBlockV2Async(string blockchainName, string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="blockchainName">Name of target MultiChain network</param>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockV2Result>> GetBlockV2Async(string blockchainName, string hashOrHeight) =>
+            TransactAsync<GetBlockV2Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
 
-        public Task<CliResponse<GetBlockV2Result>> GetBlockV2Async(string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is inferred from CliOptions as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockV2Result>> GetBlockV2Async(string hashOrHeight) =>
+            GetBlockV2Async(CliOptions.ChainName, hashOrHeight);
 
-        public Task<CliResponse<GetBlockV3Result>> GetBlockV3Async(string blockchainName, string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="blockchainName">Name of target MultiChain network</param>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockV3Result>> GetBlockV3Async(string blockchainName, string hashOrHeight) =>
+            TransactAsync<GetBlockV3Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
 
-        public Task<CliResponse<GetBlockV3Result>> GetBlockV3Async(string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is inferred from CliOptions as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockV3Result>> GetBlockV3Async(string hashOrHeight) =>
+            GetBlockV3Async(CliOptions.ChainName, hashOrHeight);
 
-        public Task<CliResponse<GetBlockV4Result>> GetBlockV4Async(string blockchainName, string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="blockchainName">Name of target MultiChain network</param>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockV4Result>> GetBlockV4Async(string blockchainName, string hashOrHeight) =>
+            TransactAsync<GetBlockV4Result>(blockchainName, BlockchainAction.GetBlockMethod, new[] { hashOrHeight });
 
-        public Task<CliResponse<GetBlockV4Result>> GetBlockV4Async(string hashOrHeight)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// <para>Returns hex-encoded data or json object for block.</para>
+        /// <para>Blockchain name is inferred from CliOptions as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="hashOrHeight">Block hash or height index</param>
+        /// <returns></returns>
+        public Task<CliResponse<GetBlockV4Result>> GetBlockV4Async(string hashOrHeight) =>
+            GetBlockV4Async(CliOptions.ChainName, hashOrHeight);
 
         /// <summary>
         ///
