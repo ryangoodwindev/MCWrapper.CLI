@@ -1550,7 +1550,6 @@ namespace MCWrapper.CLI.Ledger.Clients
             else if (asset_params is object oAsset)
                 asset = oAsset.Serialize();
 
-
             if (custom_fields == null)
                 return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, asset, $"{quantity}", $"{smallest_unit}", $"{native_amount}" });
 
