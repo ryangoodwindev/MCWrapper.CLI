@@ -1543,18 +1543,17 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         public Task<CliResponse<string>> IssueAsync(string blockchainName, string to_address, object asset_params, int quantity, [Optional] double smallest_unit, [Optional] decimal native_amount, [Optional] object custom_fields)
         {
-            string _assetModel = string.Empty;
+            string asset = string.Empty;
 
-            // todo this is hacky crap code; for now it works
-            if (OSDetection.IsWindows() && asset_params.GetType().BaseType == typeof(object))
-                _assetModel = asset_params.Serialize();
-            else if (OSDetection.IsWindows() && asset_params.GetType().BaseType == typeof(string))
-                _assetModel = asset_params.ToString() ?? string.Empty;
+            if (asset_params is string sAsset)
+                asset = sAsset;
+            else if (asset_params is object oAsset)
+                asset = oAsset.Serialize();
 
             if (custom_fields == null)
-                return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, _assetModel, $"{quantity}", $"{smallest_unit}", $"{native_amount}" });
+                return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, asset, $"{quantity}", $"{smallest_unit}", $"{native_amount}" });
 
-            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, _assetModel, $"{quantity}", $"{smallest_unit}", $"{native_amount}", custom_fields.Serialize() });
+            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, asset, $"{quantity}", $"{smallest_unit}", $"{native_amount}", custom_fields.Serialize() });
         }
 
         /// <summary>

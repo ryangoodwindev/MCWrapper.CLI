@@ -8,7 +8,9 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>GetBlockAsync&lt;T&gt; has been removed and has been replaced with the following methods to accommodate and infer all possible Verbose arguments - false, true, 1, 2, 3, 4
+    <PackageReleaseNotes>Fixed IssueAsync to work properly on Linux distros.
+
+GetBlockAsync&lt;T&gt; has been removed and has been replaced with the following methods to accommodate and infer all possible Verbose arguments - false, true, 1, 2, 3, 4
 
 GetBlockEncodedAsync - Returns string encoded block - Verbose is equal to false
 GetBlockVerboseAsync - Returns JSON object - Verbose is equal to true
@@ -89,7 +91,7 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
 ** This library is only supported on Windows environments in this version.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>4.1.6</Version>
+    <Version>4.1.7</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
