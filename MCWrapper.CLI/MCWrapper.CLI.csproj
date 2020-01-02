@@ -8,7 +8,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>Version makes a third attempt to fix CreateColdNodeAsync to work properly on Linux distros. Third try is the charm, right?!
+    <PackageReleaseNotes>Attempt to fix GetAddressTransactionResult JSON parse error on Linux distros.
 
 GetBlockAsync&lt;T&gt; has been removed and has been replaced with the following methods to accommodate and infer all possible Verbose arguments - false, true, 1, 2, 3, 4
 
@@ -88,10 +88,10 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
     <Authors>Myndblock LLC, Ryan Goodwin</Authors>
     <Company>Myndblock LLC</Company>
     <Description>A simple .NET Core wrapper for the MultiChain Core blockchain library that utilitzes the Command Line Interface (CLI) to communicate with distributed ledgers. Written with C# 8.0 and supports .NET Core 2.1, 2.2, and 3.0.
-** This library is only supported on Windows environments in this version.</Description>
+** This library is current being tested on Linux Distros and is completely supported for Windows platforms.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>4.1.10</Version>
+    <Version>4.1.11</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -124,7 +124,7 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="MCWrapper.Data.Models" Version="2.0.3" />
+    <PackageReference Include="MCWrapper.Data.Models" Version="2.0.5" />
     <PackageReference Include="MCWrapper.Ledger.Actions" Version="1.0.1" />
     <PackageReference Include="MCWrapper.Ledger.Entities" Version="2.1.0" />
   </ItemGroup>
