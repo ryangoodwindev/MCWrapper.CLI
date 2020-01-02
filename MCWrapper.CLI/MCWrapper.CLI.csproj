@@ -8,7 +8,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>Version makes another attempt to fix CreateColdNodeAsync to work properly on Linux distros.
+    <PackageReleaseNotes>Version makes a third attempt to fix CreateColdNodeAsync to work properly on Linux distros. Third try is the charm, right?!
 
 GetBlockAsync&lt;T&gt; has been removed and has been replaced with the following methods to accommodate and infer all possible Verbose arguments - false, true, 1, 2, 3, 4
 
@@ -91,7 +91,7 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
 ** This library is only supported on Windows environments in this version.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>4.1.9</Version>
+    <Version>4.1.10</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
