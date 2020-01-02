@@ -8,90 +8,18 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>Attempt to fix GetAddressTransactionResult JSON parse error on Linux distros.
+    <PackageReleaseNotes>Through some trial and error we finally managed to get our codebase written correctly to agree with Linux and Windows environments. At this time, and for now, all of our unit tests (320 in total) are passing on a Linux box, we tested using Ubuntu 18.0.4, and on our Windows machines.
 
-GetBlockAsync&lt;T&gt; has been removed and has been replaced with the following methods to accommodate and infer all possible Verbose arguments - false, true, 1, 2, 3, 4
+Please view all supported MultiChain Community Edition methods here, https://mcwrapper.com/supported-methods
 
-GetBlockEncodedAsync - Returns string encoded block - Verbose is equal to false
-GetBlockVerboseAsync - Returns JSON object - Verbose is equal to true
-GetBlockV1Async - Returns the same as Verbose method - Verbose is equal to 1
-GetBlockV2Async - Returns JSON object with additional details - Verbose is equal to 2
-GetBlockV3Async - Returns JSON object with additional details - Verbose is equal to 3
-GetBlockV4Async - Returns JSON object with additional details - Verbose is equal to 4
-
-MultiChain Command Line Interface (CLI) client interfaces should be injected into Controllers or Razor Pages as follows.
-
-IMultiChainCliGenerate :.....: Provide access to Generate MultChain Core methods.
-getgenerate, gethashespersec, setgenerate
-
-IMultiChainCliOffChain :....: Provides access to OffChain MultChain Core methods.
-purgepublisheditems, purgestreamitems, retrievestreamitems
-
-IMultiChainCliControl :.....: Provides access to Control MultChain Core methods.
-clearmempool, getblockchainparams, getinfo, getinitstatus, getruntimeparams, 
-help, pause, resume, setlastblock, setruntimeparam, stop
-
-IMultiChainCliGeneral :.....: Provides access to General MultChain Core methods
-getassetinfo, getbestblockhash, getblock, getblockchaininfo,
-getblockcount, getblockhash, getchaintips, getdifficulty,
-getfiltercode, getlastblockinfo, getmempoolinfo, getrawmempool,
-getstreaminfo, gettxout, gettxoutsetinfo, listassets, listblocks,
-listpermissions, liststreamfilters, liststreams, listtxfilters,
-listupgrades, runstreamfilter, runtxfilter, teststreamfilter,
-testtxfilter, verifychain, verifypermission
-
-IMultiChainCliNetwork :.....: Provides access to Network MultChain Core methods 
-addnode, getaddednodeinfo, getchunkqueueinfo, getchunkqueuetotals, 
-getconnectioncount, getnettotals, getnetworkinfo, getpeerinfo, ping
-
-IMultiChainCliUtility :.........: Provides access to Utility MultChain Core methods 
-appendbinarycache, createbinarycache, createkeypairs,
-createmultisig, deletebinarycache, estimatefee, estimatepriority,
-validateaddress, verifymessage
-
-IMultiChainCliMining :.........: Provides access to Mining MultChain Core methods 
-getblocktemplate, getmininginfo, getnetworkhashps,
-prioritisetransaction, submitblock
-
-IMultiChainCliWallet :.........: Provides access to Wallet MultChain Core methods 
-addmultisigaddress, appendrawexchange, approvefrom, backupwallet,
-combineunspent, completerawexchange, create, createfrom,
-createrawexchange, createrawsendfrom, decoderawexchange,
-disablerawtransaction, dumpprivkey, dumpwallet, encryptwallet,
-getaccount, getaccountaddress, getaddressbalances, getaddresses,
-getaddressesbyaccount, getaddresstransaction, getassetbalances,
-getassettransaction, getbalance, getmultibalances, getnewaddress,
-getrawchangeaddress, getreceivedbyaccount, getreceivedbyaddress,
-getstreamitem, getstreamkeysummary, getstreampublishersummary,
-gettotalbalances, gettransaction, gettxoutdata, getunconfirmedbalance,
-getwalletinfo, getwallettransaction, grant, grantfrom, grantwithdata,
-grantwithdatafrom, importaddress, importprivkey, importwallet, issue,
-issuefrom, issuemore, issuemorefrom, keypoolrefill, listaccounts,
-listaddresses, listaddressgroupings, listaddresstransactions,
-listassettransactions, listlockunspent, listreceivedbyaccount,
-listreceivedbyaddress, listsinceblock, liststreamblockitems,
-liststreamitems, liststreamkeyitems, liststreamkeys, liststreampublisheritems,
-liststreampublishers, liststreamqueryitems, liststreamtxitems,
-listtransactions, listunspent, listwallettransactions, lockunspent,
-move, preparelockunspent, preparelockunspentfrom, publish, publishfrom,
-publishmulti, publishmultifrom, purgepublisheditems, purgestreamitems,
-resendwallettransactions, retrievestreamitems, revoke, revokefrom, send,
-sendasset, sendassetfrom, sendfrom, sendfromaccount, sendmany, sendwithdata,
-sendwithdatafrom, setaccount, settxfee, signmessage, subscribe, trimsubscribe,
-txouttobinarycache, unsubscribe, walletlock, walletpassphrase,
-walletpassphrasechange,
-
-IMultiChainCliRaw :.........: Provides access to Raw MultChain Core methods 
-appendrawchange, appendrawdata, appendrawtransaction,
-createrawtransaction, decoderawtransaction, decodescript,
-getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
+This package has passed unit testing on Windows 10, Windows Server 2012, and Ubuntu 18.04.
+This package has passed unit testing with MultiChain Community Edition v2.0.3.</PackageReleaseNotes>
     <Authors>Myndblock LLC, Ryan Goodwin</Authors>
     <Company>Myndblock LLC</Company>
-    <Description>A simple .NET Core wrapper for the MultiChain Core blockchain library that utilitzes the Command Line Interface (CLI) to communicate with distributed ledgers. Written with C# 8.0 and supports .NET Core 2.1, 2.2, and 3.0.
-** This library is current being tested on Linux Distros and is completely supported for Windows platforms.</Description>
+    <Description>A simple .NET Core wrapper that utilizes the Command Line Interface (CLI) to communicate with MultiChain distributed ledger networks. Written with C# 8.0 and supports .NET Core 2.1, 2.2, and 3.1.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>4.1.11</Version>
+    <Version>4.1.12</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
