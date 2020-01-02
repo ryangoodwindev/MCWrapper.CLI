@@ -40,7 +40,7 @@ namespace MCWrapper.CLI.Helpers
             else if (OSDetection.IsWindows())
                 return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MultiChain", blockchainName);
             else if (OSDetection.IsLinux() || OSDetection.IsMacOS())
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "./multichain", blockchainName);
+                return $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}./multichain/{blockchainName}";
 
             return string.Empty;
         }
@@ -70,7 +70,7 @@ namespace MCWrapper.CLI.Helpers
             else if (OSDetection.IsWindows())
                 return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MultiChainCold", blockchainName);
             else if (OSDetection.IsLinux() || OSDetection.IsMacOS())
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "./multichain-cold", blockchainName);
+                return $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}./multichain-cold/{blockchainName}";
 
             return string.Empty;
         }
