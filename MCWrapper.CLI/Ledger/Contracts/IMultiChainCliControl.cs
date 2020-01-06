@@ -119,7 +119,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="command">The command to get help on</param>
         /// <returns></returns>
-        Task<CliResponse<object>> HelpAsync(string command = "getinfo");
+        Task<CliResponse<string>> HelpAsync(string command = "getinfo");
 
         /// <summary>
         /// 
@@ -130,7 +130,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="command">The command to get help on</param>
         /// <returns></returns>
-        Task<CliResponse<object>> HelpAsync(string blockchainName, string command = "getinfo");
+        Task<CliResponse<string>> HelpAsync(string blockchainName, string command = "getinfo");
 
         /// <summary>
         /// 
@@ -186,7 +186,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(numeric, optional) The block height in active chain or height before current tip (if negative)</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> SetLastBlockAsync([Optional] object hash_or_height);
+        Task<CliResponse<string>> SetLastBlockAsync([Optional] object hash_or_height);
 
         /// <summary>
         /// 
@@ -202,7 +202,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(numeric, optional) The block height in active chain or height before current tip (if negative)</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> SetLastBlockAsync(string blockchainName, [Optional] object hash_or_height);
+        Task<CliResponse<string>> SetLastBlockAsync(string blockchainName, [Optional] object hash_or_height);
 
         /// <summary>
         /// 

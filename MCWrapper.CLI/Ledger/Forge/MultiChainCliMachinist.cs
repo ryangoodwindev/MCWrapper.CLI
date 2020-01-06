@@ -95,10 +95,10 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (ResponseIsSuccess())
                 response.Success = true;
             else if (ResponseIsFailure())
-                response.Errors.Add("Response_Failed_Reason_Exists", 
+                response.Errors.TryAdd("Response_Failed_Reason_Exists", 
                     $"Sorry, it seems that a blockchain with this name might already exists: {blockchainName}");
             else
-                response.Errors.Add("Response_Failed_Reason_None", 
+                response.Errors.TryAdd("Response_Failed_Reason_None", 
                     "Sorry, we can't determine if this attempt failed or not so we assume it did fail.");
 
             return response;
@@ -206,7 +206,7 @@ namespace MCWrapper.CLI.Ledger.Clients
                 else if (ResponseIsFailure())
                 {
                     timerState.TimerJobSuccess = true;
-                    response.Errors.Add("Response_Failed_Reason_Exists",
+                    response.Errors.TryAdd("Response_Failed_Reason_Exists",
                         $"Sorry, it seems that a blockchain with this name might already be running in this environment: {blockchainName}");
                 }
             }
@@ -220,7 +220,7 @@ namespace MCWrapper.CLI.Ledger.Clients
 
             // determine if no result is detected
             if (timerState.Counter >= maxCounter && response.Errors.Count == 0 && !response.Success)
-                response.Errors.Add("Response_Failed_Reason_Unknown", $"Sorry, it seems that something went wrong while starting blockchain: {blockchainName}");
+                response.Errors.TryAdd("Response_Failed_Reason_Unknown", $"Sorry, it seems that something went wrong while starting blockchain: {blockchainName}");
 
             return response;
 
@@ -370,7 +370,7 @@ namespace MCWrapper.CLI.Ledger.Clients
                 else if (ResponseIsFailure())
                 {
                     timerState.TimerJobSuccess = true;
-                    response.Errors.Add("Response_Failed_Reason_Exists",
+                    response.Errors.TryAdd("Response_Failed_Reason_Exists",
                         $"Sorry, it seems that a blockchain with this name might already be running in this environment: {blockchainName}");
                 }
             }
@@ -384,7 +384,7 @@ namespace MCWrapper.CLI.Ledger.Clients
 
             // determine if no result is detected
             if (timerState.Counter >= maxCounter && response.Errors.Count == 0 && !response.Success)
-                response.Errors.Add("Response_Failed_Reason_Unknown", $"Sorry, it seems that something went wrong while starting blockchain cold node: {blockchainName}");
+                response.Errors.TryAdd("Response_Failed_Reason_Unknown", $"Sorry, it seems that something went wrong while starting blockchain cold node: {blockchainName}");
 
             return response;
 
@@ -516,10 +516,10 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (ResponseIsSuccess())
                 response.Success = true;
             else if (ResponseIsFailure())
-                response.Errors.Add("Response_Failed_Reason_Exists",
+                response.Errors.TryAdd("Response_Failed_Reason_Exists",
                     "Couldn't connect to the seed node please check multichaind is running at that address and that your firewall settings allow incoming connections");
             else
-                response.Errors.Add("Response_Failed_Reason_None", 
+                response.Errors.TryAdd("Response_Failed_Reason_None", 
                     "Sorry, for some reason the remote host could not be contacted or the connection was refused by the host.");
 
             return response;
@@ -602,9 +602,9 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (response.StandardOutput.Contains("MultiChain server stopping", StringComparison.OrdinalIgnoreCase))
                 response.Success = true;
             else if (response.StandardError.Contains("couldn't connect to server", StringComparison.OrdinalIgnoreCase))
-                response.Errors.Add("Response_Failed_Reason_Exists", $"Sorry, we couldn't connect to the server for: {blockchainName}");
+                response.Errors.TryAdd("Response_Failed_Reason_Exists", $"Sorry, we couldn't connect to the server for: {blockchainName}");
             else
-                response.Errors.Add("Response_Failed_Reason_None", $"Sorry, something went wrong while trying to stop the server for: {blockchainName}");
+                response.Errors.TryAdd("Response_Failed_Reason_None", $"Sorry, something went wrong while trying to stop the server for: {blockchainName}");
 
             return response;
         }
@@ -677,9 +677,9 @@ namespace MCWrapper.CLI.Ledger.Clients
             if (response.StandardOutput.Contains("MultiChain server stopping", StringComparison.OrdinalIgnoreCase))
                 response.Success = true;
             else if (response.StandardError.Contains("couldn't connect to server", StringComparison.OrdinalIgnoreCase))
-                response.Errors.Add("Response_Failed_Reason_Exists", $"Sorry, we couldn't connect to the server for: {blockchainName}");
+                response.Errors.TryAdd("Response_Failed_Reason_Exists", $"Sorry, we couldn't connect to the server for: {blockchainName}");
             else
-                response.Errors.Add("Response_Failed_Reason_None", $"Sorry, something went wrong while trying to stop the server for: {blockchainName}");
+                response.Errors.TryAdd("Response_Failed_Reason_None", $"Sorry, something went wrong while trying to stop the server for: {blockchainName}");
 
             return response;
         }

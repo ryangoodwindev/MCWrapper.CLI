@@ -2,9 +2,12 @@
 using MCWrapper.CLI.Options;
 using MCWrapper.Data.Models.Wallet;
 using MCWrapper.Ledger.Actions;
+using MCWrapper.Ledger.Entities;
 using MCWrapper.Ledger.Entities.Extensions;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -407,7 +410,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             else if (string.IsNullOrEmpty(action) && data != null)
                 return TransactAsync<object>(blockchainName, WalletAction.CreateRawSendFromMethod, new[] { from_address, addresses.Serialize(), data.Serialize() });
 
-            data ??= new object[] { };
+            data ??= Array.Empty<object>();
 
             return TransactAsync<object>(blockchainName, WalletAction.CreateRawSendFromMethod, new[] { from_address, addresses.Serialize(), data.Serialize(), action });
         }
@@ -1227,12 +1230,12 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantAsync(string blockchainName, string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to)
+        public Task<CliResponse<string>> GrantAsync(string blockchainName, string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to)
         {
             if (native_amount == 0)
-                return TransactAsync<object>(blockchainName, WalletAction.GrantMethod, new[] { addresses, permissions });
+                return TransactAsync<string>(blockchainName, WalletAction.GrantMethod, new[] { addresses, permissions });
             else
-                return TransactAsync<object>(blockchainName, WalletAction.GrantMethod, new[] { addresses, permissions, $"{native_amount}", $"{start_block}", $"{end_block}", comment, comment_to });
+                return TransactAsync<string>(blockchainName, WalletAction.GrantMethod, new[] { addresses, permissions, $"{native_amount}", $"{start_block}", $"{end_block}", comment, comment_to });
         }
 
         /// <summary>
@@ -1260,7 +1263,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantAsync(string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to) =>
+        public Task<CliResponse<string>> GrantAsync(string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to) =>
             GrantAsync(CliOptions.ChainName, addresses, permissions, native_amount, start_block, end_block, comment, comment_to);
 
         /// <summary>
@@ -1291,8 +1294,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantFromAsync(string blockchainName, string from_address, string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to) =>
-            TransactAsync<object>(blockchainName, WalletAction.GrantFromMethod, new[] { from_address, addresses, permissions, $"{native_amount}", $"{start_block}", $"{end_block}", comment, comment_to });
+        public Task<CliResponse<string>> GrantFromAsync(string blockchainName, string from_address, string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to) =>
+            TransactAsync<string>(blockchainName, WalletAction.GrantFromMethod, new[] { from_address, addresses, permissions, $"{native_amount}", $"{start_block}", $"{end_block}", comment, comment_to });
 
         /// <summary>
         /// Grant permission using specific address.
@@ -1321,7 +1324,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantFromAsync(string from_address, string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to) =>
+        public Task<CliResponse<string>> GrantFromAsync(string from_address, string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to) =>
             GrantFromAsync(CliOptions.ChainName, from_address, addresses, permissions, native_amount, start_block, end_block, comment, comment_to);
 
         /// <summary>
@@ -1349,11 +1352,11 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantWithDataAsync(string blockchainName, string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
+        public Task<CliResponse<string>> GrantWithDataAsync(string blockchainName, string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
             (object_or_hex) switch
             {
-                string s => TransactAsync<object>(blockchainName, WalletAction.GrantWithDataMethod, new[] { addresses, permissions, s, $"{native_amount}", $"{start_block}", $"{end_block}" }),
-                object o => TransactAsync<object>(blockchainName, WalletAction.GrantWithDataMethod, new[] { addresses, permissions, o.Serialize(), $"{native_amount}", $"{start_block}", $"{end_block}" })
+                string s => TransactAsync<string>(blockchainName, WalletAction.GrantWithDataMethod, new[] { addresses, permissions, s, $"{native_amount}", $"{start_block}", $"{end_block}" }),
+                object o => TransactAsync<string>(blockchainName, WalletAction.GrantWithDataMethod, new[] { addresses, permissions, o.Serialize(), $"{native_amount}", $"{start_block}", $"{end_block}" })
             };
 
         /// <summary>
@@ -1380,7 +1383,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantWithDataAsync(string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
+        public Task<CliResponse<string>> GrantWithDataAsync(string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
             GrantWithDataAsync(CliOptions.ChainName, addresses, permissions, object_or_hex, native_amount, start_block, end_block);
 
         /// <summary>
@@ -1410,11 +1413,11 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantWithDataFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
+        public Task<CliResponse<string>> GrantWithDataFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
             (object_or_hex) switch
             {
-                string s => TransactAsync<object>(blockchainName, WalletAction.GrantWithDataFromMethod, new[] { from_address, to_addresses, permissions, s, $"{native_amount}", $"{start_block}", $"{end_block}" }),
-                object o => TransactAsync<object>(blockchainName, WalletAction.GrantWithDataFromMethod, new[] { from_address, to_addresses, permissions, o.Serialize(), $"{native_amount}", $"{start_block}", $"{end_block}" })
+                string s => TransactAsync<string>(blockchainName, WalletAction.GrantWithDataFromMethod, new[] { from_address, to_addresses, permissions, s, $"{native_amount}", $"{start_block}", $"{end_block}" }),
+                object o => TransactAsync<string>(blockchainName, WalletAction.GrantWithDataFromMethod, new[] { from_address, to_addresses, permissions, o.Serialize(), $"{native_amount}", $"{start_block}", $"{end_block}" })
             };
 
         /// <summary>
@@ -1443,7 +1446,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GrantWithDataFromAsync(string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
+        public Task<CliResponse<string>> GrantWithDataFromAsync(string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue) =>
             GrantWithDataFromAsync(CliOptions.ChainName, from_address, to_addresses, permissions, object_or_hex, native_amount, start_block, end_block);
 
         /// <summary>
@@ -1529,96 +1532,591 @@ namespace MCWrapper.CLI.Ledger.Clients
 
         /// <summary>
         /// 
-        /// <para>Issue a new Asset to an address on the blockchain network.</para>
+        /// <para>Issue a new AssetEntity model to an address on the blockchain network.</para>
         /// <para>Blockchain name is explicitly passed as parameter.</para>
         /// 
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
-        /// <param name="to_address">The address to send newly created asset to</param>
-        /// <param name="asset_params"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(AssetEntity type, required) A strongly typed object with asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="smallest_unit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
-        /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="custom_fields">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
         /// <returns></returns>
-        public Task<CliResponse<string>> IssueAsync(string blockchainName, string to_address, object asset_params, int quantity, [Optional] double smallest_unit, [Optional] decimal native_amount, [Optional] object custom_fields)
+        public Task<CliResponse<string>> IssueAsync(string blockchainName,
+                                                    string toAddress,
+                                                    AssetEntity assetParams,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    Dictionary<string, string>? customFields = null)
         {
-            string asset = string.Empty;
-
-            if (asset_params is string sAsset)
-                asset = sAsset;
-            else if (asset_params is object oAsset)
-                asset = oAsset.Serialize();
-
-            if (custom_fields == null)
-                return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, asset, $"{quantity}", $"{smallest_unit}", $"{native_amount}" });
-
-            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { to_address, asset, $"{quantity}", $"{smallest_unit}", $"{native_amount}", custom_fields.Serialize() });
+            customFields ??= new Dictionary<string, string>();
+            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { toAddress, assetParams.Serialize(), $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
         }
 
         /// <summary>
         /// 
-        /// <para>Issue a new Asset to an address on the blockchain network.</para>
-        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        /// <para>Issue a new AssetEntity model to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
         /// 
         /// </summary>
-        /// <param name="to_address">The address to send newly created asset to</param>
-        /// <param name="asset_params"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(AssetEntity type, required) A strongly typed object with asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="smallest_unit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
-        /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="custom_fields">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
         /// <returns></returns>
-        public Task<CliResponse<string>> IssueAsync(string to_address, object asset_params, int quantity, [Optional] double smallest_unit, [Optional] decimal native_amount, [Optional] object custom_fields) =>
-            IssueAsync(CliOptions.ChainName, to_address, asset_params, quantity, smallest_unit, native_amount, custom_fields);
+        public Task<CliResponse<string>> IssueAsync(string blockchainName,
+                                                    string toAddress,
+                                                    AssetEntity assetParams,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    object? customFields = null)
+        {
+            customFields ??= new { };
+            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { toAddress, assetParams.Serialize(), $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
 
         /// <summary>
         /// 
-        /// <para>Issue asset using specific address</para>
+        /// <para>Issue a new Asset using object params to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(object type, required) A generic object that must include asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string blockchainName,
+                                                    string toAddress,
+                                                    object assetParams,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    Dictionary<string, string>? customFields = null)
+        {
+            customFields ??= new Dictionary<string, string>();
+            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { toAddress, assetParams.Serialize(), $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset using object params to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(object type, required) A generic object that must include asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string blockchainName,
+                                                    string toAddress,
+                                                    object assetParams,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    object? customFields = null)
+        {
+            customFields ??= new { };
+            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { toAddress, assetParams.Serialize(), $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset by name to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetName"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string blockchainName,
+                                                    string toAddress,
+                                                    string assetName,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    Dictionary<string, string>? customFields = null)
+        {
+            customFields ??= new Dictionary<string, string>();
+            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { toAddress, assetName, $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset by name to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        /// 
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetName"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string blockchainName,
+                                                    string toAddress,
+                                                    string assetName,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    object? customFields = null)
+        {
+            customFields ??= new { };
+            return TransactAsync<string>(blockchainName, WalletAction.IssueMethod, new string[] { toAddress, assetName, $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new AssetEntity model to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        /// 
+        /// </summary>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(AssetEntity type, required) A strongly typed object with asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string toAddress,
+                                                    AssetEntity assetParams,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    Dictionary<string, string>? customFields = null) =>
+            IssueAsync(CliOptions.ChainName, toAddress, assetParams, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new AssetEntity model to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        /// 
+        /// </summary>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(AssetEntity type, required) A strongly typed object with asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string toAddress,
+                                                    AssetEntity assetParams,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    object? customFields = null) =>
+            IssueAsync(CliOptions.ChainName, toAddress, assetParams, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset using object params to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        /// 
+        /// </summary>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(object type, required) A generic object that must include asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string toAddress,
+                                                    object assetParams,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    Dictionary<string, string>? customFields = null) =>
+            IssueAsync(CliOptions.ChainName, toAddress, assetParams, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset using object params to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        /// 
+        /// </summary>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(object type, required) A generic object that must include asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string toAddress,
+                                                    object assetParams,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    object? customFields = null) =>
+            IssueAsync(CliOptions.ChainName, toAddress, assetParams, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset by name to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        /// 
+        /// </summary>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetname">(string, required) Asset name, if not "" should be unique</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string toAddress,
+                                                    string assetname,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    Dictionary<string, string>? customFields = null) =>
+            IssueAsync(CliOptions.ChainName, toAddress, assetname, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset by name to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        /// 
+        /// </summary>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetname">(string, required) Asset name, if not "" should be unique</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueAsync(string toAddress,
+                                                    string assetname,
+                                                    int quantity,
+                                                    double smallestUnit = 1,
+                                                    decimal nativeCurrencyAmount = 0,
+                                                    object? customFields = null) =>
+            IssueAsync(CliOptions.ChainName, toAddress, assetname, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new AssetEntity model to an address on the blockchain network.</para>
         /// <para>Blockchain name is explicitly passed as parameter.</para>
         ///
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
-        /// <param name="from_address">Address used for issuing</param>
-        /// <param name="to_address">The address to send newly created asset to</param>
-        /// <param name="asset_params"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(AssetEntity type, required) A strongly typed object with asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="smallest_unit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
-        /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="custom_fields">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
         /// <returns></returns>
-        public Task<CliResponse<string>> IssueFromAsync(string blockchainName, string from_address, string to_address, object asset_params, int quantity, [Optional] double smallest_unit, [Optional] decimal native_amount, [Optional] object custom_fields)
+        public Task<CliResponse<string>> IssueFromAsync(string blockchainName,
+                                                        string fromAddress,
+                                                        string toAddress,
+                                                        AssetEntity assetParams,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        Dictionary<string, string>? customFields = null)
         {
-            string _assetModel = string.Empty;
-
-            // todo this is hacky crap code; for now it works
-            if (asset_params.GetType().BaseType == typeof(object))
-                _assetModel = asset_params.Serialize();
-            else if (asset_params.GetType().BaseType == typeof(string))
-                _assetModel = asset_params.ToString() ?? string.Empty;
-
-            if (native_amount == 0)
-                return TransactAsync<string>(blockchainName, WalletAction.IssueFromMethod, new string[] { from_address, to_address, _assetModel, quantity.ToString(), smallest_unit.ToString() });
-            else
-                return TransactAsync<string>(blockchainName, WalletAction.IssueFromMethod, new string[] { from_address, to_address, _assetModel, quantity.ToString(), smallest_unit.ToString(), native_amount.ToString() });
+            customFields ??= new Dictionary<string, string>();
+            return TransactAsync<string>(blockchainName, WalletAction.IssueFromMethod, new string[] { fromAddress, toAddress, assetParams.Serialize(), $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
         }
 
         /// <summary>
         /// 
-        /// <para>Issue asset using specific address</para>
+        /// <para>Issue a new AssetEntity model to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(AssetEntity type, required) A strongly typed object with asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string blockchainName,
+                                                        string fromAddress,
+                                                        string toAddress,
+                                                        AssetEntity assetParams,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        object? customFields = null)
+        {
+            customFields ??= new { };
+            return TransactAsync<string>(blockchainName, WalletAction.IssueFromMethod, new string[] { fromAddress, toAddress, assetParams.Serialize(), $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset using object params to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(object type, required) A generic object that must include asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string blockchainName,
+                                                        string fromAddress,
+                                                        string toAddress,
+                                                        object assetParams,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        Dictionary<string, string>? customFields = null)
+        {
+            customFields ??= new Dictionary<string, string>();
+            return TransactAsync<string>(blockchainName, WalletAction.IssueFromMethod, new string[] { fromAddress, toAddress, assetParams.Serialize(), $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset using object params to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(object type, required) A generic object that must include asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string blockchainName,
+                                                        string fromAddress,
+                                                        string toAddress,
+                                                        object assetParams,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        object? customFields = null)
+        {
+            customFields ??= new { };
+            return TransactAsync<string>(blockchainName, WalletAction.IssueFromMethod, new string[] { fromAddress, toAddress, assetParams.Serialize(), $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset by name to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetName">(string, required) Asset name, if not "" should be unique</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string blockchainName,
+                                                        string fromAddress,
+                                                        string toAddress,
+                                                        string assetName,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        Dictionary<string, string>? customFields = null)
+        {
+            customFields ??= new Dictionary<string, string>();
+            return TransactAsync<string>(blockchainName, WalletAction.IssueFromMethod, new string[] { fromAddress, toAddress, assetName, $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset by name to an address on the blockchain network.</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetName">(string, required) Asset name, if not "" should be unique</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string blockchainName,
+                                                        string fromAddress,
+                                                        string toAddress,
+                                                        string assetName,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        object? customFields = null)
+        {
+            customFields ??= new { };
+            return TransactAsync<string>(blockchainName, WalletAction.IssueFromMethod, new string[] { fromAddress, toAddress, assetName, $"{quantity}", $"{smallestUnit}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new AssetEntity model to an address on the blockchain network.</para>
         /// <para>Blockchain name is inferred from CliOptions properties.</para>
         ///
         /// </summary>
-        /// <param name="from_address">Address used for issuing</param>
-        /// <param name="to_address">The address to send newly created asset to</param>
-        /// <param name="asset_params"> (string, required) Asset name, if not "" should be unique or (object, required) A json object of with asset params</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(AssetEntity type, required) A strongly typed object with asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>                                                                                                                                                                                                                                                                            
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="smallest_unit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
-        /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="custom_fields">a json object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
         /// <returns></returns>
-        public Task<CliResponse<string>> IssueFromAsync(string from_address, string to_address, object asset_params, int quantity, [Optional] double smallest_unit, [Optional] decimal native_amount, [Optional] object custom_fields) =>
-            IssueFromAsync(CliOptions.ChainName, from_address, to_address, asset_params, quantity, smallest_unit, native_amount, custom_fields);
+        public Task<CliResponse<string>> IssueFromAsync(string fromAddress,
+                                                        string toAddress,
+                                                        AssetEntity assetParams,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        Dictionary<string, string>? customFields = null) =>
+            IssueFromAsync(CliOptions.ChainName, fromAddress, toAddress, assetParams, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new AssetEntity model to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(AssetEntity type, required) A strongly typed object with asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>                                                                                                                                                                                                                                                                            
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string fromAddress,
+                                                        string toAddress,
+                                                        AssetEntity assetParams,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        object? customFields = null) =>
+            IssueFromAsync(CliOptions.ChainName, fromAddress, toAddress, assetParams, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset using object params to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(object type, required) A generic object that must include asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string fromAddress,
+                                                        string toAddress,
+                                                        object assetParams,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        Dictionary<string, string>? customFields = null) =>
+            IssueFromAsync(CliOptions.ChainName, fromAddress, toAddress, assetParams, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset using object params to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetParams">(object type, required) A generic object that must include asset params (string)name, (bool)open, and (string, comma delimited)restrict</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string fromAddress,
+                                                        string toAddress,
+                                                        object assetParams,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        object? customFields = null) =>
+            IssueFromAsync(CliOptions.ChainName, fromAddress, toAddress, assetParams, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset by name to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetName">(string, required) Asset name, if not "" should be unique</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string fromAddress,
+                                                        string toAddress,
+                                                        string assetName,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        Dictionary<string, string>? customFields = null) =>
+            IssueFromAsync(CliOptions.ChainName, fromAddress, toAddress, assetName, quantity, smallestUnit, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Issue a new Asset by name to an address on the blockchain network.</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetName">(string, required) Asset name, if not "" should be unique</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="smallestUnit">Number of raw units in one displayed unit, eg 0.01 for cents. Default value is 1</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields. { "param-name": "param-value"   (strings, required) The key is the parameter name, the value is parameter value, ,... }</param>
+        /// <returns></returns>
+        public Task<CliResponse<string>> IssueFromAsync(string fromAddress,
+                                                        string toAddress,
+                                                        string assetName,
+                                                        int quantity,
+                                                        double smallestUnit = 1,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        object? customFields = null) =>
+            IssueFromAsync(CliOptions.ChainName, fromAddress, toAddress, assetName, quantity, smallestUnit, nativeCurrencyAmount, customFields);
 
         /// <summary>
         /// 
@@ -1627,14 +2125,46 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
-        /// <param name="to_address">The address to send newly created asset to</param>
-        /// <param name="asset_identifier">One of the following: issue txid, asset reference, asset name</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetIdentifier">One of the following: issue txid, asset reference, asset name</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="custom_fields">a json object with custom fields</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> IssueMoreAsync(string blockchainName, string to_address, string asset_identifier, int quantity, [Optional] decimal native_amount, [Optional] object custom_fields) =>
-            TransactAsync<object>(blockchainName, WalletAction.IssueMoreMethod, new[] { to_address, asset_identifier, $"{quantity}", $"{native_amount}", custom_fields.Serialize() });
+        public Task<CliResponse<object>> IssueMoreAsync(string blockchainName,
+                                                        string toAddress,
+                                                        string assetIdentifier,
+                                                        int quantity,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        Dictionary<string, string>? customFields = null)
+        {
+            customFields ??= new Dictionary<string, string>();
+            return TransactAsync<object>(blockchainName, WalletAction.IssueMoreMethod, new[] { toAddress, assetIdentifier, $"{quantity}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Create more units for asset</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetIdentifier">One of the following: issue txid, asset reference, asset name</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields</param>
+        /// <returns></returns>
+        public Task<CliResponse<object>> IssueMoreAsync(string blockchainName,
+                                                        string toAddress,
+                                                        string assetIdentifier,
+                                                        int quantity,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        object? customFields = null)
+        {
+            customFields ??= new { };
+            return TransactAsync<object>(blockchainName, WalletAction.IssueMoreMethod, new[] { toAddress, assetIdentifier, $"{quantity}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
 
         /// <summary>
         /// 
@@ -1642,14 +2172,37 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <para>Blockchain name is inferred from CliOptions properties.</para>
         ///
         /// </summary>
-        /// <param name="to_address">The address to send newly created asset to</param>
-        /// <param name="asset_identifier">One of the following: issue txid, asset reference, asset name</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetIdentifier">One of the following: issue txid, asset reference, asset name</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="custom_fields">a json object with custom fields</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> IssueMoreAsync(string to_address, string asset_identifier, int quantity, [Optional] decimal native_amount, [Optional] object custom_fields) =>
-            IssueMoreAsync(CliOptions.ChainName, to_address, asset_identifier, quantity, native_amount, custom_fields);
+        public Task<CliResponse<object>> IssueMoreAsync(string toAddress,
+                                                        string assetIdentifier,
+                                                        int quantity,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        Dictionary<string, string>? customFields = null) =>
+            IssueMoreAsync(CliOptions.ChainName, toAddress, assetIdentifier, quantity, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Create more units for asset</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetIdentifier">One of the following: issue txid, asset reference, asset name</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields</param>
+        /// <returns></returns>
+        public Task<CliResponse<object>> IssueMoreAsync(string toAddress,
+                                                        string assetIdentifier,
+                                                        int quantity,
+                                                        decimal nativeCurrencyAmount = 0,
+                                                        object? customFields = null) =>
+            IssueMoreAsync(CliOptions.ChainName, toAddress, assetIdentifier, quantity, nativeCurrencyAmount, customFields);
 
         /// <summary>
         /// 
@@ -1658,15 +2211,50 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
-        /// <param name="from_address">Address used for issuing</param>
-        /// <param name="to_address">The address to send newly created asset to</param>
-        /// <param name="asset_identifier">One of the following: issue txid, asset reference, asset name</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetIdentifier">One of the following: issue txid, asset reference, asset name</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="custom_fields">a json object with custom fields</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> IssueMoreFromAsync(string blockchainName, string from_address, string to_address, string asset_identifier, int quantity, [Optional] decimal native_amount, [Optional] object custom_fields) =>
-            TransactAsync<object>(blockchainName, WalletAction.IssueMoreFromMethod, new[] { from_address, to_address, asset_identifier, $"{quantity}", $"{native_amount}", custom_fields.Serialize() });
+        public Task<CliResponse<object>> IssueMoreFromAsync(string blockchainName,
+                                                            string fromAddress,
+                                                            string toAddress,
+                                                            string assetIdentifier,
+                                                            int quantity,
+                                                            decimal nativeCurrencyAmount = 0,
+                                                            Dictionary<string, string>? customFields = null)
+        {
+            customFields ??= new Dictionary<string, string>();
+            return TransactAsync<object>(blockchainName, WalletAction.IssueMoreFromMethod, new[] { fromAddress, toAddress, assetIdentifier, $"{quantity}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
+
+        /// <summary>
+        /// 
+        /// <para>Create more units for asset from specific address</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetIdentifier">One of the following: issue txid, asset reference, asset name</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields</param>
+        /// <returns></returns>
+        public Task<CliResponse<object>> IssueMoreFromAsync(string blockchainName,
+                                                            string fromAddress,
+                                                            string toAddress,
+                                                            string assetIdentifier,
+                                                            int quantity,
+                                                            decimal nativeCurrencyAmount = 0,
+                                                            object? customFields = null)
+        {
+            customFields ??= new { };
+            return TransactAsync<object>(blockchainName, WalletAction.IssueMoreFromMethod, new[] { fromAddress, toAddress, assetIdentifier, $"{quantity}", $"{nativeCurrencyAmount}", customFields.Serialize() });
+        }
 
         /// <summary>
         /// 
@@ -1674,15 +2262,41 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <para>Blockchain name is inferred from CliOptions properties.</para>
         ///
         /// </summary>
-        /// <param name="from_address">Address used for issuing</param>
-        /// <param name="to_address">The address to send newly created asset to</param>
-        /// <param name="asset_identifier">One of the following: issue txid, asset reference, asset name</param>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetIdentifier">One of the following: issue txid, asset reference, asset name</param>
         /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
-        /// <param name="native_amount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
-        /// <param name="custom_fields">a json object with custom fields</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> IssueMoreFromAsync(string from_address, string to_address, string asset_identifier, int quantity, [Optional] decimal native_amount, [Optional] object custom_fields) =>
-            IssueMoreFromAsync(CliOptions.ChainName, from_address, to_address, asset_identifier, quantity, native_amount, custom_fields);
+        public Task<CliResponse<object>> IssueMoreFromAsync(string fromAddress,
+                                                            string toAddress,
+                                                            string assetIdentifier,
+                                                            int quantity,
+                                                            decimal nativeCurrencyAmount = 0,
+                                                            Dictionary<string, string>? customFields = null) =>
+            IssueMoreFromAsync(CliOptions.ChainName, fromAddress, toAddress, assetIdentifier, quantity, nativeCurrencyAmount, customFields);
+
+        /// <summary>
+        /// 
+        /// <para>Create more units for asset from specific address</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <param name="fromAddress">Address used for issuing</param>
+        /// <param name="toAddress">The address to send newly created asset to</param>
+        /// <param name="assetIdentifier">One of the following: issue txid, asset reference, asset name</param>
+        /// <param name="quantity">The asset total amount in display units. eg. 1234.56</param>
+        /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
+        /// <param name="customFields">a dictionary object with custom fields</param>
+        /// <returns></returns>
+        public Task<CliResponse<object>> IssueMoreFromAsync(string fromAddress,
+                                                            string toAddress,
+                                                            string assetIdentifier,
+                                                            int quantity,
+                                                            decimal nativeCurrencyAmount = 0,
+                                                            object? customFields = null) =>
+            IssueMoreFromAsync(CliOptions.ChainName, fromAddress, toAddress, assetIdentifier, quantity, nativeCurrencyAmount, customFields);
 
         /// <summary>
         /// 

@@ -648,11 +648,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="upgrade_identifiers">
         ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
-        ///     <para>or</para>
-        ///     <para>(array, optional) A json array of upgrade identifiers</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListUpgradesAsync([Optional] object upgrade_identifiers);
+        Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync([Optional] string upgrade_identifier);
 
         /// <summary>
         ///
@@ -663,11 +661,34 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="upgrade_identifiers">
         ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
-        ///     <para>or</para>
+        /// </param>
+        /// <returns></returns>
+        Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync(string blockchainName, [Optional] string upgrade_identifier);
+
+        /// <summary>
+        ///
+        /// <para>Returns list of defined upgrades</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <param name="upgrade_identifiers">
         ///     <para>(array, optional) A json array of upgrade identifiers</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListUpgradesAsync(string blockchainName, [Optional] object upgrade_identifiers);
+        Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync([Optional] string[] upgrade_identifiers);
+
+        /// <summary>
+        ///
+        /// <para>Returns list of defined upgrades</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="upgrade_identifiers">
+        ///     <para>(array, optional) A json array of upgrade identifiers</para>
+        /// </param>
+        /// <returns></returns>
+        Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync(string blockchainName, [Optional] string[] upgrade_identifiers);
 
         /// <summary>
         ///

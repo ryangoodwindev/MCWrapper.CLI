@@ -122,7 +122,7 @@ namespace MCWrapper.CLI.Connection
                 var clientResponse = new CliResponse<T>();
 
                 // detect error occurrence
-                if (_stderr.Contains("error", StringComparison.OrdinalIgnoreCase))
+                if (_stderr.Contains("error"))
                 {
                     // assign CliResponse Error property value to the CLIClientResponse Error property
                     clientResponse.Error = _stderr;

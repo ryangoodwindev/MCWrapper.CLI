@@ -739,19 +739,43 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
+        /// <param name="upgrade_identifier">
+        ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
+        ///     <para>or</para>
+        ///     <para>(array, optional) A json array of upgrade identifiers</para>
+        /// </param>
+        /// <returns></returns>
+        public Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync(string blockchainName, [Optional] string upgrade_identifier) =>
+            TransactAsync<ListUpgradesResult[]>(blockchainName, BlockchainAction.ListUpgradesMethod, new[] { upgrade_identifier });
+
+        /// <summary>
+        ///
+        /// <para>Returns list of defined upgrades</para>
+        /// <para>Blockchain name is explicitly passed as parameter.</para>
+        ///
+        /// </summary>
+        /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="upgrade_identifiers">
         ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
         ///     <para>or</para>
         ///     <para>(array, optional) A json array of upgrade identifiers</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> ListUpgradesAsync(string blockchainName, [Optional] object upgrade_identifiers)
-        {
-            if (upgrade_identifiers.GetType() == typeof(string))
-                return TransactAsync<object>(blockchainName, BlockchainAction.ListUpgradesMethod, new[] { $"{upgrade_identifiers}" });
-            else
-                return TransactAsync<object>(blockchainName, BlockchainAction.ListUpgradesMethod, new[] { upgrade_identifiers.Serialize() });
-        }
+        public Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync(string blockchainName, [Optional] string[] upgrade_identifiers) => 
+            TransactAsync<ListUpgradesResult[]>(blockchainName, BlockchainAction.ListUpgradesMethod, new[] { upgrade_identifiers.Serialize() });
+
+        /// <summary>
+        ///
+        /// <para>Returns list of defined upgrades</para>
+        /// <para>Blockchain name is inferred from CliOptions properties.</para>
+        ///
+        /// </summary>
+        /// <param name="upgrade_identifier">
+        ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
+        /// </param>
+        /// <returns></returns>
+        public Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync([Optional] string upgrade_identifier) =>
+            ListUpgradesAsync(CliOptions.ChainName, upgrade_identifier);
 
         /// <summary>
         ///
@@ -760,12 +784,10 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <param name="upgrade_identifiers">
-        ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
-        ///     <para>or</para>
         ///     <para>(array, optional) A json array of upgrade identifiers</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> ListUpgradesAsync([Optional] object upgrade_identifiers) =>
+        public Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync([Optional] string[] upgrade_identifiers) =>
             ListUpgradesAsync(CliOptions.ChainName, upgrade_identifiers);
 
         /// <summary>

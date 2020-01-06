@@ -139,8 +139,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="command">The command to get help on</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> HelpAsync(string blockchainName, string command = "getinfo") =>
-            TransactAsync<object>(blockchainName, ControlAction.HelpMethod, new[] { command });
+        public Task<CliResponse<string>> HelpAsync(string blockchainName, string command = "getinfo") =>
+            TransactAsync<string>(blockchainName, ControlAction.HelpMethod, new[] { command });
 
         /// <summary>
         /// 
@@ -150,7 +150,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="command">The command to get help on</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> HelpAsync(string command = "getinfo") =>
+        public Task<CliResponse<string>> HelpAsync(string command = "getinfo") =>
             HelpAsync(CliOptions.ChainName, command);
 
         /// <summary>
@@ -212,8 +212,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(numeric, optional) The block height in active chain or height before current tip (if negative)</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SetLastBlockAsync(string blockchainName, [Optional] object hash_or_height) =>
-            TransactAsync<object>(blockchainName, ControlAction.SetLastBlockMethod, new[] { $"{hash_or_height}" });
+        public Task<CliResponse<string>> SetLastBlockAsync(string blockchainName, [Optional] object hash_or_height) =>
+            TransactAsync<string>(blockchainName, ControlAction.SetLastBlockMethod, new[] { $"{hash_or_height}" });
 
         /// <summary>
         /// 
@@ -228,7 +228,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(numeric, optional) The block height in active chain or height before current tip (if negative)</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SetLastBlockAsync([Optional] object hash_or_height) =>
+        public Task<CliResponse<string>> SetLastBlockAsync([Optional] object hash_or_height) =>
             SetLastBlockAsync(CliOptions.ChainName, hash_or_height);
 
         /// <summary>

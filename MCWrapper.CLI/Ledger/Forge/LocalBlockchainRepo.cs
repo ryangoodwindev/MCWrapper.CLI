@@ -81,7 +81,7 @@ namespace MCWrapper.CLI.Ledger.Forge
                 {
                     var directories = Directory.EnumerateDirectories(multiChainHotDirectory);
                     foreach (var directory in directories)
-                        Blockchains.Add(directory, Path.Combine(multiChainHotDirectory, directory));
+                        Blockchains.TryAdd(directory, Path.Combine(multiChainHotDirectory, directory));
                 }
             }
             else if (OSDetection.IsWindows())
@@ -91,7 +91,7 @@ namespace MCWrapper.CLI.Ledger.Forge
                 {
                     var directories = Directory.EnumerateDirectories(winPath);
                     foreach (var directory in directories)
-                        Blockchains.Add(directory, Path.Combine(winPath, directory));
+                        Blockchains.TryAdd(directory, Path.Combine(winPath, directory));
                 }
             }
             else if (OSDetection.IsLinux() && OSDetection.IsMacOS())
@@ -101,7 +101,7 @@ namespace MCWrapper.CLI.Ledger.Forge
                 {
                     var directories = Directory.EnumerateDirectories(linuxPath);
                     foreach (var directory in directories)
-                        Blockchains.Add(directory, Path.Combine(linuxPath, directory));
+                        Blockchains.TryAdd(directory, Path.Combine(linuxPath, directory));
                 }
             }
         }
@@ -119,7 +119,7 @@ namespace MCWrapper.CLI.Ledger.Forge
                 {
                     var directories = Directory.EnumerateDirectories(multiChainColdDirectory);
                     foreach (var directory in directories)
-                        Blockchains.Add(directory, Path.Combine(multiChainColdDirectory, directory));
+                        Blockchains.TryAdd(directory, Path.Combine(multiChainColdDirectory, directory));
                 }
             }
             else if (OSDetection.IsWindows())
@@ -129,7 +129,7 @@ namespace MCWrapper.CLI.Ledger.Forge
                 {
                     var directories = Directory.EnumerateDirectories(winPath);
                     foreach (var directory in directories)
-                        Blockchains.Add(directory, Path.Combine(winPath, directory));
+                        Blockchains.TryAdd(directory, Path.Combine(winPath, directory));
                 }
             }
             else if (OSDetection.IsLinux() && OSDetection.IsMacOS())
@@ -139,7 +139,7 @@ namespace MCWrapper.CLI.Ledger.Forge
                 {
                     var directories = Directory.EnumerateDirectories(linuxPath);
                     foreach (var directory in directories)
-                        Blockchains.Add(directory, Path.Combine(linuxPath, directory));
+                        Blockchains.TryAdd(directory, Path.Combine(linuxPath, directory));
                 }
             }
         }
