@@ -162,8 +162,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="tasks">Task(s) to be paused. Possible values: incoming,mining,offchain</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PauseAsync(string blockchainName, string tasks = "incoming,mining") =>
-            TransactAsync<object>(blockchainName, ControlAction.PauseMethod, new[] { tasks });
+        public Task<CliResponse<string>> PauseAsync(string blockchainName, string tasks = "incoming,mining") =>
+            TransactAsync<string>(blockchainName, ControlAction.PauseMethod, new[] { tasks });
 
         /// <summary>
         /// 
@@ -173,7 +173,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="tasks">Task(s) to be paused. Possible values: incoming,mining,offchain</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PauseAsync(string tasks = "incoming,mining") =>
+        public Task<CliResponse<string>> PauseAsync(string tasks = "incoming,mining") =>
             PauseAsync(CliOptions.ChainName, tasks);
 
         /// <summary>
@@ -185,8 +185,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="tasks">Task(s) to be resumed. Possible values: incoming,mining,offchain</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> ResumeAsync(string blockchainName, string tasks = "incoming,mining") =>
-            TransactAsync<object>(blockchainName, ControlAction.ResumeMethod, new[] { tasks });
+        public Task<CliResponse<string>> ResumeAsync(string blockchainName, string tasks = "incoming,mining") =>
+            TransactAsync<string>(blockchainName, ControlAction.ResumeMethod, new[] { tasks });
 
         /// <summary>
         /// 
@@ -195,7 +195,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <param name="tasks">Task(s) to be resumed. Possible values: incoming,mining,offchain</param>
-        public Task<CliResponse<object>> ResumeAsync(string tasks = "incoming,mining") =>
+        public Task<CliResponse<string>> ResumeAsync(string tasks = "incoming,mining") =>
             ResumeAsync(CliOptions.ChainName, tasks);
 
         /// <summary>
@@ -241,8 +241,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="parameter_name">Parameter name, one of the following: miningrequirespeers,mineemptyrounds,miningturnover,lockadminminerounds,maxshowndata,maxqueryscanitems,bantx,lockblock,autosubscribe,handshakelocal,hideknownopdrops</param>
         /// <param name="parameter_value">parameter value</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SetRuntimeParamAsync(string blockchainName, string parameter_name, object parameter_value) =>
-            TransactAsync<object>(blockchainName, ControlAction.SetRuntimeParamMethod, new[] { parameter_name, $"{parameter_value}" });
+        public Task<CliResponse> SetRuntimeParamAsync(string blockchainName, string parameter_name, object parameter_value) =>
+            TransactAsync(blockchainName, ControlAction.SetRuntimeParamMethod, new[] { parameter_name, $"{parameter_value}" });
 
         /// <summary>
         /// 
@@ -253,7 +253,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="parameter_name">Parameter name, one of the following: miningrequirespeers,mineemptyrounds,miningturnover,lockadminminerounds,maxshowndata,maxqueryscanitems,bantx,lockblock,autosubscribe,handshakelocal,hideknownopdrops</param>
         /// <param name="parameter_value">parameter value</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SetRuntimeParamAsync(string parameter_name, object parameter_value) =>
+        public Task<CliResponse> SetRuntimeParamAsync(string parameter_name, object parameter_value) =>
             SetRuntimeParamAsync(CliOptions.ChainName, parameter_name, parameter_value);
 
         /// <summary>

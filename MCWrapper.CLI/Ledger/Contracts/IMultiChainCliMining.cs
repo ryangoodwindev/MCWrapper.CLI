@@ -1,5 +1,6 @@
 ﻿using MCWrapper.CLI.Connection;
 using MCWrapper.CLI.Ledger.Contracts;
+using MCWrapper.Data.Models.Mining;
 using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
@@ -57,7 +58,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> GetMiningInfoAsync();
+        Task<CliResponse<GetMiningInfoResult>> GetMiningInfoAsync();
 
         /// <summary>
         /// 
@@ -67,7 +68,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetMiningInfoAsync(string blockchainName);
+        Task<CliResponse<GetMiningInfoResult>> GetMiningInfoAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -80,7 +81,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blocks">The number of blocks, or -1 for blocks since last difficulty change</param>
         /// <param name="height">To estimate at the time of the given height</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetNetworkHashPsAsync(int blocks = 120, int height = -1);
+        Task<CliResponse<int>> GetNetworkHashPsAsync(int blocks = 120, int height = -1);
 
         /// <summary>
         /// 
@@ -94,7 +95,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blocks">The number of blocks, or -1 for blocks since last difficulty change</param>
         /// <param name="height">To estimate at the time of the given height</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetNetworkHashPsAsync(string blockchainName, int blocks = 120, int height = -1);
+        Task<CliResponse<int>> GetNetworkHashPsAsync(string blockchainName, int blocks = 120, int height = -1);
 
         /// <summary>
         /// 

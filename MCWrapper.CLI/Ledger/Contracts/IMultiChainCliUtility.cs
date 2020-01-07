@@ -111,7 +111,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="identifier">Binary cache item identifier, "*" - to clear all items</param>
         /// <returns></returns>
-        Task<CliResponse<object>> DeleteBinaryCacheAsync(string identifier);
+        Task<CliResponse> DeleteBinaryCacheAsync(string identifier);
 
         /// <summary>
         /// 
@@ -122,7 +122,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="identifier">Binary cache item identifier, "*" - to clear all items</param>
         /// <returns></returns>
-        Task<CliResponse<object>> DeleteBinaryCacheAsync(string blockchainName, string identifier);
+        Task<CliResponse> DeleteBinaryCacheAsync(string blockchainName, string identifier);
 
         /// <summary>
         /// 
@@ -132,7 +132,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="n_blocks">Number of blocks to estimate fee for</param>
         /// <returns></returns>
-        Task<CliResponse<object>> EstimateFeeAsync(int n_blocks);
+        Task<CliResponse<long>> EstimateFeeAsync(int n_blocks);
 
         /// <summary>
         /// 
@@ -143,7 +143,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="n_blocks">Number of blocks to estimate fee for</param>
         /// <returns></returns>
-        Task<CliResponse<object>> EstimateFeeAsync(string blockchainName, int n_blocks);
+        Task<CliResponse<long>> EstimateFeeAsync(string blockchainName, int n_blocks);
 
         /// <summary>
         /// 
@@ -154,7 +154,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="n_blocks">Number of blocks to estimate priority for</param>
         /// <returns></returns>
-        Task<CliResponse<object>> EstimatePriorityAsync(int n_blocks);
+        Task<CliResponse<float>> EstimatePriorityAsync(int n_blocks);
 
         /// <summary>
         /// 
@@ -166,7 +166,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="n_blocks">Number of blocks to estimate priority for</param>
         /// <returns></returns>
-        Task<CliResponse<object>> EstimatePriorityAsync(string blockchainName, int n_blocks);
+        Task<CliResponse<float>> EstimatePriorityAsync(string blockchainName, int n_blocks);
 
         /// <summary>
         /// 

@@ -39,8 +39,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="address">The address to send the change to</param>
         /// <param name="native_fee">Native currency value deducted from that amount so it becomes a transaction fee. Default - calculated automatically</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> AppendRawChangeAsync(string blockchainName, string tx_hex, string address, [Optional] double native_fee) =>
-            TransactAsync<object>(blockchainName, RawAction.AppendRawChangeMethod, new[] { tx_hex, address, $"{native_fee}" });
+        public Task<CliResponse<string>> AppendRawChangeAsync(string blockchainName, string tx_hex, string address, [Optional] double native_fee) =>
+            TransactAsync<string>(blockchainName, RawAction.AppendRawChangeMethod, new[] { tx_hex, address, $"{native_fee}" });
 
         /// <summary>
         /// 
@@ -53,7 +53,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="address">The address to send the change to</param>
         /// <param name="native_fee">Native currency value deducted from that amount so it becomes a transaction fee. Default - calculated automatically</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> AppendRawChangeAsync(string tx_hex, string address, [Optional] double native_fee) =>
+        public Task<CliResponse<string>> AppendRawChangeAsync(string tx_hex, string address, [Optional] double native_fee) =>
             AppendRawChangeAsync(CliOptions.ChainName, tx_hex, address, native_fee);
 
         /// <summary>
@@ -67,8 +67,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="tx_hex">The transaction hex string</param>
         /// <param name="data">Data, see help data-all for details</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> AppendRawDataAsync(string blockchainName, string tx_hex, object data) =>
-            TransactAsync<object>(blockchainName, RawAction.AppendRawDataMethod, new[] { tx_hex, data.Serialize() });
+        public Task<CliResponse<string>> AppendRawDataAsync(string blockchainName, string tx_hex, object data) =>
+            TransactAsync<string>(blockchainName, RawAction.AppendRawDataMethod, new[] { tx_hex, data.Serialize() });
 
         /// <summary>
         /// 
@@ -80,7 +80,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="tx_hex">The transaction hex string</param>
         /// <param name="data">Data, see help data-all for details</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> AppendRawDataAsync(string tx_hex, object data) =>
+        public Task<CliResponse<string>> AppendRawDataAsync(string tx_hex, object data) =>
             AppendRawDataAsync(CliOptions.ChainName, tx_hex, data);
 
         /// <summary>
@@ -178,8 +178,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="script_hex">The hex encoded script</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> DecodeScriptAsync(string blockchainName, string script_hex) =>
-            TransactAsync<object>(blockchainName, RawAction.DecodeScriptMethod, new[] { script_hex });
+        public Task<CliResponse<DecodeScriptResult>> DecodeScriptAsync(string blockchainName, string script_hex) =>
+            TransactAsync<DecodeScriptResult>(blockchainName, RawAction.DecodeScriptMethod, new[] { script_hex });
 
         /// <summary>
         /// 
@@ -189,7 +189,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="script_hex">The hex encoded script</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> DecodeScriptAsync(string script_hex) =>
+        public Task<CliResponse<DecodeScriptResult>> DecodeScriptAsync(string script_hex) =>
             DecodeScriptAsync(CliOptions.ChainName, script_hex);
 
         /// <summary>
@@ -234,8 +234,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="tx_hex">The hex string of the raw transaction)</param>
         /// <param name="allow_high_fees">Allow high fees</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SendRawTransactionAsync(string blockchainName, string tx_hex, bool allow_high_fees = false) =>
-            TransactAsync<object>(blockchainName, RawAction.SendRawTransactionMethod, new[] { tx_hex, $"{allow_high_fees}".ToLower() });
+        public Task<CliResponse<string>> SendRawTransactionAsync(string blockchainName, string tx_hex, bool allow_high_fees = false) =>
+            TransactAsync<string>(blockchainName, RawAction.SendRawTransactionMethod, new[] { tx_hex, $"{allow_high_fees}".ToLower() });
 
         /// <summary>
         /// 
@@ -246,7 +246,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="tx_hex">The hex string of the raw transaction)</param>
         /// <param name="allow_high_fees">Allow high fees</param>
-        public Task<CliResponse<object>> SendRawTransactionAsync(string tx_hex, bool allow_high_fees = false) =>
+        public Task<CliResponse<string>> SendRawTransactionAsync(string tx_hex, bool allow_high_fees = false) =>
             SendRawTransactionAsync(CliOptions.ChainName, tx_hex, allow_high_fees);
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using MCWrapper.CLI.Connection;
 using MCWrapper.CLI.Options;
+using MCWrapper.Data.Models.Mining;
 using MCWrapper.Ledger.Actions;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
@@ -69,8 +70,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetMiningInfoAsync(string blockchainName) =>
-            TransactAsync<object>(blockchainName, MiningAction.GetMiningInfoMethod);
+        public Task<CliResponse<GetMiningInfoResult>> GetMiningInfoAsync(string blockchainName) =>
+            TransactAsync<GetMiningInfoResult>(blockchainName, MiningAction.GetMiningInfoMethod);
 
         /// <summary>
         /// 
@@ -79,7 +80,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetMiningInfoAsync() =>
+        public Task<CliResponse<GetMiningInfoResult>> GetMiningInfoAsync() =>
             GetMiningInfoAsync(CliOptions.ChainName);
 
         /// <summary>
@@ -94,8 +95,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blocks">The number of blocks, or -1 for blocks since last difficulty change</param>
         /// <param name="height">To estimate at the time of the given height</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetNetworkHashPsAsync(string blockchainName, int blocks = 120, int height = -1) =>
-            TransactAsync<object>(blockchainName, MiningAction.GetNetworkHashPsMethod, new[] { $"{blocks}", $"{height}" });
+        public Task<CliResponse<int>> GetNetworkHashPsAsync(string blockchainName, int blocks = 120, int height = -1) =>
+            TransactAsync<int>(blockchainName, MiningAction.GetNetworkHashPsMethod, new[] { $"{blocks}", $"{height}" });
 
         /// <summary>
         /// 
@@ -108,7 +109,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blocks">The number of blocks, or -1 for blocks since last difficulty change</param>
         /// <param name="height">To estimate at the time of the given height</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetNetworkHashPsAsync(int blocks = 120, int height = -1) =>
+        public Task<CliResponse<int>> GetNetworkHashPsAsync(int blocks = 120, int height = -1) =>
             GetNetworkHashPsAsync(CliOptions.ChainName, blocks, height);
 
         /// <summary>

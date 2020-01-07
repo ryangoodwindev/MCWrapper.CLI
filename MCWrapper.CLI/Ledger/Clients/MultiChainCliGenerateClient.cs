@@ -82,8 +82,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="generate">Set to true to turn on generation, off to turn off.</param>
         /// <param name="gen_proc_limit">Set the processor limit for when generation is on. Can be -1 for unlimited.</param>
         /// <returns>String value identifying this transaction</returns>
-        public Task<CliResponse<object>> SetGenerateAsync(string blockchainName, bool generate, int gen_proc_limit) =>
-            TransactAsync<object>(blockchainName, GenerateAction.SetGenerateMethod, new[] { $"{generate}".ToLower(), $"{gen_proc_limit}" });
+        public Task<CliResponse> SetGenerateAsync(string blockchainName, bool generate, int gen_proc_limit) =>
+            TransactAsync(blockchainName, GenerateAction.SetGenerateMethod, new[] { $"{generate}".ToLower(), $"{gen_proc_limit}" });
 
         /// <summary>
         /// 
@@ -96,7 +96,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="generate">Set to true to turn on generation, off to turn off.</param>
         /// <param name="gen_proc_limit">Set the processor limit for when generation is on. Can be -1 for unlimited.</param>
         /// <returns>String value identifying this transaction</returns>
-        public Task<CliResponse<object>> SetGenerateAsync(bool generate, int gen_proc_limit) =>
+        public Task<CliResponse> SetGenerateAsync(bool generate, int gen_proc_limit) =>
             SetGenerateAsync(CliOptions.ChainName, generate, gen_proc_limit);
     }
 }

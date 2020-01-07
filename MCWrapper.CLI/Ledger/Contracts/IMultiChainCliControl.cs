@@ -140,7 +140,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="tasks">Task(s) to be paused. Possible values: incoming,mining,offchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> PauseAsync(string tasks = "incoming,mining");
+        Task<CliResponse<string>> PauseAsync(string tasks = "incoming,mining");
 
         /// <summary>
         /// 
@@ -151,7 +151,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="tasks">Task(s) to be paused. Possible values: incoming,mining,offchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> PauseAsync(string blockchainName, string tasks = "incoming,mining");
+        Task<CliResponse<string>> PauseAsync(string blockchainName, string tasks = "incoming,mining");
 
         /// <summary>
         /// 
@@ -160,7 +160,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <param name="tasks">Task(s) to be resumed. Possible values: incoming,mining,offchain</param>
-        Task<CliResponse<object>> ResumeAsync(string tasks = "incoming,mining");
+        Task<CliResponse<string>> ResumeAsync(string tasks = "incoming,mining");
 
         /// <summary>
         /// 
@@ -171,7 +171,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="tasks">Task(s) to be resumed. Possible values: incoming,mining,offchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ResumeAsync(string blockchainName, string tasks = "incoming,mining");
+        Task<CliResponse<string>> ResumeAsync(string blockchainName, string tasks = "incoming,mining");
 
         /// <summary>
         /// 
@@ -213,7 +213,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="parameter_name">Parameter name, one of the following: miningrequirespeers,mineemptyrounds,miningturnover,lockadminminerounds,maxshowndata,maxqueryscanitems,bantx,lockblock,autosubscribe,handshakelocal,hideknownopdrops</param>
         /// <param name="parameter_value">parameter value</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SetRuntimeParamAsync(string parameter_name, object parameter_value);
+        Task<CliResponse> SetRuntimeParamAsync(string parameter_name, object parameter_value);
 
         /// <summary>
         /// 
@@ -225,7 +225,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="parameter_name">Parameter name, one of the following: miningrequirespeers,mineemptyrounds,miningturnover,lockadminminerounds,maxshowndata,maxqueryscanitems,bantx,lockblock,autosubscribe,handshakelocal,hideknownopdrops</param>
         /// <param name="parameter_value">parameter value</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SetRuntimeParamAsync(string blockchainName, string parameter_name, object parameter_value);
+        Task<CliResponse> SetRuntimeParamAsync(string blockchainName, string parameter_name, object parameter_value);
 
         /// <summary>
         /// 

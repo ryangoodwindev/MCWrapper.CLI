@@ -26,7 +26,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="node">The node (see getpeerinfo for nodes)</param>
         /// <param name="action">'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once</param>
         /// <returns></returns>
-        Task<CliResponse<object>> AddNodeAsync(string node, string action);
+        Task<CliResponse> AddNodeAsync(string node, string action);
 
         /// <summary>
         /// 
@@ -39,7 +39,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="node">The node (see getpeerinfo for nodes)</param>
         /// <param name="action">'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once</param>
         /// <returns></returns>
-        Task<CliResponse<object>> AddNodeAsync(string blockchainName, string node, string action);
+        Task<CliResponse> AddNodeAsync(string blockchainName, string node, string action);
 
         /// <summary>
         /// 
@@ -75,7 +75,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> GetChunkQueueInfoAsync();
+        Task<CliResponse<GetChunkQueueInfoResult>> GetChunkQueueInfoAsync();
 
         /// <summary>
         ///
@@ -85,7 +85,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetChunkQueueInfoAsync(string blockchainName);
+        Task<CliResponse<GetChunkQueueInfoResult>> GetChunkQueueInfoAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -94,7 +94,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> GetChunkQueueTotalsAsync();
+        Task<CliResponse<GetChunkQueueInfoTotalsResult>> GetChunkQueueTotalsAsync();
 
         /// <summary>
         /// 
@@ -104,7 +104,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetChunkQueueTotalsAsync(string blockchainName);
+        Task<CliResponse<GetChunkQueueInfoTotalsResult>> GetChunkQueueTotalsAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -113,7 +113,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> GetConnectionCountAsync();
+        Task<CliResponse<int>> GetConnectionCountAsync();
 
         /// <summary>
         /// 
@@ -123,7 +123,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetConnectionCountAsync(string blockchainName);
+        Task<CliResponse<int>> GetConnectionCountAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -132,7 +132,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> GetNetTotalsAsync();
+        Task<CliResponse<GetNetTotalsResult>> GetNetTotalsAsync();
 
         /// <summary>
         /// 
@@ -142,7 +142,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetNetTotalsAsync(string blockchainName);
+        Task<CliResponse<GetNetTotalsResult>> GetNetTotalsAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -170,7 +170,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> GetPeerInfoAsync();
+        Task<CliResponse<GetPeerInfoResult[]>> GetPeerInfoAsync();
 
         /// <summary>
         /// 
@@ -180,7 +180,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetPeerInfoAsync(string blockchainName);
+        Task<CliResponse<GetPeerInfoResult[]>> GetPeerInfoAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -191,7 +191,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> PingAsync();
+        Task<CliResponse> PingAsync();
 
         /// <summary>
         /// 
@@ -203,6 +203,6 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> PingAsync(string blockchainName);
+        Task<CliResponse> PingAsync(string blockchainName);
     }
 }
