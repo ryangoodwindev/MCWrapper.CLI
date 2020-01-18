@@ -26,7 +26,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <summary>
         /// Command Line Interface option values
         /// </summary>
-        public CliOptions CliOptions { get; }
+        public CliOptions CliOptions { get; set; }
 
         /// <summary>
         /// Create a new MultiChain blockchain ledger according to blockchain name

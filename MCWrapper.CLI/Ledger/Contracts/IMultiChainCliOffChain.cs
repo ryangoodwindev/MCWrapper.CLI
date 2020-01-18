@@ -17,6 +17,8 @@ namespace MCWrapper.CLI.Ledger.Clients
     /// </summary>
     public interface IMultiChainCliOffChain : IMultiChainCli
     {
+        // todo need to do more testing to get specific data model
+
         /// <summary>
         ///
         /// <para>Available only in Enterprise Edition.</para>
@@ -34,7 +36,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>1. blocks                           (object, required) List of transactions in block range</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> PurgePublishedItemsAsync(object items);
+        Task<CliResponse> PurgePublishedItemsAsync(object items);
 
         /// <summary>
         ///
@@ -54,7 +56,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>1. blocks                           (object, required) List of transactions in block range</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> PurgePublishedItemsAsync(string blockchainName, object items);
+        Task<CliResponse> PurgePublishedItemsAsync(string blockchainName, object items);
 
         /// <summary>
         ///
@@ -76,7 +78,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>query (object, required) Query (AND logic)</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> PurgeStreamItemsAsync(string stream, object items);
+        Task<CliResponse> PurgeStreamItemsAsync(string stream, object items);
 
         /// <summary>
         ///
@@ -99,7 +101,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>query (object, required) Query (AND logic)</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> PurgeStreamItemsAsync(string blockchainName, string stream, object items);
+        Task<CliResponse> PurgeStreamItemsAsync(string blockchainName, string stream, object items);
 
         /// <summary>
         ///
@@ -121,7 +123,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>query (object, required) Query (AND logic)</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> RetrieveStreamItemsAsync(string stream, object items);
+        Task<CliResponse> RetrieveStreamItemsAsync(string stream, object items);
 
         /// <summary>
         ///
@@ -144,6 +146,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>query (object, required) Query (AND logic)</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> RetrieveStreamItemsAsync(string blockchainName, string stream, object items);
+        Task<CliResponse> RetrieveStreamItemsAsync(string blockchainName, string stream, object items);
+
+        // todo need to do more testing to get specific data model
     }
 }

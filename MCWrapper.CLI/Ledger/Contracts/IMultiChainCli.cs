@@ -10,6 +10,6 @@ namespace MCWrapper.CLI.Ledger.Contracts
         /// <summary>
         /// Every CLI client should include CliOptions which will support the IOptions pattern within the IConfiguration pipeline
         /// </summary>
-        CliOptions CliOptions { get; }
+        CliOptions CliOptions { get; set; }
     }
 }

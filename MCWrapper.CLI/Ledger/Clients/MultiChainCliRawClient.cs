@@ -2,11 +2,12 @@
 using MCWrapper.CLI.Options;
 using MCWrapper.Data.Models.Raw;
 using MCWrapper.Ledger.Actions;
-using MCWrapper.Ledger.Entities.Extensions;
 using Microsoft.Extensions.Options;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+
+using static Newtonsoft.Json.JsonConvert;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
@@ -68,7 +69,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data">Data, see help data-all for details</param>
         /// <returns></returns>
         public Task<CliResponse<string>> AppendRawDataAsync(string blockchainName, string tx_hex, object data) =>
-            TransactAsync<string>(blockchainName, RawAction.AppendRawDataMethod, new[] { tx_hex, data.Serialize() });
+            TransactAsync<string>(blockchainName, RawAction.AppendRawDataMethod, new[] { tx_hex, SerializeObject(data) });
 
         /// <summary>
         /// 
@@ -96,8 +97,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> AppendRawTransactionAsync(string blockchainName, string tx_hex, object[] transactions, object addresses, [Optional] object[] data, string action = "") =>
-            TransactAsync<object>(blockchainName, RawAction.AppendRawTransactionMethod, new[] { tx_hex, transactions.Serialize(), addresses.Serialize(), data.Serialize(), action });
+        public Task<CliResponse> AppendRawTransactionAsync(string blockchainName, string tx_hex, object[] transactions, object addresses, [Optional] object[] data, string action = "") =>
+            TransactAsync(blockchainName, RawAction.AppendRawTransactionMethod, new[] { tx_hex, SerializeObject(transactions), SerializeObject(addresses), SerializeObject(data), action });
 
         /// <summary>
         /// 
@@ -110,7 +111,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="addresses">Object with addresses as keys, see help addresses-all for details</param>
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
-        public Task<CliResponse<object>> AppendRawTransactionAsync(string tx_hex, object[] transactions, object addresses, [Optional] object[] data, string action = "") =>
+        public Task<CliResponse> AppendRawTransactionAsync(string tx_hex, object[] transactions, object addresses, [Optional] object[] data, string action = "") =>
             AppendRawTransactionAsync(CliOptions.ChainName, tx_hex, transactions, addresses, data, action);
 
         /// <summary>
@@ -125,12 +126,12 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> CreateRawTransactionAsync(string blockchainName, object[] transactions, object addresses, [Optional] object[] data, string action = "")
+        public Task<CliResponse> CreateRawTransactionAsync(string blockchainName, object[] transactions, object addresses, [Optional] object[] data, string action = "")
         {
             action ??= string.Empty;
             data ??= Array.Empty<object>();
 
-            return TransactAsync<object>(blockchainName, RawAction.CreateRawTransactionMethod, new[] { transactions.Serialize(), addresses.Serialize(), data.Serialize(), action });
+            return TransactAsync(blockchainName, RawAction.CreateRawTransactionMethod, new[] { SerializeObject(transactions), SerializeObject(addresses), SerializeObject(data), action });
         }
 
         /// <summary>
@@ -143,7 +144,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="addresses">Object with addresses as keys, see help addresses-all for details</param>
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
-        public Task<CliResponse<object>> CreateRawTransactionAsync(object[] transactions, object addresses, [Optional] object[] data, string action = "") =>
+        public Task<CliResponse> CreateRawTransactionAsync(object[] transactions, object addresses, [Optional] object[] data, string action = "") =>
             CreateRawTransactionAsync(CliOptions.ChainName, transactions, addresses, data, action);
 
         /// <summary>
@@ -205,8 +206,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="txid">The transaction id</param>
         /// <param name="verbose">If 0, return a string, other return a json object</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetRawTransactionAsync(string blockchainName, string txid, [Optional] bool verbose) =>
-            TransactAsync<object>(blockchainName, RawAction.GetRawTransactionMethod, new[] { txid, $"{verbose}".ToLower() });
+        public Task<CliResponse> GetRawTransactionAsync(string blockchainName, string txid, [Optional] bool verbose) =>
+            TransactAsync(blockchainName, RawAction.GetRawTransactionMethod, new[] { txid, $"{verbose}".ToLower() });
 
         /// <summary>
         /// 
@@ -220,7 +221,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="txid">The transaction id</param>
         /// <param name="verbose">If 0, return a string, other return a json object</param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetRawTransactionAsync(string txid, [Optional] bool verbose) =>
+        public Task<CliResponse> GetRawTransactionAsync(string txid, [Optional] bool verbose) =>
             GetRawTransactionAsync(CliOptions.ChainName, txid, verbose);
 
         /// <summary>
@@ -282,9 +283,9 @@ namespace MCWrapper.CLI.Ledger.Clients
                 return TransactAsync<SignRawTransactionResult>(blockchainName, RawAction.SignRawTransactionMethod, new[] { tx_hex });
 
             if (string.IsNullOrEmpty(sighashtype))
-                return TransactAsync<SignRawTransactionResult>(blockchainName, RawAction.SignRawTransactionMethod, new[] { tx_hex, prevtxs.Serialize(), privatekeys.Serialize() });
+                return TransactAsync<SignRawTransactionResult>(blockchainName, RawAction.SignRawTransactionMethod, new[] { tx_hex, SerializeObject(prevtxs), SerializeObject(privatekeys) });
 
-            return TransactAsync<SignRawTransactionResult>(blockchainName, RawAction.SignRawTransactionMethod, new[] { tx_hex, prevtxs.Serialize(), privatekeys.Serialize(), sighashtype });
+            return TransactAsync<SignRawTransactionResult>(blockchainName, RawAction.SignRawTransactionMethod, new[] { tx_hex, SerializeObject(prevtxs), SerializeObject(privatekeys), sighashtype });
         }
 
         /// <summary>

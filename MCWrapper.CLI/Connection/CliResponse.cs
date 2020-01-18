@@ -3,8 +3,8 @@
     /// <summary>
     /// This is the CLI client Response object
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class CliResponse<T>
+    /// <typeparam name="TObject"></typeparam>
+    public class CliResponse<TObject>
     {
         #pragma warning disable CS8618 // Non-nullable field is uninitialized.
         /// <summary>
@@ -23,7 +23,7 @@
         /// <param name="error"></param>
         /// <param name="request"></param>
         /// <param name="response"></param>
-        public CliResponse(string error, CLIRequest request, T response)
+        public CliResponse(string error, CLIRequest request, TObject response)
         {
             Error = error;
             Request = request;
@@ -43,7 +43,7 @@
         /// <summary>
         /// stderr output from multichain-cli.exe
         /// </summary>
-        public T Result { get; set; }
+        public TObject Result { get; set; }
     }
 
     /// <summary>

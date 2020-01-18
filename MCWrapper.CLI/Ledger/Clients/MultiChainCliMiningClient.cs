@@ -41,8 +41,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para> ,...]}</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetBlockTemplateAsync(string blockchainName, string json_request_object) =>
-            TransactAsync<object>(blockchainName, MiningAction.GetBlockTemplateMethod, new[] { json_request_object });
+        public Task<CliResponse> GetBlockTemplateAsync(string blockchainName, string json_request_object) =>
+            TransactAsync(blockchainName, MiningAction.GetBlockTemplateMethod, new[] { json_request_object });
 
         /// <summary>
         /// <para>Deprecated for the current version of Multichain; Do Not Use;</para>
@@ -59,7 +59,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para> ,...]}</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> GetBlockTemplateAsync(string json_request_object) =>
+        public Task<CliResponse> GetBlockTemplateAsync(string json_request_object) =>
             GetBlockTemplateAsync(CliOptions.ChainName, json_request_object);
 
         /// <summary>
@@ -130,8 +130,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>The fee is not actually paid, only the algorithm for selecting transactions into a block considers the transaction as it would have paid a higher (or lower) fee</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PrioritiseTransactionAsync(string blockchainName, string txid, double priority_delta, double fee_delta) =>
-            TransactAsync<object>(blockchainName, MiningAction.PrioritiseTransactionMethod, new[] { txid, $"{priority_delta}", $"{fee_delta}" });
+        public Task<CliResponse> PrioritiseTransactionAsync(string blockchainName, string txid, double priority_delta, double fee_delta) =>
+            TransactAsync(blockchainName, MiningAction.PrioritiseTransactionMethod, new[] { txid, $"{priority_delta}", $"{fee_delta}" });
 
         /// <summary>
         /// 
@@ -150,7 +150,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>he fee is not actually paid, only the algorithm for selecting transactions into a block considers the transaction as it would have paid a higher (or lower) fee</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PrioritiseTransactionAsync(string txid, double priority_delta, double fee_delta) =>
+        public Task<CliResponse> PrioritiseTransactionAsync(string txid, double priority_delta, double fee_delta) =>
             PrioritiseTransactionAsync(CliOptions.ChainName, txid, priority_delta, fee_delta);
 
         /// <summary>
@@ -167,8 +167,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "workid" : "id"               (string, optional) if the server provided a workid, it MUST be included with submissions }</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SubmitBlockAsync(string blockchainName, string hex_data, string json_parameters_object = "") =>
-            TransactAsync<object>(blockchainName, MiningAction.SubmitBlockMethod, new[] { hex_data, json_parameters_object });
+        public Task<CliResponse> SubmitBlockAsync(string blockchainName, string hex_data, string json_parameters_object = "") =>
+            TransactAsync(blockchainName, MiningAction.SubmitBlockMethod, new[] { hex_data, json_parameters_object });
 
         /// <summary>
         /// 
@@ -183,7 +183,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "workid" : "id"               (string, optional) if the server provided a workid, it MUST be included with submissions }</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> SubmitBlockAsync(string hex_data, string json_parameters_object = "") =>
+        public Task<CliResponse> SubmitBlockAsync(string hex_data, string json_parameters_object = "") =>
             SubmitBlockAsync(CliOptions.ChainName, hex_data, json_parameters_object);
     }
 }

@@ -30,7 +30,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para> ,...]}</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetBlockTemplateAsync(string json_request_object);
+        Task<CliResponse> GetBlockTemplateAsync(string json_request_object);
 
         /// <summary>
         /// 
@@ -49,7 +49,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para> ,...]}</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetBlockTemplateAsync(string blockchainName, string json_request_object);
+        Task<CliResponse> GetBlockTemplateAsync(string blockchainName, string json_request_object);
 
         /// <summary>
         /// 
@@ -114,7 +114,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>he fee is not actually paid, only the algorithm for selecting transactions into a block considers the transaction as it would have paid a higher (or lower) fee</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> PrioritiseTransactionAsync(string txid, double priority_delta, double fee_delta);
+        Task<CliResponse> PrioritiseTransactionAsync(string txid, double priority_delta, double fee_delta);
 
         /// <summary>
         /// 
@@ -134,7 +134,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>The fee is not actually paid, only the algorithm for selecting transactions into a block considers the transaction as it would have paid a higher (or lower) fee</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> PrioritiseTransactionAsync(string blockchainName, string txid, double priority_delta, double fee_delta);
+        Task<CliResponse> PrioritiseTransactionAsync(string blockchainName, string txid, double priority_delta, double fee_delta);
 
         /// <summary>
         /// 
@@ -149,7 +149,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "workid" : "id"               (string, optional) if the server provided a workid, it MUST be included with submissions }</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> SubmitBlockAsync(string hex_data, string json_parameters_object = "");
+        Task<CliResponse> SubmitBlockAsync(string hex_data, string json_parameters_object = "");
 
         /// <summary>
         /// 
@@ -165,6 +165,6 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "workid" : "id"               (string, optional) if the server provided a workid, it MUST be included with submissions }</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> SubmitBlockAsync(string blockchainName, string hex_data, string json_parameters_object = "");
+        Task<CliResponse> SubmitBlockAsync(string blockchainName, string hex_data, string json_parameters_object = "");
     }
 }

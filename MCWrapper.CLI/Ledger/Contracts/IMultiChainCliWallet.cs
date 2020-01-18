@@ -1,6 +1,7 @@
 ﻿using MCWrapper.CLI.Connection;
 using MCWrapper.CLI.Ledger.Contracts;
 using MCWrapper.Data.Models.Wallet;
+using MCWrapper.Data.Models.Wallet.CustomModels;
 using MCWrapper.Ledger.Entities;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -54,7 +55,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="keys">A json array of addresses or hex-encoded public keys</param>
         /// <param name="account">An account to assign the addresses to. Accounts are not supported with the current version of MultiChain Core.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> AddMultiSigAddressAsync(int n_required, string[] keys, [Optional] string account);
+        Task<CliResponse<string>> AddMultiSigAddressAsync(int n_required, string[] keys, [Optional] string account);
 
         /// <summary>
         /// 
@@ -69,7 +70,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="keys">A json array of addresses or hex-encoded public keys</param>
         /// <param name="account">An account to assign the addresses to. Accounts are not supported with the current version of MultiChain Core.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> AddMultiSigAddressAsync(string blockchainName, int n_required, string[] keys, [Optional] string account);
+        Task<CliResponse<string>> AddMultiSigAddressAsync(string blockchainName, int n_required, string[] keys, [Optional] string account);
 
         /// <summary>
         /// 
@@ -127,7 +128,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "approve" : approve  (boolean, required) Approve or disapprove "for" : "stream-identifier"   (string, required)  Stream identifier - one of: create txid, stream reference, stream name. }</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> ApproveFromAsync(string fromAddress, string entityIdentifier, object approve);
+        Task<CliResponse<string>> ApproveFromAsync(string fromAddress, string entityIdentifier, object approve);
 
         /// <summary>
         /// 
@@ -151,7 +152,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>{ "approve" : approve  (boolean, required) Approve or disapprove "for" : "stream-identifier"   (string, required)  Stream identifier - one of: create txid, stream reference, stream name. }</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> ApproveFromAsync(string blockchainName, string fromAddress, string entityIdentifier, object approve);
+        Task<CliResponse<string>> ApproveFromAsync(string blockchainName, string fromAddress, string entityIdentifier, object approve);
 
         /// <summary>
         /// 
@@ -161,7 +162,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="destination">The destination directory or file</param>
         /// <returns></returns>
-        Task<CliResponse<object>> BackupWalletAsync(string destination);
+        Task<CliResponse> BackupWalletAsync(string destination);
 
         /// <summary>
         /// 
@@ -172,7 +173,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="destination">The destination directory or file</param>
         /// <returns></returns>
-        Task<CliResponse<object>> BackupWalletAsync(string blockchainName, string destination);
+        Task<CliResponse> BackupWalletAsync(string blockchainName, string destination);
 
         /// <summary>
         /// 
@@ -188,7 +189,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="max_inputs">Maximal number of txouts to combine in one transaction. Default - 100</param>
         /// <param name="max_time">Maximal time for creating combining transactions, at least one transaction will be sent. Default - 15s</param>
         /// <returns></returns>
-        Task<CliResponse<object>> CombineUnspentAsync([Optional] string addresses, [Optional] int min_conf, [Optional] int max_combines, [Optional] int min_inputs, [Optional] int max_inputs, [Optional] int max_time);
+        Task<CliResponse<IList<string>>> CombineUnspentAsync([Optional] string addresses, [Optional] int min_conf, [Optional] int max_combines, [Optional] int min_inputs, [Optional] int max_inputs, [Optional] int max_time);
 
         /// <summary>
         /// 
@@ -205,7 +206,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="max_inputs">Maximal number of txouts to combine in one transaction. Default - 100</param>
         /// <param name="max_time">Maximal time for creating combining transactions, at least one transaction will be sent. Default - 15s</param>
         /// <returns></returns>
-        Task<CliResponse<object>> CombineUnspentAsync(string blockchainName, [Optional] string addresses, [Optional] int min_conf, [Optional] int max_combines, [Optional] int min_inputs, [Optional] int max_inputs, [Optional] int max_time);
+        Task<CliResponse<IList<string>>> CombineUnspentAsync(string blockchainName, [Optional] string addresses, [Optional] int min_conf, [Optional] int max_combines, [Optional] int min_inputs, [Optional] int max_inputs, [Optional] int max_time);
 
         /// <summary>
         /// 
@@ -221,7 +222,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="ask_assets">A json object of assets to ask; { "asset-identifier" : asset-quantity, ... }</param>
         /// <param name="data">Data, see help data-with for details</param>
         /// <returns></returns>
-        Task<CliResponse<object>> CompleteRawExchangeAsync(string hex, string txid, int vout, object ask_assets, [Optional] object data);
+        Task<CliResponse<string>> CompleteRawExchangeAsync(string hex, string txid, int vout, object ask_assets, [Optional] object data);
 
         /// <summary>
         /// 
@@ -238,7 +239,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="ask_assets">A json object of assets to ask; { "asset-identifier" : asset-quantity, ... }</param>
         /// <param name="data">Data, see help data-with for details</param>
         /// <returns></returns>
-        Task<CliResponse<object>> CompleteRawExchangeAsync(string blockchainName, string hex, string txid, int vout, object ask_assets, [Optional] object data);
+        Task<CliResponse<string>> CompleteRawExchangeAsync(string blockchainName, string hex, string txid, int vout, object ask_assets, [Optional] object data);
 
         /// <summary>
         /// 
@@ -327,6 +328,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         Task<CliResponse<string>> CreateRawExchangeAsync(string blockchainName, string txid, int vout, object ask_assets);
 
+        // todo probably need to break CreateRawSendFromAsync out into 3 methods one for "" and "lock", one for "sign", "lock,sign", and "sign,lock", and then one for "send"
+        // todo until this change is made we will continue to just return a generic object
         /// <summary>
         /// 
         /// <para>Create a transaction using the given sending address.</para>
@@ -338,7 +341,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Default is "". Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
         /// <returns></returns>
-        Task<CliResponse<object>> CreateRawSendFromAsync(string from_address, object addresses, [Optional] object[] data, [Optional] string action);
+        Task<CliResponse> CreateRawSendFromAsync(string from_address, object addresses, [Optional] object[] data, [Optional] string action);
 
         /// <summary>
         /// 
@@ -352,7 +355,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Default is "". Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
         /// <returns></returns>
-        Task<CliResponse<object>> CreateRawSendFromAsync(string blockchainName, string from_address, object addresses, [Optional] object[] data, [Optional] string action);
+        Task<CliResponse> CreateRawSendFromAsync(string blockchainName, string from_address, object addresses, [Optional] object[] data, [Optional] string action);
 
         /// <summary>
         /// 
@@ -385,7 +388,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="tx_hex">The transaction hex string</param>
         /// <returns></returns>
-        Task<CliResponse<object>> DisableRawTransactionAsync(string tx_hex);
+        Task<CliResponse<string>> DisableRawTransactionAsync(string tx_hex);
 
         /// <summary>
         /// 
@@ -396,7 +399,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="tx_hex">The transaction hex string</param>
         /// <returns></returns>
-        Task<CliResponse<object>> DisableRawTransactionAsync(string blockchainName, string tx_hex);
+        Task<CliResponse<string>> DisableRawTransactionAsync(string blockchainName, string tx_hex);
 
         /// <summary>
         /// 
@@ -407,7 +410,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="address">The MultiChain address for the private key</param>
         /// <returns></returns>
-        Task<CliResponse<object>> DumpPrivKeyAsync(string address);
+        Task<CliResponse<string>> DumpPrivKeyAsync(string address);
 
         /// <summary>
         /// 
@@ -419,7 +422,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="address">The MultiChain address for the private key</param>
         /// <returns></returns>
-        Task<CliResponse<object>> DumpPrivKeyAsync(string blockchainName, string address);
+        Task<CliResponse<string>> DumpPrivKeyAsync(string blockchainName, string address);
 
         /// <summary>
         /// 
@@ -429,7 +432,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="filename">The filename</param>
         /// <returns></returns>
-        Task<CliResponse<object>> DumpWalletAsync(string filename);
+        Task<CliResponse> DumpWalletAsync(string filename);
 
         /// <summary>
         /// 
@@ -440,7 +443,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="filename">The filename</param>
         /// <returns></returns>
-        Task<CliResponse<object>> DumpWalletAsync(string blockchainName, string filename);
+        Task<CliResponse> DumpWalletAsync(string blockchainName, string filename);
 
         /// <summary>
         /// <para>Encrypts the wallet with 'passphrase'. This is for first time encryption.</para>
@@ -456,7 +459,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="passphrase">The pass phrase to encrypt the wallet with. It must be at least 1 character, but should be long</param>
         /// <returns></returns>
-        Task<CliResponse<object>> EncryptWalletAsync(string passphrase);
+        Task<CliResponse> EncryptWalletAsync(string passphrase);
 
         /// <summary>
         /// <para>Encrypts the wallet with 'passphrase'. This is for first time encryption.</para>
@@ -473,7 +476,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="passphrase">The pass phrase to encrypt the wallet with. It must be at least 1 character, but should be long</param>
         /// <returns></returns>
-        Task<CliResponse<object>> EncryptWalletAsync(string blockchainName, string passphrase);
+        Task<CliResponse> EncryptWalletAsync(string blockchainName, string passphrase);
 
         /// <summary>
         /// 
@@ -483,7 +486,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="account">The account name for the address. It can also be set to the empty string "" to represent the default account. The account does not need to exist, it will be created and a new address created if there is no account by the given name.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetAccountAddressAsync(string account);
+        Task<CliResponse<string>> GetAccountAddressAsync(string account);
 
         /// <summary>
         /// 
@@ -494,7 +497,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="account">The account name for the address. It can also be set to the empty string "" to represent the default account. The account does not need to exist, it will be created and a new address created if there is no account by the given name.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetAccountAddressAsync(string blockchainName, string account);
+        Task<CliResponse<string>> GetAccountAddressAsync(string blockchainName, string account);
 
         /// <summary>
         /// 
@@ -504,7 +507,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="address">The address for account lookup</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetAccountAsync(string address);
+        Task<CliResponse<string>> GetAccountAsync(string address);
 
         /// <summary>
         /// 
@@ -515,7 +518,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="address">The address for account lookup</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetAccountAsync(string blockchainName, string address);
+        Task<CliResponse<string>> GetAccountAsync(string blockchainName, string address);
 
         /// <summary>
         /// 
@@ -527,7 +530,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf">Only include transactions confirmed at least this many times</param>
         /// <param name="include_locked">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<GetAddressBalancesResult[]>> GetAddressBalancesAsync(string address, int min_conf = 1, bool include_locked = false);
+        Task<CliResponse<IList<GetAddressBalancesResult>>> GetAddressBalancesAsync(string address, int min_conf = 1, bool include_locked = false);
 
         /// <summary>
         /// 
@@ -540,7 +543,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf">Only include transactions confirmed at least this many times</param>
         /// <param name="include_locked">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<GetAddressBalancesResult[]>> GetAddressBalancesAsync(string blockchainName, string address, int min_conf = 1, bool include_locked = false);
+        Task<CliResponse<IList<GetAddressBalancesResult>>> GetAddressBalancesAsync(string blockchainName, string address, int min_conf = 1, bool include_locked = false);
 
         /// <summary>
         /// 
@@ -550,7 +553,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="verbose">The account name</param>
         /// <returns></returns>
-        Task<CliResponse<GetAddressesResult[]>> GetAddressesAsync(bool verbose);
+        Task<CliResponse<IList<GetAddressesResult>>> GetAddressesAsync(bool verbose);
 
         /// <summary>
         /// 
@@ -561,7 +564,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="verbose">The account name</param>
         /// <returns></returns>
-        Task<CliResponse<GetAddressesResult[]>> GetAddressesAsync(string blockchainName, bool verbose);
+        Task<CliResponse<IList<GetAddressesResult>>> GetAddressesAsync(string blockchainName, bool verbose);
 
         /// <summary>
         /// 
@@ -571,7 +574,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="account">The account name</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetAddressesByAccountAsync(string account);
+        Task<CliResponse<IList<string>>> GetAddressesByAccountAsync(string account);
 
         /// <summary>
         /// 
@@ -582,7 +585,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="account">The account name</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetAddressesByAccountAsync(string blockchainName, string account);
+        Task<CliResponse<IList<string>>> GetAddressesByAccountAsync(string blockchainName, string account);
 
         /// <summary>
         /// 
@@ -623,7 +626,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_watch_only">Also include balance in watchonly addresses (see 'importaddress')</param>
         /// <param name="include_locked">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetAssetBalancesAsync([Optional] string account, [Optional] int min_conf, [Optional] bool include_watch_only, [Optional] bool include_locked);
+        Task<CliResponse<IList<object>>> GetAssetBalancesAsync([Optional] string account, [Optional] int min_conf, [Optional] bool include_watch_only, [Optional] bool include_locked);
 
         /// <summary>
         /// 
@@ -640,7 +643,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_watch_only">Also include balance in watchonly addresses (see 'importaddress')</param>
         /// <param name="include_locked">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetAssetBalancesAsync(string blockchainName, [Optional] string account, [Optional] int min_conf, [Optional] bool include_watch_only, [Optional] bool include_locked);
+        Task<CliResponse<IList<object>>> GetAssetBalancesAsync(string blockchainName, [Optional] string account, [Optional] int min_conf, [Optional] bool include_watch_only, [Optional] bool include_locked);
 
         /// <summary>
         /// 
@@ -680,7 +683,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf">Only include transactions confirmed at least this many times</param>
         /// <param name="include_watch_only">Also include balance in watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetBalanceAsync([Optional] string account, [Optional] int min_conf, [Optional] bool include_watch_only);
+        Task<CliResponse<double>> GetBalanceAsync([Optional] string account, [Optional] int min_conf, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -696,7 +699,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf">Only include transactions confirmed at least this many times</param>
         /// <param name="include_watch_only">Also include balance in watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetBalanceAsync(string blockchainName, [Optional] string account, [Optional] int min_conf, [Optional] bool include_watch_only);
+        Task<CliResponse<double>> GetBalanceAsync(string blockchainName, [Optional] string account, [Optional] int min_conf, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -710,7 +713,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_locked">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <param name="include_watch_only">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetMultiBalancesAsync([Optional] string addresses, [Optional] object[] assets, [Optional] int min_conf, [Optional] bool include_locked, [Optional] bool include_watch_only);
+        Task<CliResponse<IList<Asset>>> GetMultiBalancesAsync([Optional] string addresses, [Optional] object[] assets, [Optional] int min_conf, [Optional] bool include_locked, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -725,7 +728,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_locked">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <param name="include_watch_only">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetMultiBalancesAsync(string blockchainName, [Optional] string addresses, [Optional] object[] assets, [Optional] int min_conf, [Optional] bool include_locked, [Optional] bool include_watch_only);
+        Task<CliResponse<IList<Asset>>> GetMultiBalancesAsync(string blockchainName, [Optional] string addresses, [Optional] object[] assets, [Optional] int min_conf, [Optional] bool include_locked, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -758,7 +761,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> GetRawChangeAddressAsync();
+        Task<CliResponse<string>> GetRawChangeAddressAsync();
 
         /// <summary>
         /// 
@@ -769,7 +772,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetRawChangeAddressAsync(string blockchainName);
+        Task<CliResponse<string>> GetRawChangeAddressAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -780,7 +783,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="account">The selected account, may be the default account using ""</param>
         /// <param name="min_conf">Only include transactions confirmed at least this many times</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetReceivedByAccountAsync(string account, int min_conf);
+        Task<CliResponse<double>> GetReceivedByAccountAsync(string account, int min_conf);
 
         /// <summary>
         /// 
@@ -792,7 +795,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="account">The selected account, may be the default account using ""</param>
         /// <param name="min_conf">Only include transactions confirmed at least this many times</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetReceivedByAccountAsync(string blockchainName, string account, int min_conf);
+        Task<CliResponse<double>> GetReceivedByAccountAsync(string blockchainName, string account, int min_conf);
 
         /// <summary>
         /// 
@@ -803,7 +806,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="address">The address for transactions</param>
         /// <param name="min_conf">Only include transactions confirmed at least this many times</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetReceivedByAddressAsync(string address, int min_conf);
+        Task<CliResponse<double>> GetReceivedByAddressAsync(string address, int min_conf);
 
         /// <summary>
         /// 
@@ -815,7 +818,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="address">The address for transactions</param>
         /// <param name="min_conf">Only include transactions confirmed at least this many times</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetReceivedByAddressAsync(string blockchainName, string address, int min_conf);
+        Task<CliResponse<double>> GetReceivedByAddressAsync(string blockchainName, string address, int min_conf);
 
         /// <summary>
         /// 
@@ -863,7 +866,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     </para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetStreamKeySummaryAsync(string stream_identifier, string key, string mode);
+        Task<CliResponse> GetStreamKeySummaryAsync(string stream_identifier, string key, string mode);
 
         /// <summary>
         /// 
@@ -885,7 +888,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     </para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetStreamKeySummaryAsync(string blockchainName, string stream_identifier, string key, string mode);
+        Task<CliResponse> GetStreamKeySummaryAsync(string blockchainName, string stream_identifier, string key, string mode);
 
         /// <summary>
         /// 
@@ -906,7 +909,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     </para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetStreamPublisherSummaryAsync(string stream_identifier, string address, string mode);
+        Task<CliResponse> GetStreamPublisherSummaryAsync(string stream_identifier, string address, string mode);
 
         /// <summary>
         /// 
@@ -928,7 +931,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     </para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetStreamPublisherSummaryAsync(string blockchainName, string stream_identifier, string address, string mode);
+        Task<CliResponse> GetStreamPublisherSummaryAsync(string blockchainName, string stream_identifier, string address, string mode);
 
         /// <summary>
         /// 
@@ -940,7 +943,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_watch_only">Also include balance in watchonly addresses (see 'importaddress')</param>
         /// <param name="include_locked">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<GetTotalBalancesResult[]>> GetTotalBalancesAsync(int min_conf, bool include_watch_only, bool include_locked);
+        Task<CliResponse<IList<GetTotalBalancesResult>>> GetTotalBalancesAsync(int min_conf, bool include_watch_only, bool include_locked);
 
         /// <summary>
         /// 
@@ -953,7 +956,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_watch_only">Also include balance in watchonly addresses (see 'importaddress')</param>
         /// <param name="include_locked">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<GetTotalBalancesResult[]>> GetTotalBalancesAsync(string blockchainName, int min_conf, bool include_watch_only, bool include_locked);
+        Task<CliResponse<IList<GetTotalBalancesResult>>> GetTotalBalancesAsync(string blockchainName, int min_conf, bool include_watch_only, bool include_locked);
 
         /// <summary>
         /// 
@@ -989,7 +992,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count_bytes">Number of bytes to return</param>
         /// <param name="start_byte">Start from specific byte</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetTxOutDataAsync(string txid, int vout, [Optional] int count_bytes, [Optional] int start_byte);
+        Task<CliResponse<string>> GetTxOutDataAsync(string txid, int vout, [Optional] int count_bytes, [Optional] int start_byte);
 
         /// <summary>
         /// 
@@ -1003,7 +1006,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count_bytes">Number of bytes to return</param>
         /// <param name="start_byte">Start from specific byte</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetTxOutDataAsync(string blockchainName, string txid, int vout, [Optional] int count_bytes, [Optional] int start_byte);
+        Task<CliResponse<string>> GetTxOutDataAsync(string blockchainName, string txid, int vout, [Optional] int count_bytes, [Optional] int start_byte);
 
         /// <summary>
         /// 
@@ -1012,7 +1015,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> GetUnconfirmedBalanceAsync();
+        Task<CliResponse<double>> GetUnconfirmedBalanceAsync();
 
         /// <summary>
         /// 
@@ -1022,7 +1025,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetUnconfirmedBalanceAsync(string blockchainName);
+        Task<CliResponse<double>> GetUnconfirmedBalanceAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -1303,7 +1306,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="label">An optional label</param>
         /// <param name="rescan">(boolean or integer, optional, default=true) Rescan the wallet for transactions. If integer rescan from block, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ImportAddressAsync(object addresses, [Optional] string label, [Optional] object rescan);
+        Task<CliResponse> ImportAddressAsync(object addresses, [Optional] string label, [Optional] object rescan);
 
         /// <summary>
         /// 
@@ -1317,7 +1320,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="label">An optional label</param>
         /// <param name="rescan">(boolean or integer, optional, default=true) Rescan the wallet for transactions. If integer rescan from block, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ImportAddressAsync(string blockchainName, object addresses, [Optional] string label, [Optional] object rescan);
+        Task<CliResponse> ImportAddressAsync(string blockchainName, object addresses, [Optional] string label, [Optional] object rescan);
 
         /// <summary>
         /// 
@@ -1329,7 +1332,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="label">An optional label</param>
         /// <param name="rescan">(boolean or integer, optional, default=true) Rescan the wallet for transactions. If integer rescan from block, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ImportPrivKeyAsync(object priv_keys, [Optional] string label, [Optional] object rescan);
+        Task<CliResponse> ImportPrivKeyAsync(object priv_keys, [Optional] string label, [Optional] object rescan);
 
         /// <summary>
         /// 
@@ -1342,7 +1345,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="label">An optional label</param>
         /// <param name="rescan">(boolean or integer, optional, default=true) Rescan the wallet for transactions. If integer rescan from block, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ImportPrivKeyAsync(string blockchainName, object priv_keys, [Optional] string label, [Optional] object rescan);
+        Task<CliResponse> ImportPrivKeyAsync(string blockchainName, object priv_keys, [Optional] string label, [Optional] object rescan);
 
         /// <summary>
         /// 
@@ -1353,7 +1356,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="filename">The wallet file</param>
         /// <param name="rescan">(boolean or integer, optional, default=true) Rescan the wallet for transactions. If integer rescan from block, if negative - from the end.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ImportWalletAsync(string filename, [Optional] bool rescan);
+        Task<CliResponse> ImportWalletAsync(string filename, [Optional] bool rescan);
 
         /// <summary>
         /// 
@@ -1365,7 +1368,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="filename">The wallet file</param>
         /// <param name="rescan">(boolean or integer, optional, default=true) Rescan the wallet for transactions. If integer rescan from block, if negative - from the end.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ImportWalletAsync(string blockchainName, string filename, [Optional] bool rescan);
+        Task<CliResponse> ImportWalletAsync(string blockchainName, string filename, [Optional] bool rescan);
 
         /// <summary>
         /// 
@@ -1908,7 +1911,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
         /// <param name="customFields">a dictionary object with custom fields</param>
         /// <returns></returns>
-        Task<CliResponse<object>> IssueMoreAsync(string blockchainName,
+        Task<CliResponse<string>> IssueMoreAsync(string blockchainName,
                                                  string toAddress,
                                                  string assetIdentifier,
                                                  int quantity,
@@ -1928,7 +1931,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
         /// <param name="customFields">a json object with custom fields</param>
         /// <returns></returns>
-        Task<CliResponse<object>> IssueMoreAsync(string blockchainName,
+        Task<CliResponse<string>> IssueMoreAsync(string blockchainName,
                                                  string toAddress,
                                                  string assetIdentifier,
                                                  int quantity,
@@ -1947,7 +1950,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
         /// <param name="customFields">a dictionary object with custom fields</param>
         /// <returns></returns>
-        Task<CliResponse<object>> IssueMoreAsync(string toAddress,
+        Task<CliResponse<string>> IssueMoreAsync(string toAddress,
                                                  string assetIdentifier,
                                                  int quantity,
                                                  decimal nativeCurrencyAmount = 0,
@@ -1965,7 +1968,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
         /// <param name="customFields">a json object with custom fields</param>
         /// <returns></returns>
-        Task<CliResponse<object>> IssueMoreAsync(string toAddress,
+        Task<CliResponse<string>> IssueMoreAsync(string toAddress,
                                                  string assetIdentifier,
                                                  int quantity,
                                                  decimal nativeCurrencyAmount = 0,
@@ -1985,7 +1988,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
         /// <param name="customFields">a dictionary object with custom fields</param>
         /// <returns></returns>
-        Task<CliResponse<object>> IssueMoreFromAsync(string blockchainName,
+        Task<CliResponse<string>> IssueMoreFromAsync(string blockchainName,
                                                      string fromAddress,
                                                      string toAddress,
                                                      string assetIdentifier,
@@ -2007,7 +2010,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
         /// <param name="customFields">a json object with custom fields</param>
         /// <returns></returns>
-        Task<CliResponse<object>> IssueMoreFromAsync(string blockchainName,
+        Task<CliResponse<string>> IssueMoreFromAsync(string blockchainName,
                                                      string fromAddress,
                                                      string toAddress,
                                                      string assetIdentifier,
@@ -2028,7 +2031,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
         /// <param name="customFields">a dictionary object with custom fields</param>
         /// <returns></returns>
-        Task<CliResponse<object>> IssueMoreFromAsync(string fromAddress,
+        Task<CliResponse<string>> IssueMoreFromAsync(string fromAddress,
                                                      string toAddress,
                                                      string assetIdentifier,
                                                      int quantity,
@@ -2048,7 +2051,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="nativeCurrencyAmount">native currency amount to send. eg 0.1, Default: minimum-per-output.</param>
         /// <param name="customFields">a json object with custom fields</param>
         /// <returns></returns>
-        Task<CliResponse<object>> IssueMoreFromAsync(string fromAddress,
+        Task<CliResponse<string>> IssueMoreFromAsync(string fromAddress,
                                                      string toAddress,
                                                      string assetIdentifier,
                                                      int quantity,
@@ -2064,7 +2067,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="new_size">The new keypool size</param>
         /// <returns></returns>
-        Task<CliResponse<object>> KeyPoolRefillAsync(int new_size);
+        Task<CliResponse> KeyPoolRefillAsync(int new_size);
 
         /// <summary>
         /// 
@@ -2076,7 +2079,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="new_size">The new keypool size</param>
         /// <returns></returns>
-        Task<CliResponse<object>> KeyPoolRefillAsync(string blockchainName, int new_size);
+        Task<CliResponse> KeyPoolRefillAsync(string blockchainName, int new_size);
 
         /// <summary>
         /// 
@@ -2087,7 +2090,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf"> Only include transactions with at least this many confirmations</param>
         /// <param name="include_watch_only">Include balances in watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListAccountsAsync(int min_conf, bool include_watch_only);
+        Task<CliResponse<Dictionary<string, double>>> ListAccountsAsync(int min_conf, bool include_watch_only);
         
         /// <summary>
         /// 
@@ -2099,7 +2102,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf"> Only include transactions with at least this many confirmations</param>
         /// <param name="include_watch_only">Include balances in watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListAccountsAsync(string blockchainName, int min_conf, bool include_watch_only);
+        Task<CliResponse<Dictionary<string, double>>> ListAccountsAsync(string blockchainName, int min_conf, bool include_watch_only);
 
         /// <summary>
         /// 
@@ -2112,7 +2115,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count">The number of addresses to display</param>
         /// <param name="start">Start from specific address, 0 based, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<ListAddressesResult[]>> ListAddressesAsync([Optional] object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start);
+        Task<CliResponse<IList<ListAddressesResult>>> ListAddressesAsync([Optional] object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start);
 
         /// <summary>
         /// 
@@ -2126,7 +2129,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count">The number of addresses to display</param>
         /// <param name="start">Start from specific address, 0 based, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<ListAddressesResult[]>> ListAddressesAsync(string blockchainName, [Optional] object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start);
+        Task<CliResponse<IList<ListAddressesResult>>> ListAddressesAsync(string blockchainName, [Optional] object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start);
 
         /// <summary>
         ///
@@ -2135,7 +2138,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> ListAddressGroupingsAsync();
+        Task<CliResponse<IList<IList<string>>>> ListAddressGroupingsAsync();
 
         /// <summary>
         ///
@@ -2145,7 +2148,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListAddressGroupingsAsync(string blockchainName);
+        Task<CliResponse<IList<IList<string>>>> ListAddressGroupingsAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -2158,7 +2161,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="skip">The number of transactions to skip</param>
         /// <param name="verbose">If true, returns detailed array of inputs and outputs and raw hex of transactions</param>
         /// <returns></returns>
-        Task<CliResponse<ListAddressTransactionsResult[]>> ListAddressTransactionsAsync(string address, int count, int skip, bool verbose);
+        Task<CliResponse<IList<ListAddressTransactionsResult>>> ListAddressTransactionsAsync(string address, int count, int skip, bool verbose);
 
         /// <summary>
         /// 
@@ -2172,7 +2175,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="skip">The number of transactions to skip</param>
         /// <param name="verbose">If true, returns detailed array of inputs and outputs and raw hex of transactions</param>
         /// <returns></returns>
-        Task<CliResponse<ListAddressTransactionsResult[]>> ListAddressTransactionsAsync(string blockchainName, string address, int count, int skip, bool verbose);
+        Task<CliResponse<IList<ListAddressTransactionsResult>>> ListAddressTransactionsAsync(string blockchainName, string address, int count, int skip, bool verbose);
 
         /// <summary>
         /// 
@@ -2186,7 +2189,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific transaction, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, transactions appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListAssetTransactionsResult[]>> ListAssetTransactionsAsync(string asset_identifier, bool verbose, int count, int start, bool local_ordering);
+        Task<CliResponse<IList<ListAssetTransactionsResult>>> ListAssetTransactionsAsync(string asset_identifier, bool verbose, int count, int start, bool local_ordering);
 
         /// <summary>
         /// 
@@ -2201,7 +2204,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific transaction, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, transactions appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListAssetTransactionsResult[]>> ListAssetTransactionsAsync(string blockchainName, string asset_identifier, bool verbose, int count, int start, bool local_ordering);
+        Task<CliResponse<IList<ListAssetTransactionsResult>>> ListAssetTransactionsAsync(string blockchainName, string asset_identifier, bool verbose, int count, int start, bool local_ordering);
 
         /// <summary>
         /// 
@@ -2211,7 +2214,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> ListLockUnspentAsync();
+        Task<CliResponse<IList<Transaction>>> ListLockUnspentAsync();
 
         /// <summary>
         /// 
@@ -2222,7 +2225,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListLockUnspentAsync(string blockchainName);
+        Task<CliResponse<IList<Transaction>>> ListLockUnspentAsync(string blockchainName);
+
+        // todo need to do more testing here to get an exact data type
 
         /// <summary>
         /// 
@@ -2234,7 +2239,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_empty">Whether to include accounts that haven't received any payments</param>
         /// <param name="include_watch_only">Whether to include watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListReceivedByAccountAsync(int min_conf, bool include_empty, bool include_watch_only);
+        Task<CliResponse<IList<object>>> ListReceivedByAccountAsync(int min_conf, bool include_empty, bool include_watch_only);
 
         /// <summary>
         /// 
@@ -2247,7 +2252,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_empty">Whether to include accounts that haven't received any payments</param>
         /// <param name="include_watch_only">Whether to include watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListReceivedByAccountAsync(string blockchainName, int min_conf, bool include_empty, bool include_watch_only);
+        Task<CliResponse<IList<object>>> ListReceivedByAccountAsync(string blockchainName, int min_conf, bool include_empty, bool include_watch_only);
 
         /// <summary>
         /// 
@@ -2259,7 +2264,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_empty">Whether to include accounts that haven't received any payments</param>
         /// <param name="include_watch_only">Whether to include watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListReceivedByAddressAsync(int min_conf, bool include_empty, bool include_watch_only);
+        Task<CliResponse<IList<object>>> ListReceivedByAddressAsync(int min_conf, bool include_empty, bool include_watch_only);
 
         /// <summary>
         /// 
@@ -2272,7 +2277,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_empty">Whether to include accounts that haven't received any payments</param>
         /// <param name="include_watch_only">Whether to include watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListReceivedByAddressAsync(string blockchainName, int min_conf, bool include_empty, bool include_watch_only);
+        Task<CliResponse<IList<object>>> ListReceivedByAddressAsync(string blockchainName, int min_conf, bool include_empty, bool include_watch_only);
 
         /// <summary>
         /// 
@@ -2284,7 +2289,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="target_confirmations">The confirmations required, must be 1 or more</param>
         /// <param name="include_watch_only">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListSinceBlockAsync([Optional] string block_hash, [Optional] int target_confirmations, [Optional] bool include_watch_only);
+        Task<CliResponse> ListSinceBlockAsync([Optional] string block_hash, [Optional] int target_confirmations, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -2297,7 +2302,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="target_confirmations">The confirmations required, must be 1 or more</param>
         /// <param name="include_watch_only">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListSinceBlockAsync(string blockchainName, [Optional] string block_hash, [Optional] int target_confirmations, [Optional] bool include_watch_only);
+        Task<CliResponse> ListSinceBlockAsync(string blockchainName, [Optional] string block_hash, [Optional] int target_confirmations, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -2311,7 +2316,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count">The number of items to display</param>
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListStreamBlockItemsAsync(string stream_identifier, object block_set_identifier, [Optional] bool verbose, [Optional] int count, [Optional] int start);
+        Task<CliResponse<IList<object>>> ListStreamBlockItemsAsync(string stream_identifier, object block_set_identifier, [Optional] bool verbose, [Optional] int count, [Optional] int start);
 
         /// <summary>
         /// 
@@ -2326,7 +2331,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count">The number of items to display</param>
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListStreamBlockItemsAsync(string blockchainName, string stream_identifier, object block_set_identifier, [Optional] bool verbose, [Optional] int count, [Optional] int start);
+        Task<CliResponse<IList<object>>> ListStreamBlockItemsAsync(string blockchainName, string stream_identifier, object block_set_identifier, [Optional] bool verbose, [Optional] int count, [Optional] int start);
+
+        // todo need to do more testing here to get an exact data type
 
         /// <summary>
         /// 
@@ -2340,7 +2347,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamItemsResult[]>> ListStreamItemsAsync(string stream_identifier, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamItemsResult>>> ListStreamItemsAsync(string stream_identifier, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
 
         /// <summary>
         /// 
@@ -2355,7 +2362,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamItemsResult[]>> ListStreamItemsAsync(string blockchainName, string stream_identifier, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamItemsResult>>> ListStreamItemsAsync(string blockchainName, string stream_identifier, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
 
         /// <summary>
         /// 
@@ -2370,7 +2377,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamKeyItemsResult[]>> ListStreamKeyItemsAsync(string stream_identifier, string key, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamKeyItemsResult>>> ListStreamKeyItemsAsync(string stream_identifier, string key, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
 
         /// <summary>
         /// 
@@ -2386,7 +2393,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamKeyItemsResult[]>> ListStreamKeyItemsAsync(string blockchainName, string stream_identifier, string key, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamKeyItemsResult>>> ListStreamKeyItemsAsync(string blockchainName, string stream_identifier, string key, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
 
         /// <summary>
         /// 
@@ -2401,7 +2408,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamKeysResult[]>> ListStreamKeysAsync(string stream_identifier, object keys, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamKeysResult>>> ListStreamKeysAsync(string stream_identifier, object keys, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
 
         /// <summary>
         /// 
@@ -2417,7 +2424,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamKeysResult[]>> ListStreamKeysAsync(string blockchainName, string stream_identifier, object keys, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamKeysResult>>> ListStreamKeysAsync(string blockchainName, string stream_identifier, object keys, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
 
         /// <summary>
         /// 
@@ -2432,7 +2439,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamPublisherItemsResult[]>> ListStreamPublisherItemsAsync(string stream_identifiers, string address, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamPublisherItemsResult>>> ListStreamPublisherItemsAsync(string stream_identifiers, string address, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
 
         /// <summary>
         /// 
@@ -2448,7 +2455,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamPublisherItemsResult[]>> ListStreamPublisherItemsAsync(string blockchainName, string stream_identifiers, string address, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamPublisherItemsResult>>> ListStreamPublisherItemsAsync(string blockchainName, string stream_identifiers, string address, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
 
         /// <summary>
         /// 
@@ -2463,7 +2470,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamPublishersResult[]>> ListStreamPublishersAsync(string stream_identifier, object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamPublishersResult>>> ListStreamPublishersAsync(string stream_identifier, object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
 
         /// <summary>
         /// 
@@ -2479,7 +2486,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start">Start from specific item, 0 based, if negative - from the end</param>
         /// <param name="local_ordering">If true, items appear in the order they were processed by the wallet, if false - in the order they appear in blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamPublishersResult[]>> ListStreamPublishersAsync(string blockchainName, string stream_identifier, object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+        Task<CliResponse<IList<ListStreamPublishersResult>>> ListStreamPublishersAsync(string blockchainName, string stream_identifier, object addresses, [Optional] bool verbose, [Optional] int count, [Optional] int start, [Optional] bool local_ordering);
+
+        // todo need to run some tests here to get correct data models 
 
         /// <summary>
         /// 
@@ -2491,7 +2500,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="query">Query { "key" : "key" (string, optional, default: "") Item key, or "keys" : keys (array, optional) Item keys, array of strings, and or  "publisher" : "publisher" (string, optional, default: "") Publisher or "publishers" : publishers (array, optional) Publishers, array of strings }</param>
         /// <param name="verbose">If true, returns information about item transaction</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListStreamQueryItemsAsync(string stream_identifier, object query, bool verbose);
+        Task<CliResponse<IList<object>>> ListStreamQueryItemsAsync(string stream_identifier, object query, bool verbose);
 
         /// <summary>
         /// 
@@ -2504,7 +2513,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="query">Query { "key" : "key" (string, optional, default: "") Item key, or "keys" : keys (array, optional) Item keys, array of strings, and or  "publisher" : "publisher" (string, optional, default: "") Publisher or "publishers" : publishers (array, optional) Publishers, array of strings }</param>
         /// <param name="verbose">If true, returns information about item transaction</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListStreamQueryItemsAsync(string blockchainName, string stream_identifier, object query, bool verbose);
+        Task<CliResponse<IList<object>>> ListStreamQueryItemsAsync(string blockchainName, string stream_identifier, object query, bool verbose);
 
         /// <summary>
         /// 
@@ -2516,7 +2525,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="txids"> Transaction IDs, comma delimited or Array of transaction IDs</param>
         /// <param name="verbose">If true, returns information about item transaction</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListStreamTxItemsAsync(string stream_identifiers, string txids, bool verbose);
+        Task<CliResponse<IList<object>>> ListStreamTxItemsAsync(string stream_identifiers, string txids, bool verbose);
 
         /// <summary>
         /// 
@@ -2529,7 +2538,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="txids"> Transaction IDs, comma delimited or Array of transaction IDs</param>
         /// <param name="verbose">If true, returns information about item transaction</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ListStreamTxItemsAsync(string blockchainName, string stream_identifiers, string txids, bool verbose);
+        Task<CliResponse<IList<object>>> ListStreamTxItemsAsync(string blockchainName, string stream_identifiers, string txids, bool verbose);
+
+        // todo need to run some tests here to get correct data models 
 
         /// <summary>
         /// 
@@ -2542,7 +2553,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="from">The number of transactions to skip</param>
         /// <param name="include_watch_only">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<ListTransactionsResult[]>> ListTransactionsAsync([Optional] string account, [Optional] int count, [Optional] int from, [Optional] bool include_watch_only);
+        Task<CliResponse<IList<ListTransactionsResult>>> ListTransactionsAsync([Optional] string account, [Optional] int count, [Optional] int from, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -2556,7 +2567,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="from">The number of transactions to skip</param>
         /// <param name="include_watch_only">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <returns></returns>
-        Task<CliResponse<ListTransactionsResult[]>> ListTransactionsAsync(string blockchainName, [Optional] string account, [Optional] int count, [Optional] int from, [Optional] bool include_watch_only);
+        Task<CliResponse<IList<ListTransactionsResult>>> ListTransactionsAsync(string blockchainName, [Optional] string account, [Optional] int count, [Optional] int from, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -2571,7 +2582,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="max_conf">The maximum confirmations to filter</param>
         /// <param name="addresses">A json array of addresses to filter</param>
         /// <returns></returns>
-        Task<CliResponse<ListUnspentResult[]>> ListUnspentAsync([Optional] int min_conf, [Optional] int max_conf, [Optional] object addresses);
+        Task<CliResponse<IList<ListUnspentResult>>> ListUnspentAsync([Optional] int min_conf, [Optional] int max_conf, [Optional] object addresses);
 
         /// <summary>
         /// 
@@ -2587,7 +2598,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="max_conf">The maximum confirmations to filter</param>
         /// <param name="addresses">A json array of addresses to filter</param>
         /// <returns></returns>
-        Task<CliResponse<ListUnspentResult[]>> ListUnspentAsync(string blockchainName, [Optional] int min_conf, [Optional] int max_conf, [Optional] object addresses);
+        Task<CliResponse<IList<ListUnspentResult>>> ListUnspentAsync(string blockchainName, [Optional] int min_conf, [Optional] int max_conf, [Optional] object addresses);
 
         /// <summary>
         /// 
@@ -2600,7 +2611,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_watch_only">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <param name="verbose">If true, returns detailed array of inputs and outputs and raw hex of transactions</param>
         /// <returns></returns>
-        Task<CliResponse<ListWalletTransactionsResult[]>> ListWalletTransactionsAsync(int count, int skip, bool include_watch_only, bool verbose);
+        Task<CliResponse<IList<ListWalletTransactionsResult>>> ListWalletTransactionsAsync(int count, int skip, bool include_watch_only, bool verbose);
 
         /// <summary>
         /// 
@@ -2614,7 +2625,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_watch_only">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <param name="verbose">If true, returns detailed array of inputs and outputs and raw hex of transactions</param>
         /// <returns></returns>
-        Task<CliResponse<ListWalletTransactionsResult[]>> ListWalletTransactionsAsync(string blockchainName, int count, int skip, bool include_watch_only, bool verbose);
+        Task<CliResponse<IList<ListWalletTransactionsResult>>> ListWalletTransactionsAsync(string blockchainName, int count, int skip, bool include_watch_only, bool verbose);
 
         /// <summary>
         /// 
@@ -2629,7 +2640,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="unlock">Whether to unlock (true) or lock (false) the specified transactions</param>
         /// <param name="unspent">A json array of objects. Each object should have the the txid (string) vout (numeric)</param>
         /// <returns></returns>
-        Task<CliResponse<object>> LockUnspentAsync(bool unlock, object[] unspent);
+        Task<CliResponse<bool>> LockUnspentAsync(bool unlock, object[] unspent);
 
         /// <summary>
         /// 
@@ -2645,7 +2656,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="unlock">Whether to unlock (true) or lock (false) the specified transactions</param>
         /// <param name="unspent">A json array of objects. Each object should have the the txid (string) vout (numeric)</param>
         /// <returns></returns>
-        Task<CliResponse<object>> LockUnspentAsync(string blockchainName, bool unlock, object[] unspent);
+        Task<CliResponse<bool>> LockUnspentAsync(string blockchainName, bool unlock, object[] unspent);
 
         /// <summary>
         /// 
@@ -2659,7 +2670,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf">Only use funds with at least this many confirmations</param>
         /// <param name="comment">An optional comment, stored in the wallet only</param>
         /// <returns></returns>
-        Task<CliResponse<object>> MoveAsync(string from_account, string to_account, object amount, [Optional] int min_conf, [Optional] string comment);
+        Task<CliResponse<bool>> MoveAsync(string from_account, string to_account, object amount, [Optional] int min_conf, [Optional] string comment);
 
         /// <summary>
         /// 
@@ -2674,7 +2685,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf">Only use funds with at least this many confirmations</param>
         /// <param name="comment">An optional comment, stored in the wallet only</param>
         /// <returns></returns>
-        Task<CliResponse<object>> MoveAsync(string blockchainName, string from_account, string to_account, object amount, [Optional] int min_conf, [Optional] string comment);
+        Task<CliResponse<bool>> MoveAsync(string blockchainName, string from_account, string to_account, object amount, [Optional] int min_conf, [Optional] string comment);
 
         /// <summary>
         /// 
@@ -2843,7 +2854,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> ResendWalletTransactionsAsync();
+        Task<CliResponse> ResendWalletTransactionsAsync();
 
         /// <summary>
         /// 
@@ -2853,7 +2864,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> ResendWalletTransactionsAsync(string blockchainName);
+        Task<CliResponse> ResendWalletTransactionsAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -2871,7 +2882,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> RevokeAsync(string addresses, string permissions, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> RevokeAsync(string addresses, string permissions, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -2890,7 +2901,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> RevokeAsync(string blockchainName, string addresses, string permissions, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> RevokeAsync(string blockchainName, string addresses, string permissions, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -2909,7 +2920,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> RevokeFromAsync(string from_address, string to_addresses, string permissions, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> RevokeFromAsync(string from_address, string to_addresses, string permissions, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -2929,7 +2940,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> RevokeFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> RevokeFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -2944,7 +2955,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendAssetAsync(string to_address, string asset_identifier, int asset_quantity, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> SendAssetAsync(string to_address, string asset_identifier, int asset_quantity, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -2960,7 +2971,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendAssetAsync(string blockchainName, string to_address, string asset_identifier, int asset_quantity, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> SendAssetAsync(string blockchainName, string to_address, string asset_identifier, int asset_quantity, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -2976,7 +2987,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendAssetFromAsync(string from_address, string to_address, string asset_identifier, int asset_quantity, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> SendAssetFromAsync(string from_address, string to_address, string asset_identifier, int asset_quantity, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -2993,7 +3004,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendAssetFromAsync(string blockchainName, string from_address, string to_address, string asset_identifier, int asset_quantity, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> SendAssetFromAsync(string blockchainName, string from_address, string to_address, string asset_identifier, int asset_quantity, [Optional] double native_amount, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -3035,7 +3046,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendFromAccountAsync(string from_account, string to_address, object amount, [Optional] int min_conf, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> SendFromAccountAsync(string from_account, string to_address, object amount, [Optional] int min_conf, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -3051,7 +3062,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendFromAccountAsync(string blockchainName, string from_account, string to_address, object amount, [Optional] int min_conf, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> SendFromAccountAsync(string blockchainName, string from_account, string to_address, object amount, [Optional] int min_conf, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -3065,7 +3076,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendFromAsync(string from_address, string to_address, object amount_or_asset_quantities, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> SendFromAsync(string from_address, string to_address, object amount_or_asset_quantities, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -3080,7 +3091,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to">A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendFromAsync(string blockchainName, string from_address, string to_address, object amount_or_asset_quantities, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> SendFromAsync(string blockchainName, string from_address, string to_address, object amount_or_asset_quantities, [Optional] string comment, [Optional] string comment_to);
 
         /// <summary>
         /// 
@@ -3093,7 +3104,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf">Only use the balance confirmed at least this many times</param>
         /// <param name="comment">A comment</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendManyAsync(string from_account, object[] amounts, [Optional] int min_conf, [Optional] string comment);
+        Task<CliResponse<string>> SendManyAsync(string from_account, object[] amounts, [Optional] int min_conf, [Optional] string comment);
 
         /// <summary>
         /// 
@@ -3107,7 +3118,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="min_conf">Only use the balance confirmed at least this many times</param>
         /// <param name="comment">A comment</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendManyAsync(string blockchainName, string from_account, object[] amounts, [Optional] int min_conf, [Optional] string comment);
+        Task<CliResponse<string>> SendManyAsync(string blockchainName, string from_account, object[] amounts, [Optional] int min_conf, [Optional] string comment);
 
         /// <summary>
         /// 
@@ -3119,7 +3130,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="amount_or_asset_quantities">The amount in native currency to send. eg 0.1 or a json object of assets to send</param>
         /// <param name="data_or_publish_new_stream_item">(string or object, required) Data, see help data-with for details.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendWithDataAsync(string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item);
+        Task<CliResponse<string>> SendWithDataAsync(string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item);
 
         /// <summary>
         /// 
@@ -3132,7 +3143,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="amount_or_asset_quantities">The amount in native currency to send. eg 0.1 or a json object of assets to send</param>
         /// <param name="data_or_publish_new_stream_item">(string or object, required) Data, see help data-with for details.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendWithDataAsync(string blockchainName, string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item);
+        Task<CliResponse<string>> SendWithDataAsync(string blockchainName, string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item);
 
         /// <summary>
         /// 
@@ -3145,7 +3156,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="amount_or_asset_quantities">The amount in native currency to send. eg 0.1 or a json object of assets to send</param>
         /// <param name="data_or_publish_new_stream_item">(string or object, required) Data, see help data-with for details.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendWithDataFromAsync(string from_address, string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item);
+        Task<CliResponse<string>> SendWithDataFromAsync(string from_address, string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item);
 
         /// <summary>
         /// 
@@ -3159,7 +3170,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="amount_or_asset_quantities">The amount in native currency to send. eg 0.1 or a json object of assets to send</param>
         /// <param name="data_or_publish_new_stream_item">(string or object, required) Data, see help data-with for details.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SendWithDataFromAsync(string blockchainName, string from_address, string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item);
+        Task<CliResponse<string>> SendWithDataFromAsync(string blockchainName, string from_address, string to_address, object amount_or_asset_quantities, object data_or_publish_new_stream_item);
 
         /// <summary>
         /// 
@@ -3170,7 +3181,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="address">The address to be associated with an account</param>
         /// <param name="account">The account to assign the address to</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SetAccountAsync(string address, string account);
+        Task<CliResponse> SetAccountAsync(string address, string account);
 
         /// <summary>
         /// 
@@ -3182,7 +3193,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="address">The address to be associated with an account</param>
         /// <param name="account">The account to assign the address to</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SetAccountAsync(string blockchainName, string address, string account);
+        Task<CliResponse> SetAccountAsync(string blockchainName, string address, string account);
 
         /// <summary>
         /// 
@@ -3192,7 +3203,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="amount">The transaction fee in native currency/kB rounded to the nearest 0.00000001</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SetTxFeeAsync(double amount);
+        Task<CliResponse<bool>> SetTxFeeAsync(double amount);
 
         /// <summary>
         /// 
@@ -3203,7 +3214,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="amount">The transaction fee in native currency/kB rounded to the nearest 0.00000001</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SetTxFeeAsync(string blockchainName, double amount);
+        Task<CliResponse<bool>> SetTxFeeAsync(string blockchainName, double amount);
 
         /// <summary>
         /// 
@@ -3238,7 +3249,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="rescan">Rescan the wallet for transactions. Default true</param>
         /// <param name="parameters">Available only in Enterprise Edition</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SubscribeAsync(object entity_identifiers, bool rescan = true, string parameters = "");
+        Task<CliResponse> SubscribeAsync(object entity_identifiers, bool rescan = true, string parameters = "");
 
         /// <summary>
         /// 
@@ -3251,7 +3262,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="rescan">Rescan the wallet for transactions. Default true</param>
         /// <param name="parameters">Available only in Enterprise Edition</param>
         /// <returns></returns>
-        Task<CliResponse<object>> SubscribeAsync(string blockchainName, object entity_identifiers, bool rescan = true, string parameters = "");
+        Task<CliResponse> SubscribeAsync(string blockchainName, object entity_identifiers, bool rescan = true, string parameters = "");
 
         /// <summary>
         /// 
@@ -3262,7 +3273,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="streams">One of: create txid, stream reference, stream name or a json array of stream identifiers</param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        Task<CliResponse<object>> TrimSubscribeAsync(object streams, string parameters);
+        Task<CliResponse> TrimSubscribeAsync(object streams, string parameters);
 
         /// <summary>
         /// 
@@ -3274,7 +3285,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="streams">One of: create txid, stream reference, stream name or a json array of stream identifiers</param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        Task<CliResponse<object>> TrimSubscribeAsync(string blockchainName, object streams, string parameters);
+        Task<CliResponse> TrimSubscribeAsync(string blockchainName, object streams, string parameters);
 
         /// <summary>
         /// 
@@ -3314,7 +3325,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="entity_identifiers">Stream identifier - one of the following: stream txid, stream reference, stream name or Asset identifier - one of the following: asset txid, asset reference, asset name or a json array of stream or asset identifiers </param>
         /// <param name="purge"> Purge all offchain data for the stream</param>
         /// <returns></returns>
-        Task<CliResponse<object>> UnsubscribeAsync(string entity_identifiers, bool purge);
+        Task<CliResponse> UnsubscribeAsync(string entity_identifiers, bool purge);
 
         /// <summary>
         /// 
@@ -3326,7 +3337,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="entity_identifiers">Stream identifier - one of the following: stream txid, stream reference, stream name or Asset identifier - one of the following: asset txid, asset reference, asset name or a json array of stream or asset identifiers </param>
         /// <param name="purge"> Purge all offchain data for the stream</param>
         /// <returns></returns>
-        Task<CliResponse<object>> UnsubscribeAsync(string blockchainName, string entity_identifiers, bool purge);
+        Task<CliResponse> UnsubscribeAsync(string blockchainName, string entity_identifiers, bool purge);
 
         /// <summary>
         /// 
@@ -3336,7 +3347,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<object>> WalletLockAsync();
+        Task<CliResponse> WalletLockAsync();
 
         /// <summary>
         /// 
@@ -3347,7 +3358,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<object>> WalletLockAsync(string blockchainName);
+        Task<CliResponse> WalletLockAsync(string blockchainName);
 
         /// <summary>
         /// 
@@ -3359,7 +3370,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="passphrase">The wallet passphrase</param>
         /// <param name="time_out">The time to keep the decryption key in seconds.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> WalletPassphraseAsync(string passphrase, int time_out);
+        Task<CliResponse> WalletPassphraseAsync(string passphrase, int time_out);
 
         /// <summary>
         /// 
@@ -3372,7 +3383,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="passphrase">The wallet passphrase</param>
         /// <param name="time_out">The time to keep the decryption key in seconds.</param>
         /// <returns></returns>
-        Task<CliResponse<object>> WalletPassphraseAsync(string blockchainName, string passphrase, int time_out);
+        Task<CliResponse> WalletPassphraseAsync(string blockchainName, string passphrase, int time_out);
 
         /// <summary>
         /// 
@@ -3383,7 +3394,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="old_passphrase">The current passphrase</param>
         /// <param name="new_passphrase">The new passphrase</param>
         /// <returns></returns>
-        Task<CliResponse<object>> WalletPassphraseChangeAsync(string old_passphrase, string new_passphrase);
+        Task<CliResponse> WalletPassphraseChangeAsync(string old_passphrase, string new_passphrase);
 
         /// <summary>
         /// 
@@ -3395,6 +3406,6 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="old_passphrase">The current passphrase</param>
         /// <param name="new_passphrase">The new passphrase</param>
         /// <returns></returns>
-        Task<CliResponse<object>> WalletPassphraseChangeAsync(string blockchainName, string old_passphrase, string new_passphrase);
+        Task<CliResponse> WalletPassphraseChangeAsync(string blockchainName, string old_passphrase, string new_passphrase);
     }
 }

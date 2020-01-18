@@ -1,6 +1,7 @@
 ﻿using MCWrapper.CLI.Connection;
 using MCWrapper.CLI.Ledger.Contracts;
 using MCWrapper.Data.Models.Blockchain;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -255,7 +256,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<GetChainTipsResult[]>> GetChainTipsAsync();
+        Task<CliResponse<IList<GetChainTipsResult>>> GetChainTipsAsync();
 
         /// <summary>
         ///
@@ -265,7 +266,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<GetChainTipsResult[]>> GetChainTipsAsync(string blockchainName);
+        Task<CliResponse<IList<GetChainTipsResult>>> GetChainTipsAsync(string blockchainName);
 
         /// <summary>
         ///
@@ -446,7 +447,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count">The number of assets to display</param>
         /// <param name="start">Start from specific asset, 0 based, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<ListAssetsResult[]>> ListAssetsAsync([Optional] object asset_identifiers, [Optional] bool verbose, [Optional] int count, [Optional] int start);
+        Task<CliResponse<IList<ListAssetsResult>>> ListAssetsAsync([Optional] object asset_identifiers, [Optional] bool verbose, [Optional] int count, [Optional] int start);
 
         /// <summary>
         ///
@@ -460,7 +461,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count">The number of assets to display</param>
         /// <param name="start">Start from specific asset, 0 based, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<ListAssetsResult[]>> ListAssetsAsync(string blockchainName, [Optional] object asset_identifiers, [Optional] bool verbose, [Optional] int count, [Optional] int start);
+        Task<CliResponse<IList<ListAssetsResult>>> ListAssetsAsync(string blockchainName, [Optional] object asset_identifiers, [Optional] bool verbose, [Optional] int count, [Optional] int start);
 
         /// <summary>
         ///
@@ -483,7 +484,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns more information</param>
         /// <returns></returns>
-        Task<CliResponse<ListBlocksResult[]>> ListBlocksAsync(object block_set_identifier, bool verbose);
+        Task<CliResponse<IList<ListBlocksResult>>> ListBlocksAsync(object block_set_identifier, bool verbose);
 
         /// <summary>
         ///
@@ -508,7 +509,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="verbose">If true, returns more information</param>
         /// <returns></returns>
         /// <returns></returns>
-        Task<CliResponse<ListBlocksResult[]>> ListBlocksAsync(string blockchainName, object block_set_identifier, bool verbose);
+        Task<CliResponse<IList<ListBlocksResult>>> ListBlocksAsync(string blockchainName, object block_set_identifier, bool verbose);
 
         /// <summary>
         ///
@@ -524,7 +525,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns list of pending grants</param>
         /// <returns></returns>
-        Task<CliResponse<ListPermissionsResult[]>> ListPermissionsAsync([Optional] string permissions, [Optional] object addresses, [Optional] bool verbose);
+        Task<CliResponse<IList<ListPermissionsResult>>> ListPermissionsAsync([Optional] string permissions, [Optional] object addresses, [Optional] bool verbose);
 
         /// <summary>
         ///
@@ -541,7 +542,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns list of pending grants</param>
         /// <returns></returns>
-        Task<CliResponse<ListPermissionsResult[]>> ListPermissionsAsync(string blockchainName, [Optional] string permissions, [Optional] object addresses, [Optional] bool verbose);
+        Task<CliResponse<IList<ListPermissionsResult>>> ListPermissionsAsync(string blockchainName, [Optional] string permissions, [Optional] object addresses, [Optional] bool verbose);
 
         /// <summary>
         ///
@@ -556,7 +557,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns list of creators and approval details</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamFiltersResult[]>> ListStreamFiltersAsync([Optional] object filter_identifers, [Optional] bool verbose);
+        Task<CliResponse<IList<ListStreamFiltersResult>>> ListStreamFiltersAsync([Optional] object filter_identifers, [Optional] bool verbose);
 
         /// <summary>
         ///
@@ -572,7 +573,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns list of creators and approval details</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamFiltersResult[]>> ListStreamFiltersAsync(string blockchainName, [Optional] object filter_identifers, [Optional] bool verbose);
+        Task<CliResponse<IList<ListStreamFiltersResult>>> ListStreamFiltersAsync(string blockchainName, [Optional] object filter_identifers, [Optional] bool verbose);
 
         /// <summary>
         ///
@@ -589,7 +590,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count">The number of streams to display</param>
         /// <param name="start">Start from specific stream, 0 based, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamsResult[]>> ListStreamsAsync([Optional] object stream_identifiers, [Optional] bool verbose, [Optional] int count, [Optional] int start);
+        Task<CliResponse<IList<ListStreamsResult>>> ListStreamsAsync([Optional] object stream_identifiers, [Optional] bool verbose, [Optional] int count, [Optional] int start);
 
         /// <summary>
         ///
@@ -607,7 +608,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="count">The number of streams to display</param>
         /// <param name="start">Start from specific stream, 0 based, if negative - from the end</param>
         /// <returns></returns>
-        Task<CliResponse<ListStreamsResult[]>> ListStreamsAsync(string blockchainName, [Optional] object stream_identifiers, [Optional] bool verbose, [Optional] int count, [Optional] int start);
+        Task<CliResponse<IList<ListStreamsResult>>> ListStreamsAsync(string blockchainName, [Optional] object stream_identifiers, [Optional] bool verbose, [Optional] int count, [Optional] int start);
 
         /// <summary>
         ///
@@ -622,7 +623,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns list of creators and approval details</param>
         /// <returns></returns>
-        Task<CliResponse<ListTxFiltersResult[]>> ListTxFiltersAsync([Optional] object filter_identifiers, [Optional] bool verbose);
+        Task<CliResponse<IList<ListTxFiltersResult>>> ListTxFiltersAsync([Optional] object filter_identifiers, [Optional] bool verbose);
 
         /// <summary>
         ///
@@ -638,7 +639,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </param>
         /// <param name="verbose">If true, returns list of creators and approval details</param>
         /// <returns></returns>
-        Task<CliResponse<ListTxFiltersResult[]>> ListTxFiltersAsync(string blockchainName, [Optional] object filter_identifiers, [Optional] bool verbose);
+        Task<CliResponse<IList<ListTxFiltersResult>>> ListTxFiltersAsync(string blockchainName, [Optional] object filter_identifiers, [Optional] bool verbose);
 
         /// <summary>
         ///
@@ -650,7 +651,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync([Optional] string upgrade_identifier);
+        Task<CliResponse<IList<ListUpgradesResult>>> ListUpgradesAsync([Optional] string upgrade_identifier);
 
         /// <summary>
         ///
@@ -663,7 +664,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync(string blockchainName, [Optional] string upgrade_identifier);
+        Task<CliResponse<IList<ListUpgradesResult>>> ListUpgradesAsync(string blockchainName, [Optional] string upgrade_identifier);
 
         /// <summary>
         ///
@@ -675,7 +676,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(array, optional) A json array of upgrade identifiers</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync([Optional] string[] upgrade_identifiers);
+        Task<CliResponse<IList<ListUpgradesResult>>> ListUpgradesAsync([Optional] string[] upgrade_identifiers);
 
         /// <summary>
         ///
@@ -688,7 +689,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>(array, optional) A json array of upgrade identifiers</para>
         /// </param>
         /// <returns></returns>
-        Task<CliResponse<ListUpgradesResult[]>> ListUpgradesAsync(string blockchainName, [Optional] string[] upgrade_identifiers);
+        Task<CliResponse<IList<ListUpgradesResult>>> ListUpgradesAsync(string blockchainName, [Optional] string[] upgrade_identifiers);
 
         /// <summary>
         ///

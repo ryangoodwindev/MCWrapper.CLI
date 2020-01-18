@@ -68,6 +68,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         Task<CliResponse<string>> AppendRawDataAsync(string blockchainName, string tx_hex, object data);
 
+        // todo need to do more testing to get specific data model
+
         /// <summary>
         /// 
         /// <para>Append inputs and outputs to raw transaction</para>
@@ -79,7 +81,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="addresses">Object with addresses as keys, see help addresses-all for details</param>
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
-        Task<CliResponse<object>> AppendRawTransactionAsync(string tx_hex, object[] transactions, object addresses, [Optional] object[] data, string action = "");
+        Task<CliResponse> AppendRawTransactionAsync(string tx_hex, object[] transactions, object addresses, [Optional] object[] data, string action = "");
 
         /// <summary>
         /// 
@@ -94,7 +96,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
         /// <returns></returns>
-        Task<CliResponse<object>> AppendRawTransactionAsync(string blockchainName, string tx_hex, object[] transactions, object addresses, [Optional] object[] data, string action = "");
+        Task<CliResponse> AppendRawTransactionAsync(string blockchainName, string tx_hex, object[] transactions, object addresses, [Optional] object[] data, string action = "");
 
         /// <summary>
         /// 
@@ -106,7 +108,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="addresses">Object with addresses as keys, see help addresses-all for details</param>
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
-        Task<CliResponse<object>> CreateRawTransactionAsync(object[] transactions, object addresses, [Optional] object[] data, string action = "");
+        Task<CliResponse> CreateRawTransactionAsync(object[] transactions, object addresses, [Optional] object[] data, string action = "");
 
         /// <summary>
         /// 
@@ -120,7 +122,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="data">Array of hexadecimal strings or data objects, see help data-all for details</param>
         /// <param name="action">Additional actions: "lock", "sign", "lock,sign", "sign,lock", "send"</param>
         /// <returns></returns>
-        Task<CliResponse<object>> CreateRawTransactionAsync(string blockchainName, object[] transactions, object addresses, [Optional] object[] data, string action = "");
+        Task<CliResponse> CreateRawTransactionAsync(string blockchainName, object[] transactions, object addresses, [Optional] object[] data, string action = "");
+
+        // todo need to do more testing to get specific data model
 
         /// <summary>
         /// 
@@ -164,6 +168,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <returns></returns>
         Task<CliResponse<DecodeScriptResult>> DecodeScriptAsync(string blockchainName, string script_hex);
 
+        // todo need to do more testing to get specific data model
+
         /// <summary>
         /// 
         /// <para>
@@ -176,7 +182,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="txid">The transaction id</param>
         /// <param name="verbose">If 0, return a string, other return a json object</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetRawTransactionAsync(string txid, [Optional] bool verbose);
+        Task<CliResponse> GetRawTransactionAsync(string txid, [Optional] bool verbose);
 
         /// <summary>
         /// 
@@ -191,7 +197,9 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="txid">The transaction id</param>
         /// <param name="verbose">If 0, return a string, other return a json object</param>
         /// <returns></returns>
-        Task<CliResponse<object>> GetRawTransactionAsync(string blockchainName, string txid, [Optional] bool verbose);
+        Task<CliResponse> GetRawTransactionAsync(string blockchainName, string txid, [Optional] bool verbose);
+
+        // todo need to do more testing to get specific data model
 
         /// <summary>
         /// 

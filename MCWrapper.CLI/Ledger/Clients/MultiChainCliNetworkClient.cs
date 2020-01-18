@@ -3,6 +3,7 @@ using MCWrapper.CLI.Options;
 using MCWrapper.Data.Models.Network;
 using MCWrapper.Ledger.Actions;
 using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -64,8 +65,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="dns">If false, only a list of added nodes will be provided, otherwise connected information will also be available</param>
         /// <param name="node">If provided, return information about this specific node,otherwise all nodes are returned</param>
         /// <returns></returns>
-        public Task<CliResponse<GetAddNodeInfoResult[]>> GetAddedNodeInfoAsync(string blockchainName, bool dns, [Optional] string node) =>
-            TransactAsync<GetAddNodeInfoResult[]>(blockchainName, NetworkAction.GetAddedNodeInfoMethod, new[] { $"{dns}", node });
+        public Task<CliResponse<IList<GetAddNodeInfoResult>>> GetAddedNodeInfoAsync(string blockchainName, bool dns, [Optional] string node) =>
+            TransactAsync<IList<GetAddNodeInfoResult>>(blockchainName, NetworkAction.GetAddedNodeInfoMethod, new[] { $"{dns}", node });
 
         /// <summary>
         /// 
@@ -78,7 +79,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="dns">If false, only a list of added nodes will be provided, otherwise connected information will also be available</param>
         /// <param name="node">If provided, return information about this specific node,otherwise all nodes are returned</param>
         /// <returns></returns>
-        public Task<CliResponse<GetAddNodeInfoResult[]>> GetAddedNodeInfoAsync(bool dns, [Optional] string node) =>
+        public Task<CliResponse<IList<GetAddNodeInfoResult>>> GetAddedNodeInfoAsync(bool dns, [Optional] string node) =>
             GetAddedNodeInfoAsync(CliOptions.ChainName, dns, node);
 
         /// <summary>
@@ -194,8 +195,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        public Task<CliResponse<GetPeerInfoResult[]>> GetPeerInfoAsync(string blockchainName) =>
-            TransactAsync<GetPeerInfoResult[]>(blockchainName, NetworkAction.GetPeerInfoMethod);
+        public Task<CliResponse<IList<GetPeerInfoResult>>> GetPeerInfoAsync(string blockchainName) =>
+            TransactAsync<IList<GetPeerInfoResult>>(blockchainName, NetworkAction.GetPeerInfoMethod);
 
         /// <summary>
         /// 
@@ -204,7 +205,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        public Task<CliResponse<GetPeerInfoResult[]>> GetPeerInfoAsync() =>
+        public Task<CliResponse<IList<GetPeerInfoResult>>> GetPeerInfoAsync() =>
             GetPeerInfoAsync(CliOptions.ChainName);
 
         /// <summary>

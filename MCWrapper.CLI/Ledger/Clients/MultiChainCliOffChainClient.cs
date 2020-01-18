@@ -1,9 +1,10 @@
 ﻿using MCWrapper.CLI.Connection;
 using MCWrapper.CLI.Options;
 using MCWrapper.Ledger.Actions;
-using MCWrapper.Ledger.Entities.Extensions;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
+
+using static Newtonsoft.Json.JsonConvert;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
@@ -45,8 +46,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>1. blocks                           (object, required) List of transactions in block range</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PurgePublishedItemsAsync(string blockchainName, object items) =>
-            TransactAsync<object>(blockchainName, OffChainAction.PurgePublishedItems, new[] { items.Serialize() });
+        public Task<CliResponse> PurgePublishedItemsAsync(string blockchainName, object items) =>
+            TransactAsync(blockchainName, OffChainAction.PurgePublishedItems, new[] { SerializeObject(items) });
 
         /// <summary>
         ///
@@ -65,7 +66,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>1. blocks                           (object, required) List of transactions in block range</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PurgePublishedItemsAsync(object items) =>
+        public Task<CliResponse> PurgePublishedItemsAsync(object items) =>
             PurgePublishedItemsAsync(CliOptions.ChainName, items);
 
         /// <summary>
@@ -89,8 +90,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>query (object, required) Query (AND logic)</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PurgeStreamItemsAsync(string blockchainName, string stream, object items) =>
-            TransactAsync<object>(blockchainName, OffChainAction.PurgeStreamItems, new[] { stream, items.Serialize() });
+        public Task<CliResponse> PurgeStreamItemsAsync(string blockchainName, string stream, object items) =>
+            TransactAsync(blockchainName, OffChainAction.PurgeStreamItems, new[] { stream, SerializeObject(items) });
 
         /// <summary>
         ///
@@ -112,7 +113,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>query (object, required) Query (AND logic)</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> PurgeStreamItemsAsync(string stream, object items) =>
+        public Task<CliResponse> PurgeStreamItemsAsync(string stream, object items) =>
             PurgeStreamItemsAsync(CliOptions.ChainName, stream, items);
 
         /// <summary>
@@ -136,8 +137,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>query (object, required) Query (AND logic)</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> RetrieveStreamItemsAsync(string blockchainName, string stream, object items) =>
-            TransactAsync<object>(blockchainName, OffChainAction.RetrieveStreamItems, new[] { stream, items.Serialize() });
+        public Task<CliResponse> RetrieveStreamItemsAsync(string blockchainName, string stream, object items) =>
+            TransactAsync(blockchainName, OffChainAction.RetrieveStreamItems, new[] { stream, SerializeObject(items) });
 
         /// <summary>
         ///
@@ -159,7 +160,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///     <para>query (object, required) Query (AND logic)</para>
         /// </param>
         /// <returns></returns>
-        public Task<CliResponse<object>> RetrieveStreamItemsAsync(string stream, object items) =>
+        public Task<CliResponse> RetrieveStreamItemsAsync(string stream, object items) =>
             RetrieveStreamItemsAsync(CliOptions.ChainName, stream, items);
     }
 }

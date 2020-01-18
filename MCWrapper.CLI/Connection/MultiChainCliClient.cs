@@ -27,7 +27,7 @@ namespace MCWrapper.CLI.Connection
         /// <summary>
         /// MultiChain CLI options
         /// </summary>
-        public CliOptions CliOptions { get; }
+        public CliOptions CliOptions { get; set; }
 
         /// <summary>
         /// Send commands to MultiChain Core

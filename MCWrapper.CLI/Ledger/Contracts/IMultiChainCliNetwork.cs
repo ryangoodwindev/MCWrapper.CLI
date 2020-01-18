@@ -1,6 +1,7 @@
 ﻿using MCWrapper.CLI.Connection;
 using MCWrapper.CLI.Ledger.Contracts;
 using MCWrapper.Data.Models.Network;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -52,7 +53,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="dns">If false, only a list of added nodes will be provided, otherwise connected information will also be available</param>
         /// <param name="node">If provided, return information about this specific node,otherwise all nodes are returned</param>
         /// <returns></returns>
-        Task<CliResponse<GetAddNodeInfoResult[]>> GetAddedNodeInfoAsync(bool dns, [Optional] string node);
+        Task<CliResponse<IList<GetAddNodeInfoResult>>> GetAddedNodeInfoAsync(bool dns, [Optional] string node);
 
         /// <summary>
         /// 
@@ -66,7 +67,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="dns">If false, only a list of added nodes will be provided, otherwise connected information will also be available</param>
         /// <param name="node">If provided, return information about this specific node,otherwise all nodes are returned</param>
         /// <returns></returns>
-        Task<CliResponse<GetAddNodeInfoResult[]>> GetAddedNodeInfoAsync(string blockchainName, bool dns, [Optional] string node);
+        Task<CliResponse<IList<GetAddNodeInfoResult>>> GetAddedNodeInfoAsync(string blockchainName, bool dns, [Optional] string node);
 
         /// <summary>
         ///
@@ -170,7 +171,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<GetPeerInfoResult[]>> GetPeerInfoAsync();
+        Task<CliResponse<IList<GetPeerInfoResult>>> GetPeerInfoAsync();
 
         /// <summary>
         /// 
@@ -180,7 +181,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<GetPeerInfoResult[]>> GetPeerInfoAsync(string blockchainName);
+        Task<CliResponse<IList<GetPeerInfoResult>>> GetPeerInfoAsync(string blockchainName);
 
         /// <summary>
         /// 

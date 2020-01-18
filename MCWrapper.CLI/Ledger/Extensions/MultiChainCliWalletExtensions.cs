@@ -534,7 +534,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="publishMultiEntity"></param>
         /// <returns></returns>
         public static Task<CliResponse<string>> PublishMultiStreamItems(this IMultiChainCliWallet client, PublishMultiEntity publishMultiEntity) =>
-            client.PublishMultiAsync(publishMultiEntity.StreamIdentifier, publishMultiEntity.Items, publishMultiEntity.Options);
+            client.PublishMultiAsync(publishMultiEntity.StreamIdentifier, publishMultiEntity.Items.ToArray(), publishMultiEntity.Options);
 
         // *** PublishMultiStreamItems using an explicit blockchain name
 
@@ -546,7 +546,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="publishMultiEntity"></param>
         /// <returns></returns>
         public static Task<CliResponse<string>> PublishMultiStreamItems(this IMultiChainCliWallet client, string blockchainName, PublishMultiEntity publishMultiEntity) =>
-            client.PublishMultiAsync(blockchainName, publishMultiEntity.StreamIdentifier, publishMultiEntity.Items, publishMultiEntity.Options);
+            client.PublishMultiAsync(blockchainName, publishMultiEntity.StreamIdentifier, publishMultiEntity.Items.ToArray(), publishMultiEntity.Options);
 
         // *** PublishMultiStreamItemsFrom using an inferred blockchain name
 
@@ -558,7 +558,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="publishMultiEntity"></param>
         /// <returns></returns>
         public static Task<CliResponse<string>> PublishMultiStreamItemsFrom(this IMultiChainCliWallet client, string fromAddress, PublishMultiEntity publishMultiEntity) =>
-            client.PublishMultiFromAsync(fromAddress, publishMultiEntity.StreamIdentifier, publishMultiEntity.Items, publishMultiEntity.Options);
+            client.PublishMultiFromAsync(fromAddress, publishMultiEntity.StreamIdentifier, publishMultiEntity.Items.ToArray(), publishMultiEntity.Options);
 
         // *** PublishMultiStreamItemsFrom using an explicit blockchain name
 
@@ -571,6 +571,6 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="publishMultiEntity"></param>
         /// <returns></returns>
         public static Task<CliResponse<string>> PublishMultiStreamItemsFrom(this IMultiChainCliWallet client, string blockchainName, string fromAddress, PublishMultiEntity publishMultiEntity) =>
-            client.PublishMultiFromAsync(blockchainName, fromAddress, publishMultiEntity.StreamIdentifier, publishMultiEntity.Items, publishMultiEntity.Options);
+            client.PublishMultiFromAsync(blockchainName, fromAddress, publishMultiEntity.StreamIdentifier, publishMultiEntity.Items.ToArray(), publishMultiEntity.Options);
     }
 }

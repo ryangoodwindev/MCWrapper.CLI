@@ -2,9 +2,11 @@
 using MCWrapper.CLI.Options;
 using MCWrapper.Data.Models.Utility;
 using MCWrapper.Ledger.Actions;
-using MCWrapper.Ledger.Entities.Extensions;
 using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+
+using static Newtonsoft.Json.JsonConvert;
 
 namespace MCWrapper.CLI.Ledger.Clients
 {
@@ -87,8 +89,8 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="count">Number of key pairs to generate</param>
         /// <returns></returns>
-        public Task<CliResponse<CreateKeyPairsResult[]>> CreateKeyPairsAsync(string blockchainName, int count = 1) =>
-            TransactAsync<CreateKeyPairsResult[]>(blockchainName, UtilityAction.CreateKeyPairsMethod, new[] { $"{count}" });
+        public Task<CliResponse<IList<CreateKeyPairsResult>>> CreateKeyPairsAsync(string blockchainName, int count = 1) =>
+            TransactAsync<IList<CreateKeyPairsResult>>(blockchainName, UtilityAction.CreateKeyPairsMethod, new[] { $"{count}" });
 
         /// <summary>
         /// 
@@ -98,7 +100,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="count">Number of key pairs to generate</param>
         /// <returns></returns>
-        public Task<CliResponse<CreateKeyPairsResult[]>> CreateKeyPairsAsync(int count = 1) =>
+        public Task<CliResponse<IList<CreateKeyPairsResult>>> CreateKeyPairsAsync(int count = 1) =>
             CreateKeyPairsAsync(CliOptions.ChainName, count);
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="keys">A json array of keys which are addresses or hex-encoded public keys</param>
         /// <returns></returns>
         public Task<CliResponse<CreateMultiSigResult>> CreateMultiSigAsync(string blockchainName, int n_required, string[] keys) =>
-            TransactAsync<CreateMultiSigResult>(blockchainName, UtilityAction.CreateMultiSigMethod, new[] { $"{n_required}", keys.Serialize() });
+            TransactAsync<CreateMultiSigResult>(blockchainName, UtilityAction.CreateMultiSigMethod, new[] { $"{n_required}", SerializeObject(keys) });
 
         /// <summary>
         /// 

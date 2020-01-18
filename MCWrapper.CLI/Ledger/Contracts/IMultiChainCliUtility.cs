@@ -1,6 +1,7 @@
 ﻿using MCWrapper.CLI.Connection;
 using MCWrapper.CLI.Ledger.Contracts;
 using MCWrapper.Data.Models.Utility;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MCWrapper.CLI.Ledger.Clients
@@ -65,7 +66,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="count">Number of key pairs to generate</param>
         /// <returns></returns>
-        Task<CliResponse<CreateKeyPairsResult[]>> CreateKeyPairsAsync(int count = 1);
+        Task<CliResponse<IList<CreateKeyPairsResult>>> CreateKeyPairsAsync(int count = 1);
 
         /// <summary>
         /// 
@@ -76,7 +77,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <param name="count">Number of key pairs to generate</param>
         /// <returns></returns>
-        Task<CliResponse<CreateKeyPairsResult[]>> CreateKeyPairsAsync(string blockchainName, int count = 1);
+        Task<CliResponse<IList<CreateKeyPairsResult>>> CreateKeyPairsAsync(string blockchainName, int count = 1);
 
         /// <summary>
         /// 
