@@ -43,7 +43,6 @@ namespace MCWrapper.CLI.Connection
         /// <summary>
         /// Private member that handles work
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="blockchainName"></param>
         /// <param name="methodName"></param>
         /// <param name="parameters"></param>

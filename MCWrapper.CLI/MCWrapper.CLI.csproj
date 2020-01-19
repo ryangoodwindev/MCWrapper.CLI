@@ -8,29 +8,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://mcwrapper.com</PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>The following IMultiChainRpcWallet interface methods have had their return types changed to CliResponse&lt;string&gt; from CliResponse&lt;object&gt;;
-GrantAsync
-GrantFromAsync
-GrantWithDataAsync
-GrantWithDataFromAsync
-
-IssueAsync and IssueFromAsync methods are now expressed with generic and strongly (AssetEntity class) typed object parameters. Consumers may now also simply pass a string type unique name to these methods, versus using either object argument type option.
-
-IssueAsync and IssueFromAsync methods with a 'customFields' parameter are now have the parameter expressed as a Dictionary&lt;string, string&gt; instead of a generic object. Hopefully, this will make using the API a bit more explicit and easier to pass multiple fields.
-
-IssueMoreAsync and IssueMoreFromAsync with a 'customFields' parameter are now have the parameter expressed as a Dictionary&lt;string, string&gt; instead of a generic object. Hopefully, this will make using the API a bit more explicit and easier to pass multiple fields.
-
-A new Target Framework has been added, netstandard2.1.
-
-Prior to the release we are targeting:
-netcoreapp3.0;netcoreapp2.2;netcoreapp2.1
-
-Post release we will target:
-netcoreapp3.1;netcoreapp2.2;netcoreapp2.1;netstandard2.1
-
-We added several more data models to make our return types more strongly typed.
-
-Many methods return generic object types, they now return more specific accurate data model types or base types (string, bool, int, etc...).
+    <PackageReleaseNotes>Breaking changes to support returning IList&lt;T&gt; to consumers instead of returning object or object[], when applicable.
 
 Please view all supported MultiChain Community Edition methods here, https://mcwrapper.com/supported-methods
 
@@ -41,7 +19,7 @@ This package has passed unit testing with MultiChain Community Edition v2.0.3.</
     <Description>A simple .NET Core wrapper that utilizes the Command Line Interface (CLI) to communicate with MultiChain distributed ledger networks. Written with C# 8.0 and supports .NET Core 2.1, 2.2, and 3.1.</Description>
     <RepositoryUrl>https://github.com/ryangoodwindev/MCWrapper.CLI</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <Version>5.0.0</Version>
+    <Version>6.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -3,6 +3,7 @@ using MCWrapper.CLI.Ledger.Contracts;
 using MCWrapper.Data.Models.Wallet;
 using MCWrapper.Data.Models.Wallet.CustomModels;
 using MCWrapper.Ledger.Entities;
+using MCWrapper.Ledger.Entities.Constants;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -713,7 +714,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_locked">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <param name="include_watch_only">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<IList<Asset>>> GetMultiBalancesAsync([Optional] string addresses, [Optional] object[] assets, [Optional] int min_conf, [Optional] bool include_locked, [Optional] bool include_watch_only);
+        Task<CliResponse> GetMultiBalancesAsync([Optional] string addresses, [Optional] object[] assets, [Optional] int min_conf, [Optional] bool include_locked, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -728,7 +729,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="include_locked">Include transactions to watchonly addresses (see 'importaddress')</param>
         /// <param name="include_watch_only">Also take locked outputs into account</param>
         /// <returns></returns>
-        Task<CliResponse<IList<Asset>>> GetMultiBalancesAsync(string blockchainName, [Optional] string addresses, [Optional] object[] assets, [Optional] int min_conf, [Optional] bool include_locked, [Optional] bool include_watch_only);
+        Task<CliResponse> GetMultiBalancesAsync(string blockchainName, [Optional] string addresses, [Optional] object[] assets, [Optional] int min_conf, [Optional] bool include_locked, [Optional] bool include_watch_only);
 
         /// <summary>
         /// 
@@ -1096,7 +1097,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<string>> GrantAsync(string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> GrantAsync(string addresses, string permissions, decimal native_amount = 0, int start_block = 0, uint end_block = Permission.MaxEndblock, string comment = "", string comment_to = "");
 
         /// <summary>
         /// 
@@ -1124,7 +1125,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<string>> GrantAsync(string blockchainName, string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> GrantAsync(string blockchainName, string addresses, string permissions, decimal native_amount = 0, int start_block = 0, uint end_block = Permission.MaxEndblock, string comment = "", string comment_to = "");
 
         /// <summary>
         /// Grant permission using specific address.
@@ -1153,7 +1154,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<string>> GrantFromAsync(string from_address, string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> GrantFromAsync(string from_address, string addresses, string permissions, decimal native_amount = 0, int start_block = 0, uint end_block = Permission.MaxEndblock, string comment = "", string comment_to = "");
 
         /// <summary>
         /// Grant permission using specific address.
@@ -1183,7 +1184,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="comment">A comment used to store what the transaction is for. This is not part of the transaction, just kept in your wallet.</param>
         /// <param name="comment_to"> A comment to store the name of the person or organization to which you're sending the transaction. This is not part of the transaction, just kept in your wallet.</param>
         /// <returns></returns>
-        Task<CliResponse<string>> GrantFromAsync(string blockchainName, string from_address, string addresses, string permissions, [Optional] decimal native_amount, [Optional] int start_block, [Optional] uint end_block, [Optional] string comment, [Optional] string comment_to);
+        Task<CliResponse<string>> GrantFromAsync(string blockchainName, string from_address, string addresses, string permissions, decimal native_amount = 0, int start_block = 0, uint end_block = Permission.MaxEndblock, string comment = "", string comment_to = "");
 
         /// <summary>
         /// 
@@ -1209,7 +1210,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        Task<CliResponse<string>> GrantWithDataAsync(string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue);
+        Task<CliResponse<string>> GrantWithDataAsync(string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = Permission.MaxEndblock);
 
         /// <summary>
         /// 
@@ -1236,7 +1237,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        Task<CliResponse<string>> GrantWithDataAsync(string blockchainName, string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue);
+        Task<CliResponse<string>> GrantWithDataAsync(string blockchainName, string addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = Permission.MaxEndblock);
 
         /// <summary>
         /// 
@@ -1264,7 +1265,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        Task<CliResponse<string>> GrantWithDataFromAsync(string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue);
+        Task<CliResponse<string>> GrantWithDataFromAsync(string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = Permission.MaxEndblock);
 
         /// <summary>
         /// 
@@ -1293,7 +1294,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <param name="start_block">Block to apply permissions from (inclusive). Default - 0</param>
         /// <param name="end_block">Block to apply permissions to (exclusive). Default - 4294967295; If -1 is specified default value is used.</param>
         /// <returns></returns>
-        Task<CliResponse<string>> GrantWithDataFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = uint.MaxValue);
+        Task<CliResponse<string>> GrantWithDataFromAsync(string blockchainName, string from_address, string to_addresses, string permissions, object object_or_hex, decimal native_amount = 0, int start_block = 0, uint end_block = Permission.MaxEndblock);
 
         /// <summary>
         /// 
@@ -2138,7 +2139,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<CliResponse<IList<IList<string>>>> ListAddressGroupingsAsync();
+        Task<CliResponse<IList<object>>> ListAddressGroupingsAsync();
 
         /// <summary>
         ///
@@ -2148,7 +2149,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
         /// <returns></returns>
-        Task<CliResponse<IList<IList<string>>>> ListAddressGroupingsAsync(string blockchainName);
+        Task<CliResponse<IList<object>>> ListAddressGroupingsAsync(string blockchainName);
 
         /// <summary>
         /// 

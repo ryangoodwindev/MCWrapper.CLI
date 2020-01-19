@@ -193,7 +193,7 @@
             <summary>
             This is the CLI client Response object
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="TObject"></typeparam>
         </member>
         <member name="M:MCWrapper.CLI.Connection.CliResponse`1.#ctor">
             <summary>
@@ -287,7 +287,6 @@
             <summary>
             Private member that handles work
             </summary>
-            <typeparam name="T"></typeparam>
             <param name="blockchainName"></param>
             <param name="methodName"></param>
             <param name="parameters"></param>
@@ -7127,7 +7126,7 @@
              <para>Blockchain name is inferred from CliOptions properties.</para>
             
              </summary>
-             <param name="upgrade_identifiers">
+             <param name="upgrade_identifier">
                  <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
              </param>
              <returns></returns>
@@ -7140,7 +7139,7 @@
             
              </summary>
              <param name="blockchainName">Name of target blockchain</param>
-             <param name="upgrade_identifiers">
+             <param name="upgrade_identifier">
                  <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
              </param>
              <returns></returns>
@@ -12636,12 +12635,18 @@
         </member>
         <member name="T:MCWrapper.CLI.Ledger.Contracts.IMultiChainCli">
             <summary>
-            Command Line Interface Basic Contract
+            MCWrapper MultiChain Command Line Interface contract
+            requires a <seealso cref="P:MCWrapper.CLI.Ledger.Contracts.IMultiChainCli.CliOptions"/> be available 
+            to consumers.
             </summary>
         </member>
         <member name="P:MCWrapper.CLI.Ledger.Contracts.IMultiChainCli.CliOptions">
             <summary>
-            Every CLI client should include CliOptions which will support the IOptions pattern within the IConfiguration pipeline
+            
+            Every IMultiChainCli client should include CliOptions which will 
+            support the IOptions pattern within the IConfiguration 
+            pipeline for each IMultiChainCli client.
+            
             </summary>
         </member>
         <member name="T:MCWrapper.CLI.Ledger.Forge.BlockchainRepoType">

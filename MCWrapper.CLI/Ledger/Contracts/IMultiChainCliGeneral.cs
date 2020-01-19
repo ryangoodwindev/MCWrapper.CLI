@@ -647,7 +647,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         /// <para>Blockchain name is inferred from CliOptions properties.</para>
         ///
         /// </summary>
-        /// <param name="upgrade_identifiers">
+        /// <param name="upgrade_identifier">
         ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
         /// </param>
         /// <returns></returns>
@@ -660,7 +660,7 @@ namespace MCWrapper.CLI.Ledger.Clients
         ///
         /// </summary>
         /// <param name="blockchainName">Name of target blockchain</param>
-        /// <param name="upgrade_identifiers">
+        /// <param name="upgrade_identifier">
         ///     <para>(string, optional, default=*, all upgrades) Upgrade identifier - one of the following: upgrade txid, upgrade name.</para>
         /// </param>
         /// <returns></returns>

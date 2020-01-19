@@ -3,12 +3,18 @@
 namespace MCWrapper.CLI.Ledger.Contracts
 {
     /// <summary>
-    /// Command Line Interface Basic Contract
+    /// MCWrapper MultiChain Command Line Interface contract
+    /// requires a <seealso cref="CliOptions"/> be available 
+    /// to consumers.
     /// </summary>
     public interface IMultiChainCli
     {
         /// <summary>
-        /// Every CLI client should include CliOptions which will support the IOptions pattern within the IConfiguration pipeline
+        /// 
+        /// Every IMultiChainCli client should include CliOptions which will 
+        /// support the IOptions pattern within the IConfiguration 
+        /// pipeline for each IMultiChainCli client.
+        /// 
         /// </summary>
         CliOptions CliOptions { get; set; }
     }

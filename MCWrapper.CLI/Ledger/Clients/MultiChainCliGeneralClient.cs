@@ -1,4 +1,5 @@
 ﻿using MCWrapper.CLI.Connection;
+using MCWrapper.CLI.Ledger.Contracts;
 using MCWrapper.CLI.Options;
 using MCWrapper.Data.Models.Blockchain;
 using MCWrapper.Ledger.Actions;

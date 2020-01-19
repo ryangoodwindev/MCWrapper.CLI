@@ -1,5 +1,4 @@
-﻿using MCWrapper.CLI.Ledger.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace MCWrapper.CLI.Ledger.Clients
@@ -10,7 +9,7 @@ namespace MCWrapper.CLI.Ledger.Clients
     public class MultiChainCliClientFactory : IMultiChainCliClientFactory
     {
         // collection of Cli clients
-        private readonly Dictionary<Type, IMultiChainCli> _clients;
+        private readonly Dictionary<Type, object> _clients;
 
         /// <summary>
         /// MultiChainCliClientFactory provides access to a collection of MultiChainCliClients
@@ -36,7 +35,7 @@ namespace MCWrapper.CLI.Ledger.Clients
             IMultiChainCliForge multiChainCliForge,
             IMultiChainCliRaw multiChainCliRaw)
         {
-            _clients = new Dictionary<Type, IMultiChainCli>();
+            _clients = new Dictionary<Type, object>();
 
             _multiChainCliGenerate = multiChainCliGenerate;
             _clients.TryAdd(typeof(IMultiChainCliGenerate), multiChainCliGenerate);

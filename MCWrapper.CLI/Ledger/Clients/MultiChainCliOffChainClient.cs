@@ -1,4 +1,5 @@
 ﻿using MCWrapper.CLI.Connection;
+using MCWrapper.CLI.Ledger.Contracts;
 using MCWrapper.CLI.Options;
 using MCWrapper.Ledger.Actions;
 using Microsoft.Extensions.Options;
